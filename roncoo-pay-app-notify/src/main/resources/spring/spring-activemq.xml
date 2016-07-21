@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:jms="http://www.springframework.org/schema/jms"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-3.2.xsd">
+
+
+	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<property name="connectionFactory" ref="connectionFactory"/>
+	</bean>
+
+	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供-->
+	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<!--<property name="brokerURL" value="tcp://192.168.1.82:51512"/>-->
+		<!--<property name="userName" value="admin"></property>-->
+		<!--<property name="password" value="admin"></property>-->
+		<property name="brokerURL" value="${mq.brokerURL}"/>
+		<property name="userName" value="${mq.userName}"></property>
+		<property name="password" value="${mq.password}"></property>
+	</bean>
+
+	<!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory -->
+	<bean id="connectionFactory" class="org.springframework.jms.connection.SingleConnectionFactory">
+		<!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory -->
+		<property name="targetConnectionFactory" ref="targetConnectionFactory"/>
+	</bean>
+
+	<!--这个是队列目的地-->
+	<bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg>
+			<value>tradeNotify</value>
+		</constructor-arg>
+	</bean>
+	<!-- 消息监听器 -->
+	<bean id="consumerMessageListener" class="com.roncoo.pay.app.notify.message.ConsumerSessionAwareMessageListener"/>
+	<!-- 消息监听容器 -->
+	<bean id="jmsContainer"
+		  class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="destination" ref="queueDestination" />
+		<property name="messageListener" ref="consumerMessageListener" />
+	</bean>
+</beans>

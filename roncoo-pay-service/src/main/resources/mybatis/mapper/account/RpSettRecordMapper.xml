@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.account.dao.impl.RpSettRecordDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.account.entity.RpSettRecord" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="VERSION" property="version" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="EDIT_TIME" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="SETT_MODE" property="settMode" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_NO" property="accountNo" jdbcType="VARCHAR" />
+    <result column="USER_NO" property="userNo" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="SETT_DATE" property="settDate" jdbcType="DATE" />
+    <result column="BANK_CODE" property="bankCode" jdbcType="VARCHAR" />
+    <result column="BANK_NAME" property="bankName" jdbcType="VARCHAR" />
+    <result column="BANK_ACCOUNT_NAME" property="bankAccountName" jdbcType="VARCHAR" />
+    <result column="BANK_ACCOUNT_NO" property="bankAccountNo" jdbcType="VARCHAR" />
+    <result column="BANK_ACCOUNT_TYPE" property="bankAccountType" jdbcType="VARCHAR" />
+    <result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+    <result column="CITY" property="city" jdbcType="VARCHAR" />
+    <result column="AREAS" property="areas" jdbcType="VARCHAR" />
+    <result column="BANK_ACCOUNT_ADDRESS" property="bankAccountAddress" jdbcType="VARCHAR" />
+    <result column="MOBILE_NO" property="mobileNo" jdbcType="VARCHAR" />
+    <result column="SETT_AMOUNT" property="settAmount" jdbcType="DECIMAL" />
+    <result column="SETT_FEE" property="settFee" jdbcType="DECIMAL" />
+    <result column="REMIT_AMOUNT" property="remitAmount" jdbcType="DECIMAL" />
+    <result column="SETT_STATUS" property="settStatus" jdbcType="VARCHAR" />
+    <result column="REMIT_CONFIRM_TIME" property="remitConfirmTime" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="REMIT_REMARK" property="remitRemark" jdbcType="VARCHAR" />
+    <result column="OPERATOR_LOGINNAME" property="operatorLoginname" jdbcType="VARCHAR" />
+    <result column="OPERATOR_REALNAME" property="operatorRealname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, VERSION, CREATE_TIME, EDIT_TIME, SETT_MODE, ACCOUNT_NO, USER_NO, USER_NAME, USER_TYPE, 
+    SETT_DATE, BANK_CODE, BANK_NAME, BANK_ACCOUNT_NAME, BANK_ACCOUNT_NO, BANK_ACCOUNT_TYPE, 
+    COUNTRY, PROVINCE, CITY, AREAS, BANK_ACCOUNT_ADDRESS, MOBILE_NO, SETT_AMOUNT, SETT_FEE, 
+    REMIT_AMOUNT, SETT_STATUS, REMIT_CONFIRM_TIME, REMARK, REMIT_REMARK, OPERATOR_LOGINNAME, 
+    OPERATOR_REALNAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_sett_record
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rp_sett_record
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.roncoo.pay.account.entity.RpSettRecord" >
+    insert into rp_sett_record (ID, VERSION, CREATE_TIME, 
+      EDIT_TIME, SETT_MODE, ACCOUNT_NO, 
+      USER_NO, USER_NAME, USER_TYPE, 
+      SETT_DATE, BANK_CODE, BANK_NAME, 
+      BANK_ACCOUNT_NAME, BANK_ACCOUNT_NO, BANK_ACCOUNT_TYPE, 
+      COUNTRY, PROVINCE, CITY, 
+      AREAS, BANK_ACCOUNT_ADDRESS, MOBILE_NO, 
+      SETT_AMOUNT, SETT_FEE, REMIT_AMOUNT, 
+      SETT_STATUS, REMIT_CONFIRM_TIME, REMARK, 
+      REMIT_REMARK, OPERATOR_LOGINNAME, OPERATOR_REALNAME
+      )
+    values (#{id,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{editTime,jdbcType=TIMESTAMP}, #{settMode,jdbcType=VARCHAR}, #{accountNo,jdbcType=VARCHAR}, 
+      #{userNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, 
+      #{settDate,jdbcType=DATE}, #{bankCode,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR}, 
+      #{bankAccountName,jdbcType=VARCHAR}, #{bankAccountNo,jdbcType=VARCHAR}, #{bankAccountType,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{areas,jdbcType=VARCHAR}, #{bankAccountAddress,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR}, 
+      #{settAmount,jdbcType=DECIMAL}, #{settFee,jdbcType=DECIMAL}, #{remitAmount,jdbcType=DECIMAL}, 
+      #{settStatus,jdbcType=VARCHAR}, #{remitConfirmTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{remitRemark,jdbcType=VARCHAR}, #{operatorLoginname,jdbcType=VARCHAR}, #{operatorRealname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.account.entity.RpSettRecord" >
+    update rp_sett_record
+    set VERSION = #{version,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      EDIT_TIME = #{editTime,jdbcType=TIMESTAMP},
+      SETT_MODE = #{settMode,jdbcType=VARCHAR},
+      ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      USER_NO = #{userNo,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=VARCHAR},
+      SETT_DATE = #{settDate,jdbcType=DATE},
+      BANK_CODE = #{bankCode,jdbcType=VARCHAR},
+      BANK_NAME = #{bankName,jdbcType=VARCHAR},
+      BANK_ACCOUNT_NAME = #{bankAccountName,jdbcType=VARCHAR},
+      BANK_ACCOUNT_NO = #{bankAccountNo,jdbcType=VARCHAR},
+      BANK_ACCOUNT_TYPE = #{bankAccountType,jdbcType=VARCHAR},
+      COUNTRY = #{country,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      AREAS = #{areas,jdbcType=VARCHAR},
+      BANK_ACCOUNT_ADDRESS = #{bankAccountAddress,jdbcType=VARCHAR},
+      MOBILE_NO = #{mobileNo,jdbcType=VARCHAR},
+      SETT_AMOUNT = #{settAmount,jdbcType=DECIMAL},
+      SETT_FEE = #{settFee,jdbcType=DECIMAL},
+      REMIT_AMOUNT = #{remitAmount,jdbcType=DECIMAL},
+      SETT_STATUS = #{settStatus,jdbcType=VARCHAR},
+      REMIT_CONFIRM_TIME = #{remitConfirmTime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      REMIT_REMARK = #{remitRemark,jdbcType=VARCHAR},
+      OPERATOR_LOGINNAME = #{operatorLoginname,jdbcType=VARCHAR},
+      OPERATOR_REALNAME = #{operatorRealname,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <sql id="table_name">  rp_sett_record </sql>
+  
+  <!-- 根据搜索条件获取数据 -->
+	<sql id="condition_sql">
+		<if test="accountNo != null and accountNo !='' "> and account_no_ = #{accountNo}</if>
+		<if test="userNo != null and userNo !='' "> and user_no = #{userNo}</if>
+		<if test="userName != null and userName != ''">and USER_NAME like CONCAT('%' ,CONCAT(#{userName},'%'))</if>
+	</sql>
+
+
+	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc
+	</select>
+
+	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>

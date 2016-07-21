@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.reconciliation.dao.impl.RpAccountCheckMistakeDaoImpl">
+
+	<sql id="table_name">rp_account_check_mistake</sql>
+
+	<resultMap id="BaseResultMap" type="com.roncoo.pay.reconciliation.entity.RpAccountCheckMistake">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="version" property="version" jdbcType="SMALLINT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="editor" property="editor" jdbcType="VARCHAR" />
+		<result column="creater" property="creater" jdbcType="VARCHAR" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+
+		<result column="account_check_batch_no" property="accountCheckBatchNo" jdbcType="VARCHAR" />
+		<result column="bill_date" property="billDate" jdbcType="DATE" />
+		<result column="bank_type" property="bankType" jdbcType="VARCHAR" />
+		<result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+		<result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+		<result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+		<result column="order_no" property="orderNo" jdbcType="VARCHAR" />
+		<result column="trade_time" property="tradeTime" jdbcType="TIMESTAMP" />
+		<result column="trx_no" property="trxNo" jdbcType="VARCHAR" />
+		<result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
+		<result column="refund_amount" property="refundAmount" jdbcType="DECIMAL" />
+		<result column="trade_status" property="tradeStatus" jdbcType="VARCHAR" />
+		<result column="fee" property="fee" jdbcType="DECIMAL" />
+		<result column="bank_trade_time" property="bankTradeTime" jdbcType="TIMESTAMP" />
+		<result column="bank_order_no" property="bankOrderNo" jdbcType="VARCHAR" />
+		<result column="bank_trx_no" property="bankTrxNo" jdbcType="VARCHAR" />
+		<result column="bank_trade_status" property="bankTradeStatus" jdbcType="VARCHAR" />
+		<result column="bank_amount" property="bankAmount" jdbcType="DECIMAL" />
+		<result column="bank_refund_amount" property="bankRefundAmount" jdbcType="DECIMAL" />
+		<result column="bank_fee" property="bankFee" jdbcType="DECIMAL" />
+		<result column="err_type" property="errType" jdbcType="VARCHAR" />
+		<result column="handle_status" property="handleStatus" jdbcType="VARCHAR" />
+		<result column="handle_value" property="handleValue" jdbcType="VARCHAR" />
+		<result column="handle_remark" property="handleRemark" jdbcType="VARCHAR" />
+		<result column="operator_name" property="operatorName" jdbcType="VARCHAR" />
+		<result column="operator_account_no" property="operatorAccountNo" jdbcType="VARCHAR" />
+
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, version, create_time, editor, creater, edit_time,status,remark, account_check_batch_no, bill_date,
+		bank_type, order_time, merchant_name, merchant_no, order_no, trade_time, trx_no,
+		order_amount, refund_amount, trade_status, fee, bank_trade_time, bank_order_no, bank_trx_no,
+		bank_trade_status, bank_amount, bank_refund_amount, bank_fee, err_type, handle_status,
+		handle_value, handle_remark, operator_name, operator_account_no
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from
+		<include refid="table_name" />
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		<include refid="table_name" />
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.roncoo.pay.reconciliation.entity.RpAccountCheckMistake">
+		insert into
+		<include refid="table_name" />
+		(id, version, create_time,
+		editor, creater, edit_time,status,
+		account_check_batch_no, bill_date, bank_type,
+		order_time, merchant_name, merchant_no,
+		order_no, trade_time, trx_no,
+		order_amount, refund_amount, trade_status,
+		fee, bank_trade_time, bank_order_no,
+		bank_trx_no, bank_trade_status, bank_amount,
+		bank_refund_amount, bank_fee, err_type,
+		handle_status, handle_value, handle_remark,
+		operator_name, operator_account_no, remark
+		)
+		values (#{id,jdbcType=VARCHAR}, #{version,jdbcType=SMALLINT}, #{createTime,jdbcType=TIMESTAMP},
+		#{editor,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{editTime,jdbcType=TIMESTAMP},#{status,jdbcType=VARCHAR},
+		#{accountCheckBatchNo,jdbcType=VARCHAR},
+		#{billDate,jdbcType=DATE},
+		#{bankType,jdbcType=VARCHAR},
+		#{orderTime,jdbcType=TIMESTAMP}, #{merchantName,jdbcType=VARCHAR}, #{merchantNo,jdbcType=VARCHAR},
+		#{orderNo,jdbcType=VARCHAR}, #{tradeTime,jdbcType=TIMESTAMP}, #{trxNo,jdbcType=VARCHAR},
+		#{orderAmount,jdbcType=DECIMAL}, #{refundAmount,jdbcType=DECIMAL}, #{tradeStatus,jdbcType=VARCHAR},
+		#{fee,jdbcType=DECIMAL}, #{bankTradeTime,jdbcType=TIMESTAMP}, #{bankOrderNo,jdbcType=VARCHAR},
+		#{bankTrxNo,jdbcType=VARCHAR}, #{bankTradeStatus,jdbcType=VARCHAR}, #{bankAmount,jdbcType=DECIMAL},
+		#{bankRefundAmount,jdbcType=DECIMAL}, #{bankFee,jdbcType=DECIMAL}, #{errType,jdbcType=VARCHAR},
+		#{handleStatus,jdbcType=VARCHAR}, #{handleValue,jdbcType=VARCHAR},
+		#{handleRemark,jdbcType=VARCHAR},
+		#{operatorName,jdbcType=VARCHAR},
+		#{operatorAccountNo,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<update id="updateByPrimaryKey" parameterType="com.roncoo.pay.reconciliation.entity.RpAccountCheckMistake">
+		update
+		<include refid="table_name" />
+		set version = #{version,jdbcType=SMALLINT},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		editor = #{editor,jdbcType=VARCHAR},
+		creater = #{creater,jdbcType=VARCHAR},
+		edit_time = #{editTime,jdbcType=TIMESTAMP},
+		status = #{status,jdbcType=VARCHAR},
+		account_check_batch_no = #{accountCheckBatchNo,jdbcType=VARCHAR},
+		bill_date = #{billDate,jdbcType=DATE},
+		bank_type = #{bankType,jdbcType=VARCHAR},
+		order_time = #{orderTime,jdbcType=TIMESTAMP},
+		merchant_name = #{merchantName,jdbcType=VARCHAR},
+		merchant_no = #{merchantNo,jdbcType=VARCHAR},
+		order_no = #{orderNo,jdbcType=VARCHAR},
+		trade_time = #{tradeTime,jdbcType=TIMESTAMP},
+		trx_no = #{trxNo,jdbcType=VARCHAR},
+		order_amount = #{orderAmount,jdbcType=DECIMAL},
+		refund_amount =
+		#{refundAmount,jdbcType=DECIMAL},
+		trade_status= #{tradeStatus,jdbcType=VARCHAR},
+		fee = #{fee,jdbcType=DECIMAL},
+		bank_trade_time = #{bankTradeTime,jdbcType=TIMESTAMP},
+		bank_order_no = #{bankOrderNo,jdbcType=VARCHAR},
+		bank_trx_no = #{bankTrxNo,jdbcType=VARCHAR},
+		bank_trade_status = #{bankTradeStatus,jdbcType=VARCHAR},
+		bank_amount = #{bankAmount,jdbcType=DECIMAL},
+		bank_refund_amount = #{bankRefundAmount,jdbcType=DECIMAL},
+		bank_fee = #{bankFee,jdbcType=DECIMAL},
+		err_type = #{errType,jdbcType=VARCHAR},
+		handle_status = #{handleStatus,jdbcType=VARCHAR},
+		handle_value = #{handleValue,jdbcType=VARCHAR},
+		handle_remark = #{handleRemark,jdbcType=VARCHAR},
+		operator_name = #{operatorName,jdbcType=VARCHAR},
+		operator_account_no =
+		#{operatorAccountNo,jdbcType=VARCHAR},
+		remark =
+		#{remark,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=VARCHAR} and version = #{version,jdbcType=INTEGER}
+	</update>
+
+	<!-- 根据搜索条件信息 -->
+	<sql id="condition_sql">
+		<if test="status != null and status != ''"> and status = #{status,jdbcType=VARCHAR}</if>
+		<if test="beginDate != null and beginDate != '' and endDate != null and endDate != ''">
+			and bill_date between #{beginDate} AND CONCAT(#{endDate},' 23:59:59')
+		</if>
+	</sql>
+
+	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map" resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>

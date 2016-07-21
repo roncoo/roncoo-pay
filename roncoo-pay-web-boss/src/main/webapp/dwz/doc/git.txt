@@ -1,0 +1,29 @@
+#git remote add github https://github.com/dwzteam/dwz_jui.git
+git remote add github git@github.com:dwzteam/dwz_jui.git
+git remote add oschina git@git.oschina.net:dwzteam/dwz_jui.git
+
+#提交到csdn code
+git push -u origin master
+#提交到github
+git push -u github master
+#提交到oschina
+git push -u oschina master
+
+git tag -a v1.5.1 -m '升级到jQuery1.11.3'
+git push origin v1.5.1
+git push github v1.5.1
+git push oschina v1.5.1
+
+#删除tag
+git tag -d v1.5.1
+git push origin :refs/tags/v1.5.1
+
+github生成SSH公钥
+ssh-keygen -t rsa -C "zhanghuihua@sohu.com"
+~/.ssh/id_rsa.pub 中内容复制到github
+
+#清理git账号
+git config --global user.name
+
+#检查git链接
+ssh -T git@github.com

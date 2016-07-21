@@ -1,0 +1,5 @@
+1.必须实现ParserInterface接口
+
+2.类名必须为支付方式后面加上Parser
+
+3.@Component("")中名字和类型相同

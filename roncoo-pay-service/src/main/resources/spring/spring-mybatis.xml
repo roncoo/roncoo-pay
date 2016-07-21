@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="clone">
+		<!-- 基本属性driverClassName、 url、user、password -->
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<!-- 通常来说，只需要修改initialSize、minIdle、maxActive -->
+		<!-- 初始化时建立物理连接的个数，缺省值为0 -->
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<!-- 最小连接池数量 -->
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<!-- 最大连接池数量，缺省值为8 -->
+		<property name="maxActive" value="${jdbc.maxActive}" />
+
+		<!-- 获取连接时最大等待时间，单位毫秒。配置了maxWait之后，缺省启用公平锁，并发效率会有所下降，如果需要可以通过配置useUnfairLock属性为true使用非公平锁。 -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+	</bean>
+
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 自动扫描mapping.xml文件 -->
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:mybatis/mapper/*/*.xml"></property>
+	</bean>
+
+	<!-- SqlSession模板类实例 -->
+	<bean id="sessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="close">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<!--======= 事务配置 Begin ================= -->
+	<!-- 事务管理器（由Spring管理MyBatis的事务） -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 关联数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 注解事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!--======= 事务配置 End =================== -->
+
+</beans>

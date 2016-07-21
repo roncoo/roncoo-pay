@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.roncoo.pay.permission.dao.impl.PmsOperatorLogDaoImpl">
+
+	<!-- Pms权限管理：操作员操作日志表 -->
+	<sql id="pms_operator_log"> PMS_OPERATOR_LOG </sql>
+
+	<resultMap id="beanMap" type="com.roncoo.pay.permission.entity.PmsOperatorLog">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="version" property="version" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="creater" property="creater" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="editor" property="editor" jdbcType="VARCHAR" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="operator_id" property="operatorId" />
+		<result column="operator_name" property="operatorName" />
+		<result column="operate_type" property="operateType" />
+		<result column="ip" property="ip" />
+		<result column="content" property="content" />
+	</resultMap>
+
+	<insert id="insert" parameterType="com.roncoo.pay.permission.entity.PmsOperatorLog" keyProperty="id" useGeneratedKeys="true">
+		insert into
+		<include refid="pms_operator_log" />
+		(id,version,status,creater,create_time, editor, edit_time, remark, operator_id, operator_name,operate_type,ip,content)
+		values
+		(#{id},0,#{status}, #{creater},#{createTime}, #{editor},#{editTime},#{remark},#{operatorId},#{operatorName},#{operateType},#{ip}, #{content})
+	</insert>
+
+	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.roncoo.pay.permission.entity.PmsOperatorLog">
+		select * from
+		<include refid="pms_operator_log" />
+		where id = #{id}
+	</select>
+
+	<sql id="condition_sql">
+		<!-- Equal query -->
+		<if test="operatorName != null and operatorName != ''"> and operator_name = #{operatorName}</if>
+		<if test="operateType != null and operateType != ''"> and operate_type = #{operateType}</if>
+		<if test="status != null and status != ''"> and status = #{status}</if>
+		<if test="ip != null and ip != ''"> and ip = #{ip}</if>
+		<if test="beginDate != null and beginDate != '' and endDate != null and endDate != ''">
+			and create_time between #{beginDate} and CONCAT(#{endDate}, '
+			23:59:59')
+		</if>
+	</sql>
+
+	<select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
+		select * from
+		<include refid="pms_operator_log" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		<![CDATA[ order by ID desc]]>
+	</select>
+
+	<select id="listPageCount" parameterType="java.util.Map" resultType="long">
+		select count(1) from
+		<include refid="pms_operator_log" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+
+</mapper>

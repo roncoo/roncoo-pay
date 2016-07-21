@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.trade.dao.impl.RpTradePaymentOrderDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.trade.entity.RpTradePaymentOrder" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="SMALLINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="merchant_order_no" property="merchantOrderNo" jdbcType="VARCHAR" />
+    <result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
+    <result column="order_from" property="orderFrom" jdbcType="VARCHAR" />
+    <result column="merchant_name" property="merchantName" jdbcType="VARCHAR" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="order_time" property="orderTime" jdbcType="TIMESTAMP" />
+    <result column="order_date" property="orderDate" jdbcType="DATE" />
+    <result column="order_ip" property="orderIp" jdbcType="VARCHAR" />
+    <result column="order_referer_url" property="orderRefererUrl" jdbcType="VARCHAR" />
+    <result column="return_url" property="returnUrl" jdbcType="VARCHAR" />
+    <result column="notify_url" property="notifyUrl" jdbcType="VARCHAR" />
+    <result column="cancel_reason" property="cancelReason" jdbcType="VARCHAR" />
+    <result column="order_period" property="orderPeriod" jdbcType="SMALLINT" />
+    <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+    <result column="pay_way_code" property="payWayCode" jdbcType="VARCHAR" />
+    <result column="pay_way_name" property="payWayName" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="trx_type" property="trxType" jdbcType="VARCHAR" />
+    <result column="pay_type_code" property="payTypeCode" jdbcType="VARCHAR" />
+    <result column="pay_type_name" property="payTypeName" jdbcType="VARCHAR" />
+    <result column="fund_into_type" property="fundIntoType" jdbcType="VARCHAR" />
+    <result column="is_refund" property="isRefund" jdbcType="VARCHAR" />
+    <result column="refund_times" property="refundTimes" jdbcType="SMALLINT" />
+    <result column="success_refund_amount" property="successRefundAmount" jdbcType="DECIMAL" />
+    <result column="trx_no" property="trxNo" jdbcType="VARCHAR" />
+    <result column="field1" property="field1" jdbcType="VARCHAR" />
+    <result column="field2" property="field2" jdbcType="VARCHAR" />
+    <result column="field3" property="field3" jdbcType="VARCHAR" />
+    <result column="field4" property="field4" jdbcType="VARCHAR" />
+    <result column="field5" property="field5" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, version, create_time, editor, creater, edit_time, status, product_name, merchant_order_no, 
+    order_amount, order_from, merchant_name, merchant_no, order_time, order_date, order_ip, 
+    order_referer_url, return_url, notify_url, cancel_reason, order_period, expire_time, 
+    pay_way_code, pay_way_name, remark, trx_type, pay_type_code, pay_type_name, fund_into_type, 
+    is_refund, refund_times, success_refund_amount,trx_no, field1, field2, field3, field4,
+    field5
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_trade_payment_order
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <select id="listBy" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />
+    from rp_trade_payment_order
+    <where>
+      <include refid="condition_sql"/>
+    </where>
+  </select>
+
+  <sql id="condition_sql">
+    <if test="merchantNo != null and merchantNo != ''"> and merchant_no = #{merchantNo,jdbcType=VARCHAR}</if>
+    <if test="merchantOrderNo != null and merchantOrderNo != ''"> and merchant_order_no = #{merchantOrderNo,jdbcType=VARCHAR}</if>
+    <if test="merchantName != null and merchantName != '' "> and merchant_name = #{merchantName,jdbcType=VARCHAR}</if>
+    <if test="fundIntoType != null and fundIntoType != '' "> and fund_into_type = #{fundIntoType,jdbcType=VARCHAR}</if>
+    <if test="payTypeName != null and payTypeName != '' "> and pay_type_name = #{payTypeName,jdbcType=VARCHAR}</if>
+    <if test="payWayName != null and payWayName != '' "> and pay_way_name = #{payWayName,jdbcType=VARCHAR}</if>
+    <if test="status != null and status != '' "> and status = #{status,jdbcType=VARCHAR}</if>
+    <if test="trxNo != null and trxNo != '' "> and trx_no = #{trxNo,jdbcType=VARCHAR}</if>
+
+    <if test="orderDateBegin != null and orderDateBegin != '' "> and order_date <![CDATA[ >= ]]> #{orderDateBegin,jdbcType=VARCHAR}</if>
+    <if test="orderDateEnd != null and orderDateEnd != '' "> and order_date <![CDATA[ <= ]]> #{orderDateEnd,jdbcType=VARCHAR}</if>
+  </sql>
+
+  <select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from rp_trade_payment_order
+    <where>
+      <include refid="condition_sql" />
+    </where>
+    <![CDATA[ order by create_time desc limit #{pageFirst}, #{pageSize}]]>
+  </select>
+
+  <select id="listPageCount" parameterType="java.util.Map" resultType="long">
+    select count(1) from  rp_trade_payment_order
+    <where>
+      <include refid="condition_sql" />
+    </where>
+  </select>
+
+  <insert id="insert" parameterType="com.roncoo.pay.trade.entity.RpTradePaymentOrder" >
+    insert into rp_trade_payment_order (id, version, create_time, 
+      editor, creater, edit_time, 
+      status, product_name, merchant_order_no, 
+      order_amount, order_from, merchant_name, 
+      merchant_no, order_time, order_date, 
+      order_ip, order_referer_url, return_url, 
+      notify_url, cancel_reason, order_period, 
+      expire_time, pay_way_code, pay_way_name, 
+      remark, trx_type, pay_type_code, 
+      pay_type_name, fund_into_type, is_refund, 
+      refund_times, success_refund_amount, trx_no , field1,
+      field2, field3, field4, 
+      field5)
+    values (#{id,jdbcType=VARCHAR}, #{version,jdbcType=SMALLINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{editor,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{editTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=VARCHAR}, #{productName,jdbcType=VARCHAR}, #{merchantOrderNo,jdbcType=VARCHAR}, 
+      #{orderAmount,jdbcType=DECIMAL}, #{orderFrom,jdbcType=VARCHAR}, #{merchantName,jdbcType=VARCHAR}, 
+      #{merchantNo,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, #{orderDate,jdbcType=DATE}, 
+      #{orderIp,jdbcType=VARCHAR}, #{orderRefererUrl,jdbcType=VARCHAR}, #{returnUrl,jdbcType=VARCHAR}, 
+      #{notifyUrl,jdbcType=VARCHAR}, #{cancelReason,jdbcType=VARCHAR}, #{orderPeriod,jdbcType=SMALLINT}, 
+      #{expireTime,jdbcType=TIMESTAMP}, #{payWayCode,jdbcType=VARCHAR}, #{payWayName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{trxType,jdbcType=VARCHAR}, #{payTypeCode,jdbcType=VARCHAR}, 
+      #{payTypeName,jdbcType=VARCHAR}, #{fundIntoType,jdbcType=VARCHAR}, #{isRefund,jdbcType=VARCHAR}, 
+      #{refundTimes,jdbcType=SMALLINT}, #{successRefundAmount,jdbcType=DECIMAL}, #{trxNo,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR},
+      #{field2,jdbcType=VARCHAR}, #{field3,jdbcType=VARCHAR}, #{field4,jdbcType=VARCHAR}, 
+      #{field5,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.trade.entity.RpTradePaymentOrder" >
+    update rp_trade_payment_order
+    set version = #{version,jdbcType=SMALLINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      editor = #{editor,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      merchant_order_no = #{merchantOrderNo,jdbcType=VARCHAR},
+      order_amount = #{orderAmount,jdbcType=DECIMAL},
+      order_from = #{orderFrom,jdbcType=VARCHAR},
+      merchant_name = #{merchantName,jdbcType=VARCHAR},
+      merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      order_date = #{orderDate,jdbcType=DATE},
+      order_ip = #{orderIp,jdbcType=VARCHAR},
+      order_referer_url = #{orderRefererUrl,jdbcType=VARCHAR},
+      return_url = #{returnUrl,jdbcType=VARCHAR},
+      notify_url = #{notifyUrl,jdbcType=VARCHAR},
+      cancel_reason = #{cancelReason,jdbcType=VARCHAR},
+      order_period = #{orderPeriod,jdbcType=SMALLINT},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      pay_way_code = #{payWayCode,jdbcType=VARCHAR},
+      pay_way_name = #{payWayName,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      trx_type = #{trxType,jdbcType=VARCHAR},
+      pay_type_code = #{payTypeCode,jdbcType=VARCHAR},
+      pay_type_name = #{payTypeName,jdbcType=VARCHAR},
+      fund_into_type = #{fundIntoType,jdbcType=VARCHAR},
+      is_refund = #{isRefund,jdbcType=VARCHAR},
+      refund_times = #{refundTimes,jdbcType=SMALLINT},
+      success_refund_amount = #{successRefundAmount,jdbcType=DECIMAL},
+      trx_no = #{trxNo,jdbcType=VARCHAR},
+      field1 = #{field1,jdbcType=VARCHAR},
+      field2 = #{field2,jdbcType=VARCHAR},
+      field3 = #{field3,jdbcType=VARCHAR},
+      field4 = #{field4,jdbcType=VARCHAR},
+      field5 = #{field5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+</mapper>

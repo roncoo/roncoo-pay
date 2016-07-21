@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.notify.dao.impl.RpNotifyRecordLogDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.notify.entity.RpNotifyRecordLog" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="SMALLINT" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="notify_id" property="notifyId" jdbcType="VARCHAR" />
+    <result column="request" property="request" jdbcType="VARCHAR" />
+    <result column="response" property="response" jdbcType="VARCHAR" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="merchant_order_no" property="merchantOrderNo" jdbcType="VARCHAR" />
+    <result column="http_status" property="httpStatus" jdbcType="SMALLINT" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, version, editor, creater, edit_time, create_time, notify_id, request, response, 
+    merchant_no, merchant_order_no, http_status
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_notify_record_log
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rp_notify_record_log
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.roncoo.pay.notify.entity.RpNotifyRecordLog" >
+    insert into rp_notify_record_log (id, version, editor, 
+      creater, edit_time, create_time, 
+      notify_id, request, response, 
+      merchant_no, merchant_order_no, http_status
+      )
+    values (#{id,jdbcType=VARCHAR}, #{version,jdbcType=SMALLINT}, #{editor,jdbcType=VARCHAR}, 
+      #{creater,jdbcType=VARCHAR}, #{editTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{notifyId,jdbcType=VARCHAR}, #{request,jdbcType=VARCHAR}, #{response,jdbcType=VARCHAR},
+      #{merchantNo,jdbcType=VARCHAR}, #{merchantOrderNo,jdbcType=VARCHAR}, #{httpStatus,jdbcType=SMALLINT}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.notify.entity.RpNotifyRecordLog" >
+    update rp_notify_record_log
+    set version = #{version,jdbcType=SMALLINT},
+      editor = #{editor,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      notify_id = #{notifyId,jdbcType=VARCHAR},
+      request = #{request,jdbcType=VARCHAR},
+      response = #{response,jdbcType=VARCHAR},
+      merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      merchant_order_no = #{merchantOrderNo,jdbcType=VARCHAR},
+      http_status = #{httpStatus,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <sql id="condition_sql">
+
+    <if test="merchantNo != null and merchantNo != '' ">
+      and merchant_no = #{merchantNo}
+    </if>
+
+    <if test="merchantOrderNo != null and merchantOrderNo != '' ">
+      and merchant_order_no = #{merchantOrderNo}
+    </if>
+
+  </sql>
+
+  <select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from rp_notify_record_log
+    <where>
+      <include refid="condition_sql" />
+    </where>
+    <![CDATA[ order by create_time desc]]>
+  </select>
+
+  <select id="listPageCount" parameterType="java.util.Map" resultType="long">
+    select count(1) from  rp_notify_record_log
+    <where>
+      <include refid="condition_sql" />
+    </where>
+  </select>
+
+</mapper>

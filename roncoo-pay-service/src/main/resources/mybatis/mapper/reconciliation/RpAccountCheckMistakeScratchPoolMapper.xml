@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.reconciliation.dao.impl.RpAccountCheckMistakeScratchPoolDaoImpl">
+
+	<sql id="table_name">rp_account_check_mistake_scratch_pool</sql>
+
+	<resultMap id="BaseResultMap" type="com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="version" property="version" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="editor" property="editor" jdbcType="VARCHAR" />
+		<result column="creater" property="creater" jdbcType="VARCHAR" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="batch_no" property="batchNo" jdbcType="VARCHAR" />
+		<result column="bill_date" property="billDate" jdbcType="TIMESTAMP" />
+		<result column="product_name" property="productName" jdbcType="VARCHAR" />
+		<result column="merchant_order_no" property="merchantOrderNo" jdbcType="VARCHAR" />
+		<result column="trx_no" property="trxNo" jdbcType="CHAR" />
+		<result column="bank_order_no" property="bankOrderNo" jdbcType="CHAR" />
+		<result column="bank_trx_no" property="bankTrxNo" jdbcType="VARCHAR" />
+		<result column="order_amount" property="orderAmount" jdbcType="DECIMAL" />
+		<result column="plat_income" property="platIncome" jdbcType="DECIMAL" />
+		<result column="fee_rate" property="feeRate" jdbcType="DECIMAL" />
+		<result column="plat_cost" property="platCost" jdbcType="DECIMAL" />
+		<result column="plat_profit" property="platProfit" jdbcType="DECIMAL" />
+		<result column="pay_way_code" property="payWayCode" jdbcType="VARCHAR" />
+		<result column="pay_way_name" property="payWayName" jdbcType="VARCHAR" />
+		<result column="pay_success_time" property="paySuccessTime" jdbcType="TIMESTAMP" />
+		<result column="complete_time" property="completeTime" jdbcType="TIMESTAMP" />
+		<result column="is_refund" property="isRefund" jdbcType="VARCHAR" />
+		<result column="refund_times" property="refundTimes" jdbcType="SMALLINT" />
+		<result column="success_refund_amount" property="successRefundAmount" jdbcType="DECIMAL" />
+	</resultMap>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		*
+		from
+		<include refid="table_name" />
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		<include refid="table_name" />
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insert" parameterType="com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool">
+		insert into
+		<include refid="table_name" />
+		(id, version, create_time, editor, creater, edit_time,
+		product_name, merchant_order_no, trx_no,
+		bank_order_no, bank_trx_no,
+		order_amount, plat_income, fee_rate,
+		plat_cost, plat_profit, status,
+		pay_way_code, pay_way_name, pay_success_time,
+		complete_time, is_refund, refund_times,
+		success_refund_amount,bill_date,batch_no,
+		remark)
+		values (
+		#{id,jdbcType=VARCHAR}, 0, #{createTime,jdbcType=TIMESTAMP},
+		#{editor,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{editTime,jdbcType=TIMESTAMP},
+		#{productName,jdbcType=VARCHAR}, #{merchantOrderNo,jdbcType=VARCHAR}, #{trxNo,jdbcType=CHAR},
+		#{bankOrderNo,jdbcType=CHAR}, #{bankTrxNo,jdbcType=VARCHAR},
+		#{orderAmount,jdbcType=DECIMAL}, #{platIncome,jdbcType=DECIMAL},
+		#{feeRate,jdbcType=DECIMAL},
+		#{platCost,jdbcType=DECIMAL}, #{platProfit,jdbcType=DECIMAL}, #{status,jdbcType=VARCHAR},
+		#{payWayCode,jdbcType=VARCHAR},
+		#{payWayName,jdbcType=VARCHAR}, #{paySuccessTime,jdbcType=TIMESTAMP},
+		#{completeTime,jdbcType=TIMESTAMP}, #{isRefund,jdbcType=VARCHAR}, #{refundTimes,jdbcType=SMALLINT},
+		#{successRefundAmount,jdbcType=DECIMAL},#{billDate,jdbcType=TIMESTAMP },#{batchNo,jdbcType=VARCHAR},
+		#{remark,jdbcType=VARCHAR})
+	</insert>
+
+	<!-- 对账批次条件 -->
+	<sql id="reconciliation_sql">
+		<if test="maxDate != null and maxDate != ''">
+			<![CDATA[ and create_time < #{maxDate}]]>
+		</if>
+	</sql>
+
+	<!-- list查询 -->
+	<select id="listByColumn" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select *
+		from
+		<include refid="table_name" />
+		<where>
+			<include refid="reconciliation_sql" />
+		</where>
+	</select>
+
+	<!-- 根据搜索条件信息 -->
+	<sql id="condition_sql">
+		<if test="status != null and status != ''"> and status = #{status,jdbcType=VARCHAR}</if>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.roncoo.pay.permission.dao.impl.PmsOperatorRoleDaoImpl">
+
+	<!-- Pms权限管理：角色与操作员关联表 -->
+	<sql id="pms_role_operator"> PMS_ROLE_OPERATOR </sql>
+
+	<resultMap id="beanMap" type="com.roncoo.pay.permission.entity.PmsOperatorRole">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="version" property="version" jdbcType="INTEGER" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="creater" property="creater" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="editor" property="editor" jdbcType="VARCHAR" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="role_id" property="roleId" jdbcType="VARCHAR" />
+		<result column="operator_id" property="operatorId" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="insert" parameterType="com.roncoo.pay.permission.entity.PmsOperatorRole" keyProperty="id" useGeneratedKeys="true">
+		insert into
+		<include refid="pms_role_operator" />
+		(id,version,status,creater,create_time, editor, edit_time, remark,role_id, operator_id)
+		values
+		(#{id},0,#{status}, #{creater},#{createTime}, #{editor},#{editTime},#{remark},#{roleId}, #{operatorId})
+	</insert>
+
+	<select id="listByRoleId" parameterType="Long" resultMap="beanMap">
+		select * from
+		<include refid="pms_role_operator" />
+		where role_id = #{roleId}
+	</select>
+
+	<select id="listByOperatorId" parameterType="Long" resultMap="beanMap">
+		select * from
+		<include refid="pms_role_operator" />
+		where operator_id = #{operatorId}
+	</select>
+
+	<delete id="deleteByRoleId" parameterType="Long">
+		delete from
+		<include refid="pms_role_operator" />
+		where role_id = #{roleId}
+	</delete>
+
+	<delete id="deleteByOperatorId" parameterType="Long">
+		delete from
+		<include refid="pms_role_operator" />
+		where operator_id = #{operatorId}
+	</delete>
+
+	<delete id="deleteByRoleIdAndOperatorId" parameterType="java.util.Map">
+		delete from
+		<include refid="pms_role_operator" />
+		where role_id = #{roleId} and operator_id = #{operatorId}
+	</delete>
+
+</mapper>

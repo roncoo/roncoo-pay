@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.reconciliation.dao.impl.RpAccountCheckBatchDaoImpl">
+
+	<sql id="table_name">RP_ACCOUNT_CHECK_BATCH</sql>
+
+	<resultMap id="BaseResultMap" type="com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="version" property="version" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="editor" property="editor" jdbcType="VARCHAR" />
+		<result column="creater" property="creater" jdbcType="VARCHAR" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="batch_no" property="batchNo" jdbcType="VARCHAR" />
+		<result column="bill_date" property="billDate" jdbcType="DATE" />
+		<result column="bill_type" property="billType" jdbcType="VARCHAR" />
+		<result column="handle_status" property="handleStatus" jdbcType="VARCHAR" />
+		<result column="bank_type" property="bankType" jdbcType="VARCHAR" />
+		<result column="mistake_count" property="mistakeCount" jdbcType="INTEGER" />
+		<result column="unhandle_mistake_count" property="unhandleMistakeCount" jdbcType="INTEGER" />
+		<result column="trade_count" property="tradeCount" jdbcType="INTEGER" />
+		<result column="bank_trade_count" property="bankTradeCount" jdbcType="INTEGER" />
+		<result column="trade_amount" property="tradeAmount" jdbcType="DECIMAL" />
+		<result column="bank_trade_amount" property="bankTradeAmount" jdbcType="DECIMAL" />
+		<result column="refund_amount" property="refundAmount" jdbcType="DECIMAL" />
+		<result column="bank_refund_amount" property="bankRefundAmount" jdbcType="DECIMAL" />
+		<result column="bank_fee" property="bankFee" jdbcType="DECIMAL" />
+		<result column="org_check_file_path" property="orgCheckFilePath" jdbcType="VARCHAR" />
+		<result column="release_check_file_path" property="releaseCheckFilePath" jdbcType="VARCHAR" />
+		<result column="release_status" property="releaseStatus" jdbcType="VARCHAR" />
+		<result column="check_fail_msg" property="checkFailMsg" jdbcType="VARCHAR" />
+		<result column="bank_err_msg" property="bankErrMsg" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, version, create_time, editor, creater, edit_time,status,remark,batch_no, bill_date,
+		bill_type, handle_status, bank_type, mistake_count, unhandle_mistake_count,
+		trade_count, bank_trade_count, trade_amount, bank_trade_amount, refund_amount, bank_refund_amount,
+		bank_fee, org_check_file_path, release_check_file_path, release_status,check_fail_msg,bank_err_msg
+	</sql>
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from
+		<include refid="table_name" />
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from
+		<include refid="table_name" />
+		where id = #{id,jdbcType=VARCHAR}
+	</delete>
+
+	<insert id="insert" parameterType="com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch">
+		insert into
+		<include refid="table_name" />
+		(id, version, create_time, editor, creater, edit_time,status,remark,batch_no,
+		bill_date,bill_type, handle_status,
+		bank_type, mistake_count, unhandle_mistake_count,
+		trade_count, bank_trade_count, trade_amount,
+		bank_trade_amount, refund_amount, bank_refund_amount,
+		bank_fee, org_check_file_path, release_check_file_path,
+		release_status,check_fail_msg,bank_err_msg)
+		values (
+		#{id,jdbcType=VARCHAR}, 0,#{createTime,jdbcType=TIMESTAMP},#{editor,jdbcType=VARCHAR},#{creater,jdbcType=VARCHAR},
+		#{editTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR},
+		#{batchNo,jdbcType=VARCHAR},
+		#{billDate,jdbcType=DATE},#{billType,jdbcType=VARCHAR},
+		#{handleStatus,jdbcType=VARCHAR},
+		#{bankType,jdbcType=VARCHAR},
+		#{mistakeCount,jdbcType=INTEGER},
+		#{unhandleMistakeCount,jdbcType=INTEGER},
+		#{tradeCount,jdbcType=INTEGER}, #{bankTradeCount,jdbcType=INTEGER}, #{tradeAmount,jdbcType=DECIMAL},
+		#{bankTradeAmount,jdbcType=DECIMAL}, #{refundAmount,jdbcType=DECIMAL}, #{bankRefundAmount,jdbcType=DECIMAL},
+		#{bankFee,jdbcType=DECIMAL}, #{orgCheckFilePath,jdbcType=VARCHAR}, #{releaseCheckFilePath,jdbcType=VARCHAR},
+		#{releaseStatus,jdbcType=VARCHAR},#{checkFailMsg,jdbcType=VARCHAR},#{bankErrMsg,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateByPrimaryKey" parameterType="com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch">
+		update
+		<include refid="table_name" />
+		set
+
+		version = #{version,jdbcType=INTEGER}+1,
+		batch_no = #{batchNo,jdbcType=CHAR},
+		create_time = #{createTime,jdbcType=TIMESTAMP},
+		editor = #{editor,jdbcType=VARCHAR},
+		creater = #{creater,jdbcType=VARCHAR},
+		edit_time = #{editTime,jdbcType=TIMESTAMP},
+		bill_date = #{billDate,jdbcType=DATE},
+		bill_type = #{billType,jdbcType=VARCHAR},
+		status = #{status,jdbcType=VARCHAR},
+		handle_status = #{handleStatus,jdbcType=VARCHAR},
+		bank_type = #{bankType,jdbcType=VARCHAR},
+		mistake_count = #{mistakeCount,jdbcType=INTEGER},
+		unhandle_mistake_count = #{unhandleMistakeCount,jdbcType=INTEGER},
+		trade_count =#{tradeCount,jdbcType=INTEGER},
+		bank_trade_count = #{bankTradeCount,jdbcType=INTEGER},
+		trade_amount = #{tradeAmount,jdbcType=DECIMAL},
+		bank_trade_amount = #{bankTradeAmount,jdbcType=DECIMAL},
+		refund_amount = #{refundAmount,jdbcType=DECIMAL},
+		bank_refund_amount = #{bankRefundAmount,jdbcType=DECIMAL},
+		bank_fee = #{bankFee,jdbcType=DECIMAL},
+		org_check_file_path = #{orgCheckFilePath,jdbcType=VARCHAR},
+		release_check_file_path = #{releaseCheckFilePath,jdbcType=VARCHAR},
+		release_status = #{releaseStatus,jdbcType=VARCHAR},
+		bank_err_msg = #{bankErrMsg,jdbcType=VARCHAR},
+		check_fail_msg = #{checkFailMsg,jdbcType=VARCHAR},
+		remark = #{remark,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=VARCHAR} and version = #{version,jdbcType=INTEGER}
+	</update>
+
+	<!-- 对账批次条件 -->
+	<sql id="reconciliation_sql">
+		<!-- billDate 的格式：2016-05-20 -->
+		<if test="billDate != null and billDate != ''">
+			and bill_date between #{billDate} AND CONCAT(#{billDate},' 23:59:59')
+		</if>
+		<if test="interfaceCode != null and interfaceCode != ''">
+			and bank_type = #{interfaceCode}
+		</if>
+		<!-- 状态不为error的情况 -->
+		<if test="status != null and status != ''">
+			and status not in ( #{status})
+		</if>
+
+	</sql>
+
+	<!-- list查询 -->
+	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select *
+		from
+		<include refid="table_name" />
+		<where>
+			<include refid="reconciliation_sql" />
+		</where>
+	</select>
+	
+	<!-- 根据搜索条件信息 -->
+	<sql id="condition_sql">
+		<if test="status != null and status != ''"> and status = #{status,jdbcType=VARCHAR}</if>
+		<!-- billDate 的格式：2016-05-20 -->
+		<if test="billDate != null and billDate != ''">
+			and bill_date between #{billDate} AND CONCAT(#{billDate},' 23:59:59')
+		</if>
+	</sql>
+	
+	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>

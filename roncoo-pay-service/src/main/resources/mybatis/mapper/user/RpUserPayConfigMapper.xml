@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.user.dao.impl.RpUserPayConfigDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.user.entity.RpUserPayConfig" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="audit_status" property="auditStatus" jdbcType="VARCHAR" />
+    <result column="is_auto_sett" property="isAutoSett" jdbcType="VARCHAR" />
+    <result column="product_code" property="productCode" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="user_no" property="userNo" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="risk_day" property="riskDay" jdbcType="INTEGER" />
+    <result column="pay_key" property="payKey" jdbcType="VARCHAR" />
+    <result column="fund_into_type" property="fundIntoType" jdbcType="VARCHAR" />
+    <result column="pay_secret" property="paySecret" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_time, edit_time, version, remark, status, audit_status, is_auto_sett, 
+    product_code, product_name, user_no, user_name, risk_day, pay_key, fund_into_type,
+    pay_secret
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_user_pay_config
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rp_user_pay_config
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.roncoo.pay.user.entity.RpUserPayConfig" >
+    insert into rp_user_pay_config (id, create_time, edit_time, 
+      version, remark, status, 
+      audit_status, is_auto_sett, product_code, 
+      product_name, user_no, user_name, 
+      risk_day, pay_key, fund_into_type, pay_secret)
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{auditStatus,jdbcType=VARCHAR}, #{isAutoSett,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{riskDay,jdbcType=INTEGER}, #{payKey,jdbcType=VARCHAR}, #{fundIntoType,jdbcType=VARCHAR},
+      #{paySecret,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.user.entity.RpUserPayConfig" >
+    update rp_user_pay_config
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=VARCHAR},
+      is_auto_sett = #{isAutoSett,jdbcType=VARCHAR},
+      product_code = #{productCode,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      user_no = #{userNo,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      risk_day = #{riskDay,jdbcType=INTEGER},
+      pay_key = #{payKey,jdbcType=VARCHAR},
+      fund_into_type = #{fundIntoType,jdbcType=VARCHAR},
+      pay_secret = #{paySecret,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <sql id="table_name">  rp_user_pay_config </sql>
+  
+  <!-- 根据搜索条件获取数据 -->
+	<sql id="condition_sql">
+      <if test="userNo != null and userNo != ''"> and user_no = #{userNo,jdbcType=VARCHAR}</if>
+      <if test="auditStatus != null and auditStatus != ''"> and audit_status = #{auditStatus,jdbcType=VARCHAR}</if>
+      <if test="status != null and status != ''"> and status = #{status,jdbcType=VARCHAR}</if>
+      <if test="productCode != null and productCode != ''"> and product_code = #{productCode,jdbcType=VARCHAR}</if>
+      <if test="productName != null and productName != ''">and product_name like CONCAT('%' ,CONCAT(#{productName},'%'))</if>
+      <if test="userName != null and userName != ''">and user_name like CONCAT('%' ,CONCAT(#{userName},'%'))</if>
+      <if test="payKey != null and payKey != ''"> and pay_key = #{payKey,jdbcType=VARCHAR}</if>
+	</sql>
+
+  <select id="listBy" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select
+    <include refid="Base_Column_List" />
+    from <include refid="table_name" />
+    <where>
+      <include refid="condition_sql"/>
+    </where>
+  </select>
+  
+  	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>

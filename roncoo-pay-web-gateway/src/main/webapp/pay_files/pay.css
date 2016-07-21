@@ -1,0 +1,575 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form,
+	fieldset, input, textarea, p, blockquote, th, td {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	font-size: 12px;
+	font-family: "微软雅黑", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset, img {
+	border: 0;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+	font-weight: normal;
+	font-style: normal;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+caption, th {
+	text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+}
+
+q:before, q:after {
+	content: "";
+}
+
+abbr, acronym {
+	border: 0;
+}
+
+a {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+a {
+	text-decoration: none;
+}
+
+ins {
+	background-color: #ff9;
+	color: #000;
+	text-decoration: none;
+}
+
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+	border-bottom: 1px dotted #000;
+	cursor: help;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+hr {
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #cccccc;
+	margin: 1em 0;
+	padding: 0;
+}
+
+input, select {
+	vertical-align: middle;
+}
+
+em, i {
+	font-style: normal;
+}
+
+img {
+	max-width: 100%;
+	border: none;
+}
+
+.ta {
+	text-align: center;
+}
+
+.ma {
+	margin: 0 auto;
+}
+
+.w100 {
+	width: 100%;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.fs16 {
+	font-size: 16px;
+}
+
+.clearfix:after {
+	display: table;
+	content: " ";
+	clear: both;
+}
+
+.clearfix:before {
+	display: table;
+	content: " ";
+}
+
+.header {
+	height: 80px;
+	width: 960px;
+	margin: 0 auto;
+}
+
+.header .logo_panel {
+	padding: 10px;
+	float: left;
+}
+
+.header .lg_txt {
+	font-size: 18px;
+	color: #55585c;
+	margin: 17px 0 0 12px;
+	float: left;
+}
+
+.header .tip_panel {
+	margin: 15px;
+}
+
+.header .tip_panel .txt {
+	display: inline-block;
+	color: #9f9f9f;
+	font-size: 12px;
+	padding-right: 10px;
+	border-right: 1px solid #ddd;
+	margin-right: 10px;
+}
+
+.header .tip_panel a {
+	color: #1DB2FF;
+}
+
+.footer {
+	min-width: 1160px;
+	border-top: 1px solid #d2d2d2;
+	background: #F4F4F4;
+}
+
+.footer .yue {
+	text-align: center;
+	color: #333;
+	padding: 15px 0;
+}
+
+.footer .yue a {
+	color: #666;
+}
+
+.container {
+	overflow: hidden;
+	width: 1160px;
+	margin: 0 auto;
+}
+
+.footer .container .on-content {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.con-content {
+	margin-left: 120px;
+	float: left;
+	padding: 15px;
+}
+
+.con-content li {
+	line-height: 28px;
+	color: #333;
+	font-size: 16px;
+}
+
+.con-content strong {
+	font-size: 16px;
+	color: #333;
+	font-weight: 700;
+}
+
+.con-content .lightly {
+	color: #666;
+	font-size: 12px;
+}
+
+.con-content strong.a {
+	display: inline-block;
+	height: 30px;
+	background: url(../images/footer_iocn.png) no-repeat 0 4px;
+	padding-left: 20px;
+}
+
+.con-content strong.b {
+	display: inline-block;
+	height: 30px;
+	background: url(../images/footer_iocn.png) no-repeat 0 -52px;
+	padding-left: 25px;
+}
+
+.con-content strong.c {
+	display: inline-block;
+	height: 30px;
+	background: url(../images/footer_iocn.png) no-repeat 0 -102px;
+	padding-left: 35px;
+}
+
+.con-title {
+	width: 20%;
+	text-align: center;
+}
+
+.con-title a {
+	font-size: 14px;
+	color: #333;
+	padding-bottom: 7px;
+}
+
+.copyright {
+	background-color: #d2d2d2;
+	padding: 10px 0;
+	text-align: center;
+	color: #333;
+}
+
+.x-right {
+	width: 401px;
+	margin: 3px;
+	margin-left: 0;
+	display: inline;
+	float: right;
+	height: 310px;
+	font-family: Microsoft YaHei;
+	text-align: center;
+}
+
+.x-right h4 {
+	font-weight: normal;
+	margin-top: 25px;
+	margin-bottom: 5px;
+	font: 18px Arial, Helvetica, sans-serif;
+	color: #333;
+}
+
+.x-right .tip {
+	font-size: 14px;
+	line-height: 30px;
+	color: #80343e;
+	font-weight: 500;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+
+.x-right .tipa {
+	color: #cacaca;
+	margin-top: 10px;
+}
+
+.x-right .er img {
+	width: 190px;
+	height: 190px;
+	align-content: center;
+}
+
+.x-right .er {
+	width: 190px;
+	height: 190px;
+	align-content: center;
+	margin: 0 auto;
+}
+
+.x-right .er table {
+	width: 190px;
+	height: 190px;
+}
+
+.suc_panel {
+	display: none;
+	padding: 70px 0 70px 120px;
+	width: 240px;
+	text-align: center;
+	margin: 50px auto 180px;
+	background: url(./suc.png) no-repeat left center;
+}
+
+.suc_panel_result {
+	display: block;
+	padding: 70px 0 70px 120px;
+	width: 240px;
+	text-align: center;
+	margin: 50px auto 180px;
+	background: url(./suc.png) no-repeat left center;
+}
+
+.suc_panel_result .hd {
+	font-size: 30px;
+	color: #444;
+	margin-bottom: 12px;
+}
+
+.suc_panel_result .txt {
+	font-size: 18px;
+	color: #444;
+}
+
+.suc_panel_result a {
+	display: inline-block;
+	width: 100px;
+	color: #fff;
+	line-height: 30px;
+	margin-left: 20px;
+	background-color: #00c6d8;
+	border: 1px solid #00a2b1;
+	border-radius: 3px;
+}
+
+.suc_panel .hd {
+	font-size: 30px;
+	color: #444;
+	margin-bottom: 12px;
+}
+
+.suc_panel .txt {
+	font-size: 18px;
+	color: #444;
+}
+
+.suc_panel a {
+	display: inline-block;
+	width: 100px;
+	color: #fff;
+	line-height: 30px;
+	margin-left: 20px;
+	background-color: #00c6d8;
+	border: 1px solid #00a2b1;
+	border-radius: 3px;
+}
+
+.x-left {
+	float: left;
+}
+
+.x-main {
+	padding-bottom: 20px;
+}
+
+.weixin {
+	background: #fff;
+	width: 850px;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	padding: 15px 50px;
+}
+
+.x-left img {
+	margin: 25px 0 0 115px;
+}
+
+.pro {
+	width: 900px;
+	padding: 25px;
+	margin: 0 auto 15px;
+	background: #fff;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+.pro p {
+	font-size: 16px;
+	line-height: 30px;
+	color: #2c2c2c;
+	font-weight: 500;
+}
+
+.pro span {
+	color: #80343e;
+	font-size: 18px;
+}
+
+.pay_success {
+	display: none;
+	width: 1160px;
+	height: 350px;
+	margin: 0 auto;
+	padding-top: 80px;
+	text-align: center;
+}
+
+.pay_success .tip_icon {
+	display: inline-block;
+	font-size: 38px;
+	padding: 30px 0 30px 110px;
+	background: url(../images/tick.png) no-repeat left center;
+	background-size: 110px;
+}
+
+.pay_success .tip1 {
+	font-size: 14px;
+	padding: 20px 0;
+}
+
+.pay_success .tip1 span {
+	color: #3F81C4;
+	margin: 0 8px;
+	font-weight: bold;
+}
+
+.pay_success .tip2 {
+	font-size: 14px;
+}
+
+.pay_success .tip2 a {
+	display: inline-block;
+	height: 25px;
+	line-height: 25px;
+	padding: 5px 15px;
+	background-color: #3F81C4;
+	color: #fff;
+	border-radius: 3px;
+	margin-left: 8px;
+}
+
+.pay_ok .x-main {
+	display: none;
+}
+
+.pay_ok .pay_success {
+	display: block;
+}
+
+.cashier_desk {
+	width: 960px;
+	height: 420px;
+	margin: 0 auto 30px;
+	border: 1px solid #ccc;
+}
+
+.cashier_desk .head {
+	height: 120px;
+	background-color: #dbdcdd;
+}
+
+.cashier_desk .head .order_info {
+	padding: 12px;
+	font-size: 16px;
+	color: #999;
+	float: left;
+}
+
+.cashier_desk .head .order_info li {
+	padding: 5px 0;
+}
+
+.cashier_desk .head .order_info .lb {
+	color: #333;
+}
+
+.cashier_desk .head .price {
+	color: #ee7b00;
+	font-size: 36px;
+	padding: 36px;
+}
+
+.sele_pay_type {
+	overflow: hidden;
+	text-align: center;
+	margin-top: 85px;
+}
+
+.sele_pay_type li {
+	display: inline-block;
+}
+
+.sele_pay_type li input {
+	margin-right: 5px;
+	margin-bottom: 35px;
+}
+
+.sele_pay_type li:first-child {
+	margin-right: 30px;
+}
+
+.sele_pay_type label {
+	cursor: pointer;
+}
+
+.sele_pay_type li img {
+	border: 2px solid #cfcfcf;
+	border-radius: 5px;
+}
+
+.sele_pay_type li img:hover {
+	border: 2px solid #e10000;
+}
+
+.pay_btn {
+	text-align: center;
+	margin-top: 45px;
+}
+
+.pay_btn input {
+	width: 160px;
+	height: 35px;
+	line-height: 35px;
+	background: #009ddc;
+	font-size: 16px;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+}
+
+.pay_btn input:hover {
+	background: #e10000;
+}
+
+.pay_ment {
+	height: auto;
+}
+
+.bd .payment {
+	padding: 50px 0;
+	overflow: hidden;
+	text-align: center;
+}
+
+.bd .payment li {
+	margin-left: 50px;
+	display: inline-block;
+}
+
+.bd .payment li:first-child {
+	margin: 0;
+}

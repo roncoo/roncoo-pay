@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.account.dao.impl.RpAccountHistoryDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.account.entity.RpAccountHistory" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="account_no" property="accountNo" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="balance" property="balance" jdbcType="DECIMAL" />
+    <result column="fund_direction" property="fundDirection" jdbcType="VARCHAR" />
+    <result column="is_allow_sett" property="isAllowSett" jdbcType="VARCHAR" />
+    <result column="is_complete_sett" property="isCompleteSett" jdbcType="VARCHAR" />
+    <result column="request_no" property="requestNo" jdbcType="VARCHAR" />
+    <result column="bank_trx_no" property="bankTrxNo" jdbcType="VARCHAR" />
+    <result column="trx_type" property="trxType" jdbcType="VARCHAR" />
+    <result column="risk_day" property="riskDay" jdbcType="INTEGER" />
+    <result column="user_no" property="userNo" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="table_name">  rp_account_history </sql>
+  
+  <sql id="Base_Column_List" >
+    id, create_time, edit_time, version, remark, account_no, amount, balance, fund_direction, 
+    is_allow_sett, is_complete_sett, request_no, bank_trx_no, trx_type, risk_day, user_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_account_history
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rp_account_history
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.roncoo.pay.account.entity.RpAccountHistory" >
+    insert into rp_account_history (id, create_time, edit_time, 
+      version, remark, account_no, 
+      amount, balance, fund_direction, 
+      is_allow_sett, is_complete_sett, request_no, 
+      bank_trx_no, trx_type, risk_day, 
+      user_no)
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, #{accountNo,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=DECIMAL}, #{balance,jdbcType=DECIMAL}, #{fundDirection,jdbcType=VARCHAR}, 
+      #{isAllowSett,jdbcType=VARCHAR}, #{isCompleteSett,jdbcType=VARCHAR}, #{requestNo,jdbcType=VARCHAR}, 
+      #{bankTrxNo,jdbcType=VARCHAR}, #{trxType,jdbcType=VARCHAR}, #{riskDay,jdbcType=INTEGER}, 
+      #{userNo,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.account.entity.RpAccountHistory" >
+    update rp_account_history
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      account_no = #{accountNo,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      balance = #{balance,jdbcType=DECIMAL},
+      fund_direction = #{fundDirection,jdbcType=VARCHAR},
+      is_allow_sett = #{isAllowSett,jdbcType=VARCHAR},
+      is_complete_sett = #{isCompleteSett,jdbcType=VARCHAR},
+      request_no = #{requestNo,jdbcType=VARCHAR},
+      bank_trx_no = #{bankTrxNo,jdbcType=VARCHAR},
+      trx_type = #{trxType,jdbcType=VARCHAR},
+      risk_day = #{riskDay,jdbcType=INTEGER},
+      user_no = #{userNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+   <!-- 根据搜索条件获取数据 -->
+	<sql id="condition_sql">
+		<if test="accountNo != null and accountNo != ''"> and account_no = #{accountNo,jdbcType=VARCHAR}</if>
+		<if test="userNo != null and userNo != ''"> and user_no = #{userNo,jdbcType=VARCHAR}</if>
+		<if test="beginDate != null and endDate != null and endDate !='' and beginDate !=''">
+			and create_time_ between #{beginDate} AND CONCAT(#{endDate},' 23:59:59')
+		</if>
+		<if test="requestNo != null and requestNo !='' "> and request_no = #{requestNo}</if>
+		<if test="bankTrxNo != null and bankTrxNo !='' "> and bank_trx_no = #{bankTrxNo}</if>
+		<if test="accountNo != null and accountNo !='' "> and account_no = #{accountNo}</if>
+		<if test="isAllowSett != null and isAllowSett !=''"> and is_allow_sett = #{isAllowSett}</if>
+		<if test="isCompleteSett != null and isCompleteSett != ''"> and is_complete_sett = #{isCompleteSett}</if>
+		<if test="trxType != null and trxType !=''"> and trx_type_ =#{trxType} </if>
+		<if test="fundDirection != null and  fundDirection !=''"> and fund_direction = #{fundDirection}</if>
+	</sql>
+
+
+	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc
+	</select>
+
+	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+  
+  <!-- 日汇总账户待结算金额  -->
+	<select id="listDailyCollectAccountHistoryVo" parameterType="java.util.Map" resultType="com.roncoo.pay.account.vo.DailyCollectAccountHistoryVo">
+		select
+			account_no as "accountNo",
+			sum(case when fund_direction = 'ADD' then amount else -amount end) as "totalAmount",
+			count(1) as "totalNum",
+			CONCAT(#{statDate},'') as "collectDate"
+		from <include refid="table_name" />
+		where
+			account_no = #{accountNo}
+			and is_complete_sett = 'NO'
+			and is_allow_sett = 'YES'
+			<if test="fundDirection != null and fundDirection !=''"> and fund_direction_ = #{fundDirection} </if>
+			and <![CDATA[date(create_time) <= FUN_DATE_ADD(#{statDate}, -#{riskDay})]]>
+		group by account_no
+	</select>
+	
+	<!-- 更新账户风险预存期外的账户历史记录记为结算完成 -->
+	<update id="updateCompleteSettTo100" parameterType="java.util.Map">
+		update <include refid="table_name" />
+			set is_complete_sett = 'YES', VERSION = VERSION + 1
+		where
+			account_no = #{accountNo}
+			and is_complete_sett = 'NO'
+			and is_allow_sett = 'YES'
+			and <![CDATA[date(create_time) <= FUN_DATE_ADD(#{statDate}, -#{riskDay})]]>
+	</update>
+</mapper>

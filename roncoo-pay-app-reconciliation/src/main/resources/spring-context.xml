@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-3.2.xsd" default-autowire="byName" default-lazy-init="false">
+
+	<!--注解配置 -->
+	<context:annotation-config />
+
+	<!-- 配置要扫描的包 -->
+	<context:component-scan base-package="com.roncoo" />
+
+	<!-- <context:property-placeholder location="classpath:db.properties, classpath:public_system.properties"/> 读入配置属性文件 -->
+	<!-- proxy-target-class默认"false",更改为"ture"使用CGLib动态代理 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<import resource="classpath:spring/spring-context-service.xml" />
+</beans>

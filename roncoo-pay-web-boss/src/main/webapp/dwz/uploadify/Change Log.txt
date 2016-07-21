@@ -1,0 +1,18 @@
+Uploadify Change Log
+Copyright (c) 2012 by Reactive Apps, Ronnie Garcia
+
+v3.2
+- Added a new option for itemTemplate where you can create an HTML template for the items that are added to the queue
+
+v3.1.1
+- Fixed issue with incorrect queueLength
+
+v3.1.0
+- Switched to the preferred jQuery plugin pattern
+- Added references to all elements
+- Removed flash based image
+- Added fallback method
+- Fixed onInit event
+- Added onDisable and onEnable events
+- Added SWFObject for flash detection
+- Added indication of cancelled files

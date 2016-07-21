@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.user.dao.impl.RpPayProductDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.user.entity.RpPayProduct" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="product_code" property="productCode" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="audit_status" property="auditStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="table_name">  rp_pay_product </sql>
+  
+  <sql id="Base_Column_List" >
+    id, create_time, edit_time, version, status, product_code, product_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_pay_product
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rp_pay_product
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.roncoo.pay.user.entity.RpPayProduct" >
+    insert into rp_pay_product (id, create_time, edit_time, 
+      version, status, product_code, 
+      product_name, audit_status)
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, 
+      #{version,jdbcType=BIGINT}, #{status,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{auditStatus,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.user.entity.RpPayProduct" >
+    update rp_pay_product
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      version = #{version,jdbcType=BIGINT},
+      status = #{status,jdbcType=VARCHAR},
+      product_code = #{productCode,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      audit_status = #{auditStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  	<!-- 根据搜索条件获取数据 -->
+	<sql id="condition_sql">
+		<if test="productCode != null and productCode != ''"> and product_code = #{productCode,jdbcType=VARCHAR}</if>
+		<if test="productName != null and productName != ''">and product_name like CONCAT('%' ,CONCAT(#{productName},'%'))</if>
+		<if test="status != null and status != ''"> and status = #{status,jdbcType=VARCHAR}</if>
+		<if test="auditStatus != null and auditStatus != ''"> and audit_status = #{auditStatus,jdbcType=VARCHAR}</if>
+	</sql>
+
+
+	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc
+	</select>
+
+	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>

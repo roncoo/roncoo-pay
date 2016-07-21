@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.notify.dao.impl.RpNotifyRecordDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.notify.entity.RpNotifyRecord" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="SMALLINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="creater" property="creater" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="notify_times" property="notifyTimes" jdbcType="SMALLINT" />
+    <result column="limit_notify_times" property="limitNotifyTimes" jdbcType="SMALLINT" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="merchant_order_no" property="merchantOrderNo" jdbcType="VARCHAR" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+    <result column="notify_type" property="notifyType" jdbcType="SMALLINT" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, version, create_time, editor, creater, edit_time, notify_times, limit_notify_times, 
+    url, merchant_order_no, merchant_no, status, notify_type
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_notify_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rp_notify_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insert" parameterType="com.roncoo.pay.notify.entity.RpNotifyRecord" >
+    insert into rp_notify_record (id, version, create_time, 
+      editor, creater, edit_time, 
+      notify_times, limit_notify_times, url, 
+      merchant_order_no, merchant_no, status, 
+      notify_type)
+    values (#{id,jdbcType=VARCHAR}, #{version,jdbcType=SMALLINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{editor,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{editTime,jdbcType=TIMESTAMP}, 
+      #{notifyTimes,jdbcType=SMALLINT}, #{limitNotifyTimes,jdbcType=SMALLINT}, #{url,jdbcType=VARCHAR}, 
+      #{merchantOrderNo,jdbcType=VARCHAR}, #{merchantNo,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, 
+      #{notifyType,jdbcType=SMALLINT})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.notify.entity.RpNotifyRecord" >
+    update rp_notify_record
+    set version = #{version,jdbcType=SMALLINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      editor = #{editor,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      notify_times = #{notifyTimes,jdbcType=SMALLINT},
+      limit_notify_times = #{limitNotifyTimes,jdbcType=SMALLINT},
+      url = #{url,jdbcType=VARCHAR},
+      merchant_order_no = #{merchantOrderNo,jdbcType=VARCHAR},
+      merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT},
+      notify_type = #{notifyType,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+  <select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from rp_notify_record
+    <where>
+      <include refid="condition_sql" />
+    </where>
+  </select>
+
+  <sql id="condition_sql">
+
+    <if test="merchantNo != null and merchantNo != '' ">
+        and merchant_no = #{merchantNo}
+    </if>
+
+    <if test="merchantOrderNo != null and merchantOrderNo != '' ">
+        and merchant_order_no = #{merchantOrderNo}
+    </if>
+
+    <if test="notifyType != null and notifyType != '' ">
+        and notify_type = #{notifyType}
+    </if>
+
+  </sql>
+
+  <select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select * from rp_notify_record
+    <where>
+      <include refid="condition_sql" />
+    </where>
+    <![CDATA[ order by create_time desc]]>
+  </select>
+
+  <select id="listPageCount" parameterType="java.util.Map" resultType="long">
+    select count(1) from  rp_notify_record
+    <where>
+      <include refid="condition_sql" />
+    </where>
+  </select>
+
+</mapper>

@@ -1,0 +1,201 @@
+@charset "utf-8";
+
+/* Icon */
+.tabsHeader li.main a span span, #taskbar li .taskbutton span { background:url(./images/icon.png) no-repeat;}
+
+/* Panel */
+.panel,
+.panel .panelHeader, .panel .panelHeaderContent, .panel .panelHeaderContent h1,
+.panel .panelFooter, .panel .panelFooterContent { background:url(./images/panel/panel.png) no-repeat;}
+.panel .expandable, .panel .collapsable { background:url(./images/panel/panel_icon.png) no-repeat;}
+.panel .panelHeaderContent h1 { color:#15428B; }
+.panel .panelContent { border-color:#99bbe8; background:#e4ebf6;}
+
+.panel .grid { border-color:#99bbe8;}
+
+/* Tabs */
+.tabs, .tabsHeader, .tabsHeaderContent,
+.tabs .tabsHeader ul, .tabs .tabsHeader li, .tabs .tabsHeader li a, .tabs .tabsHeader li span,
+.tabs .tabsFooter, .tabs .tabsFooterContent { background:url(./images/tabs/tabspanel.png) no-repeat;}
+
+.tabs .tabsHeader li a { color:#03408b;}
+.tabs .tabsHeader li span { color:#15428B;}
+.tabs .tabsContent { border-color:#99bbe8; background:#e4ebf6;}
+
+/* TabsPage */
+.tabsPage .tabsPageHeader, .tabsPage .tabsPageHeader li, .tabsPage .tabsPageHeader li a, .tabsPage .tabsPageHeader li span { background:url(./images/tabs/tabspage.png) no-repeat;}
+.tabsPage .tabsPageHeader { background-color:#e9f0f2;}
+.tabsPage .tabsPageHeader { border-color:#99bbe8;}
+.tabsPage .tabsPageHeader li a { color:#15428B;}
+.tabsPage .tabsPageHeader li .close,
+.tabsPage .tabsPageHeader li.hover .close,
+.tabsPage .tabsPageHeader li.selected .close { background:url(./images/tabs/tabspage_icon.png) no-repeat;}
+.tabsPage .tabsLeft, .tabsPage .tabsRight, .tabsPage .tabsMore { background:url(./images/tabs/tabscontrol.png) no-repeat;}
+.tabsPage .tabsMoreList { border-color:#88a0be; background:#FFF;}
+.tabsPage .tabsPageHeader .home_icon { background:url(./images/icon.png) no-repeat;}
+.tabsPage .tabsPageContent { border-color:#88a0be; background:#FFF;}
+
+/* Alert */
+.alert .alertFooter, .alert .alertFooter_r, .alert .alertFooter_c { background:url(./images/alert/alertpanel.png) no-repeat;}
+.alert .alertContent { border-color:#88a0be; background:#ced9e7;}
+.alert .warn .alertInner { border-color:#e83e09; background:#fefacf;}
+.alert .error .alertInner { border-color:#e50000; background:#fefacf;}
+.alert .correct .alertInner, .alert .info .alertInner { border-color:#99bbe8; background:#fefacf;}
+.alert .confirm .alertInner { border-color:#99bbe8; background:#fefacf;}
+.alert h1 { border-color:#CCC; background:url(./images/alert/alertpanel_icon.png) no-repeat;}
+
+/* Dialog */
+.dialog .dialogHeader, .dialog .dialogHeader_r, .dialog .dialogHeader_c,
+.dialog .dialogFooter, .dialog .dialogFooter_r, .dialog .dialogFooter_c { background:url(./images/dialog/dialogpanel.png) no-repeat;}
+.dialog .dialogHeader h1, .dialog .dialogHeader .close, .dialog .dialogHeader .maximize, .dialog .dialogHeader .restore, .dialog .dialogHeader .minimize, .resizable_f_r { background:url(./images/dialog/dialogpanel_icon.png) no-repeat;}
+.dialog .dialogHeader h1 { color:#15428B;}
+.dialog .dialogContent { border-color:#99bbe8; background:#e4ebf6;}
+
+.resizable { border-color:#081629; background:#c3d7dc;}
+
+/* Shadow */
+.shadow .shadow_h_l { background:url(./images/shadow/shadow_h_l.png) no-repeat;}
+.shadow .shadow_h_r { background:url(./images/shadow/shadow_h_r.png) no-repeat;}
+.shadow .shadow_h_c { background:url(./images/shadow/shadow_h_c.png) repeat-x;}
+.shadow .shadow_c_l { background:url(./images/shadow/shadow_c_l.png) repeat-y;}
+.shadow .shadow_c_r { background:url(./images/shadow/shadow_c_r.png) repeat-y;}
+.shadow .shadow_c_c { background:url(./images/shadow/shadow_c_c.png) repeat;}
+.shadow .shadow_f_l { background:url(./images/shadow/shadow_f_l.png) no-repeat;}
+.shadow .shadow_f_r { background:url(./images/shadow/shadow_f_r.png) no-repeat;}
+.shadow .shadow_f_c { background:url(./images/shadow/shadow_f_c.png) repeat-x;}
+
+/* Tree */
+.tree div div { background:url(./images/tree/tree.png) no-repeat;}
+.tree .folder_collapsable, .tree .folder_expandable, .tree .file { background:url(./images/tree/folder.png) no-repeat;}
+.tree .checked, .tree .unchecked, .tree .indeterminate { background:url(./images/tree/check.png) no-repeat;}
+.tree ul { background:#FFF;}
+.tree li a, .tree li span { color:#15428B;}
+.tree .hover { background:#f5f5f5;}
+.tree .selected { background-color:#e8edf3;}
+
+/* Accordion */
+.accordion .accordionHeader, .accordion .accordionHeader h2, .accordion .accordionHeader h2 span { color:#15428B; background:url(./images/accordion/accordion.png);}
+.accordion { border-color:#99bbe8; background:#FFF;}
+.accordion .accordionHeader { background-color:#eaf4ff;}
+.accordion .accordionContent { border-color:#99bbe8;}
+
+/* Grid */
+.panelBar,
+.toolBar li.hover, .toolBar li.hover a, .toolBar li.hover span, .toolBar span,
+.pagination, .pagination li.hover, .pagination li.hover a, .pagination li span,
+.pagination li.disabled span span,
+.panelBar .line, .pagination li.jumpto, .pagination li.jumpto .goto { background:url(./images/grid/grid.png) no-repeat;}
+
+.panelBar { border-color:#99bbe8; background-color:#efefef;}
+
+.grid .gridHeader { background:#EEE;}
+.grid { background:#FFF;}
+.grid table { border-color:#d0d0d0;}
+.grid .gridHeader, .grid .gridHeader th { border-color:#d0d0d0; background:#f0eff0 url(./images/grid/tableth.png) repeat-x;}
+.grid table th div { border-left-color:#EEE; border-right-color:#d0d0d0;}
+.grid table td { border-color:#ededed;}
+
+.grid .resizeMarker, .grid .resizeProxy { background:url(./images/grid/resizeCol.png) repeat-y;}
+
+.grid .gridHeader th.hover, .grid .gridHeader th.thSelected { border-color:#aaccf6; }
+.grid .gridTbody .gridRowBg { background:#f7f7f7;}
+.grid .gridTbody .gridRow { border-color:#ededed;}
+.grid .gridTbody .gridRow td.tdLast { border-color:#ededed;}
+.grid .gridTbody .hover { border-color:#dddddd; background:#f5f5f5;}
+.grid .gridTbody .hover .tdSelected { background:#f5f5f5;}
+.grid .gridTbody .selected { border-color:#99bbe8; background:#dfe8f6;}
+.grid .gridTbody .selected .tdSelected { background:#e8edf3;}
+.grid .gridTbody .tdSelected { background:#f8f8f8;}
+.grid .error{background:#fb7e81;}
+
+/* ProgressBar */
+.progressBar { border:solid 2px #86a5ad; background:#FFF url(./images/progressBar/progressBar_m.gif) no-repeat 10px 10px;}
+
+/* ----------------------------------------------------------------- Form */
+/* TextInput */
+.textInput, input.focus, input.required, input.error, input.readonly, input.disabled,
+textarea.focus, textarea.required, textarea.error, textarea.readonly, textarea.disabled { background:url(./images/form/input_bg.png) no-repeat scroll;}
+
+.textInput, .textArea { border-color:#a2bac0 #99bbe8 #99bbe8 #a2bac0; background-color:#FFF;}
+input.required, textarea.required { border-color:#a2bac0 #99bbe8 #99bbe8 #a2bac0; background-color:#FFF;}
+input.error, textarea.error { border-color:#F80C11 #FB7E81 #FB7E81 #F80C11;}
+input.focus, textarea.focus { border-color:#8db2e3 #99bbe8 #99bbe8 #8db2e3; background-color:#f8fafc;}
+input.readonly, textarea.readonly { border-color:#9eabb3 #d5dbdf #d5dbdf #9eabb3; background-color:#F6F6F6;}
+input.disabled, textarea.disabled { border-color:#9eabb3 #d5dbdf #d5dbdf #9eabb3; background-color:#F6F6F6;}
+
+.inputButton, .inputDateButton { background:url(./images/form/input_bt.png) no-repeat;}
+
+/* Button */
+.button, .button span,
+.buttonDisabled, .buttonDisabled span,
+.buttonActive, .buttonActive span,
+.button .buttonContent, .buttonHover, .buttonHover .buttonContent,
+.buttonActive .buttonContent, .buttonActiveHover, .buttonActiveHover .buttonContent,
+.buttonDisabled .buttonContent { background:url(./images/button/button_s.png) no-repeat;}
+
+.button span, .buttonDisabled span, .buttonActive span,
+.button .buttonContent, .buttonHover, .buttonHover .buttonContent,
+.buttonActive .buttonContent, .buttonDisabled .buttonContent,
+.button button, .buttonHover button,
+.buttonActive button, .buttonDisabled button { color:#15428B;}
+
+.buttonDisabled span, .buttonDisabled:hover span,
+.buttonDisabled button { color:#999;}
+
+/* ----------------------------------------------------------------- Pages */
+/* Layout */
+body, #splitBar { background:#dfe8f6;}
+#splitBarProxy { border-color:#c0c0c0; background:#CCC;}
+
+#header, #header .headerNav { background:url(./images/header_bg.png) repeat-x;}
+#header { background-color:#102c4a;}
+#header .logo { background:url(../default/images/logo.png) no-repeat;}
+#header .nav li { float:left; margin-left:-1px; padding:0 8px; line-height:11px; background:url(./images/listLine.png) no-repeat;}
+#header .nav li a { color:#15428b;}
+#header .themeList li div { background:url(../default/images/themeButton.png) no-repeat;}
+.toggleCollapse, .toggleCollapse div { background:url(./images/layout/toggleSidebar.png) no-repeat;}
+.toggleCollapse { border-style:solid; border-width:1px 1px 0 1px; border-color:#99BBE8; background-color:#dfe8f6;}
+.toggleCollapse h2 { color:#15428B;}
+#sidebar_s .collapse { border:solid 1px #99bbe8; background:#eff5f6;}
+#sidebar_s .collapse:hover { background:#f5f9fa;}
+
+#taskbar, #taskbar li, #taskbar li .taskbutton { background:url(./images/layout/taskbar.png) no-repeat;}
+#taskbar .close, #taskbar .restore, #taskbar .minimize { background:url(./images/layout/taskbar_icon.png) no-repeat;}
+#taskbar li .taskbutton span { color:#FFF;}
+#taskbar .taskbarLeft, #taskbar .taskbarRight { background:url(./images/layout/taskbar_control.png) no-repeat;}
+
+/* Menu */
+#navMenu, #navMenu li, #navMenu li.selected a, #navMenu li.selected span { background:url(../default/images/menu/menu.png) no-repeat;}
+#navMenu { background-color:#1871dd; }
+#navMenu li a, #navMenu li span { color:#FFF; }
+#navMenu li.selected span { color:#000; }
+
+/* Homepage */
+.sidebarContent { display:block; overflow:auto; height:500px; border:solid 1px #86B4EC; background:#FFF;}
+.accountInfo { display:block; overflow:hidden; height:60px; padding:0 10px; background:url(./images/account_info_bg.png) repeat-x}
+.accountInfo p { padding:8px 0 0 0; line-height:19px;}
+.accountInfo p span { font-size:14px; font-weight:bold;}
+.accountInfo .right { float:right; padding-right:10px; text-align:right;}
+.accountInfo .alertInfo { float:right; width:300px; height:60px; padding-left:10px; border-left:solid 1px #accdf4;}
+.accountInfo .alertInfo h2 { padding:8px 0; line-height:17px;}
+.accountInfo .alertInfo a { padding:6px 0 0 0; line-height:21px;}
+
+/* Pages */
+.pageForm .inputInfo { color:#999;}
+
+/* Pages dialog */
+.dialog .pageHeader, .dialog .pageContent { border-color:#99bbe8;}
+.dialog .pageContent .pageFormContent { border-color:#99bbe8; background:#FFF;}
+
+/* Pages default */
+.page .pageHeader, .formBar { border-color:#99bbe8; background:#ebf0f5 url(../default/images/pageHeader_bg.png) repeat-x;}
+.page .searchBar label { color:#15428B;}
+
+/* Pages Form */
+.formBar { border-color:#99bbe8;}
+.divider { border-color:#99bbe8;}
+
+/* combox */
+.combox .select a  { color:#15428B; }
+.comboxop { border-color:#99bbe8; }
+.combox, .combox div, .combox div a { background:url(../default/images/search-bg.gif) no-repeat; }

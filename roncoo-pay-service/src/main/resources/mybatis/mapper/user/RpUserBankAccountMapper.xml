@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.user.dao.impl.RpUserBankAccountDaoImpl">
+	<resultMap id="BaseResultMap" type="com.roncoo.pay.user.entity.RpUserBankAccount">
+		<id column="id_" property="id" jdbcType="BIGINT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+		<result column="version" property="version" jdbcType="BIGINT" />
+		<result column="remark" property="remark" jdbcType="VARCHAR" />
+		<result column="status" property="status" jdbcType="VARCHAR" />
+		<result column="user_no" property="userNo" jdbcType="VARCHAR" />
+		<result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+		<result column="bank_code" property="bankCode" jdbcType="VARCHAR" />
+		<result column="bank_account_name" property="bankAccountName" jdbcType="VARCHAR" />
+		<result column="bank_account_no" property="bankAccountNo" jdbcType="VARCHAR" />
+		<result column="card_type" property="cardType" jdbcType="VARCHAR" />
+		<result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+		<result column="mobile_no" property="mobileNo" jdbcType="VARCHAR" />
+		<result column="is_default" property="isDefault" jdbcType="VARCHAR" />
+		<result column="province" property="province" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="areas" property="areas" jdbcType="VARCHAR" />
+		<result column="street" property="street" jdbcType="VARCHAR" />
+		<result column="bank_account_type" property="bankAccountType" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="table_name">  rp_user_bank_account </sql>
+
+	<sql id="Base_Column_List">
+		id, create_time, edit_time, version, remark, status, user_no,
+		bank_name,
+		bank_code, bank_account_name, bank_account_no, card_type, card_no,
+		mobile_no,
+		is_default, province, city, areas, street, bank_account_type
+	</sql>
+
+	<insert id="insert" parameterType="com.roncoo.pay.user.entity.RpUserBankAccount">
+		insert into rp_user_bank_account (id, create_time, edit_time,
+		version, remark, status,
+		user_no, bank_name, bank_code,
+		bank_account_name, bank_account_no, card_type,
+		card_no, mobile_no, is_default,
+		province, city, areas,
+		street, bank_account_type)
+		values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP},
+		0, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR},
+		#{userNo,jdbcType=VARCHAR}, #{bankName,jdbcType=VARCHAR},
+		#{bankCode,jdbcType=VARCHAR},
+		#{bankAccountName,jdbcType=VARCHAR}, #{bankAccountNo,jdbcType=VARCHAR}, #{cardType,jdbcType=VARCHAR},
+		#{cardNo,jdbcType=VARCHAR}, #{mobileNo,jdbcType=VARCHAR},
+		#{isDefault,jdbcType=VARCHAR},
+		#{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{areas,jdbcType=VARCHAR},
+		#{street,jdbcType=VARCHAR}, #{bankAccountType,jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateByPrimaryKey" parameterType="com.roncoo.pay.user.entity.RpUserBankAccount">
+		update rp_user_bank_account
+		set create_time = #{createTime,jdbcType=TIMESTAMP},
+		edit_time = #{editTime,jdbcType=TIMESTAMP},
+		version = #{version,jdbcType=BIGINT} + 1,
+		remark = #{remark,jdbcType=VARCHAR},
+		status = #{status,jdbcType=VARCHAR},
+		user_no = #{userNo,jdbcType=VARCHAR},
+		bank_name = #{bankName,jdbcType=VARCHAR},
+		bank_code = #{bankCode,jdbcType=VARCHAR},
+		bank_account_name = #{bankAccountName,jdbcType=VARCHAR},
+		bank_account_no = #{bankAccountNo,jdbcType=VARCHAR},
+		card_type = #{cardType,jdbcType=VARCHAR},
+		card_no = #{cardNo,jdbcType=VARCHAR},
+		mobile_no = #{mobileNo,jdbcType=VARCHAR},
+		is_default = #{isDefault,jdbcType=VARCHAR},
+		province = #{province,jdbcType=VARCHAR},
+		city = #{city,jdbcType=VARCHAR},
+		areas = #{areas,jdbcType=VARCHAR},
+		street = #{street,jdbcType=VARCHAR},
+		bank_account_type = #{bankAccountType,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=BIGINT}
+	</update>
+	
+	<update id="deleteBankAccountByUserNo" parameterType="string">
+		update rp_user_bank_account
+		set status = 'unactive'
+		where user_no = #{userNo,jdbcType=VARCHAR}
+	</update>
+
+	<sql id="condition_sql">
+		<!-- Equal query -->
+		<if test="bankAccountType != null and bankAccountType !='' "> and bank_account_type = #{bankAccountType}</if>
+		<if test="isDefault != null and isDefault !='' "> and is_default = #{isDefault}</if>
+		<if test="userNo != null and userNo !='' "> and user_no = #{userNo}</if>
+		<if test="bankAccountNo != null and bankAccountNo !='' "> and bank_account_no = #{bankAccountNo}</if>
+		<if test="status != null and status !='' "> and status = #{status}</if>
+	</sql>
+	
+	<select id="queryUserBankAccountList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		 from
+		rp_user_bank_account
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+	
+	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc
+	</select>
+  
+  	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>

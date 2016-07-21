@@ -1,0 +1,69 @@
+@charset "utf-8";
+
+html, body { *overflow:hidden;}
+
+#header .nav li a { line-height:14px;}
+#header .menu li a, #header .menu li span { line-height:37px;}
+#taskbar li .taskbutton span { line-height:31px;}
+
+.toggleCollapse h2 { line-height:27px;}
+/* Panel */
+.panel .panelHeaderContent h1 { line-height:32px;}
+
+/* Accordion */
+.accordion .accordionHeader h2 { line-height:27px;}
+
+/* Tabs */
+.tabsHeader li span { line-height:32px;}
+.tabsPanel .panelHeader li span { line-height:30px;}
+.tabsPanel .panelHeader li.selected span { line-height:32px;}
+.tabsPage .tabsPageHeader { width:auto;}
+.tabsPage .tabsPageHeader li span { _line-height:24px; font-family:"宋体"}
+.tabsPage .tabsRight { _right:16px;}
+.tabsPage .tabsMore { _right:-1px;}
+.tabsPage .tabsMoreList { _right:-1px;}
+.tabsPage .tabsMoreList li a { line-height:23px;}
+
+/* Alert */
+.alert h1, .alert h1 { line-height:34px;}
+
+/* Dialog */
+.dialog .dialogHeader h1 { line-height:32px;}
+
+/* Shadow */
+.shadow .shadow_h_l { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_h_l.png");}
+.shadow .shadow_h_r { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_h_r.png");}
+.shadow .shadow_h_c { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_h_c.png");}
+.shadow .shadow_c_l { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_c_l.png");}
+.shadow .shadow_c_r { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_c_r.png");}
+.shadow .shadow_c_c { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_c_c.png");}
+.shadow .shadow_f_l { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_f_l.png");}
+.shadow .shadow_f_r { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_f_r.png");}
+.shadow .shadow_f_c { _background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=scale, src="themes/default/images/shadow/shadow_f_c.png");}
+
+/* Tree */
+.tree a, .tree span { line-height:24px;}
+.tree a { _margin-left:-3px;}
+
+/* Grid */
+.panelBar .toolBar span, .panelBar .toolBar li.hover span,
+.panelBar .pagination span, .panelBar .pagination li.hover span { line-height:25px;}
+.grid .gridCol { line-height:23px;}
+
+/* ----------------------------------------------------------------- Form */
+/* TextInput */
+.textInput, .textInputHover, .textInputRequired, .textInputInvalid, .textInputReadonly, .textInputDisabled,
+.textArea, .textAreaHover, .textAreaRequired, .textAreaInvalid, .textAreaReadonly, .textAreaDisabled { padding:3px 2px 1px 2px;}
+
+/* Button */
+.button span, .buttonDisabled span, .buttonActive span,
+.button button, .buttonActive button, .buttonDisabled button { line-height:27px;}
+
+/* calendar */
+#calendar .time .hh, #calendar .time .mm, #calendar .time .ss {border:0}
+#calendar .time .up, #calendar .time .down {font-size:7px;}
+
+textarea.required { background-position:104% 0;}
+
+
+

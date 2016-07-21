@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.account.dao.impl.RpSettDailyCollectDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.account.entity.RpSettDailyCollect" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="VERSION" property="version" jdbcType="INTEGER" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="EDIT_TIME" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="ACCOUNT_NO" property="accountNo" jdbcType="VARCHAR" />
+    <result column="USER_NAME" property="userName" jdbcType="VARCHAR" />
+    <result column="COLLECT_DATE" property="collectDate" jdbcType="DATE" />
+    <result column="COLLECT_TYPE" property="collectType" jdbcType="VARCHAR" />
+    <result column="TOTAL_AMOUNT" property="totalAmount" jdbcType="DECIMAL" />
+    <result column="TOTAL_COUNT" property="totalCount" jdbcType="INTEGER" />
+    <result column="SETT_STATUS" property="settStatus" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="RISK_DAY" property="riskDay" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, VERSION, CREATE_TIME, EDIT_TIME, ACCOUNT_NO, USER_NAME, COLLECT_DATE, COLLECT_TYPE, 
+    TOTAL_AMOUNT, TOTAL_COUNT, SETT_STATUS, REMARK, RISK_DAY
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_sett_daily_collect
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rp_sett_daily_collect
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.roncoo.pay.account.entity.RpSettDailyCollect" >
+    insert into rp_sett_daily_collect (ID, VERSION, CREATE_TIME, 
+      EDIT_TIME, ACCOUNT_NO, USER_NAME, 
+      COLLECT_DATE, COLLECT_TYPE, TOTAL_AMOUNT, 
+      TOTAL_COUNT, SETT_STATUS, REMARK, 
+      RISK_DAY)
+    values (#{id,jdbcType=VARCHAR}, #{version,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{editTime,jdbcType=TIMESTAMP}, #{accountNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{collectDate,jdbcType=DATE}, #{collectType,jdbcType=VARCHAR}, #{totalAmount,jdbcType=DECIMAL}, 
+      #{totalCount,jdbcType=INTEGER}, #{settStatus,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{riskDay,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.account.entity.RpSettDailyCollect" >
+    update rp_sett_daily_collect
+    set VERSION = #{version,jdbcType=INTEGER},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      EDIT_TIME = #{editTime,jdbcType=TIMESTAMP},
+      ACCOUNT_NO = #{accountNo,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      COLLECT_DATE = #{collectDate,jdbcType=DATE},
+      COLLECT_TYPE = #{collectType,jdbcType=VARCHAR},
+      TOTAL_AMOUNT = #{totalAmount,jdbcType=DECIMAL},
+      TOTAL_COUNT = #{totalCount,jdbcType=INTEGER},
+      SETT_STATUS = #{settStatus,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      RISK_DAY = #{riskDay,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  <sql id="table_name">  rp_sett_daily_collect </sql>
+  
+  <!-- 根据搜索条件获取数据 -->
+	<sql id="condition_sql">
+		<if test="accountNo != null and accountNo !='' "> and account_no_ = #{accountNo}</if>
+		<if test="userNo != null and userNo !='' "> and user_no = #{userNo}</if>
+		
+	</sql>
+
+
+	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc
+	</select>
+
+	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd"
+	default-autowire="byName" default-lazy-init="false">
+
+	<!-- 缓存管理器 -->
+	<bean id="cacheManager" class="com.roncoo.pay.permission.shiro.spring.SpringCacheManagerWrapper">
+		<property name="cacheManager" ref="springCacheManager" />
+	</bean>
+
+	<!-- 凭证匹配器，做登录次数验证，和密码匹配验证 -->
+	<bean id="credentialsMatcher" class="com.roncoo.pay.permission.shiro.credentials.RetryLimitHashedCredentialsMatcher">
+		<!-- 登录次数放入缓存 -->
+		<constructor-arg ref="cacheManager" />
+		<property name="hashAlgorithmName" value="md5" />
+		<property name="hashIterations" value="2" />
+		<property name="storedCredentialsHexEncoded" value="true" />
+	</bean>
+
+	<!-- 自定义的user Realm实现 -->
+	<bean id="userRealm" class="com.roncoo.pay.permission.shiro.realm.OperatorRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
+		<property name="cachingEnabled" value="false" />
+		<!--<property name="authorizationCachingEnabled" value="true"/> -->
+		<!--<property name="authorizationCacheName" value="authorizationCache"/> -->
+	</bean>
+
+
+	<!-- 安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="userRealm" />
+	</bean>
+
+	<!-- 相当于调用SecurityUtils.setSecurityManager(securityManager) -->
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager" />
+		<property name="arguments" ref="securityManager" />
+	</bean>
+
+
+	<!-- 基于Form表单的身份验证过滤器，为了控制验证码 -->
+	<bean id="authcFilter" class="com.roncoo.pay.permission.shiro.filter.RcFormAuthenticationFilter">
+		<!-- from表达提交参数的属性命名 -->
+		<property name="usernameParam" value="loginName" />
+		<property name="passwordParam" value="roncooPwd" />
+		<property name="rememberMeParam" value="rememberMe" />
+		<property name="loginUrl" value="/login" />
+		<property name="failureKeyAttribute" value="shiroLoginFailure" />
+	</bean>
+
+	<!-- 验证码验证过滤器 -->
+	<bean id="rcCaptchaValidateFilter" class="com.roncoo.pay.permission.shiro.filter.RcCaptchaValidateFilter">
+		<property name="captchaEbabled" value="true" />
+		<property name="captchaParam" value="captchaCode" />
+		<property name="failureKeyAttribute" value="shiroLoginFailure" />
+	</bean>
+
+	<!-- Shiro主过滤器本身功能十分强大,其强大之处就在于它支持任何基于URL路径表达式的、自定义的过滤器的执行 -->
+	<!-- Web应用中,Shiro可控制的Web请求必须经过Shiro主过滤器的拦截,Shiro对基于Spring的Web应用提供了完美的支持 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<!-- 登录controller的mapper地址 -->
+		<property name="loginUrl" value="/login" />
+		<property name="unauthorizedUrl" value="/system/unauthorized.jsp" />
+		<property name="filters">
+			<util:map>
+				<entry key="authc" value-ref="authcFilter" />
+				<entry key="rcCaptchaValidate" value-ref="rcCaptchaValidateFilter" />
+			</util:map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				<!-- Shiro的Web过滤器 -->
+				/rcCaptcha* = anon
+				/system/unauthorized.jsp = anon
+				/common/** = anon
+				/dwz/** =anon
+				/favicon.ico=anon
+				/login = rcCaptchaValidate,authc
+				/logout = logout
+				/** = authc
+			</value>
+		</property>
+	</bean>
+
+	<!-- Shiro生命周期处理器 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<import resource="classpath:spring/permission/spring-cache.xml" />
+
+
+</beans>
