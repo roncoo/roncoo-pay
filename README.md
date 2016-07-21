@@ -26,14 +26,15 @@
 
 ---------------------------------------------------------------------------------- 
 
-* 在线支付演示：http://demo.pay.roncoo.com
-* 后台运营管理：http://demo.pay.roncoo.com/boss
-* 系统操作说明：http://www.roncoo.com/article/detail/124375
-* 系统详细介绍：http://www.roncoo.com/article/detail/124373
-
-官方QQ群：287684257
+>在线支付演示：http://demo.pay.roncoo.com
+>后台运营管理：http://demo.pay.roncoo.com/boss
+>系统操作说明：http://www.roncoo.com/article/detail/124375
+>系统详细介绍：http://www.roncoo.com/article/detail/124373
+>官方QQ群：287684257
 
 ![Alt text](http://static.roncoo.com/images/kbSMH3b3p8XwE6CbjSeHbjMK25JYNYRX.png)
+
+ 
 
 
 
