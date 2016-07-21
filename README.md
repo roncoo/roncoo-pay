@@ -2,12 +2,6 @@
 
 龙果支付系统是国内首款开源的互联网支付系统，其核心目的是汇聚所有主流支付渠道，打造一个轻量、便捷、易用且集支付、资金清算于一体的支付系统。
 
-* 在线支付演示：http://demo.pay.roncoo.com
-* 后台运营管理：http://demo.pay.roncoo.com/boss
-* 系统操作说明：http://www.roncoo.com/article/detail/124375
-* 系统详细介绍：http://www.roncoo.com/article/detail/124373
-
-----------------------------------------------------------------------------------
 ######主要特点：
 
 1. 具备支付系统通用的支付、对账、清算、资金账户等核心模块
@@ -31,6 +25,11 @@
 ![Alt text](http://static.roncoo.com/images/T8sdmhsNE4RF5BhnwWy5ZM5tipDcKfNi.png)
 
 ---------------------------------------------------------------------------------- 
+
+* 在线支付演示：http://demo.pay.roncoo.com
+* 后台运营管理：http://demo.pay.roncoo.com/boss
+* 系统操作说明：http://www.roncoo.com/article/detail/124375
+* 系统详细介绍：http://www.roncoo.com/article/detail/124373
 
 官方QQ群：287684257
 
