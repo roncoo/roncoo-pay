@@ -22,7 +22,7 @@
 
 ######总体结构：
 
-![Alt text](http://static.roncoo.com/images/SNSemEDWzTrEByywDhEMS6eb3CNi5ipM.png)
+![Alt text](http://static.roncoo.com/images/FzcNSYhKF2aEsFWpQKtpP5XwKkGxZ26Z.png)
 
 ---------
 
