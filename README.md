@@ -22,7 +22,7 @@
 
 ######总体结构：
 
-![Alt text](http://static.roncoo.com/images/SNSemEDWzTrEByywDhEMS6eb3CNi5ipM.png)
+![Alt text](http://static.roncoo.com/images/FzcNSYhKF2aEsFWpQKtpP5XwKkGxZ26Z.png)
 
 ---------
 
@@ -34,7 +34,7 @@
 
 系统详细介绍：http://www.roncoo.com/article/detail/124373
 
-官方QQ群：287684257
+官方QQ群：287684257，欢迎大家加入，共同探讨互联网金融支付行业业务、技术等。
 
 ![Alt text](http://static.roncoo.com/images/kbSMH3b3p8XwE6CbjSeHbjMK25JYNYRX.png)
 
