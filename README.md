@@ -34,6 +34,8 @@
 
 系统详细介绍：http://www.roncoo.com/article/detail/124373
 
+系统搭架部署：http://www.roncoo.com/article/detail/124511
+
 官方QQ群：287684257，欢迎大家加入，共同探讨互联网金融支付行业业务、技术等。
 
 ![Alt text](http://static.roncoo.com/images/kbSMH3b3p8XwE6CbjSeHbjMK25JYNYRX.png)
