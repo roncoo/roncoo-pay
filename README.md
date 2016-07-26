@@ -20,9 +20,8 @@
 
 ----------------------------------------------------------------------------------
 
-######总体结构：
-
-![Alt text](http://static.roncoo.com/images/FzcNSYhKF2aEsFWpQKtpP5XwKkGxZ26Z.png)
+######应用架构：
+![应用架构](http://git.oschina.net/uploads/images/2016/0726/171546_239efc3b_860625.jpeg "应用架构")
 
 ---------
 
