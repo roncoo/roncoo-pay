@@ -32,7 +32,7 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 	
 		<!-- 线程池 -->
-	<bean id="settThreadPoolExecutor" class="com.roncoo.app.settlement.utils.SettThreadPoolExecutor" init-method="init" destroy-method="destroy">
+	<bean id="settThreadPoolExecutor" class="com.roncoo.pay.app.settlement.utils.SettThreadPoolExecutor" init-method="init" destroy-method="destroy">
 		<!-- 最小线程数 -->
 		<property name="corePoolSize" value="5" />
 		<!-- 最大线程数 -->
