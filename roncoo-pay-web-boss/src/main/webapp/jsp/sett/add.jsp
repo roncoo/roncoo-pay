@@ -26,7 +26,7 @@
 					<dl>
 							<dt>结算金额：</dt>
 							<dd>
-								<input type="text" name="settAmount" maxlength="128" class="required number"/>
+								<input type="text" name="settAmount" maxlength="128" class="required digits"/>
 							</dd>
 					</dl>
 				</fieldset>
