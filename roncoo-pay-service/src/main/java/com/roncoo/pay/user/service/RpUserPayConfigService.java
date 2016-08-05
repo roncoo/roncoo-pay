@@ -85,7 +85,8 @@ public interface RpUserPayConfigService{
 	 * 创建用户支付配置
 	 */
 	void createUserPayConfig(String userNo, String userName, String productCode, String productName, Integer riskDay, String fundIntoType,
-			String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key)  throws PayBizException;
+			String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
+			String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException;
 	
 	/**
 	 * 删除支付产品
@@ -97,7 +98,8 @@ public interface RpUserPayConfigService{
 	 * 修改用户支付配置
 	 */
 	void updateUserPayConfig(String userNo, String productCode, String productName, Integer riskDay, String fundIntoType,
-			String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key)  throws PayBizException;
+			String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
+			String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException;
 
 	/**
 	 * 审核

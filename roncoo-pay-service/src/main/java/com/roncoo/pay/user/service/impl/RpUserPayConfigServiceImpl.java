@@ -136,7 +136,7 @@ public class RpUserPayConfigServiceImpl implements RpUserPayConfigService{
 	@Override
 	public void createUserPayConfig(String userNo, String userName, String productCode, String productName, Integer riskDay,
 			String fundIntoType, String isAutoSett, String appId, String merchantId, String partnerKey,
-			String ali_partner, String ali_sellerId, String ali_key)  throws PayBizException{
+			String ali_partner, String ali_sellerId, String ali_key, String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException{
 		
 		RpUserPayConfig payConfig = rpUserPayConfigDao.getByUserNo(userNo, null);
 		if(payConfig != null){
@@ -208,6 +208,9 @@ public class RpUserPayConfigServiceImpl implements RpUserPayConfigService{
 					rpUserPayInfo.setUserNo(userNo);
 					rpUserPayInfo.setUserName(userName);
 					rpUserPayInfo.setStatus(PublicStatusEnum.ACTIVE.name());
+					rpUserPayInfo.setOfflineAppId(ali_appid);
+					rpUserPayInfo.setRsaPrivateKey(ali_rsaPrivateKey);
+					rpUserPayInfo.setRsaPublicKey(ali_rsaPublicKey);
 					rpUserPayInfoService.saveData(rpUserPayInfo);
 				}else{
 					rpUserPayInfo.setEditTime(new Date());
@@ -216,6 +219,9 @@ public class RpUserPayConfigServiceImpl implements RpUserPayConfigService{
 					rpUserPayInfo.setPartnerKey(ali_key);
 					rpUserPayInfo.setPayWayCode(PayWayEnum.ALIPAY.name());
 					rpUserPayInfo.setPayWayName(PayWayEnum.ALIPAY.getDesc());
+					rpUserPayInfo.setOfflineAppId(ali_appid);
+					rpUserPayInfo.setRsaPrivateKey(ali_rsaPrivateKey);
+					rpUserPayInfo.setRsaPublicKey(ali_rsaPublicKey);
 					rpUserPayInfoService.updateData(rpUserPayInfo);
 				}
 			}
@@ -248,7 +254,7 @@ public class RpUserPayConfigServiceImpl implements RpUserPayConfigService{
 	@Override
 	public void updateUserPayConfig(String userNo, String productCode, String productName, Integer riskDay, String fundIntoType,
 			String isAutoSett, String appId, String merchantId, String partnerKey,
-			String ali_partner, String ali_sellerId, String ali_key)  throws PayBizException{
+			String ali_partner, String ali_sellerId, String ali_key, String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException{
 		RpUserPayConfig rpUserPayConfig = rpUserPayConfigDao.getByUserNo(userNo, null);
 		if(rpUserPayConfig == null){
 			throw new PayBizException(PayBizException.USER_PAY_CONFIG_IS_NOT_EXIST,"用户支付配置不存在");
@@ -312,6 +318,9 @@ public class RpUserPayConfigServiceImpl implements RpUserPayConfigService{
 					rpUserPayInfo.setUserNo(userNo);
 					rpUserPayInfo.setUserName(rpUserPayConfig.getUserName());
 					rpUserPayInfo.setStatus(PublicStatusEnum.ACTIVE.name());
+					rpUserPayInfo.setOfflineAppId(ali_appid);
+					rpUserPayInfo.setRsaPrivateKey(ali_rsaPrivateKey);
+					rpUserPayInfo.setRsaPublicKey(ali_rsaPublicKey);
 					rpUserPayInfoService.saveData(rpUserPayInfo);
 				}else{
 					rpUserPayInfo.setEditTime(new Date());
@@ -320,6 +329,9 @@ public class RpUserPayConfigServiceImpl implements RpUserPayConfigService{
 					rpUserPayInfo.setPartnerKey(ali_key);
 					rpUserPayInfo.setPayWayCode(PayWayEnum.ALIPAY.name());
 					rpUserPayInfo.setPayWayName(PayWayEnum.ALIPAY.getDesc());
+					rpUserPayInfo.setOfflineAppId(ali_appid);
+					rpUserPayInfo.setRsaPrivateKey(ali_rsaPrivateKey);
+					rpUserPayInfo.setRsaPublicKey(ali_rsaPublicKey);
 					rpUserPayInfoService.updateData(rpUserPayInfo);
 				}
 			}

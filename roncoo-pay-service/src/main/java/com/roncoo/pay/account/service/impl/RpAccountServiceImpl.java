@@ -59,4 +59,11 @@ public class RpAccountServiceImpl implements RpAccountService{
 		paramMap.put("accountNo", rpAccount.getAccountNo());
 		return rpAccountDao.listPage(pageParam, paramMap);
 	}
+	
+	@Override
+	public RpAccount getDataByUserNo(String userNo){
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("userNo", userNo);
+		return rpAccountDao.getBy(paramMap);
+	}
 }

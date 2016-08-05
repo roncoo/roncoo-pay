@@ -73,7 +73,31 @@ public class RpUserPayInfo extends BaseEntity implements Serializable {
      */
     private String rsaPublicKey;
 
-    public String getPayWayCode() {
+    public String getOfflineAppId() {
+		return offlineAppId;
+	}
+
+	public void setOfflineAppId(String offlineAppId) {
+		this.offlineAppId = offlineAppId;
+	}
+
+	public String getRsaPrivateKey() {
+		return rsaPrivateKey;
+	}
+
+	public void setRsaPrivateKey(String rsaPrivateKey) {
+		this.rsaPrivateKey = rsaPrivateKey;
+	}
+
+	public String getRsaPublicKey() {
+		return rsaPublicKey;
+	}
+
+	public void setRsaPublicKey(String rsaPublicKey) {
+		this.rsaPublicKey = rsaPublicKey;
+	}
+
+	public String getPayWayCode() {
 		return payWayCode;
 	}
 
