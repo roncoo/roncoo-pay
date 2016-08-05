@@ -33,6 +33,8 @@ public enum PayTypeEnum {
 
     DIRECT_PAY("ALIPAY","即时到账"),
 
+    F2F_PAY("ALIPAY","条码支付"),
+
 	ALI_TEST("ALIPAY","支付宝测试");
 
 	/** 所属支付方式 */
