@@ -17,11 +17,14 @@
     <result column="partner_key" property="partnerKey" jdbcType="VARCHAR" />
     <result column="pay_way_code" property="payWayCode" jdbcType="VARCHAR" />
     <result column="pay_way_name" property="payWayName" jdbcType="VARCHAR" />
-    
+    <result column="offline_app_id" property="offlineAppId" jdbcType="VARCHAR" />
+    <result column="rsa_private_key" property="rsaPrivateKey" jdbcType="VARCHAR" />
+    <result column="rsa_public_key" property="rsaPublicKey" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id_, create_time, edit_time, version, remark, status, app_id, app_sectet, merchant_id, 
-    app_type, user_no, user_name, partner_key, pay_way_code, pay_way_name
+    app_type, user_no, user_name, partner_key, pay_way_code, pay_way_name, offline_app_id, rsa_private_key,
+    rsa_public_key
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -38,13 +41,14 @@
       version, remark, status, 
       app_id, app_sectet, merchant_id, 
       app_type, user_no, user_name, partner_key,
-      pay_way_code, pay_way_name
+      pay_way_code, pay_way_name, offline_app_id, rsa_private_key, rsa_public_key
       )
     values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, 
       #{version,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
       #{appId,jdbcType=VARCHAR}, #{appSectet,jdbcType=VARCHAR}, #{merchantId,jdbcType=VARCHAR}, 
       #{appType,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
-      #{partnerKey,jdbcType=VARCHAR}, #{payWayCode,jdbcType=VARCHAR}, #{payWayName,jdbcType=VARCHAR}
+      #{partnerKey,jdbcType=VARCHAR}, #{payWayCode,jdbcType=VARCHAR}, #{payWayName,jdbcType=VARCHAR},
+      #{offlineAppId,jdbcType=VARCHAR}, #{rsaPrivateKey,jdbcType=VARCHAR}, #{rsaPublicKey,jdbcType=VARCHAR}
       )
   </insert>
 
@@ -63,7 +67,10 @@
       user_name = #{userName,jdbcType=VARCHAR},
       partner_key = #{partnerKey,jdbcType=VARCHAR},
       pay_way_code = #{payWayCode,jdbcType=VARCHAR},
-      pay_way_name = #{payWayName,jdbcType=VARCHAR}
+      pay_way_name = #{payWayName,jdbcType=VARCHAR},
+      offline_app_id = #{offlineAppId,jdbcType=VARCHAR}, 
+      rsa_private_key = #{rsaPrivateKey,jdbcType=VARCHAR}, 
+      rsa_public_key = #{rsaPublicKey,jdbcType=VARCHAR}
     where id_ = #{id,jdbcType=VARCHAR}
   </update>
   
