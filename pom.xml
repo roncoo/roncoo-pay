@@ -332,6 +332,17 @@
 				<version>1.3</version>
 			</dependency>
 
+			<dependency>
+				<groupId>alipay</groupId>
+				<artifactId>alipay-trade-sdk</artifactId>
+				<version>1.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>alipay</groupId>
+				<artifactId>alipay-sdk-java20151021120052</artifactId>
+				<version>1.0</version>
+			</dependency>
 
 			<dependency>
 				<groupId>jaxen</groupId>

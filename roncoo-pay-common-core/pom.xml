@@ -208,6 +208,16 @@
 			<artifactId>jdom</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>alipay</groupId>
+			<artifactId>alipay-sdk-java20151021120052</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>alipay</groupId>
+			<artifactId>alipay-trade-sdk</artifactId>
+		</dependency>
+
 		<!-- http://mvnrepository.com/artifact/jaxen/jaxen -->
 
 		<dependency>
