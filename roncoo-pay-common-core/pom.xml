@@ -133,9 +133,14 @@
 		<!-- Mysql libs End -->
 
 		<!-- Other Common libs Begin -->
+		
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
 		</dependency>
 
 		<dependency>

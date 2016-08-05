@@ -69,6 +69,9 @@
 		<commons-io.version>2.5</commons-io.version>
 		<jdom.version>2.0.2</jdom.version>
 		<activeMQ.version>5.11.4</activeMQ.version>
+		<javassist.version>3.12.1.GA</javassist.version>
+		<transaction.version>1.1</transaction.version>
+		
 	</properties>
 
 	<dependencyManagement>
@@ -220,6 +223,17 @@
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
 				<version>${log4j_version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>jta</artifactId>
+				<version>${transaction.version}</version>
 			</dependency>
 
 			<!-- Log libs End -->

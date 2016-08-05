@@ -20,11 +20,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.transaction.Transactional;
-
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
@@ -148,7 +147,7 @@ public class PmsOperatorServiceImpl implements PmsOperatorService {
 	 *            .
 	 */
 
-	@Transactional(rollbackOn = Exception.class)
+	@Transactional
 	public void saveOperator(PmsOperator pmsOperator, String roleOperatorStr) {
 		// 保存操作员信息
 		pmsOperatorDao.insert(pmsOperator);

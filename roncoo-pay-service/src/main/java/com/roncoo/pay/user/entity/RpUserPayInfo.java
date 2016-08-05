@@ -58,6 +58,20 @@ public class RpUserPayInfo extends BaseEntity implements Serializable {
     private String payWayCode;
 
     private String payWayName;
+    
+    /**
+     * 支付宝线下产品appid
+     */
+    private String offlineAppId;
+    /**
+     * 支付宝私钥
+     */
+    private String rsaPrivateKey;
+    
+    /**
+     * 支付宝公钥
+     */
+    private String rsaPublicKey;
 
     public String getPayWayCode() {
 		return payWayCode;

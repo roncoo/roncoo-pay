@@ -245,6 +245,7 @@ public class RpSettHandleServiceImpl implements RpSettHandleService {
 	/**
 	 * 打款
 	 */
+	@Transactional(rollbackFor = Exception.class)
 	public void remit(String settId, String settStatus, String remark){
 		RpSettRecord settRecord = rpSettRecordDao.getById(settId);
 		if(!settRecord.getSettStatus().equals(SettRecordStatusEnum.CONFIRMED.name())){
