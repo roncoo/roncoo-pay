@@ -207,6 +207,9 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
             throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR,"用户支付配置有误");
         }
 
+        if (StringUtil.isEmpty(authCode)){
+            throw new TradeBizException(TradeBizException.TRADE_PARAM_ERROR,"支付授权码不能为空");
+        }
         //根据支付产品及支付方式获取费率
         RpPayWay payWay = null;
         if (PayWayEnum.WEIXIN.name().equals(payWayCode)){
@@ -239,7 +242,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
             }
         }
 
-        return getF2FPayResultVo( rpTradePaymentOrder , payWay ,  rpUserPayConfig ,  authCode ,null);
+        return getF2FPayResultVo( rpTradePaymentOrder , payWay ,  payKey , rpUserPayConfig.getPaySecret() , authCode ,null);
     }
 
     /**
@@ -248,9 +251,9 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
      * @param payWay   商户支付配置
      * @return
      */
-    private F2FPayResultVo getF2FPayResultVo(RpTradePaymentOrder rpTradePaymentOrder ,RpPayWay payWay , RpUserPayConfig rpUserPayConfig , String authCode ,List< RoncooPayGoodsDetails > roncooPayGoodsDetailses){
+    private F2FPayResultVo getF2FPayResultVo(RpTradePaymentOrder rpTradePaymentOrder ,RpPayWay payWay , String  payKey , String merchantPaySecret , String authCode ,List< RoncooPayGoodsDetails > roncooPayGoodsDetailses){
 
-        F2FPayResultVo f2FPayResultVo = null;
+        F2FPayResultVo f2FPayResultVo = new F2FPayResultVo();
         String payWayCode = payWay.getPayWayCode();//支付方式
 
         if (PayWayEnum.WEIXIN.name().equals(payWay.getPayWayCode())){
@@ -273,25 +276,65 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         }else {
             if (PayWayEnum.ALIPAY.name().equals(payWayCode)) {//支付宝支付
 
+                RpUserPayInfo rpUserPayInfo = rpUserPayInfoService.getByUserNo(rpTradePaymentOrder.getMerchantNo(),payWayCode);
+                if (rpUserPayInfo == null){
+                    throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR,"商户支付配置有误");
+                }
 
-                aliF2FPaySubmit.initConfigs(rpTradePaymentOrder.getFundIntoType(), "appId", "pid", "privateKey", "publicKey");
-                f2FPayResultVo = aliF2FPaySubmit.f2fPay(rpTradePaymentRecord.getBankOrderNo(), rpTradePaymentOrder.getProductName(), "", authCode, rpTradePaymentRecord.getOrderAmount(), roncooPayGoodsDetailses);
+                aliF2FPaySubmit.initConfigs(rpTradePaymentOrder.getFundIntoType(), rpUserPayInfo.getOfflineAppId(), rpUserPayInfo.getAppId(), rpUserPayInfo.getRsaPrivateKey(), rpUserPayInfo.getRsaPublicKey());
+                Map<String , String > aliPayReturnMsg = aliF2FPaySubmit.f2fPay(rpTradePaymentRecord.getBankOrderNo(), rpTradePaymentOrder.getProductName(), "", authCode, rpTradePaymentRecord.getOrderAmount(), roncooPayGoodsDetailses);
 
-                rpTradePaymentRecord.setStatus(f2FPayResultVo.getTradeStatusEnum().name());//设置消费状态
-                rpTradePaymentRecord.setBankTrxNo(f2FPayResultVo.getBankTrxNo());//银行流水号
-                rpTradePaymentRecord.setBankReturnMsg(f2FPayResultVo.getBankReturnMsg());
-                f2FPayResultVo.setBankReturnMsg(null);//清除银行返回的信息,银行返回信息只是用来做记录处理,不需要返回给客户端
+                rpTradePaymentRecord.setStatus(aliPayReturnMsg.get("status"));//设置消费状态
+                rpTradePaymentRecord.setBankTrxNo(aliPayReturnMsg.get("bankTrxNo"));//银行流水号
+                rpTradePaymentRecord.setBankReturnMsg(aliPayReturnMsg.get("bankReturnMsg"));//银行返回信息
                 rpTradePaymentRecordDao.update(rpTradePaymentRecord);
-//            scanPayResultVo.setCodeUrl(sHtmlText);//设置微信跳转地址
-//            scanPayResultVo.setPayWayCode(PayWayEnum.ALIPAY.name());
-//            scanPayResultVo.setProductName(rpTradePaymentOrder.getProductName());
-//            scanPayResultVo.setOrderAmount(rpTradePaymentOrder.getOrderAmount());
 
             } else {
                 throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR, "错误的支付方式");
             }
         }
 
+
+        Map<String , Object> paramMap = new HashMap<String , Object>();
+        f2FPayResultVo.setStatus(rpTradePaymentRecord.getStatus());//支付结果
+        paramMap.put("status",rpTradePaymentRecord.getStatus());
+
+        f2FPayResultVo.setField1(rpTradePaymentRecord.getField1());//扩展字段1
+        paramMap.put("field1",rpTradePaymentRecord.getField1());
+
+        f2FPayResultVo.setField2(rpTradePaymentRecord.getField2());//扩展字段2
+        paramMap.put("field2",rpTradePaymentRecord.getField2());
+
+        f2FPayResultVo.setField3(rpTradePaymentRecord.getField3());//扩展字段3
+        paramMap.put("field3",rpTradePaymentRecord.getField3());
+
+        f2FPayResultVo.setField4(rpTradePaymentRecord.getField4());//扩展字段4
+        paramMap.put("field4",rpTradePaymentRecord.getField4());
+
+        f2FPayResultVo.setField5(rpTradePaymentRecord.getField5());//扩展字段5
+        paramMap.put("field5",rpTradePaymentRecord.getField5());
+
+        f2FPayResultVo.setOrderIp(rpTradePaymentRecord.getOrderIp());//下单ip
+        paramMap.put("orderIp",rpTradePaymentRecord.getOrderIp());
+
+        f2FPayResultVo.setOrderNo(rpTradePaymentRecord.getMerchantOrderNo());//商户订单号
+        paramMap.put("merchantOrderNo",rpTradePaymentRecord.getMerchantOrderNo());
+
+        f2FPayResultVo.setPayKey(payKey);//支付号
+        paramMap.put("payKey",payKey);
+
+        f2FPayResultVo.setProductName(rpTradePaymentRecord.getProductName());//产品名称
+        paramMap.put("productName",rpTradePaymentRecord.getProductName());
+
+        f2FPayResultVo.setRemark(rpTradePaymentRecord.getRemark());//支付备注
+        paramMap.put("remark",rpTradePaymentRecord.getRemark());
+
+        f2FPayResultVo.setTrxNo(rpTradePaymentRecord.getTrxNo());//交易流水号
+        paramMap.put("trxNo", rpTradePaymentRecord.getTrxNo());
+
+        String sign = MerchantApiUtil.getSign(paramMap, merchantPaySecret);
+
+        f2FPayResultVo.setSign(sign);
         return f2FPayResultVo;
     }
 

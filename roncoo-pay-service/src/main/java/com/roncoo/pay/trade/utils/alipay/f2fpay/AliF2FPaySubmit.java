@@ -26,7 +26,9 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <b>功能说明:支付宝当面付功能提交类
@@ -113,8 +115,8 @@ public class AliF2FPaySubmit {
      * @param amount    支付金额
      * @param roncooPayGoodsDetailses
      */
-    public F2FPayResultVo f2fPay(String outTradeNo , String subject , String body ,String authCode , BigDecimal amount , List<RoncooPayGoodsDetails> roncooPayGoodsDetailses) {
-        F2FPayResultVo f2fPayResultVo = new F2FPayResultVo();
+    public Map<String , String > f2fPay(String outTradeNo , String subject , String body ,String authCode , BigDecimal amount , List<RoncooPayGoodsDetails> roncooPayGoodsDetailses) {
+        Map<String , String > returnMap = new HashMap<String , String >();
 
         String totalAmount = amount.toString()  ;//订单金额
         String undiscountableAmount = "0.0";//默认折扣金额为0,建议由业务系统记录折扣金额,值传递给支付宝实际支付金额
@@ -154,29 +156,28 @@ public class AliF2FPaySubmit {
         switch (result.getTradeStatus()) {
             case SUCCESS:
                 LOG.info("支付宝支付成功: )");
-                f2fPayResultVo.setTradeStatusEnum(TradeStatusEnum.SUCCESS);
-                f2fPayResultVo.setBankTrxNo(result.getResponse().getTradeNo());
+                returnMap.put("status",TradeStatusEnum.SUCCESS.name());
+                returnMap.put("bankTrxNo",result.getResponse().getTradeNo());
                 break;
 
             case FAILED:
                 LOG.error("支付宝支付失败!!!");
-                f2fPayResultVo.setTradeStatusEnum(TradeStatusEnum.FAILED);
+                returnMap.put("status",TradeStatusEnum.FAILED.name());
                 break;
 
             case UNKNOWN:
-                LOG.info(result.getResponse().getMsg());
-                f2fPayResultVo.setTradeStatusEnum(TradeStatusEnum.WAITING_PAYMENT);//未知支付状态的订单,置为等待支付状态
+                returnMap.put("status", TradeStatusEnum.WAITING_PAYMENT.name());//未知支付状态的订单,置为等待支付状态
                 LOG.error("系统异常，订单状态未知!!!");
                 break;
 
             default:
-                f2fPayResultVo.setTradeStatusEnum(TradeStatusEnum.FAILED);
+                returnMap.put("status",TradeStatusEnum.FAILED.name());
                 LOG.error("不支持的交易状态，交易返回异常!!!");
                 break;
         }
 
-        f2fPayResultVo.setBankReturnMsg(result.getResponse().getBody());
-        return f2fPayResultVo;
+        returnMap.put("bankReturnMsg",result.getResponse() == null ? "" : result.getResponse().getBody());//银行返回信息
+        return returnMap;
     }
 
 
