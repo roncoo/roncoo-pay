@@ -21,7 +21,7 @@
 ----------------------------------------------------------------------------------
 
 ######应用架构：
-![应用架构](http://static.roncoo.com/images/HntZA5CQKzX7WKTpNbBCXHCbBhsPcys6.jpg "应用架构")
+![应用架构](http://git.oschina.net/uploads/images/2016/0726/171546_239efc3b_860625.jpeg "应用架构")
 
 ---------
 
