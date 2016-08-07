@@ -99,12 +99,12 @@ public class MerchantApiUtil {
      * @param strButtonName 确认按钮显示文字
      * @return 提交表单HTML文本
      */
-    public static String buildRequest(Map<String, Object> sParaTemp, String strMethod, String strButtonName) {
+    public static String buildRequest(Map<String, Object> sParaTemp, String strMethod, String strButtonName , String actionUrl) {
         //待请求参数数组
         List<String> keys = new ArrayList<String>(sParaTemp.keySet());
         StringBuffer sbHtml = new StringBuffer();
 
-        sbHtml.append("<form id=\"rppaysubmit\" name=\"rppaysubmit\" action=\"" + PayConfigUtil.readConfig("scanPayUrl") + "\" method=\"" + strMethod
+        sbHtml.append("<form id=\"rppaysubmit\" name=\"rppaysubmit\" action=\"" + actionUrl + "\" method=\"" + strMethod
                 + "\">");
 
         for (int i = 0; i < keys.size(); i++) {

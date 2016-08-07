@@ -5,11 +5,11 @@
   <parent>
     <groupId>com.roncoo.pay.common</groupId>
     <artifactId>roncoo-pay</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
   </parent>
   <groupId>com.roncoo.pay.common</groupId>
   <artifactId>roncoo-pay-app-notify</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.3-SNAPSHOT</version>
   <name>roncoo-app-notify</name>
   <url>http://maven.apache.org</url>
   <properties>
