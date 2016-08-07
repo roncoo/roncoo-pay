@@ -37,7 +37,7 @@
 
 官方QQ群：287684257，欢迎大家加入，共同探讨互联网金融支付行业业务、技术等。
 
-![Alt text](http://static.roncoo.com/images/kbSMH3b3p8XwE6CbjSeHbjMK25JYNYRX.png)
+![Alt text](http://git.oschina.net/uploads/images/2016/0722/175850_9e020e87_860625.png)
 
  
 
