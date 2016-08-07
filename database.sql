@@ -69,7 +69,7 @@ create table rp_account
    primary key (id)
 );
 
-alter table rp_account comment '×Ê½ğÕË»§±í';
+alter table rp_account comment 'èµ„é‡‘è´¦æˆ·è¡¨';
 
 /*==============================================================*/
 /* table: rp_account_history                                    */
@@ -95,7 +95,7 @@ create table rp_account_history
    primary key (id)
 );
 
-alter table rp_account_history comment '×Ê½ğÕË»§Á÷Ë®±í';
+alter table rp_account_history comment 'èµ„é‡‘è´¦æˆ·æµæ°´è¡¨';
 
 /*==============================================================*/
 /* table: rp_pay_product                                        */
@@ -107,13 +107,13 @@ create table rp_pay_product
    edit_time            datetime,
    version              bigint not null,
    status               varchar(36) not null,
-   product_code         varchar(50) not null comment 'Ö§¸¶²úÆ·±àºÅ',
-   product_name         varchar(200) not null comment 'Ö§¸¶²úÆ·Ãû³Æ',
+   product_code         varchar(50) not null comment 'æ”¯ä»˜äº§å“ç¼–å·',
+   product_name         varchar(200) not null comment 'æ”¯ä»˜äº§å“åç§°',
    audit_status         varchar(45),
    primary key (id)
 );
 
-alter table rp_pay_product comment 'Ö§¸¶²úÆ·±í';
+alter table rp_pay_product comment 'æ”¯ä»˜äº§å“è¡¨';
 
 /*==============================================================*/
 /* table: rp_pay_way                                            */
@@ -122,20 +122,20 @@ create table rp_pay_way
 (
    id                   varchar(50) not null comment 'id',
    version              bigint not null default 0 comment 'version',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
-   pay_way_code         varchar(50) not null comment 'Ö§¸¶·½Ê½±àºÅ',
-   pay_way_name         varchar(100) not null comment 'Ö§¸¶·½Ê½Ãû³Æ',
-   pay_type_code        varchar(50) not null comment 'Ö§¸¶ÀàĞÍ±àºÅ',
-   pay_type_name        varchar(100) not null comment 'Ö§¸¶ÀàĞÍÃû³Æ',
-   pay_product_code     varchar(50) comment 'Ö§¸¶²úÆ·±àºÅ',
-   status               varchar(36) not null comment '×´Ì¬(100:Õı³£×´Ì¬,101·ÇÕı³£×´Ì¬)',
-   sorts                int default 1000 comment 'ÅÅĞò(µ¹ĞòÅÅĞò,Ä¬ÈÏÖµ1000)',
-   pay_rate             double not null comment 'ÉÌ»§Ö§¸¶·ÑÂÊ',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
+   pay_way_code         varchar(50) not null comment 'æ”¯ä»˜æ–¹å¼ç¼–å·',
+   pay_way_name         varchar(100) not null comment 'æ”¯ä»˜æ–¹å¼åç§°',
+   pay_type_code        varchar(50) not null comment 'æ”¯ä»˜ç±»å‹ç¼–å·',
+   pay_type_name        varchar(100) not null comment 'æ”¯ä»˜ç±»å‹åç§°',
+   pay_product_code     varchar(50) comment 'æ”¯ä»˜äº§å“ç¼–å·',
+   status               varchar(36) not null comment 'çŠ¶æ€(100:æ­£å¸¸çŠ¶æ€,101éæ­£å¸¸çŠ¶æ€)',
+   sorts                int default 1000 comment 'æ’åº(å€’åºæ’åº,é»˜è®¤å€¼1000)',
+   pay_rate             double not null comment 'å•†æˆ·æ”¯ä»˜è´¹ç‡',
    primary key (id)
 );
 
-alter table rp_pay_way comment 'Ö§¸¶·½Ê½';
+alter table rp_pay_way comment 'æ”¯ä»˜æ–¹å¼';
 
 /*==============================================================*/
 /* table: rp_sett_daily_collect                                 */
@@ -143,22 +143,22 @@ alter table rp_pay_way comment 'Ö§¸¶·½Ê½';
 create table rp_sett_daily_collect
 (
    id                   varchar(50) not null comment 'id',
-   version              int not null default 0 comment '°æ±¾ºÅ',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   edit_time            datetime not null comment 'ĞŞ¸ÄÊ±¼ä',
-   account_no           varchar(20) not null comment 'ÕË»§±àºÅ',
-   user_name            varchar(200) comment 'ÓÃ»§ĞÕÃû',
-   collect_date         date not null comment '»ã×ÜÈÕÆÚ',
-   collect_type         varchar(50) not null comment '»ã×ÜÀàĞÍ(²Î¿¼Ã¶¾Ù:settdailycollecttypeenum)',
-   total_amount         decimal(24,10) not null comment '½»Ò××Ü½ğ¶î',
-   total_count          int not null comment '½»Ò××Ü±ÊÊı',
-   sett_status          varchar(50) not null comment '½áËã×´Ì¬(²Î¿¼Ã¶¾Ù:settdailycollectstatusenum)',
-   remark               varchar(300) comment '±¸×¢',
-   risk_day             int comment '·çÏÕÔ¤´æÆÚÌìÊı',
+   version              int not null default 0 comment 'ç‰ˆæœ¬å·',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   edit_time            datetime not null comment 'ä¿®æ”¹æ—¶é—´',
+   account_no           varchar(20) not null comment 'è´¦æˆ·ç¼–å·',
+   user_name            varchar(200) comment 'ç”¨æˆ·å§“å',
+   collect_date         date not null comment 'æ±‡æ€»æ—¥æœŸ',
+   collect_type         varchar(50) not null comment 'æ±‡æ€»ç±»å‹(å‚è€ƒæšä¸¾:settdailycollecttypeenum)',
+   total_amount         decimal(24,10) not null comment 'äº¤æ˜“æ€»é‡‘é¢',
+   total_count          int not null comment 'äº¤æ˜“æ€»ç¬”æ•°',
+   sett_status          varchar(50) not null comment 'ç»“ç®—çŠ¶æ€(å‚è€ƒæšä¸¾:settdailycollectstatusenum)',
+   remark               varchar(300) comment 'å¤‡æ³¨',
+   risk_day             int comment 'é£é™©é¢„å­˜æœŸå¤©æ•°',
    primary key (id)
 );
 
-alter table rp_sett_daily_collect comment 'Ã¿ÈÕ´ı½áËã»ã×Ü';
+alter table rp_sett_daily_collect comment 'æ¯æ—¥å¾…ç»“ç®—æ±‡æ€»';
 
 /*==============================================================*/
 /* table: rp_sett_record                                        */
@@ -166,39 +166,39 @@ alter table rp_sett_daily_collect comment 'Ã¿ÈÕ´ı½áËã»ã×Ü';
 create table rp_sett_record
 (
    id                   varchar(50) not null comment 'id',
-   version              int not null default 0 comment '°æ±¾ºÅ',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   edit_time            datetime not null comment 'ĞŞ¸ÄÊ±¼ä',
-   sett_mode            varchar(50) comment '½áËã·¢Æğ·½Ê½(²Î¿¼settmodetypeenum)',
-   account_no           varchar(20) not null comment 'ÕË»§±àºÅ',
-   user_no              varchar(20) comment 'ÓÃ»§±àºÅ',
-   user_name            varchar(200) comment 'ÓÃ»§ĞÕÃû',
-   user_type            varchar(50) comment 'ÓÃ»§ÀàĞÍ',
-   sett_date            date comment '½áËãÈÕÆÚ',
-   bank_code            varchar(20) comment 'ÒøĞĞ±àÂë',
-   bank_name            varchar(100) comment 'ÒøĞĞÃû³Æ',
-   bank_account_name    varchar(60) comment '¿ª»§Ãû',
-   bank_account_no      varchar(20) comment '¿ª»§ÕË»§',
-   bank_account_type    varchar(50) comment '¿ª»§ÕË»§',
-   country              varchar(200) comment '¿ª»§ĞĞËùÔÚ¹ú¼Ò',
-   province             varchar(50) comment '¿ª»§ĞĞËùÔÚÊ¡·İ',
-   city                 varchar(50) comment '¿ª»§ĞĞËùÔÚ³ÇÊĞ',
-   areas                varchar(50) comment '¿ª»§ĞĞËùÔÚÇø',
-   bank_account_address varchar(300) comment '¿ª»§ĞĞÈ«³Æ',
-   mobile_no            varchar(20) comment 'ÊÕ¿îÈËÊÖ»úºÅ',
-   sett_amount          decimal(24,10) comment '½áËã½ğ¶î',
-   sett_fee             decimal(16,6) comment '½áËãÊÖĞø·Ñ',
-   remit_amount         decimal(16,2) comment '½áËã´ò¿î½ğ¶î',
-   sett_status          varchar(50) comment '½áËã×´Ì¬(²Î¿¼Ã¶¾Ù:settrecordstatusenum)',
-   remit_confirm_time   datetime comment '´ò¿îÈ·ÈÏÊ±¼ä',
-   remark               varchar(200) comment 'ÃèÊö',
-   remit_remark         varchar(200) comment '´ò¿î±¸×¢',
-   operator_loginname   varchar(50) comment '²Ù×÷Ô±µÇÂ¼Ãû',
-   operator_realname    varchar(50) comment '²Ù×÷Ô±ĞÕÃû',
+   version              int not null default 0 comment 'ç‰ˆæœ¬å·',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   edit_time            datetime not null comment 'ä¿®æ”¹æ—¶é—´',
+   sett_mode            varchar(50) comment 'ç»“ç®—å‘èµ·æ–¹å¼(å‚è€ƒsettmodetypeenum)',
+   account_no           varchar(20) not null comment 'è´¦æˆ·ç¼–å·',
+   user_no              varchar(20) comment 'ç”¨æˆ·ç¼–å·',
+   user_name            varchar(200) comment 'ç”¨æˆ·å§“å',
+   user_type            varchar(50) comment 'ç”¨æˆ·ç±»å‹',
+   sett_date            date comment 'ç»“ç®—æ—¥æœŸ',
+   bank_code            varchar(20) comment 'é“¶è¡Œç¼–ç ',
+   bank_name            varchar(100) comment 'é“¶è¡Œåç§°',
+   bank_account_name    varchar(60) comment 'å¼€æˆ·å',
+   bank_account_no      varchar(20) comment 'å¼€æˆ·è´¦æˆ·',
+   bank_account_type    varchar(50) comment 'å¼€æˆ·è´¦æˆ·',
+   country              varchar(200) comment 'å¼€æˆ·è¡Œæ‰€åœ¨å›½å®¶',
+   province             varchar(50) comment 'å¼€æˆ·è¡Œæ‰€åœ¨çœä»½',
+   city                 varchar(50) comment 'å¼€æˆ·è¡Œæ‰€åœ¨åŸå¸‚',
+   areas                varchar(50) comment 'å¼€æˆ·è¡Œæ‰€åœ¨åŒº',
+   bank_account_address varchar(300) comment 'å¼€æˆ·è¡Œå…¨ç§°',
+   mobile_no            varchar(20) comment 'æ”¶æ¬¾äººæ‰‹æœºå·',
+   sett_amount          decimal(24,10) comment 'ç»“ç®—é‡‘é¢',
+   sett_fee             decimal(16,6) comment 'ç»“ç®—æ‰‹ç»­è´¹',
+   remit_amount         decimal(16,2) comment 'ç»“ç®—æ‰“æ¬¾é‡‘é¢',
+   sett_status          varchar(50) comment 'ç»“ç®—çŠ¶æ€(å‚è€ƒæšä¸¾:settrecordstatusenum)',
+   remit_confirm_time   datetime comment 'æ‰“æ¬¾ç¡®è®¤æ—¶é—´',
+   remark               varchar(200) comment 'æè¿°',
+   remit_remark         varchar(200) comment 'æ‰“æ¬¾å¤‡æ³¨',
+   operator_loginname   varchar(50) comment 'æ“ä½œå‘˜ç™»å½•å',
+   operator_realname    varchar(50) comment 'æ“ä½œå‘˜å§“å',
    primary key (id)
 );
 
-alter table rp_sett_record comment '½áËã¼ÇÂ¼';
+alter table rp_sett_record comment 'ç»“ç®—è®°å½•';
 
 /*==============================================================*/
 /* table: rp_sett_record_annex                                  */
@@ -245,7 +245,7 @@ create table rp_user_bank_account
    primary key (id)
 );
 
-alter table rp_user_bank_account comment 'ÓÃ»§ÒøĞĞÕË»§±í';
+alter table rp_user_bank_account comment 'ç”¨æˆ·é“¶è¡Œè´¦æˆ·è¡¨';
 
 /*==============================================================*/
 /* table: rp_user_info                                          */
@@ -262,7 +262,7 @@ create table rp_user_info
    unique key ak_key_2 (account_no)
 );
 
-alter table rp_user_info comment '¸Ã±íÓÃÀ´´æ·ÅÓÃ»§µÄ»ù±¾ĞÅÏ¢';
+alter table rp_user_info comment 'è¯¥è¡¨ç”¨æ¥å­˜æ”¾ç”¨æˆ·çš„åŸºæœ¬ä¿¡æ¯';
 
 /*==============================================================*/
 /* table: rp_user_pay_config                                    */
@@ -277,8 +277,8 @@ create table rp_user_pay_config
    status               varchar(36) not null,
    audit_status         varchar(45),
    is_auto_sett         varchar(36) not null default 'no',
-   product_code         varchar(50) not null comment 'Ö§¸¶²úÆ·±àºÅ',
-   product_name         varchar(200) not null comment 'Ö§¸¶²úÆ·Ãû³Æ',
+   product_code         varchar(50) not null comment 'æ”¯ä»˜äº§å“ç¼–å·',
+   product_name         varchar(200) not null comment 'æ”¯ä»˜äº§å“åç§°',
    user_no              varchar(50),
    user_name            varchar(100),
    risk_day             int,
@@ -288,7 +288,7 @@ create table rp_user_pay_config
    primary key (id)
 );
 
-alter table rp_user_pay_config comment 'Ö§¸¶ÉèÖÃ±í';
+alter table rp_user_pay_config comment 'æ”¯ä»˜è®¾ç½®è¡¨';
 
 /*==============================================================*/
 /* table: rp_user_pay_info                                      */
@@ -308,12 +308,12 @@ create table rp_user_pay_info
    user_no              varchar(50),
    user_name            varchar(100),
    partner_key          varchar(100),
-   pay_way_code         varchar(50) not null comment 'Ö§¸¶·½Ê½±àºÅ',
-   pay_way_name         varchar(100) not null comment 'Ö§¸¶·½Ê½Ãû³Æ',
+   pay_way_code         varchar(50) not null comment 'æ”¯ä»˜æ–¹å¼ç¼–å·',
+   pay_way_name         varchar(100) not null comment 'æ”¯ä»˜æ–¹å¼åç§°',
    primary key (id_)
 );
 
-alter table rp_user_pay_info comment '¸Ã±íÓÃÀ´´æ·ÅÓÃ»§¿ªÍ¨µÄµÚÈı·½Ö§¸¶ĞÅÏ¢';
+alter table rp_user_pay_info comment 'è¯¥è¡¨ç”¨æ¥å­˜æ”¾ç”¨æˆ·å¼€é€šçš„ç¬¬ä¸‰æ–¹æ”¯ä»˜ä¿¡æ¯';
 
 
 create table rp_account_check_batch
@@ -321,9 +321,9 @@ create table rp_account_check_batch
    id                   varchar(50) not null,
    version              int unsigned not null,
    create_time          datetime not null,
-   editor               varchar(100) comment 'ĞŞ¸ÄÕß',
-   creater              varchar(100) comment '´´½¨Õß',
-   edit_time            datetime comment '×îºóĞŞ¸ÄÊ±¼ä',
+   editor               varchar(100) comment 'ä¿®æ”¹è€…',
+   creater              varchar(100) comment 'åˆ›å»ºè€…',
+   edit_time            datetime comment 'æœ€åä¿®æ”¹æ—¶é—´',
    status               varchar(30) not null,
    remark               varchar(500),
    batch_no             varchar(30) not null,
@@ -348,16 +348,16 @@ create table rp_account_check_batch
    primary key (id)
 );
 
-alter table rp_account_check_batch comment '¶ÔÕËÅú´Î±í rp_account_check_batch';
+alter table rp_account_check_batch comment 'å¯¹è´¦æ‰¹æ¬¡è¡¨ rp_account_check_batch';
 
 create table rp_account_check_mistake
 (
    id                   varchar(50) not null,
    version              int unsigned not null,
    create_time          datetime not null,
-   editor               varchar(100) comment 'ĞŞ¸ÄÕß',
-   creater              varchar(100) comment '´´½¨Õß',
-   edit_time            datetime comment '×îºóĞŞ¸ÄÊ±¼ä',
+   editor               varchar(100) comment 'ä¿®æ”¹è€…',
+   creater              varchar(100) comment 'åˆ›å»ºè€…',
+   edit_time            datetime comment 'æœ€åä¿®æ”¹æ—¶é—´',
    status               varchar(30),
    remark               varchar(500),
    account_check_batch_no varchar(50) not null,
@@ -389,155 +389,155 @@ create table rp_account_check_mistake
    primary key (id)
 );
 
-alter table rp_account_check_mistake comment '¶ÔÕË²î´í±í rp_account_check_mistake';
+alter table rp_account_check_mistake comment 'å¯¹è´¦å·®é”™è¡¨ rp_account_check_mistake';
 
 create table rp_account_check_mistake_scratch_pool
 (
    id                   varchar(50) not null,
    version              int unsigned not null,
    create_time          datetime not null,
-   editor               varchar(100) comment 'ĞŞ¸ÄÕß',
-   creater              varchar(100) comment '´´½¨Õß',
-   edit_time            datetime comment '×îºóĞŞ¸ÄÊ±¼ä',
-   product_name         varchar(50) comment 'ÉÌÆ·Ãû³Æ',
-   merchant_order_no    varchar(30) not null comment 'ÉÌ»§¶©µ¥ºÅ',
-   trx_no               char(20) not null comment 'Ö§¸¶Á÷Ë®ºÅ',
-   bank_order_no        char(20) comment 'ÒøĞĞ¶©µ¥ºÅ',
-   bank_trx_no          varchar(30) comment 'ÒøĞĞÁ÷Ë®ºÅ',
-   order_amount         decimal(20,6) default 0 comment '¶©µ¥½ğ¶î',
-   plat_income          decimal(20,6) comment 'Æ½Ì¨ÊÕÈë',
-   fee_rate             decimal(20,6) comment '·ÑÂÊ',
-   plat_cost            decimal(20,6) comment 'Æ½Ì¨³É±¾',
-   plat_profit          decimal(20,6) comment 'Æ½Ì¨ÀûÈó',
-   status               varchar(30) comment '×´Ì¬(²Î¿¼Ã¶¾Ù:paymentrecordstatusenum)',
-   pay_way_code         varchar(50) comment 'Ö§¸¶Í¨µÀ±àºÅ',
-   pay_way_name         varchar(100) comment 'Ö§¸¶Í¨µÀÃû³Æ',
-   pay_success_time     datetime comment 'Ö§¸¶³É¹¦Ê±¼ä',
-   complete_time        datetime comment 'Íê³ÉÊ±¼ä',
-   is_refund            varchar(30) default '101' comment 'ÊÇ·ñÍË¿î(100:ÊÇ,101:·ñ,Ä¬ÈÏÖµÎª:101)',
-   refund_times         smallint default 0 comment 'ÍË¿î´ÎÊı(Ä¬ÈÏÖµÎª:0)',
-   success_refund_amount decimal(20,6) comment '³É¹¦ÍË¿î×Ü½ğ¶î',
-   remark               varchar(500) comment '±¸×¢',
+   editor               varchar(100) comment 'ä¿®æ”¹è€…',
+   creater              varchar(100) comment 'åˆ›å»ºè€…',
+   edit_time            datetime comment 'æœ€åä¿®æ”¹æ—¶é—´',
+   product_name         varchar(50) comment 'å•†å“åç§°',
+   merchant_order_no    varchar(30) not null comment 'å•†æˆ·è®¢å•å·',
+   trx_no               char(20) not null comment 'æ”¯ä»˜æµæ°´å·',
+   bank_order_no        char(20) comment 'é“¶è¡Œè®¢å•å·',
+   bank_trx_no          varchar(30) comment 'é“¶è¡Œæµæ°´å·',
+   order_amount         decimal(20,6) default 0 comment 'è®¢å•é‡‘é¢',
+   plat_income          decimal(20,6) comment 'å¹³å°æ”¶å…¥',
+   fee_rate             decimal(20,6) comment 'è´¹ç‡',
+   plat_cost            decimal(20,6) comment 'å¹³å°æˆæœ¬',
+   plat_profit          decimal(20,6) comment 'å¹³å°åˆ©æ¶¦',
+   status               varchar(30) comment 'çŠ¶æ€(å‚è€ƒæšä¸¾:paymentrecordstatusenum)',
+   pay_way_code         varchar(50) comment 'æ”¯ä»˜é€šé“ç¼–å·',
+   pay_way_name         varchar(100) comment 'æ”¯ä»˜é€šé“åç§°',
+   pay_success_time     datetime comment 'æ”¯ä»˜æˆåŠŸæ—¶é—´',
+   complete_time        datetime comment 'å®Œæˆæ—¶é—´',
+   is_refund            varchar(30) default '101' comment 'æ˜¯å¦é€€æ¬¾(100:æ˜¯,101:å¦,é»˜è®¤å€¼ä¸º:101)',
+   refund_times         smallint default 0 comment 'é€€æ¬¾æ¬¡æ•°(é»˜è®¤å€¼ä¸º:0)',
+   success_refund_amount decimal(20,6) comment 'æˆåŠŸé€€æ¬¾æ€»é‡‘é¢',
+   remark               varchar(500) comment 'å¤‡æ³¨',
    batch_no             varchar(50),
    bill_date            datetime
 );
 
-alter table rp_account_check_mistake_scratch_pool comment '²î´íÔİ´æ³Ø';
+alter table rp_account_check_mistake_scratch_pool comment 'å·®é”™æš‚å­˜æ± ';
 
 create table rp_notify_record
 (
    id                   varchar(50) not null,
    version              int not null,
    create_time          datetime not null,
-   editor               varchar(100) comment 'ĞŞ¸ÄÕß',
-   creater              varchar(100) comment '´´½¨Õß',
-   edit_time            datetime comment '×îºóĞŞ¸ÄÊ±¼ä',
+   editor               varchar(100) comment 'ä¿®æ”¹è€…',
+   creater              varchar(100) comment 'åˆ›å»ºè€…',
+   edit_time            datetime comment 'æœ€åä¿®æ”¹æ—¶é—´',
    notify_times         int not null,
    limit_notify_times   int not null,
    url                  varchar(2000) not null,
    merchant_order_no    varchar(50) not null,
    merchant_no          varchar(50) not null,
-   status               varchar(50) not null comment '100:³É¹¦ 101:Ê§°Ü',
-   notify_type          varchar(30) comment 'Í¨ÖªÀàĞÍ',
+   status               varchar(50) not null comment '100:æˆåŠŸ 101:å¤±è´¥',
+   notify_type          varchar(30) comment 'é€šçŸ¥ç±»å‹',
    primary key (id),
    key ak_key_2 (merchant_order_no)
 );
 
-alter table rp_notify_record comment 'Í¨Öª¼ÇÂ¼±í rp_notify_record';
+alter table rp_notify_record comment 'é€šçŸ¥è®°å½•è¡¨ rp_notify_record';
 
 create table rp_notify_record_log
 (
    id                   varchar(50) not null,
    version              int not null,
-   editor               varchar(100) comment 'ĞŞ¸ÄÕß',
-   creater              varchar(100) comment '´´½¨Õß',
-   edit_time            datetime comment '×îºóĞŞ¸ÄÊ±¼ä',
+   editor               varchar(100) comment 'ä¿®æ”¹è€…',
+   creater              varchar(100) comment 'åˆ›å»ºè€…',
+   edit_time            datetime comment 'æœ€åä¿®æ”¹æ—¶é—´',
    create_time          datetime not null,
    notify_id            varchar(50) not null,
    request              varchar(2000) not null,
    response             varchar(2000) not null,
    merchant_no          varchar(50) not null,
-   merchant_order_no    varchar(50) not null comment 'ÉÌ»§¶©µ¥ºÅ',
-   http_status          varchar(50) not null comment 'http×´Ì¬',
+   merchant_order_no    varchar(50) not null comment 'å•†æˆ·è®¢å•å·',
+   http_status          varchar(50) not null comment 'httpçŠ¶æ€',
    primary key (id)
 );
 
-alter table rp_notify_record_log comment 'Í¨Öª¼ÇÂ¼ÈÕÖ¾±í rp_notify_record_log';
+alter table rp_notify_record_log comment 'é€šçŸ¥è®°å½•æ—¥å¿—è¡¨ rp_notify_record_log';
 
 create table rp_refund_record
 (
    id                   varchar(50) not null comment 'id',
-   version              int not null comment '°æ±¾ºÅ',
-   create_time          datetime comment '´´½¨Ê±¼ä',
-   editor               varchar(100) comment 'ĞŞ¸ÄÕß',
-   creater              varchar(100) comment '´´½¨Õß',
-   edit_time            datetime comment '×îºóĞŞ¸ÄÊ±¼ä',
-   org_merchant_order_no varchar(50) comment 'Ô­ÉÌ»§¶©µ¥ºÅ',
-   org_trx_no           varchar(50) comment 'Ô­Ö§¸¶Á÷Ë®ºÅ',
-   org_bank_order_no    varchar(50) comment 'Ô­ÒøĞĞ¶©µ¥ºÅ',
-   org_bank_trx_no      varchar(50) comment 'Ô­ÒøĞĞÁ÷Ë®ºÅ',
-   merchant_name        varchar(100) comment 'ÉÌ¼ÒÃû³Æ',
-   merchant_no          varchar(100) not null comment 'ÉÌ¼Ò±àºÅ',
-   org_product_name     varchar(60) comment 'Ô­ÉÌÆ·Ãû³Æ',
-   org_biz_type         varchar(30) comment 'Ô­ÒµÎñÀàĞÍ',
-   org_payment_type     varchar(30) comment 'Ô­Ö§¸¶·½Ê½ÀàĞÍ',
-   refund_amount        decimal(20,6) comment '¶©µ¥ÍË¿î½ğ¶î',
-   refund_trx_no        varchar(50) not null comment 'ÍË¿îÁ÷Ë®ºÅ',
-   refund_order_no      varchar(50) not null comment 'ÍË¿î¶©µ¥ºÅ',
-   bank_refund_order_no varchar(50) comment 'ÒøĞĞÍË¿î¶©µ¥ºÅ',
-   bank_refund_trx_no   varchar(30) comment 'ÒøĞĞÍË¿îÁ÷Ë®ºÅ',
-   result_notify_url    varchar(500) comment 'ÍË¿î½á¹ûÍ¨Öªurl',
-   refund_status        varchar(30) comment 'ÍË¿î×´Ì¬',
-   refund_from          varchar(30) comment 'ÍË¿îÀ´Ô´£¨·Ö·¢Æ½Ì¨£©',
-   refund_way           varchar(30) comment 'ÍË¿î·½Ê½',
-   refund_request_time  datetime comment 'ÍË¿îÇëÇóÊ±¼ä',
-   refund_success_time  datetime comment ' ÍË¿î³É¹¦Ê±¼ä',
-   refund_complete_time datetime comment 'ÍË¿îÍê³ÉÊ±¼ä',
-   request_apply_user_id varchar(50) comment 'ÍË¿îÇëÇó,ÉêÇëÈËµÇÂ¼Ãû',
-   request_apply_user_name varchar(90) comment 'ÍË¿îÇëÇó,ÉêÇëÈËĞÕÃû',
-   refund_reason        varchar(500) comment 'ÍË¿îÔ­Òò',
-   remark               varchar(3000) comment '±¸×¢',
+   version              int not null comment 'ç‰ˆæœ¬å·',
+   create_time          datetime comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(100) comment 'ä¿®æ”¹è€…',
+   creater              varchar(100) comment 'åˆ›å»ºè€…',
+   edit_time            datetime comment 'æœ€åä¿®æ”¹æ—¶é—´',
+   org_merchant_order_no varchar(50) comment 'åŸå•†æˆ·è®¢å•å·',
+   org_trx_no           varchar(50) comment 'åŸæ”¯ä»˜æµæ°´å·',
+   org_bank_order_no    varchar(50) comment 'åŸé“¶è¡Œè®¢å•å·',
+   org_bank_trx_no      varchar(50) comment 'åŸé“¶è¡Œæµæ°´å·',
+   merchant_name        varchar(100) comment 'å•†å®¶åç§°',
+   merchant_no          varchar(100) not null comment 'å•†å®¶ç¼–å·',
+   org_product_name     varchar(60) comment 'åŸå•†å“åç§°',
+   org_biz_type         varchar(30) comment 'åŸä¸šåŠ¡ç±»å‹',
+   org_payment_type     varchar(30) comment 'åŸæ”¯ä»˜æ–¹å¼ç±»å‹',
+   refund_amount        decimal(20,6) comment 'è®¢å•é€€æ¬¾é‡‘é¢',
+   refund_trx_no        varchar(50) not null comment 'é€€æ¬¾æµæ°´å·',
+   refund_order_no      varchar(50) not null comment 'é€€æ¬¾è®¢å•å·',
+   bank_refund_order_no varchar(50) comment 'é“¶è¡Œé€€æ¬¾è®¢å•å·',
+   bank_refund_trx_no   varchar(30) comment 'é“¶è¡Œé€€æ¬¾æµæ°´å·',
+   result_notify_url    varchar(500) comment 'é€€æ¬¾ç»“æœé€šçŸ¥url',
+   refund_status        varchar(30) comment 'é€€æ¬¾çŠ¶æ€',
+   refund_from          varchar(30) comment 'é€€æ¬¾æ¥æºï¼ˆåˆ†å‘å¹³å°ï¼‰',
+   refund_way           varchar(30) comment 'é€€æ¬¾æ–¹å¼',
+   refund_request_time  datetime comment 'é€€æ¬¾è¯·æ±‚æ—¶é—´',
+   refund_success_time  datetime comment ' é€€æ¬¾æˆåŠŸæ—¶é—´',
+   refund_complete_time datetime comment 'é€€æ¬¾å®Œæˆæ—¶é—´',
+   request_apply_user_id varchar(50) comment 'é€€æ¬¾è¯·æ±‚,ç”³è¯·äººç™»å½•å',
+   request_apply_user_name varchar(90) comment 'é€€æ¬¾è¯·æ±‚,ç”³è¯·äººå§“å',
+   refund_reason        varchar(500) comment 'é€€æ¬¾åŸå› ',
+   remark               varchar(3000) comment 'å¤‡æ³¨',
    primary key (id),
    unique key ak_key_2 (refund_trx_no)
 );
 
-alter table rp_refund_record comment 'ÍË¿î¼ÇÂ¼±í';
+alter table rp_refund_record comment 'é€€æ¬¾è®°å½•è¡¨';
 
 create table rp_trade_payment_order
 (
    id                   varchar(50) not null comment 'id',
-   version              int not null default 0 comment '°æ±¾ºÅ',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   editor               varchar(100) comment 'ĞŞ¸ÄÕß',
-   creater              varchar(100) comment '´´½¨Õß',
-   edit_time            datetime comment '×îºóĞŞ¸ÄÊ±¼ä',
-   status               varchar(50) comment '×´Ì¬(²Î¿¼Ã¶¾Ù:orderstatusenum)',
-   product_name         varchar(300) comment 'ÉÌÆ·Ãû³Æ',
-   merchant_order_no    varchar(30) not null comment 'ÉÌ»§¶©µ¥ºÅ',
-   order_amount         decimal(20,6) default 0 comment '¶©µ¥½ğ¶î',
-   order_from           varchar(30) comment '¶©µ¥À´Ô´',
-   merchant_name        varchar(100) comment 'ÉÌ¼ÒÃû³Æ',
-   merchant_no          varchar(100) not null comment 'ÉÌ»§±àºÅ',
-   order_time           datetime comment 'ÏÂµ¥Ê±¼ä',
-   order_date           date comment 'ÏÂµ¥ÈÕÆÚ',
-   order_ip             varchar(50) comment 'ÏÂµ¥ip(¿Í»§¶Ëip,ÔÚÍø¹ØÒ³Ãæ»ñÈ¡)',
-   order_referer_url    varchar(100) comment '´ÓÄÄ¸öÒ³ÃæÁ´½Ó¹ıÀ´µÄ(¿ÉÓÃÓÚ·ÀÕ©Æ­)',
-   return_url           varchar(600) comment 'Ò³Ãæ»Øµ÷Í¨Öªurl',
-   notify_url           varchar(600) comment 'ºóÌ¨Òì²½Í¨Öªurl',
-   cancel_reason        varchar(600) comment '¶©µ¥³·ÏúÔ­Òò',
-   order_period         smallint comment '¶©µ¥ÓĞĞ§ÆÚ(µ¥Î»·ÖÖÓ)',
-   expire_time          datetime comment 'µ½ÆÚÊ±¼ä',
-   pay_way_code         varchar(50) comment 'Ö§¸¶·½Ê½±àºÅ',
-   pay_way_name         varchar(100) comment 'Ö§¸¶·½Ê½Ãû³Æ',
-   remark               varchar(200) comment 'Ö§¸¶±¸×¢',
-   trx_type             varchar(30) comment '½»Ò×ÒµÎñÀàĞÍ  £ºÏû·Ñ¡¢³äÖµµÈ',
-   trx_no               varchar(50) comment 'Ö§¸¶Á÷Ë®ºÅ',
-   pay_type_code        varchar(50) comment 'Ö§¸¶ÀàĞÍ±àºÅ',
-   pay_type_name        varchar(100) comment 'Ö§¸¶ÀàĞÍÃû³Æ',
-   fund_into_type       varchar(30) comment '×Ê½ğÁ÷ÈëÀàĞÍ',
-   is_refund            varchar(30) default '101' comment 'ÊÇ·ñÍË¿î(100:ÊÇ,101:·ñ,Ä¬ÈÏÖµÎª:101)',
-   refund_times         int default 0 comment 'ÍË¿î´ÎÊı(Ä¬ÈÏÖµÎª:0)',
-   success_refund_amount decimal(20,6) comment '³É¹¦ÍË¿î×Ü½ğ¶î',
+   version              int not null default 0 comment 'ç‰ˆæœ¬å·',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(100) comment 'ä¿®æ”¹è€…',
+   creater              varchar(100) comment 'åˆ›å»ºè€…',
+   edit_time            datetime comment 'æœ€åä¿®æ”¹æ—¶é—´',
+   status               varchar(50) comment 'çŠ¶æ€(å‚è€ƒæšä¸¾:orderstatusenum)',
+   product_name         varchar(300) comment 'å•†å“åç§°',
+   merchant_order_no    varchar(30) not null comment 'å•†æˆ·è®¢å•å·',
+   order_amount         decimal(20,6) default 0 comment 'è®¢å•é‡‘é¢',
+   order_from           varchar(30) comment 'è®¢å•æ¥æº',
+   merchant_name        varchar(100) comment 'å•†å®¶åç§°',
+   merchant_no          varchar(100) not null comment 'å•†æˆ·ç¼–å·',
+   order_time           datetime comment 'ä¸‹å•æ—¶é—´',
+   order_date           date comment 'ä¸‹å•æ—¥æœŸ',
+   order_ip             varchar(50) comment 'ä¸‹å•ip(å®¢æˆ·ç«¯ip,åœ¨ç½‘å…³é¡µé¢è·å–)',
+   order_referer_url    varchar(100) comment 'ä»å“ªä¸ªé¡µé¢é“¾æ¥è¿‡æ¥çš„(å¯ç”¨äºé˜²è¯ˆéª—)',
+   return_url           varchar(600) comment 'é¡µé¢å›è°ƒé€šçŸ¥url',
+   notify_url           varchar(600) comment 'åå°å¼‚æ­¥é€šçŸ¥url',
+   cancel_reason        varchar(600) comment 'è®¢å•æ’¤é”€åŸå› ',
+   order_period         smallint comment 'è®¢å•æœ‰æ•ˆæœŸ(å•ä½åˆ†é’Ÿ)',
+   expire_time          datetime comment 'åˆ°æœŸæ—¶é—´',
+   pay_way_code         varchar(50) comment 'æ”¯ä»˜æ–¹å¼ç¼–å·',
+   pay_way_name         varchar(100) comment 'æ”¯ä»˜æ–¹å¼åç§°',
+   remark               varchar(200) comment 'æ”¯ä»˜å¤‡æ³¨',
+   trx_type             varchar(30) comment 'äº¤æ˜“ä¸šåŠ¡ç±»å‹  ï¼šæ¶ˆè´¹ã€å……å€¼ç­‰',
+   trx_no               varchar(50) comment 'æ”¯ä»˜æµæ°´å·',
+   pay_type_code        varchar(50) comment 'æ”¯ä»˜ç±»å‹ç¼–å·',
+   pay_type_name        varchar(100) comment 'æ”¯ä»˜ç±»å‹åç§°',
+   fund_into_type       varchar(30) comment 'èµ„é‡‘æµå…¥ç±»å‹',
+   is_refund            varchar(30) default '101' comment 'æ˜¯å¦é€€æ¬¾(100:æ˜¯,101:å¦,é»˜è®¤å€¼ä¸º:101)',
+   refund_times         int default 0 comment 'é€€æ¬¾æ¬¡æ•°(é»˜è®¤å€¼ä¸º:0)',
+   success_refund_amount decimal(20,6) comment 'æˆåŠŸé€€æ¬¾æ€»é‡‘é¢',
    field1               varchar(500),
    field2               varchar(500),
    field3               varchar(500),
@@ -547,75 +547,75 @@ create table rp_trade_payment_order
    unique key ak_key_2 (merchant_order_no, merchant_no)
 );
 
-alter table rp_trade_payment_order comment 'roncoo pay Áú¹ûÖ§¸¶ Ö§¸¶¶©µ¥±í';
+alter table rp_trade_payment_order comment 'roncoo pay é¾™æœæ”¯ä»˜ æ”¯ä»˜è®¢å•è¡¨';
 
 create table rp_trade_payment_record
 (
    id                   varchar(50) not null comment 'id',
-   version              int not null default 0 comment '°æ±¾ºÅ',
-   create_time          datetime comment '´´½¨Ê±¼ä',
-   status               varchar(30) comment '×´Ì¬(²Î¿¼Ã¶¾Ù:paymentrecordstatusenum)',
-   editor               varchar(100) comment 'ĞŞ¸ÄÕß',
-   creater              varchar(100) comment '´´½¨Õß',
-   edit_time            datetime comment '×îºóĞŞ¸ÄÊ±¼ä',
-   product_name         varchar(50) comment 'ÉÌÆ·Ãû³Æ',
-   merchant_order_no    varchar(50) not null comment 'ÉÌ»§¶©µ¥ºÅ',
-   trx_no               varchar(50) not null comment 'Ö§¸¶Á÷Ë®ºÅ',
-   bank_order_no        varchar(50) comment 'ÒøĞĞ¶©µ¥ºÅ',
-   bank_trx_no          varchar(50) comment 'ÒøĞĞÁ÷Ë®ºÅ',
-   merchant_name        varchar(300) comment 'ÉÌ¼ÒÃû³Æ',
-   merchant_no          varchar(50) not null comment 'ÉÌ¼Ò±àºÅ',
-   payer_user_no        varchar(50) comment '¸¶¿îÈË±àºÅ',
-   payer_name           varchar(60) comment '¸¶¿îÈËÃû³Æ',
-   payer_pay_amount     decimal(20,6) default 0 comment '¸¶¿î·½Ö§¸¶½ğ¶î',
-   payer_fee            decimal(20,6) default 0 comment '¸¶¿î·½ÊÖĞø·Ñ',
-   payer_account_type   varchar(30) comment '¸¶¿î·½ÕË»§ÀàĞÍ(²Î¿¼ÕË»§ÀàĞÍÃ¶¾Ù:accounttypeenum)',
-   receiver_user_no     varchar(15) comment 'ÊÕ¿îÈË±àºÅ',
-   receiver_name        varchar(60) comment 'ÊÕ¿îÈËÃû³Æ',
-   receiver_pay_amount  decimal(20,6) default 0 comment 'ÊÕ¿î·½Ö§¸¶½ğ¶î',
-   receiver_fee         decimal(20,6) default 0 comment 'ÊÕ¿î·½ÊÖĞø·Ñ',
-   receiver_account_type varchar(30) comment 'ÊÕ¿î·½ÕË»§ÀàĞÍ(²Î¿¼ÕË»§ÀàĞÍÃ¶¾Ù:accounttypeenum)',
-   order_ip             varchar(30) comment 'ÏÂµ¥ip(¿Í»§¶Ëip,´ÓÍø¹ØÖĞ»ñÈ¡)',
-   order_referer_url    varchar(100) comment '´ÓÄÄ¸öÒ³ÃæÁ´½Ó¹ıÀ´µÄ(¿ÉÓÃÓÚ·ÀÕ©Æ­)',
-   order_amount         decimal(20,6) default 0 comment '¶©µ¥½ğ¶î',
-   plat_income          decimal(20,6) comment 'Æ½Ì¨ÊÕÈë',
-   fee_rate             decimal(20,6) comment '·ÑÂÊ',
-   plat_cost            decimal(20,6) comment 'Æ½Ì¨³É±¾',
-   plat_profit          decimal(20,6) comment 'Æ½Ì¨ÀûÈó',
-   return_url           varchar(600) comment 'Ò³Ãæ»Øµ÷Í¨Öªurl',
-   notify_url           varchar(600) comment 'ºóÌ¨Òì²½Í¨Öªurl',
-   pay_way_code         varchar(50) comment 'Ö§¸¶·½Ê½±àºÅ',
-   pay_way_name         varchar(100) comment 'Ö§¸¶·½Ê½Ãû³Æ',
-   pay_success_time     datetime comment 'Ö§¸¶³É¹¦Ê±¼ä',
-   complete_time        datetime comment 'Íê³ÉÊ±¼ä',
-   is_refund            varchar(30) default '101' comment 'ÊÇ·ñÍË¿î(100:ÊÇ,101:·ñ,Ä¬ÈÏÖµÎª:101)',
-   refund_times         int default 0 comment 'ÍË¿î´ÎÊı(Ä¬ÈÏÖµÎª:0)',
-   success_refund_amount decimal(20,6) comment '³É¹¦ÍË¿î×Ü½ğ¶î',
-   trx_type             varchar(30) comment '½»Ò×ÒµÎñÀàĞÍ  £ºÏû·Ñ¡¢³äÖµµÈ',
-   order_from           varchar(30) comment '¶©µ¥À´Ô´',
-   pay_type_code        varchar(50) comment 'Ö§¸¶ÀàĞÍ±àºÅ',
-   pay_type_name        varchar(100) comment 'Ö§¸¶ÀàĞÍÃû³Æ',
-   fund_into_type       varchar(30) comment '×Ê½ğÁ÷ÈëÀàĞÍ',
-   remark               varchar(3000) comment '±¸×¢',
+   version              int not null default 0 comment 'ç‰ˆæœ¬å·',
+   create_time          datetime comment 'åˆ›å»ºæ—¶é—´',
+   status               varchar(30) comment 'çŠ¶æ€(å‚è€ƒæšä¸¾:paymentrecordstatusenum)',
+   editor               varchar(100) comment 'ä¿®æ”¹è€…',
+   creater              varchar(100) comment 'åˆ›å»ºè€…',
+   edit_time            datetime comment 'æœ€åä¿®æ”¹æ—¶é—´',
+   product_name         varchar(50) comment 'å•†å“åç§°',
+   merchant_order_no    varchar(50) not null comment 'å•†æˆ·è®¢å•å·',
+   trx_no               varchar(50) not null comment 'æ”¯ä»˜æµæ°´å·',
+   bank_order_no        varchar(50) comment 'é“¶è¡Œè®¢å•å·',
+   bank_trx_no          varchar(50) comment 'é“¶è¡Œæµæ°´å·',
+   merchant_name        varchar(300) comment 'å•†å®¶åç§°',
+   merchant_no          varchar(50) not null comment 'å•†å®¶ç¼–å·',
+   payer_user_no        varchar(50) comment 'ä»˜æ¬¾äººç¼–å·',
+   payer_name           varchar(60) comment 'ä»˜æ¬¾äººåç§°',
+   payer_pay_amount     decimal(20,6) default 0 comment 'ä»˜æ¬¾æ–¹æ”¯ä»˜é‡‘é¢',
+   payer_fee            decimal(20,6) default 0 comment 'ä»˜æ¬¾æ–¹æ‰‹ç»­è´¹',
+   payer_account_type   varchar(30) comment 'ä»˜æ¬¾æ–¹è´¦æˆ·ç±»å‹(å‚è€ƒè´¦æˆ·ç±»å‹æšä¸¾:accounttypeenum)',
+   receiver_user_no     varchar(15) comment 'æ”¶æ¬¾äººç¼–å·',
+   receiver_name        varchar(60) comment 'æ”¶æ¬¾äººåç§°',
+   receiver_pay_amount  decimal(20,6) default 0 comment 'æ”¶æ¬¾æ–¹æ”¯ä»˜é‡‘é¢',
+   receiver_fee         decimal(20,6) default 0 comment 'æ”¶æ¬¾æ–¹æ‰‹ç»­è´¹',
+   receiver_account_type varchar(30) comment 'æ”¶æ¬¾æ–¹è´¦æˆ·ç±»å‹(å‚è€ƒè´¦æˆ·ç±»å‹æšä¸¾:accounttypeenum)',
+   order_ip             varchar(30) comment 'ä¸‹å•ip(å®¢æˆ·ç«¯ip,ä»ç½‘å…³ä¸­è·å–)',
+   order_referer_url    varchar(100) comment 'ä»å“ªä¸ªé¡µé¢é“¾æ¥è¿‡æ¥çš„(å¯ç”¨äºé˜²è¯ˆéª—)',
+   order_amount         decimal(20,6) default 0 comment 'è®¢å•é‡‘é¢',
+   plat_income          decimal(20,6) comment 'å¹³å°æ”¶å…¥',
+   fee_rate             decimal(20,6) comment 'è´¹ç‡',
+   plat_cost            decimal(20,6) comment 'å¹³å°æˆæœ¬',
+   plat_profit          decimal(20,6) comment 'å¹³å°åˆ©æ¶¦',
+   return_url           varchar(600) comment 'é¡µé¢å›è°ƒé€šçŸ¥url',
+   notify_url           varchar(600) comment 'åå°å¼‚æ­¥é€šçŸ¥url',
+   pay_way_code         varchar(50) comment 'æ”¯ä»˜æ–¹å¼ç¼–å·',
+   pay_way_name         varchar(100) comment 'æ”¯ä»˜æ–¹å¼åç§°',
+   pay_success_time     datetime comment 'æ”¯ä»˜æˆåŠŸæ—¶é—´',
+   complete_time        datetime comment 'å®Œæˆæ—¶é—´',
+   is_refund            varchar(30) default '101' comment 'æ˜¯å¦é€€æ¬¾(100:æ˜¯,101:å¦,é»˜è®¤å€¼ä¸º:101)',
+   refund_times         int default 0 comment 'é€€æ¬¾æ¬¡æ•°(é»˜è®¤å€¼ä¸º:0)',
+   success_refund_amount decimal(20,6) comment 'æˆåŠŸé€€æ¬¾æ€»é‡‘é¢',
+   trx_type             varchar(30) comment 'äº¤æ˜“ä¸šåŠ¡ç±»å‹  ï¼šæ¶ˆè´¹ã€å……å€¼ç­‰',
+   order_from           varchar(30) comment 'è®¢å•æ¥æº',
+   pay_type_code        varchar(50) comment 'æ”¯ä»˜ç±»å‹ç¼–å·',
+   pay_type_name        varchar(100) comment 'æ”¯ä»˜ç±»å‹åç§°',
+   fund_into_type       varchar(30) comment 'èµ„é‡‘æµå…¥ç±»å‹',
+   remark               varchar(3000) comment 'å¤‡æ³¨',
    field1               varchar(500),
    field2               varchar(500),
    field3               varchar(500),
    field4               varchar(500),
    field5               varchar(500),
-   bank_return_msg      varchar(2000) comment 'ÒøĞĞ·µ»ØĞÅÏ¢',
+   bank_return_msg      varchar(2000) comment 'é“¶è¡Œè¿”å›ä¿¡æ¯',
    primary key (id),
    unique key ak_key_2 (trx_no)
 );
 
-alter table rp_trade_payment_record comment 'Ö§¸¶¼ÇÂ¼±í';
+alter table rp_trade_payment_record comment 'æ”¯ä»˜è®°å½•è¡¨';
 
 CREATE TABLE seq_table (SEQ_NAME varchar(50) NOT NULL, CURRENT_VALUE bigint DEFAULT '1000000002' NOT NULL, INCREMENT smallint DEFAULT '1' NOT NULL, REMARK varchar(100) NOT NULL, PRIMARY KEY (SEQ_NAME)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('ACCOUNT_NO_SEQ', 10000000, 1, 'ÕË»§--ÕË»§±àºÅ');
-INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('ACTIVITY_NO_SEQ', 10000006, 1, '»î¶¯--»î¶¯±àºÅ');
-INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('USER_NO_SEQ', 10001113, 1, 'ÓÃ»§--ÓÃ»§±àºÅ');
-INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('TRX_NO_SEQ', 10000000, 1, '½»Ò×¡ª-Ö§¸¶Á÷Ë®ºÅ');
-INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('BANK_ORDER_NO_SEQ', 10000000, 1, '½»Ò×¡ª-ÒøĞĞ¶©µ¥ºÅ');
-INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('RECONCILIATION_BATCH_NO_SEQ', 10000000, 1, '¶ÔÕË¡ª-Åú´ÎºÅ');
+INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('ACCOUNT_NO_SEQ', 10000000, 1, 'è´¦æˆ·--è´¦æˆ·ç¼–å·');
+INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('ACTIVITY_NO_SEQ', 10000006, 1, 'æ´»åŠ¨--æ´»åŠ¨ç¼–å·');
+INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('USER_NO_SEQ', 10001113, 1, 'ç”¨æˆ·--ç”¨æˆ·ç¼–å·');
+INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('TRX_NO_SEQ', 10000000, 1, 'äº¤æ˜“â€”-æ”¯ä»˜æµæ°´å·');
+INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('BANK_ORDER_NO_SEQ', 10000000, 1, 'äº¤æ˜“â€”-é“¶è¡Œè®¢å•å·');
+INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('RECONCILIATION_BATCH_NO_SEQ', 10000000, 1, 'å¯¹è´¦â€”-æ‰¹æ¬¡å·');
 
 /*==============================================================*/
 /* create function                                              */
@@ -654,7 +654,7 @@ RETURN now();
 END;
 
 
--- Ê±¼äº¯Êı
+-- æ—¶é—´å‡½æ•°
 
 CREATE FUNCTION `FUN_DATE_ADD`(STR_DATE VARCHAR(10), STR_INTERVAL INTEGER) RETURNS DATE
 BEGIN
@@ -667,8 +667,8 @@ END;
 
 
 -- -----------------------------------------------------------------------------------------------------------------------------------
---                                   ×¢Òâ£º¸Ã½Å±¾ÔËĞĞÔÚmysql»·¾³ÏÂ£¬Èç¹ûÊÇÆäËûÊı¾İ¿â£¬ÈçÓĞĞèÒªÇëÏÈĞŞ¸Ä£¬ÔÙÖ´ĞĞ¡£                    --
---                                                                                           ±àĞ´ÈË£ºÉò¼ÑÁú   £¨www.roncoo.com£©    --
+--                                   æ³¨æ„ï¼šè¯¥è„šæœ¬è¿è¡Œåœ¨mysqlç¯å¢ƒä¸‹ï¼Œå¦‚æœæ˜¯å…¶ä»–æ•°æ®åº“ï¼Œå¦‚æœ‰éœ€è¦è¯·å…ˆä¿®æ”¹ï¼Œå†æ‰§è¡Œã€‚                    --
+--                                                                                           ç¼–å†™äººï¼šæ²ˆä½³é¾™   ï¼ˆwww.roncoo.comï¼‰    --
 -- -----------------------------------------------------------------------------------------------------------------------------------
 
 drop table if exists PMS_MENU;
@@ -691,10 +691,10 @@ create table PMS_MENU
 (
    id                   bigint not null auto_increment,
    version              bigint not null,
-   creater              varchar(50) not null comment '´´½¨ÈË',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   editor               varchar(50) comment 'ĞŞ¸ÄÈË',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
+   creater              varchar(50) not null comment 'åˆ›å»ºäºº',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(50) comment 'ä¿®æ”¹äºº',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
    status               varchar(20) not null,
    remark               varchar(300),
    is_leaf              varchar(20),
@@ -707,19 +707,19 @@ create table PMS_MENU
    primary key (id)
 )auto_increment = 1000;
 
-alter table PMS_MENU comment '²Ëµ¥±í';
+alter table PMS_MENU comment 'èœå•è¡¨';
 
 
-alter table PMS_MENU comment '²Ëµ¥±í';
+alter table PMS_MENU comment 'èœå•è¡¨';
 
 create table PMS_MENU_ROLE
 (
-   id                   bigint not null auto_increment comment 'Ö÷¼ü',
+   id                   bigint not null auto_increment comment 'ä¸»é”®',
    version              bigint,
-   creater              varchar(50) comment '´´½¨ÈË',
-   create_time          datetime comment '´´½¨Ê±¼ä',
-   editor               varchar(50) comment 'ĞŞ¸ÄÈË',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
+   creater              varchar(50) comment 'åˆ›å»ºäºº',
+   create_time          datetime comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(50) comment 'ä¿®æ”¹äºº',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
    status               varchar(20),
    remark               varchar(300),
    role_id              bigint not null,
@@ -728,16 +728,16 @@ create table PMS_MENU_ROLE
    key AK_KEY_2 (role_id, menu_id)
 ) auto_increment = 1000;
 
-alter table PMS_MENU_ROLE comment 'È¨ÏŞÓë½ÇÉ«¹ØÁª±í';
+alter table PMS_MENU_ROLE comment 'æƒé™ä¸è§’è‰²å…³è”è¡¨';
 
 create table PMS_OPERATOR
 (
-   id                   bigint not null auto_increment comment 'Ö÷¼ü',
+   id                   bigint not null auto_increment comment 'ä¸»é”®',
    version              bigint not null,
-   creater              varchar(50) not null comment '´´½¨ÈË',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   editor               varchar(50) comment 'ĞŞ¸ÄÈË',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
+   creater              varchar(50) not null comment 'åˆ›å»ºäºº',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(50) comment 'ä¿®æ”¹äºº',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
    status               varchar(20) not null,
    remark               varchar(300),
    real_name            varchar(50) not null,
@@ -750,36 +750,36 @@ create table PMS_OPERATOR
    key AK_KEY_2 (login_name)
 ) auto_increment = 1000;
 
-alter table PMS_OPERATOR comment '²Ù×÷Ô±±í';
+alter table PMS_OPERATOR comment 'æ“ä½œå‘˜è¡¨';
 
 create table PMS_OPERATOR_LOG
 (
-   id                   bigint not null auto_increment comment 'Ö÷¼ü',
+   id                   bigint not null auto_increment comment 'ä¸»é”®',
    version              bigint not null,
-   creater              varchar(50) not null comment '´´½¨ÈË',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   editor               varchar(50) comment 'ĞŞ¸ÄÈË',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
+   creater              varchar(50) not null comment 'åˆ›å»ºäºº',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(50) comment 'ä¿®æ”¹äºº',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
    status               varchar(20) not null,
    remark               varchar(300),
    operator_id          bigint not null,
    operator_name        varchar(50) not null,
-   operate_type         varchar(50) not null comment '²Ù×÷ÀàĞÍ£¨1:Ôö¼Ó£¬2:ĞŞ¸Ä£¬3:É¾³ı£¬4:²éÑ¯£©',
+   operate_type         varchar(50) not null comment 'æ“ä½œç±»å‹ï¼ˆ1:å¢åŠ ï¼Œ2:ä¿®æ”¹ï¼Œ3:åˆ é™¤ï¼Œ4:æŸ¥è¯¢ï¼‰',
    ip                   varchar(100) not null,
    content              varchar(3000),
    primary key (id)
 ) auto_increment = 1000;
 
-alter table PMS_OPERATOR_LOG comment 'È¨ÏŞ_²Ù×÷Ô±²Ù×÷ÈÕÖ¾±í';
+alter table PMS_OPERATOR_LOG comment 'æƒé™_æ“ä½œå‘˜æ“ä½œæ—¥å¿—è¡¨';
 
 create table PMS_PERMISSION
 (
-   id                   bigint not null auto_increment comment 'Ö÷¼ü',
+   id                   bigint not null auto_increment comment 'ä¸»é”®',
    version              bigint not null,
-   creater              varchar(50) not null comment '´´½¨ÈË',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   editor               varchar(50) comment 'ĞŞ¸ÄÈË',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
+   creater              varchar(50) not null comment 'åˆ›å»ºäºº',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(50) comment 'ä¿®æ”¹äºº',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
    status               varchar(20) not null,
    remark               varchar(300),
    permission_name      varchar(100) not null,
@@ -789,34 +789,34 @@ create table PMS_PERMISSION
    key AK_KEY_3 (permission_name)
 ) auto_increment = 1000;
 
-alter table PMS_PERMISSION comment 'È¨ÏŞ±í';
+alter table PMS_PERMISSION comment 'æƒé™è¡¨';
 
 create table PMS_ROLE
 (
-   id                   bigint not null auto_increment comment 'Ö÷¼ü',
+   id                   bigint not null auto_increment comment 'ä¸»é”®',
    version              bigint,
-   creater              varchar(50) comment '´´½¨ÈË',
-   create_time          datetime comment '´´½¨Ê±¼ä',
-   editor               varchar(50) comment 'ĞŞ¸ÄÈË',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
+   creater              varchar(50) comment 'åˆ›å»ºäºº',
+   create_time          datetime comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(50) comment 'ä¿®æ”¹äºº',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
    status               varchar(20),
    remark               varchar(300),
-   role_code            varchar(20) not null comment '½ÇÉ«ÀàĞÍ£¨1:³¬¼¶¹ÜÀíÔ±½ÇÉ«£¬0:ÆÕÍ¨²Ù×÷Ô±½ÇÉ«£©',
+   role_code            varchar(20) not null comment 'è§’è‰²ç±»å‹ï¼ˆ1:è¶…çº§ç®¡ç†å‘˜è§’è‰²ï¼Œ0:æ™®é€šæ“ä½œå‘˜è§’è‰²ï¼‰',
    role_name            varchar(100) not null,
    primary key (id),
    key AK_KEY_2 (role_name)
 ) auto_increment = 1000;
 
-alter table PMS_ROLE comment '½ÇÉ«±í';
+alter table PMS_ROLE comment 'è§’è‰²è¡¨';
 
 create table PMS_ROLE_OPERATOR
 (
-   id                   bigint not null auto_increment comment 'Ö÷¼ü',
+   id                   bigint not null auto_increment comment 'ä¸»é”®',
    version              bigint not null,
-   creater              varchar(50) not null comment '´´½¨ÈË',
-   create_time          datetime not null comment '´´½¨Ê±¼ä',
-   editor               varchar(50) comment 'ĞŞ¸ÄÈË',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
+   creater              varchar(50) not null comment 'åˆ›å»ºäºº',
+   create_time          datetime not null comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(50) comment 'ä¿®æ”¹äºº',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
    status               varchar(20) not null,
    remark               varchar(300),
    role_id              bigint not null,
@@ -825,16 +825,16 @@ create table PMS_ROLE_OPERATOR
    key AK_KEY_2 (role_id, operator_id)
 ) auto_increment = 1000;
 
-alter table PMS_ROLE_OPERATOR comment '²Ù×÷Ô±Óë½ÇÉ«¹ØÁª±í';
+alter table PMS_ROLE_OPERATOR comment 'æ“ä½œå‘˜ä¸è§’è‰²å…³è”è¡¨';
 
 create table PMS_ROLE_PERMISSION
 (
-   id                   bigint not null auto_increment comment 'Ö÷¼ü',
+   id                   bigint not null auto_increment comment 'ä¸»é”®',
    version              bigint,
-   creater              varchar(50) comment '´´½¨ÈË',
-   create_time          datetime comment '´´½¨Ê±¼ä',
-   editor               varchar(50) comment 'ĞŞ¸ÄÈË',
-   edit_time            datetime comment 'ĞŞ¸ÄÊ±¼ä',
+   creater              varchar(50) comment 'åˆ›å»ºäºº',
+   create_time          datetime comment 'åˆ›å»ºæ—¶é—´',
+   editor               varchar(50) comment 'ä¿®æ”¹äºº',
+   edit_time            datetime comment 'ä¿®æ”¹æ—¶é—´',
    status               varchar(20),
    remark               varchar(300),
    role_id              bigint not null,
@@ -843,167 +843,167 @@ create table PMS_ROLE_PERMISSION
    key AK_KEY_2 (role_id, permission_id)
 ) auto_increment = 1000;
 
-alter table PMS_ROLE_PERMISSION comment 'È¨ÏŞÓë½ÇÉ«¹ØÁª±í';
+alter table PMS_ROLE_PERMISSION comment 'æƒé™ä¸è§’è‰²å…³è”è¡¨';
 
 
 
 
 
--- ------------------------------step 1  ²Ëµ¥-------------------------------------------------
--- ²Ëµ¥³õÊ¼»¯Êı¾İ
---  -- ²Ëµ¥µÄ³õÊ¼»¯Êı¾İ
+-- ------------------------------step 1  èœå•-------------------------------------------------
+-- èœå•åˆå§‹åŒ–æ•°æ®
+--  -- èœå•çš„åˆå§‹åŒ–æ•°æ®
 INSERT INTO PMS_MENU (id,version,status,creater,create_time, editor, edit_time, remark, NAME, URL, NUMBER, IS_LEAF, LEVEL, PARENT_ID, TARGET_NAME) VALUES 
-(1,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'È¨ÏŞ¹ÜÀí', '##', '001', 'NO', 1, 0, '#'),
-(2,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '²Ëµ¥¹ÜÀí', 'pms/menu/list', '00101', 'YES', 2, 1, 'cdgl'),
-(3,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'È¨ÏŞ¹ÜÀí', 'pms/permission/list', '00102', 'YES',2, 1, 'qxgl'),
-(4,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '½ÇÉ«¹ÜÀí', 'pms/role/list', '00103', 'YES',2, 1, 'jsgl'),
-(5,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '²Ù×÷Ô±¹ÜÀí', 'pms/operator/list', '00104', 'YES',2, 1, 'czygl'),
+(1,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'æƒé™ç®¡ç†', '##', '001', 'NO', 1, 0, '#'),
+(2,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'èœå•ç®¡ç†', 'pms/menu/list', '00101', 'YES', 2, 1, 'cdgl'),
+(3,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'æƒé™ç®¡ç†', 'pms/permission/list', '00102', 'YES',2, 1, 'qxgl'),
+(4,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'è§’è‰²ç®¡ç†', 'pms/role/list', '00103', 'YES',2, 1, 'jsgl'),
+(5,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'æ“ä½œå‘˜ç®¡ç†', 'pms/operator/list', '00104', 'YES',2, 1, 'czygl'),
 
-(10,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ÕË»§¹ÜÀí', '##', '002', 'NO', 1, 0, '#'),
-(12,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ÕË»§ĞÅÏ¢', 'account/list', '00201', 'YES',2, 10, 'zhxx'),
-(13,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ÕË»§ÀúÊ·ĞÅÏ¢', 'account/historyList', '00202', 'YES',2, 10, 'zhlsxx'),
+(10,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'è´¦æˆ·ç®¡ç†', '##', '002', 'NO', 1, 0, '#'),
+(12,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'è´¦æˆ·ä¿¡æ¯', 'account/list', '00201', 'YES',2, 10, 'zhxx'),
+(13,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'è´¦æˆ·å†å²ä¿¡æ¯', 'account/historyList', '00202', 'YES',2, 10, 'zhlsxx'),
 
 
-(20,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ÓÃ»§¹ÜÀí', '##', '003', 'NO', 1, 0, '#'),
-(22,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ÓÃ»§ĞÅÏ¢', 'user/info/list', '00301', 'YES',2, 20, 'yhxx'),
+(20,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ç”¨æˆ·ç®¡ç†', '##', '003', 'NO', 1, 0, '#'),
+(22,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ç”¨æˆ·ä¿¡æ¯', 'user/info/list', '00301', 'YES',2, 20, 'yhxx'),
 
-(30,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'Ö§¸¶¹ÜÀí', '##', '004', 'NO', 1, 0, '#'),
-(32,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'Ö§¸¶²úÆ·ĞÅÏ¢', 'pay/product/list', '00401', 'YES',2, 30, 'zfcpgl'),
-(33,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ÓÃ»§Ö§¸¶ÅäÖÃ', 'pay/config/list', '00402', 'YES',2, 30, 'yhzfpz'),
+(30,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'æ”¯ä»˜ç®¡ç†', '##', '004', 'NO', 1, 0, '#'),
+(32,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'æ”¯ä»˜äº§å“ä¿¡æ¯', 'pay/product/list', '00401', 'YES',2, 30, 'zfcpgl'),
+(33,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ç”¨æˆ·æ”¯ä»˜é…ç½®', 'pay/config/list', '00402', 'YES',2, 30, 'yhzfpz'),
 
-(40,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '½»Ò×¹ÜÀí', '##', '005', 'NO', 1, 0, '#'),
-(42,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'Ö§¸¶¶©µ¥¹ÜÀí', 'trade/listPaymentOrder', '00501', 'YES',2, 40, 'zfddgl'),
-(43,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'Ö§¸¶¼ÇÂ¼¹ÜÀí', 'trade/listPaymentRecord', '00502', 'YES',2, 40, 'zfjjgl'),
+(40,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'äº¤æ˜“ç®¡ç†', '##', '005', 'NO', 1, 0, '#'),
+(42,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'æ”¯ä»˜è®¢å•ç®¡ç†', 'trade/listPaymentOrder', '00501', 'YES',2, 40, 'zfddgl'),
+(43,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'æ”¯ä»˜è®°å½•ç®¡ç†', 'trade/listPaymentRecord', '00502', 'YES',2, 40, 'zfjjgl'),
 
-(50,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '½áËã¹ÜÀí', '##', '006', 'NO', 1, 0, '#'),
-(52,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '½áËã¼ÇÂ¼¹ÜÀí', 'sett/list', '00601', 'YES',2, 50, 'jsjlgl'),
+(50,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ç»“ç®—ç®¡ç†', '##', '006', 'NO', 1, 0, '#'),
+(52,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'ç»“ç®—è®°å½•ç®¡ç†', 'sett/list', '00601', 'YES',2, 50, 'jsjlgl'),
 
-(60,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '¶ÔÕË¹ÜÀí', '##', '007', 'NO', 1, 0, '#'),
-(62,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '¶ÔÕË²î´íÁĞ±í', 'reconciliation/list/mistake', '00701', 'YES',2, 60, 'dzcclb'),
-(63,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '¶ÔÕËÅú´ÎÁĞ±í', 'reconciliation/list/checkbatch', '00702', 'YES',2, 60, 'dzpclb'),
-(64,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '¶ÔÕË»º³å³ØÁĞ±í', 'reconciliation/list/scratchPool', '00703', 'YES',2, 60, 'dzhcclb');
+(60,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'å¯¹è´¦ç®¡ç†', '##', '007', 'NO', 1, 0, '#'),
+(62,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'å¯¹è´¦å·®é”™åˆ—è¡¨', 'reconciliation/list/mistake', '00701', 'YES',2, 60, 'dzcclb'),
+(63,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'å¯¹è´¦æ‰¹æ¬¡åˆ—è¡¨', 'reconciliation/list/checkbatch', '00702', 'YES',2, 60, 'dzpclb'),
+(64,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', 'å¯¹è´¦ç¼“å†²æ± åˆ—è¡¨', 'reconciliation/list/scratchPool', '00703', 'YES',2, 60, 'dzhcclb');
 
--- ------------------------------step 2£ºÈ¨ÏŞ¹¦ÄÜµã-------------------------------------------------
--- È¨ÏŞ¹¦ÄÜµãµÄ³õÊ¼»¯Êı¾İ
+-- ------------------------------step 2ï¼šæƒé™åŠŸèƒ½ç‚¹-------------------------------------------------
+-- æƒé™åŠŸèƒ½ç‚¹çš„åˆå§‹åŒ–æ•°æ®
 
 
 insert into PMS_PERMISSION (id,version,status,creater,create_time, editor, edit_time, remark, permission_name, permission) values 
- (1, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ëµ¥-²é¿´','È¨ÏŞ¹ÜÀí-²Ëµ¥-²é¿´','pms:menu:view'),
- (2, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ëµ¥-Ìí¼Ó','È¨ÏŞ¹ÜÀí-²Ëµ¥-Ìí¼Ó','pms:menu:add'),
- (3, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ëµ¥-²é¿´','È¨ÏŞ¹ÜÀí-²Ëµ¥-ĞŞ¸Ä','pms:menu:edit'),
- (4, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ëµ¥-É¾³ı','È¨ÏŞ¹ÜÀí-²Ëµ¥-É¾³ı','pms:menu:delete'),
+ (1, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-èœå•-æŸ¥çœ‹','æƒé™ç®¡ç†-èœå•-æŸ¥çœ‹','pms:menu:view'),
+ (2, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-èœå•-æ·»åŠ ','æƒé™ç®¡ç†-èœå•-æ·»åŠ ','pms:menu:add'),
+ (3, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-èœå•-æŸ¥çœ‹','æƒé™ç®¡ç†-èœå•-ä¿®æ”¹','pms:menu:edit'),
+ (4, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-èœå•-åˆ é™¤','æƒé™ç®¡ç†-èœå•-åˆ é™¤','pms:menu:delete'),
 
- (11, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-È¨ÏŞ-²é¿´','È¨ÏŞ¹ÜÀí-È¨ÏŞ-²é¿´','pms:permission:view'),
- (12, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-È¨ÏŞ-Ìí¼Ó','È¨ÏŞ¹ÜÀí-È¨ÏŞ-Ìí¼Ó','pms:permission:add'),
- (13, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-È¨ÏŞ-ĞŞ¸Ä','È¨ÏŞ¹ÜÀí-È¨ÏŞ-ĞŞ¸Ä','pms:permission:edit'),
- (14, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-È¨ÏŞ-É¾³ı','È¨ÏŞ¹ÜÀí-È¨ÏŞ-É¾³ı','pms:permission:delete'),
+ (11, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æƒé™-æŸ¥çœ‹','æƒé™ç®¡ç†-æƒé™-æŸ¥çœ‹','pms:permission:view'),
+ (12, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æƒé™-æ·»åŠ ','æƒé™ç®¡ç†-æƒé™-æ·»åŠ ','pms:permission:add'),
+ (13, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æƒé™-ä¿®æ”¹','æƒé™ç®¡ç†-æƒé™-ä¿®æ”¹','pms:permission:edit'),
+ (14, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æƒé™-åˆ é™¤','æƒé™ç®¡ç†-æƒé™-åˆ é™¤','pms:permission:delete'),
 
- (21, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-½ÇÉ«-²é¿´','È¨ÏŞ¹ÜÀí-½ÇÉ«-²é¿´','pms:role:view'),
- (22, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-½ÇÉ«-Ìí¼Ó','È¨ÏŞ¹ÜÀí-½ÇÉ«-Ìí¼Ó','pms:role:add'),
- (23, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-½ÇÉ«-ĞŞ¸Ä','È¨ÏŞ¹ÜÀí-½ÇÉ«-ĞŞ¸Ä','pms:role:edit'),
- (24, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-½ÇÉ«-É¾³ı','È¨ÏŞ¹ÜÀí-½ÇÉ«-É¾³ı','pms:role:delete'),
- (25, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-½ÇÉ«-·ÖÅäÈ¨ÏŞ','È¨ÏŞ¹ÜÀí-½ÇÉ«-·ÖÅäÈ¨ÏŞ','pms:role:assignpermission'),
+ (21, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-è§’è‰²-æŸ¥çœ‹','æƒé™ç®¡ç†-è§’è‰²-æŸ¥çœ‹','pms:role:view'),
+ (22, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-è§’è‰²-æ·»åŠ ','æƒé™ç®¡ç†-è§’è‰²-æ·»åŠ ','pms:role:add'),
+ (23, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-è§’è‰²-ä¿®æ”¹','æƒé™ç®¡ç†-è§’è‰²-ä¿®æ”¹','pms:role:edit'),
+ (24, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-è§’è‰²-åˆ é™¤','æƒé™ç®¡ç†-è§’è‰²-åˆ é™¤','pms:role:delete'),
+ (25, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-è§’è‰²-åˆ†é…æƒé™','æƒé™ç®¡ç†-è§’è‰²-åˆ†é…æƒé™','pms:role:assignpermission'),
 
- (31, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-²é¿´','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-²é¿´','pms:operator:view'),
- (32, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-Ìí¼Ó','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-Ìí¼Ó','pms:operator:add'),
- (33, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-²é¿´','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-ĞŞ¸Ä','pms:operator:edit'),
- (34, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-¶³½áÓë½â¶³','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-¶³½áÓë½â¶³','pms:operator:changestatus'),
- (35, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-ÖØÖÃÃÜÂë','È¨ÏŞ¹ÜÀí-²Ù×÷Ô±-ÖØÖÃÃÜÂë','pms:operator:resetpwd'),
+ (31, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æ“ä½œå‘˜-æŸ¥çœ‹','æƒé™ç®¡ç†-æ“ä½œå‘˜-æŸ¥çœ‹','pms:operator:view'),
+ (32, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æ“ä½œå‘˜-æ·»åŠ ','æƒé™ç®¡ç†-æ“ä½œå‘˜-æ·»åŠ ','pms:operator:add'),
+ (33, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æ“ä½œå‘˜-æŸ¥çœ‹','æƒé™ç®¡ç†-æ“ä½œå‘˜-ä¿®æ”¹','pms:operator:edit'),
+ (34, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æ“ä½œå‘˜-å†»ç»“ä¸è§£å†»','æƒé™ç®¡ç†-æ“ä½œå‘˜-å†»ç»“ä¸è§£å†»','pms:operator:changestatus'),
+ (35, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æƒé™ç®¡ç†-æ“ä½œå‘˜-é‡ç½®å¯†ç ','æƒé™ç®¡ç†-æ“ä½œå‘˜-é‡ç½®å¯†ç ','pms:operator:resetpwd'),
 
 
- (51, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÕË»§¹ÜÀí-ÕË»§-²é¿´','ÕË»§¹ÜÀí-ÕË»§-²é¿´','account:accountInfo:view'),
- (52, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÕË»§¹ÜÀí-ÕË»§-Ìí¼Ó','ÕË»§¹ÜÀí-ÕË»§-Ìí¼Ó','account:accountInfo:add'),
- (53, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÕË»§¹ÜÀí-ÕË»§-²é¿´','ÕË»§¹ÜÀí-ÕË»§-ĞŞ¸Ä','account:accountInfo:edit'),
- (54, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÕË»§¹ÜÀí-ÕË»§-É¾³ı','ÕË»§¹ÜÀí-ÕË»§-É¾³ı','account:accountInfo:delete'),
+ (51, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','è´¦æˆ·ç®¡ç†-è´¦æˆ·-æŸ¥çœ‹','è´¦æˆ·ç®¡ç†-è´¦æˆ·-æŸ¥çœ‹','account:accountInfo:view'),
+ (52, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','è´¦æˆ·ç®¡ç†-è´¦æˆ·-æ·»åŠ ','è´¦æˆ·ç®¡ç†-è´¦æˆ·-æ·»åŠ ','account:accountInfo:add'),
+ (53, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','è´¦æˆ·ç®¡ç†-è´¦æˆ·-æŸ¥çœ‹','è´¦æˆ·ç®¡ç†-è´¦æˆ·-ä¿®æ”¹','account:accountInfo:edit'),
+ (54, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','è´¦æˆ·ç®¡ç†-è´¦æˆ·-åˆ é™¤','è´¦æˆ·ç®¡ç†-è´¦æˆ·-åˆ é™¤','account:accountInfo:delete'),
 
- (61, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÕË»§¹ÜÀí-ÕË»§ÀúÊ·-²é¿´','ÕË»§¹ÜÀí-ÕË»§ÀúÊ·-²é¿´','account:accountHistory:view'),
+ (61, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','è´¦æˆ·ç®¡ç†-è´¦æˆ·å†å²-æŸ¥çœ‹','è´¦æˆ·ç®¡ç†-è´¦æˆ·å†å²-æŸ¥çœ‹','account:accountHistory:view'),
 
- (71, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÓÃ»§¹ÜÀí-ÓÃ»§ĞÅÏ¢-²é¿´','ÓÃ»§¹ÜÀí-ÓÃ»§ĞÅÏ¢-²é¿´','user:userInfo:view'),
- (72, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÓÃ»§¹ÜÀí-ÓÃ»§ĞÅÏ¢-Ìí¼Ó','ÓÃ»§¹ÜÀí-ÓÃ»§ĞÅÏ¢-Ìí¼Ó','user:userInfo:add'),
- (73, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÓÃ»§¹ÜÀí-ÓÃ»§ĞÅÏ¢-²é¿´','ÓÃ»§¹ÜÀí-ÓÃ»§ĞÅÏ¢-ĞŞ¸Ä','user:userInfo:edit'),
- (74, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ÓÃ»§¹ÜÀí-ÓÃ»§ĞÅÏ¢-É¾³ı','ÓÃ»§¹ÜÀí-ÓÃ»§ĞÅÏ¢-É¾³ı','user:userInfo:delete'),
+ (71, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ç”¨æˆ·ç®¡ç†-ç”¨æˆ·ä¿¡æ¯-æŸ¥çœ‹','ç”¨æˆ·ç®¡ç†-ç”¨æˆ·ä¿¡æ¯-æŸ¥çœ‹','user:userInfo:view'),
+ (72, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ç”¨æˆ·ç®¡ç†-ç”¨æˆ·ä¿¡æ¯-æ·»åŠ ','ç”¨æˆ·ç®¡ç†-ç”¨æˆ·ä¿¡æ¯-æ·»åŠ ','user:userInfo:add'),
+ (73, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ç”¨æˆ·ç®¡ç†-ç”¨æˆ·ä¿¡æ¯-æŸ¥çœ‹','ç”¨æˆ·ç®¡ç†-ç”¨æˆ·ä¿¡æ¯-ä¿®æ”¹','user:userInfo:edit'),
+ (74, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ç”¨æˆ·ç®¡ç†-ç”¨æˆ·ä¿¡æ¯-åˆ é™¤','ç”¨æˆ·ç®¡ç†-ç”¨æˆ·ä¿¡æ¯-åˆ é™¤','user:userInfo:delete'),
 
- (81, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶²úÆ·-²é¿´','Ö§¸¶¹ÜÀí-Ö§¸¶²úÆ·-²é¿´','pay:product:view'),
- (82, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶²úÆ·-Ìí¼Ó','Ö§¸¶¹ÜÀí-Ö§¸¶²úÆ·-Ìí¼Ó','pay:product:add'),
- (83, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶²úÆ·-²é¿´','Ö§¸¶¹ÜÀí-Ö§¸¶²úÆ·-ĞŞ¸Ä','pay:product:edit'),
- (84, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶²úÆ·-É¾³ı','Ö§¸¶¹ÜÀí-Ö§¸¶²úÆ·-É¾³ı','pay:product:delete'),
+ (81, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜äº§å“-æŸ¥çœ‹','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜äº§å“-æŸ¥çœ‹','pay:product:view'),
+ (82, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜äº§å“-æ·»åŠ ','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜äº§å“-æ·»åŠ ','pay:product:add'),
+ (83, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜äº§å“-æŸ¥çœ‹','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜äº§å“-ä¿®æ”¹','pay:product:edit'),
+ (84, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜äº§å“-åˆ é™¤','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜äº§å“-åˆ é™¤','pay:product:delete'),
 
- (85, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶·½Ê½-²é¿´','Ö§¸¶¹ÜÀí-Ö§¸¶·½Ê½-²é¿´','pay:way:view'),
- (86, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶·½Ê½-Ìí¼Ó','Ö§¸¶¹ÜÀí-Ö§¸¶·½Ê½-Ìí¼Ó','pay:way:add'),
- (87, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶·½Ê½-²é¿´','Ö§¸¶¹ÜÀí-Ö§¸¶·½Ê½-ĞŞ¸Ä','pay:way:edit'),
- (88, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶·½Ê½-É¾³ı','Ö§¸¶¹ÜÀí-Ö§¸¶·½Ê½-É¾³ı','pay:way:delete'),
+ (85, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜æ–¹å¼-æŸ¥çœ‹','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜æ–¹å¼-æŸ¥çœ‹','pay:way:view'),
+ (86, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜æ–¹å¼-æ·»åŠ ','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜æ–¹å¼-æ·»åŠ ','pay:way:add'),
+ (87, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜æ–¹å¼-æŸ¥çœ‹','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜æ–¹å¼-ä¿®æ”¹','pay:way:edit'),
+ (88, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜æ–¹å¼-åˆ é™¤','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜æ–¹å¼-åˆ é™¤','pay:way:delete'),
 
- (91, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶ÅäÖÃ-²é¿´','Ö§¸¶¹ÜÀí-Ö§¸¶ÅäÖÃ-²é¿´','pay:config:view'),
- (92, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶ÅäÖÃ-Ìí¼Ó','Ö§¸¶¹ÜÀí-Ö§¸¶ÅäÖÃ-Ìí¼Ó','pay:config:add'),
- (93, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶ÅäÖÃ-²é¿´','Ö§¸¶¹ÜÀí-Ö§¸¶ÅäÖÃ-ĞŞ¸Ä','pay:config:edit'),
- (94, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','Ö§¸¶¹ÜÀí-Ö§¸¶ÅäÖÃ-É¾³ı','Ö§¸¶¹ÜÀí-Ö§¸¶ÅäÖÃ-É¾³ı','pay:config:delete'),
+ (91, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜é…ç½®-æŸ¥çœ‹','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜é…ç½®-æŸ¥çœ‹','pay:config:view'),
+ (92, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜é…ç½®-æ·»åŠ ','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜é…ç½®-æ·»åŠ ','pay:config:add'),
+ (93, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜é…ç½®-æŸ¥çœ‹','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜é…ç½®-ä¿®æ”¹','pay:config:edit'),
+ (94, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜é…ç½®-åˆ é™¤','æ”¯ä»˜ç®¡ç†-æ”¯ä»˜é…ç½®-åˆ é™¤','pay:config:delete'),
 
- (101, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½»Ò×¹ÜÀí-¶©µ¥-²é¿´','½»Ò×¹ÜÀí-¶©µ¥-²é¿´','trade:order:view'),
- (102, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½»Ò×¹ÜÀí-¶©µ¥-Ìí¼Ó','½»Ò×¹ÜÀí-¶©µ¥-Ìí¼Ó','trade:order:add'),
- (103, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½»Ò×¹ÜÀí-¶©µ¥-²é¿´','½»Ò×¹ÜÀí-¶©µ¥-ĞŞ¸Ä','trade:order:edit'),
- (104, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½»Ò×¹ÜÀí-¶©µ¥-É¾³ı','½»Ò×¹ÜÀí-¶©µ¥-É¾³ı','trade:order:delete'),
+ (101, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','äº¤æ˜“ç®¡ç†-è®¢å•-æŸ¥çœ‹','äº¤æ˜“ç®¡ç†-è®¢å•-æŸ¥çœ‹','trade:order:view'),
+ (102, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','äº¤æ˜“ç®¡ç†-è®¢å•-æ·»åŠ ','äº¤æ˜“ç®¡ç†-è®¢å•-æ·»åŠ ','trade:order:add'),
+ (103, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','äº¤æ˜“ç®¡ç†-è®¢å•-æŸ¥çœ‹','äº¤æ˜“ç®¡ç†-è®¢å•-ä¿®æ”¹','trade:order:edit'),
+ (104, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','äº¤æ˜“ç®¡ç†-è®¢å•-åˆ é™¤','äº¤æ˜“ç®¡ç†-è®¢å•-åˆ é™¤','trade:order:delete'),
 
- (111, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½»Ò×¹ÜÀí-¼ÇÂ¼-²é¿´','½»Ò×¹ÜÀí-¼ÇÂ¼-²é¿´','trade:record:view'),
- (112, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½»Ò×¹ÜÀí-¼ÇÂ¼-Ìí¼Ó','½»Ò×¹ÜÀí-¼ÇÂ¼-Ìí¼Ó','trade:record:add'),
- (113, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½»Ò×¹ÜÀí-¼ÇÂ¼-²é¿´','½»Ò×¹ÜÀí-¼ÇÂ¼-ĞŞ¸Ä','trade:record:edit'),
- (114, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½»Ò×¹ÜÀí-¼ÇÂ¼-É¾³ı','½»Ò×¹ÜÀí-¼ÇÂ¼-É¾³ı','trade:record:delete'),
+ (111, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','äº¤æ˜“ç®¡ç†-è®°å½•-æŸ¥çœ‹','äº¤æ˜“ç®¡ç†-è®°å½•-æŸ¥çœ‹','trade:record:view'),
+ (112, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','äº¤æ˜“ç®¡ç†-è®°å½•-æ·»åŠ ','äº¤æ˜“ç®¡ç†-è®°å½•-æ·»åŠ ','trade:record:add'),
+ (113, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','äº¤æ˜“ç®¡ç†-è®°å½•-æŸ¥çœ‹','äº¤æ˜“ç®¡ç†-è®°å½•-ä¿®æ”¹','trade:record:edit'),
+ (114, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','äº¤æ˜“ç®¡ç†-è®°å½•-åˆ é™¤','äº¤æ˜“ç®¡ç†-è®°å½•-åˆ é™¤','trade:record:delete'),
 
- (121, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½áËã¹ÜÀí-¼ÇÂ¼-²é¿´','½áËã¹ÜÀí-¼ÇÂ¼-²é¿´','sett:record:view'),
- (122, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½áËã¹ÜÀí-¼ÇÂ¼-Ìí¼Ó','½áËã¹ÜÀí-¼ÇÂ¼-Ìí¼Ó','sett:record:add'),
- (123, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½áËã¹ÜÀí-¼ÇÂ¼-²é¿´','½áËã¹ÜÀí-¼ÇÂ¼-ĞŞ¸Ä','sett:record:edit'),
- (124, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','½áËã¹ÜÀí-¼ÇÂ¼-É¾³ı','½áËã¹ÜÀí-¼ÇÂ¼-É¾³ı','sett:record:delete'),
+ (121, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ç»“ç®—ç®¡ç†-è®°å½•-æŸ¥çœ‹','ç»“ç®—ç®¡ç†-è®°å½•-æŸ¥çœ‹','sett:record:view'),
+ (122, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ç»“ç®—ç®¡ç†-è®°å½•-æ·»åŠ ','ç»“ç®—ç®¡ç†-è®°å½•-æ·»åŠ ','sett:record:add'),
+ (123, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ç»“ç®—ç®¡ç†-è®°å½•-æŸ¥çœ‹','ç»“ç®—ç®¡ç†-è®°å½•-ä¿®æ”¹','sett:record:edit'),
+ (124, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','ç»“ç®—ç®¡ç†-è®°å½•-åˆ é™¤','ç»“ç®—ç®¡ç†-è®°å½•-åˆ é™¤','sett:record:delete'),
 
- (131, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-²î´í-²é¿´','¶ÔÕË¹ÜÀí-²î´í-²é¿´','recon:mistake:view'),
- (132, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-²î´í-Ìí¼Ó','¶ÔÕË¹ÜÀí-²î´í-Ìí¼Ó','recon:mistake:add'),
- (133, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-²î´í-²é¿´','¶ÔÕË¹ÜÀí-²î´í-ĞŞ¸Ä','recon:mistake:edit'),
- (134, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-²î´í-É¾³ı','¶ÔÕË¹ÜÀí-²î´í-É¾³ı','recon:mistake:delete'),
+ (131, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-å·®é”™-æŸ¥çœ‹','å¯¹è´¦ç®¡ç†-å·®é”™-æŸ¥çœ‹','recon:mistake:view'),
+ (132, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-å·®é”™-æ·»åŠ ','å¯¹è´¦ç®¡ç†-å·®é”™-æ·»åŠ ','recon:mistake:add'),
+ (133, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-å·®é”™-æŸ¥çœ‹','å¯¹è´¦ç®¡ç†-å·®é”™-ä¿®æ”¹','recon:mistake:edit'),
+ (134, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-å·®é”™-åˆ é™¤','å¯¹è´¦ç®¡ç†-å·®é”™-åˆ é™¤','recon:mistake:delete'),
 
- (141, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-Åú´Î-²é¿´','¶ÔÕË¹ÜÀí-Åú´Î-²é¿´','recon:batch:view'),
- (142, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-Åú´Î-Ìí¼Ó','¶ÔÕË¹ÜÀí-Åú´Î-Ìí¼Ó','recon:batch:add'),
- (143, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-Åú´Î-²é¿´','¶ÔÕË¹ÜÀí-Åú´Î-ĞŞ¸Ä','recon:batch:edit'),
- (144, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-Åú´Î-É¾³ı','¶ÔÕË¹ÜÀí-Åú´Î-É¾³ı','recon:batch:delete'),
+ (141, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-æ‰¹æ¬¡-æŸ¥çœ‹','å¯¹è´¦ç®¡ç†-æ‰¹æ¬¡-æŸ¥çœ‹','recon:batch:view'),
+ (142, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-æ‰¹æ¬¡-æ·»åŠ ','å¯¹è´¦ç®¡ç†-æ‰¹æ¬¡-æ·»åŠ ','recon:batch:add'),
+ (143, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-æ‰¹æ¬¡-æŸ¥çœ‹','å¯¹è´¦ç®¡ç†-æ‰¹æ¬¡-ä¿®æ”¹','recon:batch:edit'),
+ (144, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-æ‰¹æ¬¡-åˆ é™¤','å¯¹è´¦ç®¡ç†-æ‰¹æ¬¡-åˆ é™¤','recon:batch:delete'),
 
- (151, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-»º³å³Ø-²é¿´','¶ÔÕË¹ÜÀí-»º³å³Ø-²é¿´','recon:scratchPool:view'),
- (152, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-»º³å³Ø-Ìí¼Ó','¶ÔÕË¹ÜÀí-»º³å³Ø-Ìí¼Ó','recon:scratchPool:add'),
- (153, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-»º³å³Ø-²é¿´','¶ÔÕË¹ÜÀí-»º³å³Ø-ĞŞ¸Ä','recon:scratchPool:edit'),
- (154, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','¶ÔÕË¹ÜÀí-»º³å³Ø-É¾³ı','¶ÔÕË¹ÜÀí-»º³å³Ø-É¾³ı','recon:scratchPool:delete');
+ (151, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-ç¼“å†²æ± -æŸ¥çœ‹','å¯¹è´¦ç®¡ç†-ç¼“å†²æ± -æŸ¥çœ‹','recon:scratchPool:view'),
+ (152, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-ç¼“å†²æ± -æ·»åŠ ','å¯¹è´¦ç®¡ç†-ç¼“å†²æ± -æ·»åŠ ','recon:scratchPool:add'),
+ (153, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-ç¼“å†²æ± -æŸ¥çœ‹','å¯¹è´¦ç®¡ç†-ç¼“å†²æ± -ä¿®æ”¹','recon:scratchPool:edit'),
+ (154, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','å¯¹è´¦ç®¡ç†-ç¼“å†²æ± -åˆ é™¤','å¯¹è´¦ç®¡ç†-ç¼“å†²æ± -åˆ é™¤','recon:scratchPool:delete');
 
--- -----------------------------------step3£º²Ù×÷Ô±--------------------------------------------
--- -- ²Ù×÷Ô±µÄ³õÊ¼»¯Êı¾İ
---  admin ³¬¼¶¹ÜÀíÔ±
+-- -----------------------------------step3ï¼šæ“ä½œå‘˜--------------------------------------------
+-- -- æ“ä½œå‘˜çš„åˆå§‹åŒ–æ•°æ®
+--  admin è¶…çº§ç®¡ç†å‘˜
 insert into PMS_OPERATOR (id,version,status,creater,create_time, editor, edit_time, remark, login_name, login_pwd,real_name,mobile_no,type,salt) 
-values (1, 0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '³¬¼¶¹ÜÀíÔ±', 'admin', 'd3c59d25033dbf980d29554025c23a75','³¬¼¶¹ÜÀíÔ±', '18620936193', 'ADMIN','8d78869f470951332959580424d4bf4f');
+values (1, 0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', 'è¶…çº§ç®¡ç†å‘˜', 'admin', 'd3c59d25033dbf980d29554025c23a75','è¶…çº§ç®¡ç†å‘˜', '18620936193', 'ADMIN','8d78869f470951332959580424d4bf4f');
 
---  guest  ÓÎ¿Í
+--  guest  æ¸¸å®¢
 insert into PMS_OPERATOR (id,version,status,creater,create_time, editor, edit_time, remark, login_name, login_pwd,real_name,mobile_no,type,salt) 
-values (2, 0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'guest','2016-06-03 11:07:43', 'ÓÎ¿Í', 'guest', '3f0dbf580ee39ec03b632cb33935a363','ÓÎ¿Í', '18926215592', 'USER','183d9f2f0f2ce760e98427a5603d1c73');
+values (2, 0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'guest','2016-06-03 11:07:43', 'æ¸¸å®¢', 'guest', '3f0dbf580ee39ec03b632cb33935a363','æ¸¸å®¢', '18926215592', 'USER','183d9f2f0f2ce760e98427a5603d1c73');
 
--- ------------------------------------step4£º½ÇÉ«-------------------------------------------
--- -- ½ÇÉ«µÄ³õÊ¼»¯Êı¾İ
+-- ------------------------------------step4ï¼šè§’è‰²-------------------------------------------
+-- -- è§’è‰²çš„åˆå§‹åŒ–æ•°æ®
 insert into PMS_ROLE (id,version,status,creater,create_time, editor, edit_time, remark, role_code, role_name) 
-values (1, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'admin', '2016-06-03 11:07:43','³¬¼¶¹ÜÀíÔ±½ÇÉ«','admin', '³¬¼¶¹ÜÀíÔ±½ÇÉ«');
+values (1, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'admin', '2016-06-03 11:07:43','è¶…çº§ç®¡ç†å‘˜è§’è‰²','admin', 'è¶…çº§ç®¡ç†å‘˜è§’è‰²');
 
 insert into PMS_ROLE (id,version,status,creater,create_time, editor, edit_time, remark, role_code, role_name) 
-values (2, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'guest', '2016-06-03 11:07:43','ÓÎ¿Í½ÇÉ«','guest', 'ÓÎ¿Í½ÇÉ«');
+values (2, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'guest', '2016-06-03 11:07:43','æ¸¸å®¢è§’è‰²','guest', 'æ¸¸å®¢è§’è‰²');
 
--- ------------------------------------step5£º²Ù×÷Ô±ºÍ½ÇÉ«¹ØÁª-------------------------------------------
--- -- ²Ù×÷Ô±Óë½ÇÉ«¹ØÁªµÄ³õÊ¼»¯Êı¾İ
+-- ------------------------------------step5ï¼šæ“ä½œå‘˜å’Œè§’è‰²å…³è”-------------------------------------------
+-- -- æ“ä½œå‘˜ä¸è§’è‰²å…³è”çš„åˆå§‹åŒ–æ•°æ®
 
---  admin  ¹ØÁªadmin ºÍtestÁ½¸ö½ÇÉ«
+--  admin  å…³è”admin å’Œtestä¸¤ä¸ªè§’è‰²
 insert into PMS_ROLE_OPERATOR (id,version,status,creater,create_time, editor, edit_time, remark,role_id,operator_id) values (1, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','',1,1);
 insert into PMS_ROLE_OPERATOR (id,version,status,creater,create_time, editor, edit_time, remark,role_id,operator_id) values (2, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','',2,1);
 
--- guest  ¹ØÁªÓÎ¿Í½ÇÉ«  £¨ÓÎ¿Í½ÇÉ«Ö»ÓĞ²é¿´½»Ò×¼ÇÂ¼µÄĞÅÏ¢£©
+-- guest  å…³è”æ¸¸å®¢è§’è‰²  ï¼ˆæ¸¸å®¢è§’è‰²åªæœ‰æŸ¥çœ‹äº¤æ˜“è®°å½•çš„ä¿¡æ¯ï¼‰
 insert into PMS_ROLE_OPERATOR (id,version,status,creater,create_time, editor, edit_time, remark,role_id,operator_id) values (3, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','',2,2);
 
--- -------------------------------------step6£º½ÇÉ«ºÍÈ¨ÏŞ¹ØÁª------------------------------------------
--- -- ½ÇÉ«ÓëÓÃ»§¹¦ÄÜµã¹ØÁªµÄ³õÊ¼»¯Êı¾İ
+-- -------------------------------------step6ï¼šè§’è‰²å’Œæƒé™å…³è”------------------------------------------
+-- -- è§’è‰²ä¸ç”¨æˆ·åŠŸèƒ½ç‚¹å…³è”çš„åˆå§‹åŒ–æ•°æ®
 
--- admin£¨ÓµÓĞËùÓĞµÄÈ¨ÏŞµã£©
+-- adminï¼ˆæ‹¥æœ‰æ‰€æœ‰çš„æƒé™ç‚¹ï¼‰
 insert into PMS_ROLE_PERMISSION  (role_id, permission_id) select 1,id from PMS_PERMISSION;
 
 
--- guest £¨Ö»ÓĞËùÓĞµÄ²é¿´È¨ÏŞ£©
+-- guest ï¼ˆåªæœ‰æ‰€æœ‰çš„æŸ¥çœ‹æƒé™ï¼‰
 insert into PMS_ROLE_PERMISSION (version,status,creater,create_time, editor, edit_time, remark,role_id,permission_id) 
 values 
  ( 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','',2,1),
@@ -1024,12 +1024,17 @@ values
  ( 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','',2,141),
  ( 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','',2,151);
 
--- -------------------------------------step7£º½ÇÉ«ºÍ²Ëµ¥¹ØÁª------------------------------------------
---  ½ÇÉ«ÓëĞÅÏ¢¹ØÁª³õÊ¼»¯Êı¾İ
+-- -------------------------------------step7ï¼šè§’è‰²å’Œèœå•å…³è”------------------------------------------
+--  è§’è‰²ä¸ä¿¡æ¯å…³è”åˆå§‹åŒ–æ•°æ®
 -- admin
 
 insert into PMS_MENU_ROLE(role_id, menu_id) select 1,id from PMS_MENU;
 
--- guest  ËùÓĞµÄ²Ëµ¥£¨Ö»ÓĞ²é¿´È¨ÏŞ£©
+-- guest  æ‰€æœ‰çš„èœå•ï¼ˆåªæœ‰æŸ¥çœ‹æƒé™ï¼‰
 insert into PMS_MENU_ROLE (role_id, menu_id) select 2,id from PMS_MENU;
+
+-- 2016.8.5 ç¬¬ä¸‰æ–¹æ”¯ä»˜ä¿¡æ¯è¡¨å¢åŠ æ”¯ä»˜å®çº¿ä¸‹äº§å“å­—æ®µ
+alter table rp_user_pay_info add offline_app_id varchar(50);
+alter table rp_user_pay_info add rsa_private_key varchar(100);
+alter table rp_user_pay_info add rsa_public_key varchar(100);
 
