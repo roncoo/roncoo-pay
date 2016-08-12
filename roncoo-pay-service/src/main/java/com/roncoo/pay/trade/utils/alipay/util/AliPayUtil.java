@@ -1,6 +1,5 @@
 package com.roncoo.pay.trade.utils.alipay.util;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;

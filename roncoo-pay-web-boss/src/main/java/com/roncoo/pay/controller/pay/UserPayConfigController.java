@@ -113,9 +113,12 @@ public class UserPayConfigController {
 		String ali_partner = request.getParameter("ali_partner");
 		String ali_key = request.getParameter("ali_key");
 		String ali_sellerId = request.getParameter("ali_sellerId");
+		String ali_appid = request.getParameter("ali_appid");
+		String ali_rsaPrivateKey = request.getParameter("ali_rsaPrivateKey");
+		String ali_rsaPublicKey = request.getParameter("ali_rsaPublicKey");
 		rpUserPayConfigService.createUserPayConfig(userNo, userName, productCode, productName, 
 				rpUserPayConfig.getRiskDay(), rpUserPayConfig.getFundIntoType(), rpUserPayConfig.getIsAutoSett(), we_appId
-				, we_merchantId, we_partnerKey, ali_partner, ali_sellerId, ali_key);
+				, we_merchantId, we_partnerKey, ali_partner, ali_sellerId, ali_key, ali_appid, ali_rsaPrivateKey, ali_rsaPublicKey);
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);
 		model.addAttribute("dwz", dwz);
@@ -160,9 +163,12 @@ public class UserPayConfigController {
 		String ali_partner = request.getParameter("ali_partner");
 		String ali_key = request.getParameter("ali_key");
 		String ali_sellerId = request.getParameter("ali_sellerId");
+		String ali_appid = request.getParameter("ali_appid");
+		String ali_rsaPrivateKey = request.getParameter("ali_rsaPrivateKey");
+		String ali_rsaPublicKey = request.getParameter("ali_rsaPublicKey");
 		rpUserPayConfigService.updateUserPayConfig(rpUserPayConfig.getUserNo(), productCode, productName, 
 				rpUserPayConfig.getRiskDay(), rpUserPayConfig.getFundIntoType(), rpUserPayConfig.getIsAutoSett(),
-				we_appId, we_merchantId, we_partnerKey, ali_partner, ali_sellerId, ali_key);
+				we_appId, we_merchantId, we_partnerKey, ali_partner, ali_sellerId, ali_key, ali_appid, ali_rsaPrivateKey, ali_rsaPublicKey);
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);
 		model.addAttribute("dwz", dwz);

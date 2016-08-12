@@ -10,8 +10,8 @@
 		<div class="searchBar">
 			<table class="searchContent">
 				<tr>
-				    <td>用户名称：
-                        <input type="text" name="userName" value="${rpUserInfo.userName}" />
+				    <td>用户编号：
+                        <input type="text" name="userNo" value="${rpUserInfo.userNo}" />
                     </td>
                     <td>
 						<div class="buttonActive">

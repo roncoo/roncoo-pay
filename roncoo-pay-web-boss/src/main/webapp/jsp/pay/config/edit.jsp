@@ -93,6 +93,18 @@
 							<td>收款账号：</td>
 							<td><input type="text" name="ali_sellerId" id="ali_sellerId" maxlength="200" class="required" value="${aliUserPayInfo.partnerKey }"/></td>
 						</tr>
+						<tr>
+							<td>APPID：</td>
+							<td><input type="text" name="ali_appid" id="ali_appid" maxlength="200" class="required" value="${aliUserPayInfo.offlineAppId }"/></td>
+						</tr>
+						<tr>
+							<td>支付宝私钥：</td>
+							<td><input type="text" name="ali_rsaPrivateKey" id="ali_rsaPrivateKey" maxlength="200" class="required" value="${aliUserPayInfo.rsaPrivateKey }"/></td>
+						</tr>
+						<tr>
+							<td>支付宝公钥：</td>
+							<td><input type="text" name="ali_rsaPublicKey" id="ali_rsaPublicKey" maxlength="200" class="required" value="${aliUserPayInfo.rsaPublicKey }"/></td>
+						</tr>
 					</table>
 				</fieldset>
 			</div>
@@ -133,6 +145,9 @@ function changeWePay(){
 	$("#ali_partner").attr("class", "");
 	$("#ali_sellerId").attr("class", "");
 	$("#ali_key").attr("class", "");
+	$("#ali_appid").attr("class", "");
+	$("#ali_rsaPrivateKey").attr("class", "");
+	$("#ali_rsaPublicKey").attr("class", "");
 	
 	if(fundIntoType == 'MERCHANT_RECEIVES'){
 		if(productCode != ""){
@@ -157,6 +172,9 @@ function changeWePay(){
 	              			$("#ali_partner").attr("class", "required");
 	              			$("#ali_sellerId").attr("class", "required");
 	              			$("#ali_key").attr("class", "required");
+	              			$("#ali_appid").attr("class", "required");
+	              			$("#ali_rsaPrivateKey").attr("class", "required");
+	              			$("#ali_rsaPublicKey").attr("class", "required");
 	                      }
 	                   }
 	                }

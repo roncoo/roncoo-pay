@@ -53,4 +53,12 @@ public interface RpAccountService{
 	 */
 	PageBean listPage(PageParam pageParam, RpAccount rpAccount);
 	
+	/**
+	 * 根据userNo获取数据
+	 * 
+	 * @param userNo
+	 * @return
+	 */
+	RpAccount getDataByUserNo(String userNo);
+	
 }

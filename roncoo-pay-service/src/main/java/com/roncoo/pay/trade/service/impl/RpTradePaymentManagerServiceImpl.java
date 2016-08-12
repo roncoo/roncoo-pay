@@ -23,6 +23,7 @@ import com.roncoo.pay.common.core.utils.StringUtil;
 import com.roncoo.pay.notify.service.RpNotifyService;
 import com.roncoo.pay.trade.dao.RpTradePaymentOrderDao;
 import com.roncoo.pay.trade.dao.RpTradePaymentRecordDao;
+import com.roncoo.pay.trade.entity.RoncooPayGoodsDetails;
 import com.roncoo.pay.trade.entity.RpTradePaymentOrder;
 import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
 import com.roncoo.pay.trade.entity.weixinpay.WeiXinPrePay;
@@ -38,8 +39,10 @@ import com.roncoo.pay.trade.utils.MerchantApiUtil;
 import com.roncoo.pay.trade.utils.WeiXinPayUtils;
 import com.roncoo.pay.trade.utils.WeixinConfigUtil;
 import com.roncoo.pay.trade.utils.alipay.config.AlipayConfigUtil;
+import com.roncoo.pay.trade.utils.alipay.f2fpay.AliF2FPaySubmit;
 import com.roncoo.pay.trade.utils.alipay.util.AlipayNotify;
 import com.roncoo.pay.trade.utils.alipay.util.AlipaySubmit;
+import com.roncoo.pay.trade.vo.F2FPayResultVo;
 import com.roncoo.pay.trade.vo.OrderPayResultVo;
 import com.roncoo.pay.trade.vo.RpPayGateWayPageShowVo;
 import com.roncoo.pay.trade.vo.ScanPayResultVo;
@@ -99,6 +102,9 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
 
     @Autowired
     private RpAccountTransactionService rpAccountTransactionService;
+
+    @Autowired
+    private AliF2FPaySubmit aliF2FPaySubmit;
 
     /**
      * 初始化直连扫码支付数据,直连扫码支付初始化方法规则
@@ -172,6 +178,167 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         return getScanPayResultVo(rpTradePaymentOrder , payWay);
 
     }
+
+    /**
+     * 条码支付,对应的是支付宝的条码支付或者微信的刷卡支付
+     *
+     * @param payKey      商户支付key
+     * @param authCode    支付授权码
+     * @param productName 产品名称
+     * @param orderNo     商户订单号
+     * @param orderDate   下单日期
+     * @param orderTime   下单时间
+     * @param orderPrice  订单金额(元)
+     * @param payWayCode  支付方式
+     * @param orderIp     下单IP
+     * @param remark      支付备注
+     * @param field1      扩展字段1
+     * @param field2      扩展字段2
+     * @param field3      扩展字段3
+     * @param field4      扩展字段4
+     * @param field5      扩展字段5
+     * @return
+     */
+    @Override
+    public F2FPayResultVo f2fPay(String payKey, String authCode, String productName, String orderNo, Date orderDate, Date orderTime, BigDecimal orderPrice, String payWayCode, String orderIp, String remark, String field1, String field2, String field3, String field4, String field5) {
+
+        RpUserPayConfig rpUserPayConfig = rpUserPayConfigService.getByPayKey(payKey);
+        if (rpUserPayConfig == null){
+            throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR,"用户支付配置有误");
+        }
+
+        if (StringUtil.isEmpty(authCode)){
+            throw new TradeBizException(TradeBizException.TRADE_PARAM_ERROR,"支付授权码不能为空");
+        }
+        //根据支付产品及支付方式获取费率
+        RpPayWay payWay = null;
+        if (PayWayEnum.WEIXIN.name().equals(payWayCode)){
+//            payWay = rpPayWayService.getByPayWayTypeCode(rpUserPayConfig.getProductCode(), payWayCode, PayTypeEnum.SCANPAY.name());
+        }else if (PayWayEnum.ALIPAY.name().equals(payWayCode)){
+            payWay = rpPayWayService.getByPayWayTypeCode(rpUserPayConfig.getProductCode(), payWayCode, PayTypeEnum.F2F_PAY.name());
+        }
+
+        if(payWay == null){
+            throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR,"用户支付配置有误");
+        }
+
+        String merchantNo = rpUserPayConfig.getUserNo();//商户编号
+        RpUserInfo rpUserInfo = rpUserInfoService.getDataByMerchentNo(merchantNo);
+        if (rpUserInfo == null){
+            throw new UserBizException(UserBizException.USER_IS_NULL,"用户不存在");
+        }
+
+        RpTradePaymentOrder rpTradePaymentOrder = rpTradePaymentOrderDao.selectByMerchantNoAndMerchantOrderNo(merchantNo, orderNo);
+        if (rpTradePaymentOrder == null){
+            rpTradePaymentOrder = sealRpTradePaymentOrder( merchantNo,  rpUserInfo.getUserName() , productName,  orderNo,  orderDate,  orderTime,  orderPrice, payWayCode, PayWayEnum.getEnum(payWayCode).getDesc() ,  rpUserPayConfig.getFundIntoType() ,  orderIp,  5,  "f2fPay",  "f2fPay",  remark,  field1,  field2,  field3,  field4,  field5);
+            rpTradePaymentOrderDao.insert(rpTradePaymentOrder);
+        }else{
+            if (rpTradePaymentOrder.getOrderAmount().compareTo(orderPrice) != 0 ){
+                throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR,"错误的订单");
+            }
+
+            if (TradeStatusEnum.SUCCESS.name().equals(rpTradePaymentOrder.getStatus())){
+                throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR,"订单已支付成功,无需重复支付");
+            }
+        }
+
+        return getF2FPayResultVo( rpTradePaymentOrder , payWay ,  payKey , rpUserPayConfig.getPaySecret() , authCode ,null);
+    }
+
+    /**
+     * 通过支付订单及商户费率生成支付记录
+     * @param rpTradePaymentOrder   支付订单
+     * @param payWay   商户支付配置
+     * @return
+     */
+    private F2FPayResultVo getF2FPayResultVo(RpTradePaymentOrder rpTradePaymentOrder ,RpPayWay payWay , String  payKey , String merchantPaySecret , String authCode ,List< RoncooPayGoodsDetails > roncooPayGoodsDetailses){
+
+        F2FPayResultVo f2FPayResultVo = new F2FPayResultVo();
+        String payWayCode = payWay.getPayWayCode();//支付方式
+
+        if (PayWayEnum.WEIXIN.name().equals(payWay.getPayWayCode())){
+            rpTradePaymentOrder.setPayTypeCode(PayTypeEnum.SCANPAY.name());//支付类型
+            rpTradePaymentOrder.setPayTypeName(PayTypeEnum.SCANPAY.getDesc());//支付方式
+        }else if(PayWayEnum.ALIPAY.name().equals(payWay.getPayWayCode())){
+            rpTradePaymentOrder.setPayTypeCode(PayTypeEnum.DIRECT_PAY.name());//支付类型
+            rpTradePaymentOrder.setPayTypeName(PayTypeEnum.DIRECT_PAY.getDesc());//支付方式
+        }
+
+        rpTradePaymentOrder.setPayWayCode(payWay.getPayWayCode());
+        rpTradePaymentOrder.setPayWayName(payWay.getPayWayName());
+        rpTradePaymentOrderDao.update(rpTradePaymentOrder);
+
+        RpTradePaymentRecord rpTradePaymentRecord = sealRpTradePaymentRecord( rpTradePaymentOrder.getMerchantNo(),  rpTradePaymentOrder.getMerchantName() , rpTradePaymentOrder.getProductName(),  rpTradePaymentOrder.getMerchantOrderNo(),  rpTradePaymentOrder.getOrderAmount(), payWay.getPayWayCode(),  payWay.getPayWayName() ,  rpTradePaymentOrder.getFundIntoType()  , BigDecimal.valueOf(payWay.getPayRate()) ,  rpTradePaymentOrder.getOrderIp(),  rpTradePaymentOrder.getReturnUrl(),  rpTradePaymentOrder.getNotifyUrl(),  rpTradePaymentOrder.getRemark(),  rpTradePaymentOrder.getField1(),  rpTradePaymentOrder.getField2(),  rpTradePaymentOrder.getField3(),  rpTradePaymentOrder.getField4(),  rpTradePaymentOrder.getField5());
+        rpTradePaymentRecordDao.insert(rpTradePaymentRecord);
+
+        if (PayWayEnum.WEIXIN.name().equals(payWayCode)){//微信支付
+            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR,"暂未开通微信刷卡支付");
+        }else {
+            if (PayWayEnum.ALIPAY.name().equals(payWayCode)) {//支付宝支付
+
+                RpUserPayInfo rpUserPayInfo = rpUserPayInfoService.getByUserNo(rpTradePaymentOrder.getMerchantNo(),payWayCode);
+                if (rpUserPayInfo == null){
+                    throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR,"商户支付配置有误");
+                }
+
+                aliF2FPaySubmit.initConfigs(rpTradePaymentOrder.getFundIntoType(), rpUserPayInfo.getOfflineAppId(), rpUserPayInfo.getAppId(), rpUserPayInfo.getRsaPrivateKey(), rpUserPayInfo.getRsaPublicKey());
+                Map<String , String > aliPayReturnMsg = aliF2FPaySubmit.f2fPay(rpTradePaymentRecord.getBankOrderNo(), rpTradePaymentOrder.getProductName(), "", authCode, rpTradePaymentRecord.getOrderAmount(), roncooPayGoodsDetailses);
+
+                rpTradePaymentRecord.setStatus(aliPayReturnMsg.get("status"));//设置消费状态
+                rpTradePaymentRecord.setBankTrxNo(aliPayReturnMsg.get("bankTrxNo"));//银行流水号
+                rpTradePaymentRecord.setBankReturnMsg(aliPayReturnMsg.get("bankReturnMsg"));//银行返回信息
+                rpTradePaymentRecordDao.update(rpTradePaymentRecord);
+
+            } else {
+                throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR, "错误的支付方式");
+            }
+        }
+
+
+        Map<String , Object> paramMap = new HashMap<String , Object>();
+        f2FPayResultVo.setStatus(rpTradePaymentRecord.getStatus());//支付结果
+        paramMap.put("status",rpTradePaymentRecord.getStatus());
+
+        f2FPayResultVo.setField1(rpTradePaymentRecord.getField1());//扩展字段1
+        paramMap.put("field1",rpTradePaymentRecord.getField1());
+
+        f2FPayResultVo.setField2(rpTradePaymentRecord.getField2());//扩展字段2
+        paramMap.put("field2",rpTradePaymentRecord.getField2());
+
+        f2FPayResultVo.setField3(rpTradePaymentRecord.getField3());//扩展字段3
+        paramMap.put("field3",rpTradePaymentRecord.getField3());
+
+        f2FPayResultVo.setField4(rpTradePaymentRecord.getField4());//扩展字段4
+        paramMap.put("field4",rpTradePaymentRecord.getField4());
+
+        f2FPayResultVo.setField5(rpTradePaymentRecord.getField5());//扩展字段5
+        paramMap.put("field5",rpTradePaymentRecord.getField5());
+
+        f2FPayResultVo.setOrderIp(rpTradePaymentRecord.getOrderIp());//下单ip
+        paramMap.put("orderIp",rpTradePaymentRecord.getOrderIp());
+
+        f2FPayResultVo.setOrderNo(rpTradePaymentRecord.getMerchantOrderNo());//商户订单号
+        paramMap.put("merchantOrderNo",rpTradePaymentRecord.getMerchantOrderNo());
+
+        f2FPayResultVo.setPayKey(payKey);//支付号
+        paramMap.put("payKey",payKey);
+
+        f2FPayResultVo.setProductName(rpTradePaymentRecord.getProductName());//产品名称
+        paramMap.put("productName",rpTradePaymentRecord.getProductName());
+
+        f2FPayResultVo.setRemark(rpTradePaymentRecord.getRemark());//支付备注
+        paramMap.put("remark",rpTradePaymentRecord.getRemark());
+
+        f2FPayResultVo.setTrxNo(rpTradePaymentRecord.getTrxNo());//交易流水号
+        paramMap.put("trxNo", rpTradePaymentRecord.getTrxNo());
+
+        String sign = MerchantApiUtil.getSign(paramMap, merchantPaySecret);
+
+        f2FPayResultVo.setSign(sign);
+        return f2FPayResultVo;
+    }
+
+
 
     /**
      * 支付成功方法
