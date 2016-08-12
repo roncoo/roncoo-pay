@@ -53,7 +53,7 @@
                     }
                 },
                 error : function(data) {
-                    alert("系统异常！" + data);
+                    console.error("系统异常！" + data);
                 }
             });
 
