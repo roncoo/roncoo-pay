@@ -63,5 +63,11 @@
 		<include refid="pms_role_permission" />
 		where role_id = #{roleId}
 	</delete>
+	
+	<delete id="deleteByRoleIdAndPermissionId" parameterType="java.util.Map">
+		delete from
+		<include refid="pms_role_permission" />
+		where role_id = #{roleId} and permission_id = #{permissionId}
+	</delete>
 
 </mapper>

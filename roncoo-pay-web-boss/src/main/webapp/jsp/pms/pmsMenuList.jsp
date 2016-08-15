@@ -71,7 +71,7 @@ ul.rightTools li {
 <script type="text/javascript">
 	function onClickMenuNode(id) {
 		$("#addMenu").attr("href", "pms/menu/addUI?pid=" + id);
-		$("#delMenu").attr("href", "pms/menu/delete?id=" + id);
+		$("#delMenu").attr("href", "pms/menu/delete?menuId=" + id);
 	}
 	function onscreach() {
 		$("#treeForm1").submit();

@@ -141,4 +141,11 @@ public class PmsPermissionServiceImpl implements PmsPermissionService {
 		return actionIds.toString();
 	}
 
+	/**
+	 * 查询所有的权限
+	 */
+	public List<PmsPermission> listAll() {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		return pmsPermissionDao.listBy(paramMap);
+	}
 }

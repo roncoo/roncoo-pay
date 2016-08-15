@@ -84,9 +84,16 @@
 		<include refid="pms_permission" />
 		where permission = #{permission} and id != #{id}
 	</select>
+	
+	<select id="selectByPrimaryKey" parameterType="Long" resultMap="beanMap">
+		select
+		*
+		from
+		<include refid="pms_permission" />
+		where id = #{id}
+	</select>
 
-
-	<delete id="deleteById" parameterType="Long">
+	<delete id="deleteByPrimaryKey" parameterType="Long">
 		delete from
 		<include refid="pms_permission" />
 		where id = #{id}
@@ -108,7 +115,7 @@
 		<where>
 			<include refid="condition_sql" />
 		</where>
-
+		order by create_time desc limit #{pageFirst}, #{pageSize}
 	</select>
 
 	<!-- 分页查询时要用到的总数统计 -->
@@ -120,5 +127,14 @@
 		</where>
 	</select>
 
+	<select id="listBy" parameterType="java.util.Map" resultMap="beanMap">
+		select
+		*
+		from
+		<include refid="pms_permission" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
 
 </mapper>

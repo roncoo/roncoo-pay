@@ -97,5 +97,10 @@ public interface PmsPermissionService {
 	 * @return
 	 */
 	String getPermissionIdsByRoleId(Long roleId);
+	
+	/**
+	 * 查询所有的权限
+	 */
+	List<PmsPermission> listAll();
 
 }

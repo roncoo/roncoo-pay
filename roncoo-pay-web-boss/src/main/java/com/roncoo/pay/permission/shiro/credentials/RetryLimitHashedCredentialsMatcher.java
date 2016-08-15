@@ -71,11 +71,6 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
 			// clear retry count
 			passwordRetryCache.remove(username);
 
-			// 对接龙果平台
-			if (!"admin".equals(username)) {
-				username = "guest";
-			}
-
 			// 根据登录名查询操作员
 			PmsOperator operator = pmsOperatorService.findOperatorByLoginName(username);
 			Subject subject = SecurityUtils.getSubject();

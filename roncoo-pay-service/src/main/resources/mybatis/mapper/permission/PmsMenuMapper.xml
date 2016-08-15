@@ -39,7 +39,7 @@
 		where ID = #{id} and VERSION = #{version}
 	</update>
 
-	<delete id="deleteById" parameterType="long">
+	<delete id="deleteByPrimaryKey" parameterType="long">
 		delete from
 		<include refid="pms_menu" />
 		where ID = #{id}

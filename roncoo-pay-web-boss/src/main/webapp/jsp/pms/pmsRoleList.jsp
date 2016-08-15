@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib/taglib.jsp"%>
+<form id="pagerForm" method="post" action="${baseURL}/pms/role/list">
+  <%@include file="../common/pageParameter.jsp" %>
+</form>
 <div class="pageHeader">
 	<form id="pagerForm" onsubmit="return navTabSearch(this);" action="${baseURL}/pms/role/list" method="post">
 		<div class="searchBar">
@@ -7,7 +10,7 @@
 				<tr>
 					<td>
 						角色名称：
-						<input type="text" name="roleName" value="${roleName}" size="30" alt="模糊查询" />
+						<input type="text" name="roleName" value="${pmsRole.roleName}" size="30" alt="模糊查询" />
 					</td>
 					<td>
 						<div class="subBar">
@@ -39,7 +42,7 @@
 		</ul>
 	</div>
 
-	<table class="table" targetType="navTab" asc="asc" desc="desc" width="100%" layoutH="131">
+	<table class="table" targetType="navTab" asc="asc" desc="desc" width="100%" layoutH="111">
 		<thead>
 			<tr>
 				<th>序号</th>
@@ -64,12 +67,14 @@
 					</td>
 					<td>
 						[
-						<a href="${baseURL}/pms/role/assignPermission?roleId=${id}" title="为角色【${roleName}】分配权限" target="dialog" width="950" style="color: blue">分配权限</a>
+						<a href="${baseURL}/pms/role/assignMenuUI?roleId=${item.id}" title="为角色【${item.roleName}】分配菜单" target="dialog" width="950" style="color: blue">分配菜单</a>
 						] &nbsp;[
-						<a href="${baseURL}/pms/role/editUI?roleId=${id}" title="修改角色【${roleName}】" target="dialog" width="550" height="300" rel="input" style="color: blue">修改</a>
+						<a href="${baseURL}/pms/role/assignPermissionUI?roleId=${item.id}" title="为角色【${item.roleName}】分配权限" target="dialog" width="950" style="color: blue">分配权限</a>
+						] &nbsp;[
+						<a href="${baseURL}/pms/role/editUI?roleId=${item.id}" title="修改角色【${item.roleName}】" target="dialog" width="550" height="300" rel="input" style="color: blue">修改</a>
 						]
 						<c:if test="${roleType eq RoleTypeEnum.USER.value}">
-							&nbsp;[<a href="${baseURL}/pms/role/delete?roleId=${id}" title="删除角色【${roleName}】" target="ajaxTodo" style="color: blue">删除</a>]
+							&nbsp;[<a href="${baseURL}/pms/role/delete?roleId=${item.id}" title="删除角色【${item.roleName}】" target="ajaxTodo" style="color: blue">删除</a>]
 							</c:if>
 					</td>
 				</tr>

@@ -4,7 +4,7 @@
 
 	<!-- Pms权限管理：操作员表 -->
 	<sql id="pms_operator"> PMS_OPERATOR </sql>
-	<sql id="pms_operator_role"> PMS_OPERATOR_ROLE </sql>
+	<sql id="pms_role_operator"> PMS_ROLE_OPERATOR </sql>
 
 	<resultMap id="beanMap" type="com.roncoo.pay.permission.entity.PmsOperator">
 		<id column="id" property="id" jdbcType="INTEGER" />
@@ -72,7 +72,7 @@
 		order by ID
 	</select>
 
-	<delete id="deleteById" parameterType="Long">
+	<delete id="deleteByPrimaryKey" parameterType="Long">
 		delete from
 		<include refid="pms_operator" />
 		where ID = #{id}
@@ -82,7 +82,7 @@
 		<!-- Equal query -->
 		<if test="loginName != null and loginName != ''"> and login_name = #{loginName}</if>
 		<if test="status != null and status != ''"> and status = #{status}</if>
-		<if test="status != null and status != ''"> and type = #{type}</if>
+		<if test="type != null and type != ''"> and type = #{type}</if>
 		<!-- Like query -->
 		<if test="realName != null and realName != ''"> and REALNAME like CONCAT(CONCAT('%', #{realName}), '%')</if>
 	</sql>
@@ -110,7 +110,7 @@
 		select O.* from
 		<include refid="pms_operator" />
 		O LEFT JOIN
-		<include refid="pms_operator_role" />
+		<include refid="pms_role_operator" />
 		RO ON
 		O.ID = RO.operator_id WHERE RO.role_id = #{roleId}
 	</select>

@@ -16,6 +16,7 @@
 package com.roncoo.pay.permission.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -27,6 +28,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.roncoo.pay.common.core.dwz.DwzAjax;
 import com.roncoo.pay.common.core.page.PageBean;
@@ -34,11 +36,14 @@ import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.controller.common.BaseController;
 import com.roncoo.pay.permission.biz.PmsMenuBiz;
 import com.roncoo.pay.permission.entity.PmsOperator;
+import com.roncoo.pay.permission.entity.PmsPermission;
 import com.roncoo.pay.permission.entity.PmsRole;
 import com.roncoo.pay.permission.enums.OperatorTypeEnum;
+import com.roncoo.pay.permission.service.PmsMenuRoleService;
 import com.roncoo.pay.permission.service.PmsMenuService;
 import com.roncoo.pay.permission.service.PmsOperatorRoleService;
 import com.roncoo.pay.permission.service.PmsPermissionService;
+import com.roncoo.pay.permission.service.PmsRolePermissionService;
 import com.roncoo.pay.permission.service.PmsRoleService;
 import com.roncoo.pay.permission.utils.ValidateUtils;
 
@@ -58,9 +63,11 @@ public class PmsRoleController extends BaseController {
 	@Autowired
 	private PmsMenuService pmsMenuService;
 	@Autowired
-	private PmsMenuBiz pmsMenuBiz;
+	private PmsMenuRoleService pmsMenuRoleService;
 	@Autowired
 	private PmsPermissionService pmsPermissionService;
+	@Autowired
+	private PmsRolePermissionService pmsRolePermissionService;
 	@Autowired
 	private PmsOperatorRoleService pmsOperatorRoleService;
 
@@ -76,10 +83,9 @@ public class PmsRoleController extends BaseController {
 	public String listPmsRole(HttpServletRequest req, PageParam pageParam, PmsRole pmsRole, Model model) {
 		try {
 			PageBean pageBean = pmsRoleService.listPage(pageParam, pmsRole);
-			PmsOperator operator = this.getPmsOperator();
-			model.addAttribute(operator);
 			model.addAttribute(pageBean);
-			model.addAttribute("OperatorTypeEnum", OperatorTypeEnum.toMap());
+			model.addAttribute("pageParam", pageParam);
+			model.addAttribute("pmsRole", pmsRole);
 			return "pms/pmsRoleList";
 		} catch (Exception e) {
 			log.error("== listPmsRole exception:", e);
@@ -110,7 +116,7 @@ public class PmsRoleController extends BaseController {
 	 */
 	@RequiresPermissions("pms:role:add")
 	@RequestMapping("/add")
-	public String addPmsRole(HttpServletRequest req, Model model, String roleCode, String roleName, String desc, DwzAjax dwz) {
+	public String addPmsRole(HttpServletRequest req, Model model, @RequestParam("roleCode") String roleCode, @RequestParam("roleName") String roleName, @RequestParam("remark") String remark, DwzAjax dwz) {
 		try {
 			PmsRole roleNameCheck = pmsRoleService.getByRoleNameOrRoleCode(roleName, null);
 			if (roleNameCheck != null) {
@@ -126,7 +132,7 @@ public class PmsRoleController extends BaseController {
 			PmsRole pmsRole = new PmsRole();
 			pmsRole.setRoleCode(roleCode);
 			pmsRole.setRoleName(roleName);
-			pmsRole.setRemark(desc);
+			pmsRole.setRemark(remark);
 			pmsRole.setCreateTime(new Date());
 
 			// 表单数据校验
@@ -254,7 +260,7 @@ public class PmsRoleController extends BaseController {
 			return operateError("删除失败", model);
 		}
 	}
-
+	
 	/**
 	 * 分配权限UI
 	 * 
@@ -262,10 +268,98 @@ public class PmsRoleController extends BaseController {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequiresPermissions("pms:role:assignpermission")
-	@RequestMapping("/assignPermission")
+	@RequestMapping("/assignPermissionUI")
 	public String assignPermissionUI(HttpServletRequest req, Model model, Long roleId) {
 
-		return "pms/assignPermissionUI";
+		PmsRole role = pmsRoleService.getDataById(roleId);
+		if (role == null) {
+			return operateError("无法获取角色信息", model);
+		}
+		// 普通操作员没有修改超级管理员角色的权限
+		if (OperatorTypeEnum.USER.name().equals(this.getPmsOperator().getType()) && "admin".equals(role.getRoleName())) {
+			return operateError("权限不足", model);
+		}
+
+		String permissionIds = pmsPermissionService.getPermissionIdsByRoleId(roleId); // 根据角色查找角色对应的功能权限ID集
+		List<PmsPermission> permissionList = pmsPermissionService.listAll();
+		List<PmsOperator> operatorList = pmsOperatorRoleService.listOperatorByRoleId(roleId);
+
+		model.addAttribute("permissionIds", permissionIds);
+		model.addAttribute("permissionList", permissionList);
+		model.addAttribute("operatorList", operatorList);
+		model.addAttribute("role", role);
+		return "/pms/assignPermissionUI";
 	}
 
+	/**
+	 * 分配角色权限
+	 */
+	@RequiresPermissions("pms:role:assignpermission")
+	@RequestMapping("/assignPermission")
+	public String assignPermission(HttpServletRequest req, Model model, @RequestParam("roleId") Long roleId, DwzAjax dwz, @RequestParam("selectVal") String selectVal) {
+		try {
+			String rolePermissionStr = getRolePermissionStr(selectVal);
+			pmsRolePermissionService.saveRolePermission(roleId, rolePermissionStr);
+			return operateSuccess(model, dwz);
+		} catch (Exception e) {
+			log.error("== assignPermission exception:", e);
+			return operateError("保存失败", model);
+		}
+	}
+	
+	/**
+	 * 分配菜单UI
+	 * 
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/assignMenuUI")
+	public String assignMenuUI(HttpServletRequest req, Model model, Long roleId) {
+		PmsRole role = pmsRoleService.getDataById(roleId);
+		if (role == null) {
+			return operateError("无法获取角色信息", model);
+		}
+		// 普通操作员没有修改超级管理员角色的权限
+		if (OperatorTypeEnum.USER.name().equals(this.getPmsOperator().getType()) && "admin".equals(role.getRoleName())) {
+			return operateError("权限不足", model);
+		}
+
+		String menuIds = pmsMenuService.getMenuIdsByRoleId(roleId); // 根据角色查找角色对应的菜单ID集
+		List menuList = pmsMenuService.getListByParent(null);
+		List<PmsOperator> operatorList = pmsOperatorRoleService.listOperatorByRoleId(roleId);
+
+		model.addAttribute("menuIds", menuIds);
+		model.addAttribute("menuList", menuList);
+		model.addAttribute("operatorList", operatorList);
+		model.addAttribute("role", role);
+		return "/pms/assignMenuUI";
+	}
+
+	/**
+	 * 分配角色菜单
+	 */
+	@RequestMapping("/assignMenu")
+	public String assignMenu(HttpServletRequest req, Model model, @RequestParam("roleId") Long roleId, DwzAjax dwz, @RequestParam("selectVal") String selectVal) {
+		try {
+			String roleMenuStr = getRolePermissionStr(selectVal);
+			pmsMenuRoleService.saveRoleMenu(roleId, roleMenuStr);
+			return operateSuccess(model, dwz);
+		} catch (Exception e) {
+			log.error("== assignPermission exception:", e);
+			return operateError("保存失败", model);
+		}
+	}
+
+	/**
+	 * 得到角色和权限关联的ID字符串
+	 * 
+	 * @return
+	 */
+	private String getRolePermissionStr(String selectVal) throws Exception {
+		String roleStr = selectVal;
+		if (StringUtils.isNotBlank(roleStr) && roleStr.length() > 0) {
+			roleStr = roleStr.substring(0, roleStr.length() - 1);
+		}
+		return roleStr;
+	}
 }

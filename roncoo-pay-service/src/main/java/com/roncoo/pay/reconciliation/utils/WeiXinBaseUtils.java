@@ -17,7 +17,7 @@ import java.util.Random;
  * @版本：V1.0
  *
  */
-public class WechatBaseUtils {
+public class WeiXinBaseUtils {
 	private static String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 	/**

@@ -75,7 +75,7 @@
 		order by id
 	</select>
 
-	<delete id="deleteById" parameterType="Long">
+	<delete id="deleteByPrimaryKey" parameterType="Long">
 		delete from
 		<include refid="pms_role" />
 		where id = #{id}

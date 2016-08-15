@@ -17,12 +17,14 @@ package com.roncoo.pay.permission.service.impl;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.druid.util.StringUtils;
 import com.roncoo.pay.common.core.page.PageBean;
@@ -133,6 +135,26 @@ public class PmsRolePermissionServiceImpl implements PmsRolePermissionService {
 	public PageBean listPage(PageParam pageParam, PmsRolePermission pmsRolePermission) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		return pmsRolePermissionDao.listPage(pageParam, paramMap);
+	}
+	
+	/**
+	 * 保存角色和权限之间的关联关系
+	 */
+	@Transactional(rollbackFor = Exception.class)
+	public void saveRolePermission(Long roleId, String rolePermissionStr){
+		// 删除原来的角色与权限关联
+		pmsRolePermissionDao.deleteByRoleId(roleId);
+		if (!StringUtils.isEmpty(rolePermissionStr)) {
+			// 创建新的关联
+			String[] permissionIds = rolePermissionStr.split(",");
+			for (int i = 0; i < permissionIds.length; i++) {
+				Long permissionId = Long.valueOf(permissionIds[i]);
+				PmsRolePermission item = new PmsRolePermission();
+				item.setPermissionId(permissionId);
+				item.setRoleId(roleId);
+				pmsRolePermissionDao.insert(item);
+			}
+		}
 	}
 
 }

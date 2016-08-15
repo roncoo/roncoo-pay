@@ -3,7 +3,7 @@
 <div class="pageContent">
 	<form id="form" method="post" action="${baseURL}/pms/role/add" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 		<div class="pageFormContent" layoutH="60">
-			<input type="hidden" name="navTabId" value="listPmsRole">
+			<input type="hidden" name="navTabId" value="jsgl">
 			<input type="hidden" name="callbackType" value="closeCurrent">
 			<input type="hidden" name="forwardUrl" value="">
 
@@ -13,11 +13,11 @@
 			</p>
 			<p>
 				<label>角色编码：</label>
-				<input type="text" value="roleCode" class="required" minlength="3" maxlength="90" size="30">
+				<input type="text" name="roleCode" class="required" minlength="3" maxlength="90" size="30">
 			</p>
 			<p style="height: 50px;">
 				<label>角色描述：</label>
-				<textarea rows="5" cols="27" name="desc" class="required" minlength="3" maxlength="300"></textarea>
+				<textarea rows="5" cols="27" name="remark" class="required" minlength="3" maxlength="300"></textarea>
 			</p>
 		</div>
 		<div class="formBar">

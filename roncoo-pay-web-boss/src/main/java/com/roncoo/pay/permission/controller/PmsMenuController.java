@@ -102,8 +102,17 @@ public class PmsMenuController extends BaseController {
 			if (list.size() > 0) {
 				return operateError("同级菜单名称不能重复", model);
 			}
-			pmsMenu.setCreater(getPmsOperator().getRealName());
+			pmsMenu.setCreater(getPmsOperator().getLoginName());
 			pmsMenu.setStatus(PublicStatusEnum.ACTIVE.name());
+			pmsMenu.setIsLeaf("YES");
+			if (null != pmsMenu.getParent().getId()) {
+				pmsMenu.setLevel(pmsMenu.getParent().getLevel()+1);
+			}else{
+				pmsMenu.setLevel(1L);
+				PmsMenu parent = new PmsMenu();
+				parent.setId(0l);
+				pmsMenu.setParent(parent);
+			}
 			pmsMenuService.savaMenu(pmsMenu);
 		} catch (Exception e) {
 			// 记录系统操作日志
