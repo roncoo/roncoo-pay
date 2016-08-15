@@ -3,25 +3,25 @@
 <div class="pageContent">
 	<form id="form" method="post" action="${baseURL}/pms/role/edit" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 		<div class="pageFormContent" layoutH="60">
-			<input type="hidden" name="navTabId" value="listPmsRole">
+			<input type="hidden" name="navTabId" value="jsgl">
 			<input type="hidden" name="callbackType" value="closeCurrent">
 			<input type="hidden" name="forwardUrl" value="">
 
-			<input type="hidden" name="id" value="${id}">
+			<input type="hidden" name="id" value="${pmsRole.id }">
 
 			<p>
 				<label>角色名称：</label>
-				<input type="text" name="roleName" size="8" cssClass="required" minlength="3" maxlength="90" size="30">
+				<input type="text" name="roleName" cssClass="required" minlength="3" maxlength="90" size="30" value="${pmsRole.roleName }">
 			</p>
 
 			<p>
 				<label>角色编码：</label>
-				<input type="text" name="roleCode" size="8" cssClass="required" minlength="3" maxlength="90" size="30">
+				<input type="text" name="roleCode" cssClass="required" minlength="3" maxlength="90" size="30" value="${pmsRole.roleCode }">
 			</p>
 
 			<p style="height: 50px;">
 				<label>角色描述：</label>
-				<input type="text" name="remark" size="8" cssClass="required" minlength="3" maxlength="90" size="30">
+				<textarea rows="5" cols="27" name="remark" class="required" minlength="3" maxlength="300">${pmsRole.remark }</textarea>
 			</p>
 
 		</div>

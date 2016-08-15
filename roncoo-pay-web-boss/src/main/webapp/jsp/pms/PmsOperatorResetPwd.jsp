@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib/taglib.jsp"%>
 <div class="pageContent">
-	<form id="form" method="post" action="pms_resetOperatorPwd.action" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<form id="form" method="post" action="${baseURL}/pms/operator/resetPwd" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 		<div class="pageFormContent" layoutH="60">
-			<input type="hidden" name="navTabId" value="listPmsOperator">
+			<input type="hidden" name="navTabId" value="czygl">
 			<input type="hidden" name="callbackType" value="closeCurrent">
 			<input type="hidden" name="forwardUrl" value="">
 			
-				<input type="hidden" name="operatorId" value="${operatorId}" />
+				<input type="hidden" name="id" value="${operator.id}" />
 				
 				<div class="unit">
 					<label>操作员登录名：</label>
-					<input type="text" value="${loginName }" readonly="readonly" size="30" />
+					<input type="text" value="${operator.loginName }" readonly="readonly" size="30" />
 				</div>
 				<div class="unit">
 					<label>新密码：</label>
