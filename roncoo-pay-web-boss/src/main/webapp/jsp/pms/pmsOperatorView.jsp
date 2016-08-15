@@ -1,69 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib/taglib.jsp"%>
-<style>
-<!--
-.pageFormContent fieldset label {
-	width: 200px;
-}
--->
-</style>
 <div class="pageContent">
 	<form>
 		<div class="pageFormContent" layoutH="60">
 
 			<p style="width: 99%">
 				<label>操作员姓名：</label>
-				<s:textfield name="realName" readonly="true" size="30" />
+				<input type="text" name="realName" readonly="true" minlength="2" maxlength="45" size="30" value="${pmsOperator.realName }"/>
 			</p>
 			<p style="width: 99%">
 				<label>操作员登录名：</label>
-				<s:textfield name="loginName" readonly="true" size="30" />
+				<input type="text" name="loginName" readonly="true" minlength="2" maxlength="45" size="30" value="${pmsOperator.loginName }"/>
 			</p>
 			<p style="width: 99%">
 				<label>创建时间：</label>
-				<fmt:formatDate value="${createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
+				<fmt:formatDate value="${pmsOperator.createTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 			</p>
 			<p style="width: 99%">
 				<label>手机号码：</label>
-				<s:textfield name="mobileNo" readonly="true" size="30" />
+				<input type="text" name="mobileNo" readonly="true" minlength="2" maxlength="45" size="30" value="${pmsOperator.mobileNo }"/>
 			</p>
 			<p style="width: 99%">
 				<label>状态：</label>
 				<c:choose>
-					<c:when test="${status eq 'ACTIVE' }">激活</c:when>
-					<c:when test="${status eq 'UNACTIVE' }">冻结</c:when>
+					<c:when test="${pmsOperator.status eq 'ACTIVE' }">激活</c:when>
+					<c:when test="${pmsOperator.status eq 'UNACTIVE' }">冻结</c:when>
 					<c:otherwise>--</c:otherwise>
 				</c:choose>
 			</p>
 			<p style="width: 99%">
 				<label>类型：</label>
 				<c:choose>
-					<c:when test="${type eq 'ADMIN' }">普通操作员</c:when>
-					<c:when test="${type eq 'USER' }">超级管理员</c:when>
+					<c:when test="${pmsOperator.type eq 'ADMIN' }">普通操作员</c:when>
+					<c:when test="${pmsOperator.type eq 'USER' }">超级管理员</c:when>
 					<c:otherwise>--</c:otherwise>
 				</c:choose>
 			</p>
 			<p style="width: 99%; height: 50px;">
 				<label>描述：</label>
-				<s:textarea name="remark" rows="3" cols="50" readonly="true"></s:textarea>
+				<textarea name="remark" maxlength="100" rows="3" cols="30">${pmsOperator.remark }</textarea>
 			</p>
 
 			<fieldset style="width: 99%">
 				<legend>关联的角色</legend>
-				<s:iterator value="rolesList" status="st" var="v">
-
+				<c:forEach var="item" items="${rolesList}" varStatus="st">
 					<c:choose>
-						<c:when test="${type eq 'ADMIN'}">
-							<label> <input type="checkbox" <c:if test="${type eq 'ADMIN'}">disabled="disabled"</c:if> cssClass="required" name="selectRole" id="${v.id }">${v.roleName }
+						<c:when test="${pmsOperator.type eq 'ADMIN'}">
+							<label> <input type="checkbox" <c:if test="${pmsOperator.type eq 'ADMIN'}">disabled="disabled"</c:if> cssClass="required" name="selectRole" id="${item.id }">${item.roleName }
 							</label>
 						</c:when>
-						<c:when test="${type eq 'USER'}">
-							<label> <input type="checkbox" disabled="disabled" cssClass="required" name="selectRole" id="${v.id }">${v.roleName }
+						<c:when test="${pmsOperator.type eq 'USER'}">
+							<label> <input type="checkbox" disabled="disabled" cssClass="required" name="selectRole" id="${item.id }">${item.roleName }
 							</label>
 						</c:when>
 						<c:otherwise></c:otherwise>
 					</c:choose>
-				</s:iterator>
+				</c:forEach>
 			</fieldset>
 
 		</div>

@@ -53,6 +53,7 @@ public enum PublicStatusEnum {
 		for (int num = 0; num < ary.length; num++) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			String key = ary[num].name();
+			map.put("value", ary[num].name());
 			map.put("desc", ary[num].getDesc());
 			enumMap.put(key, map);
 		}

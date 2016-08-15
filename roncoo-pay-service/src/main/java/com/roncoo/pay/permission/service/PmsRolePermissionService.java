@@ -64,5 +64,10 @@ public interface PmsRolePermissionService {
 	 * @return
 	 */
 	PageBean listPage(PageParam pageParam, PmsRolePermission pmsRolePermission);
+	
+	/**
+	 * 保存角色和权限之间的关联关系
+	 */
+	void saveRolePermission(Long roleId, String rolePermissionStr);
 
 }

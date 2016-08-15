@@ -205,7 +205,7 @@ public class LoginController extends BaseController {
 			String level = map.get("level").toString();// 菜单层级（1、2、3、4）
 			String url = map.get("url").toString(); // ACTION访问地址
 			String navTabId = "";
-			if (StringUtil.isEmpty(map.get("targetName"))) {
+			if (!StringUtil.isEmpty(map.get("targetName"))) {
 				navTabId = map.get("targetName").toString(); // 用于刷新查询页面
 			}
 

@@ -8,7 +8,7 @@
    http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
    
    <!-- 定时任务 -->
-   <bean id="reconciliationTask" class="com.roncoo.app.reconciliation.ReconciliationTask" /> 
+   <bean id="reconciliationTask" class="com.roncoo.pay.app.reconciliation.ReconciliationTask" /> 
    <task:scheduled-tasks>
        <!-- 每天上午10点15分触发 -->
        <task:scheduled ref="reconciliationTask" method="main" cron="0 15 10 * * ?" />

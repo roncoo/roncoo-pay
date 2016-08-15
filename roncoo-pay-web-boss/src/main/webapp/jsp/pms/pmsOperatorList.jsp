@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib/taglib.jsp"%>
+<form id="pagerForm" method="post" action="${baseURL }/pms/operator/list">
+  <%@include file="../common/pageParameter.jsp" %>
+</form>
 <div class="pageHeader">
 	<form id="pagerForm" onsubmit="return navTabSearch(this);" action="${baseURL }/pms/operator/list" method="post">
 		<div class="searchBar">
@@ -51,7 +54,7 @@
 		</ul>
 	</div>
 
-	<table class="table" targetType="navTab" asc="asc" desc="desc" width="100%" layoutH="130">
+	<table class="table" targetType="navTab" asc="asc" desc="desc" width="100%" layoutH="111">
 		<thead>
 			<tr>
 				<th>序号</th>
@@ -76,29 +79,29 @@
 					<td>${item.realName }</td>
 					<td>${item.mobileNo }</td>
 					<td>
-						<c:forEach items="${publicStatus}" var="operatorStatus">
-							<c:if test="${item.status eq operatorStatus.name}">${operatorStatus.desc}</c:if>
+						<c:forEach items="${OperatorStatusEnum}" var="operatorStatus">
+							<c:if test="${item.status eq operatorStatus.value}">${operatorStatus.desc}</c:if>
 						</c:forEach>
 					</td>
 
 					<td>
 						[
-						<a href="${baseURL}/pms/opt/viewUI?id=${id}" title="查看【${loginName }】详情" target="dialog" style="color: blue">查看</a>
+						<a href="${baseURL}/pms/operator/viewUI?id=${item.id}" title="查看【${item.loginName }】详情" target="dialog" style="color: blue">查看</a>
 						]
-						<c:if test="${type eq OperatorTypeEnum.USER.value }">
-									&nbsp;[<a href="${baseURL}/pms/operator/editUI?id=${id}" title="修改【${loginName }】" target="dialog" rel="operatorUpdate" style="color: blue">修改</a>]
-									&nbsp;[<a href="${baseURL}/pms/operator/resetPwd?id=${id}" title="重置【${loginName }】的密码" target="dialog" width="550" height="300" style="color: blue">重置密码</a>]
+						<c:if test="${item.type eq OperatorTypeEnum.USER.value }">
+									&nbsp;[<a href="${baseURL}/pms/operator/editUI?id=${item.id}" title="修改【${item.loginName }】" target="dialog" rel="operatorUpdate" style="color: blue">修改</a>]
+									&nbsp;[<a href="${baseURL}/pms/operator/resetPwdUI?id=${item.id}" title="重置【${item.loginName }】的密码" target="dialog" width="550" height="300" style="color: blue">重置密码</a>]
 									
-									<c:if test="${type eq OperatorTypeEnum.USER.value && status==OperatorStatusEnum.ACTIVE.value}">
-									&nbsp;[<a href="${baseURL}/pms/operator/changeStatus?id=${id}" title="冻结【${loginName }】" target="ajaxTodo" style="color: blue">冻结</a>]
+									<c:if test="${item.type eq OperatorTypeEnum.USER.value && item.status==OperatorStatusEnum.ACTIVE.value}">
+									&nbsp;[<a href="${baseURL}/pms/operator/changeStatus?id=${item.id}" title="冻结【${item.loginName }】" target="ajaxTodo" style="color: blue">冻结</a>]
 									</c:if>
 
-							<c:if test="${type eq OperatorTypeEnum.USER.value &&status==OperatorStatusEnum.INACTIVE.value}">
-									&nbsp;[<a href="${baseURL}/pms/operator/changeStatus?id=${id}" title="激活【${loginName }】" target="ajaxTodo" style="color: blue">激活</a>]
+							<c:if test="${item.type eq OperatorTypeEnum.USER.value && item.status==OperatorStatusEnum.UNACTIVE.value}">
+									&nbsp;[<a href="${baseURL}/pms/operator/changeStatus?id=${item.id}" title="激活【${item.loginName }】" target="ajaxTodo" style="color: blue">激活</a>]
 									</c:if>
 
-							<c:if test="${type eq OperatorTypeEnum.USER.value }">
-									&nbsp;[<a href="${baseURL}/pms/operator/delete?id=${id}" target="ajaxTodo" title="确定要删除吗？" style="color: blue">删除</a>]
+							<c:if test="${item.type eq OperatorTypeEnum.USER.value }">
+									&nbsp;[<a href="${baseURL}/pms/operator/delete?id=${item.id}" target="ajaxTodo" title="确定要删除吗？" style="color: blue">删除</a>]
 									</c:if>
 
 						</c:if>
