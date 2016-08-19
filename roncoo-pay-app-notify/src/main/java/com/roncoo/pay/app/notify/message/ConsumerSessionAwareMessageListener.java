@@ -24,15 +24,13 @@ import com.roncoo.pay.common.core.utils.StringUtil;
 import com.roncoo.pay.notify.entity.RpNotifyRecord;
 import com.roncoo.pay.notify.enums.NotifyStatusEnum;
 import com.roncoo.pay.notify.service.RpNotifyService;
-
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.listener.SessionAwareMessageListener;
 
-import javax.jms.*;
-
+import javax.jms.Message;
+import javax.jms.MessageListener;
 import java.util.Date;
 
 /**

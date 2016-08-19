@@ -596,7 +596,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
 
             WeiXinPrePay weiXinPrePay = sealWeixinPerPay(appid , mch_id , rpTradePaymentOrder.getProductName() ,rpTradePaymentOrder.getRemark() , rpTradePaymentRecord.getBankOrderNo() , rpTradePaymentOrder.getOrderAmount() ,  rpTradePaymentOrder.getOrderTime() ,  rpTradePaymentOrder.getOrderPeriod() , WeiXinTradeTypeEnum.NATIVE ,
                     rpTradePaymentRecord.getBankOrderNo() ,"" ,rpTradePaymentOrder.getOrderIp());
-            String prePayXml = WeiXinPayUtils.getPrePayXml(weiXinPrePay, WeixinConfigUtil.readConfig("partnerKey"));
+            String prePayXml = WeiXinPayUtils.getPrePayXml(weiXinPrePay, partnerKey);
             //调用微信支付的功能,获取微信支付code_url
             Map<String, Object> prePayRequest = WeiXinPayUtils.httpXmlRequest(WeixinConfigUtil.readConfig("prepay_url"), "POST", prePayXml);
             if (WeixinTradeStateEnum.SUCCESS.name().equals(prePayRequest.get("return_code")) && WeixinTradeStateEnum.SUCCESS.name().equals(prePayRequest.get("result_code"))) {
