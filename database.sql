@@ -1036,5 +1036,5 @@ insert into pms_menu_role (role_id, menu_id) select 2,id from PMS_MENU;
 -- 2016.8.5 第三方支付信息表增加支付宝线下产品字段
 alter table rp_user_pay_info add offline_app_id varchar(50);
 alter table rp_user_pay_info add rsa_private_key varchar(100);
-alter table rp_user_pay_info add rsa_public_key varchar(100);
+alter table rp_user_pay_info add rsa_public_key varchar(100); 
 
