@@ -266,7 +266,6 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
 
         rpTradePaymentOrder.setPayWayCode(payWay.getPayWayCode());
         rpTradePaymentOrder.setPayWayName(payWay.getPayWayName());
-        rpTradePaymentOrderDao.update(rpTradePaymentOrder);
 
         RpTradePaymentRecord rpTradePaymentRecord = sealRpTradePaymentRecord( rpTradePaymentOrder.getMerchantNo(),  rpTradePaymentOrder.getMerchantName() , rpTradePaymentOrder.getProductName(),  rpTradePaymentOrder.getMerchantOrderNo(),  rpTradePaymentOrder.getOrderAmount(), payWay.getPayWayCode(),  payWay.getPayWayName() ,  rpTradePaymentOrder.getFundIntoType()  , BigDecimal.valueOf(payWay.getPayRate()) ,  rpTradePaymentOrder.getOrderIp(),  rpTradePaymentOrder.getReturnUrl(),  rpTradePaymentOrder.getNotifyUrl(),  rpTradePaymentOrder.getRemark(),  rpTradePaymentOrder.getField1(),  rpTradePaymentOrder.getField2(),  rpTradePaymentOrder.getField3(),  rpTradePaymentOrder.getField4(),  rpTradePaymentOrder.getField5());
         rpTradePaymentRecordDao.insert(rpTradePaymentRecord);
@@ -283,6 +282,9 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
 
                 aliF2FPaySubmit.initConfigs(rpTradePaymentOrder.getFundIntoType(), rpUserPayInfo.getOfflineAppId(), rpUserPayInfo.getAppId(), rpUserPayInfo.getRsaPrivateKey(), rpUserPayInfo.getRsaPublicKey());
                 Map<String , String > aliPayReturnMsg = aliF2FPaySubmit.f2fPay(rpTradePaymentRecord.getBankOrderNo(), rpTradePaymentOrder.getProductName(), "", authCode, rpTradePaymentRecord.getOrderAmount(), roncooPayGoodsDetailses);
+
+                rpTradePaymentOrder.setStatus(aliPayReturnMsg.get("status"));//支付订单状态
+                rpTradePaymentOrderDao.update(rpTradePaymentOrder);//修改支付订单
 
                 rpTradePaymentRecord.setStatus(aliPayReturnMsg.get("status"));//设置消费状态
                 rpTradePaymentRecord.setBankTrxNo(aliPayReturnMsg.get("bankTrxNo"));//银行流水号
