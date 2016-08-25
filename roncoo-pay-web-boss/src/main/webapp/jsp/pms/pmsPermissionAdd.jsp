@@ -3,7 +3,7 @@
 <div class="pageContent">
 	<form id="form1" method="post" action="${baseURL}/pms/permission/add" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 		<div class="pageFormContent" layoutH="58">
-			<input type="hidden" name="navTabId" value="listPmsAction">
+			<input type="hidden" name="navTabId" value="qxgl">
 			<input type="hidden" name="callbackType" value="closeCurrent">
 			<input type="hidden" name="forwardUrl" value="">
 
@@ -22,7 +22,7 @@
 			</p>
 			<p style="height: 50px;">
 				<label>权限描述：</label>
-				<textarea rows="3" cols="27" name="desc" class="required" minlength="3" maxlength="60"></textarea>
+				<textarea rows="3" cols="27" name="remark" class="required" minlength="3" maxlength="60"></textarea>
 			</p>
 		</div>
 		<div class="formBar">

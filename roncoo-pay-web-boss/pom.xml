@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.roncoo.pay.common</groupId>
 		<artifactId>roncoo-pay</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<groupId>com.roncoo.pay.web</groupId>
 	<artifactId>roncoo-pay-web-boss</artifactId>
@@ -81,6 +81,19 @@
 			<version>4.5.2</version>
 		</dependency>
 		<!-- Shiro libs End -->
+		
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>6.0.37</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>6.0.37</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<!-- 打包插件 -->

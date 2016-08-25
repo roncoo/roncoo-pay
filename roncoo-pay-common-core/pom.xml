@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.roncoo.pay.common</groupId>
 		<artifactId>roncoo-pay</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 	<artifactId>roncoo-pay-common-core</artifactId>
 	<name>roncoo-pay-common-core</name>
@@ -133,9 +133,14 @@
 		<!-- Mysql libs End -->
 
 		<!-- Other Common libs Begin -->
+		
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.transaction</groupId>
+			<artifactId>jta</artifactId>
 		</dependency>
 
 		<dependency>
@@ -174,9 +179,43 @@
 			<artifactId>commons-codec</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>alipay</groupId>
+			<artifactId>alipay-sdk-java20151021120052</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>alipay</groupId>
+			<artifactId>alipay-trade-sdk</artifactId>
 		</dependency>
 
 		<!-- http://mvnrepository.com/artifact/jaxen/jaxen -->

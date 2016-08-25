@@ -44,4 +44,8 @@ public interface PmsRolePermissionDao extends PermissionBaseDao<PmsRolePermissio
 	 * @return
 	 */
 	public List<PmsRolePermission> listByRoleIds(String roleIdsStr);
+
+	public void deleteByRoleIdAndPermissionId(Long roleId, Long permissionId);
+	
+	public void deleteByRoleId(Long roleId);
 }

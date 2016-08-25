@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.roncoo.pay.common</groupId>
 		<artifactId>roncoo-pay</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.4-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.roncoo.pay.service</groupId>
@@ -48,6 +48,7 @@
 			<artifactId>shiro-web</artifactId>
 			<version>1.2.5</version>
 		</dependency>
+		
 
 	</dependencies>
 

@@ -16,6 +16,7 @@
  */
 package com.roncoo.pay.permission.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -29,6 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.roncoo.pay.common.core.dwz.DwzAjax;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
@@ -77,8 +79,7 @@ public class PmsOperatorController extends BaseController {
 
 			PageBean pageBean = pmsOperatorService.listPage(pageParam, operator);
 			model.addAttribute(pageBean);
-			model.addAttribute("publicStatus", PublicStatusEnum.toList());
-			model.addAttribute("OperatorTypeEnumList", OperatorTypeEnum.toList());
+			model.addAttribute("OperatorStatusEnum", PublicStatusEnum.toMap());
 			model.addAttribute("OperatorTypeEnum", OperatorTypeEnum.toMap());
 			return "pms/pmsOperatorList";
 		} catch (Exception e) {
@@ -94,9 +95,9 @@ public class PmsOperatorController extends BaseController {
 	 */
 	@RequiresPermissions("pms:operator:view")
 	@RequestMapping("/viewUI")
-	public String viewPmsOperatorUI(HttpServletRequest req, Long operatorId, Model model) {
+	public String viewPmsOperatorUI(HttpServletRequest req, Long id, Model model) {
 		try {
-			PmsOperator pmsOperator = pmsOperatorService.getDataById(operatorId);
+			PmsOperator pmsOperator = pmsOperatorService.getDataById(id);
 			if (pmsOperator == null) {
 				return operateError("无法获取要查看的数据", model);
 			}
@@ -106,12 +107,11 @@ public class PmsOperatorController extends BaseController {
 				return operateError("权限不足", model);
 			}
 
-			// super.pushData(pmsOperator);
 			// 准备角色列表
 			model.addAttribute("rolesList", pmsRoleService.listAllRole());
 
 			// 准备该用户拥有的角色ID字符串
-			List<PmsOperatorRole> lisPmsOperatorRoles = pmsOperatorRoleService.listOperatorRoleByOperatorId(operatorId);
+			List<PmsOperatorRole> lisPmsOperatorRoles = pmsOperatorRoleService.listOperatorRoleByOperatorId(id);
 			StringBuffer owenedRoleIdBuffer = new StringBuffer("");
 			for (PmsOperatorRole pmsOperatorRole : lisPmsOperatorRoles) {
 				owenedRoleIdBuffer.append(pmsOperatorRole.getRoleId());
@@ -121,6 +121,7 @@ public class PmsOperatorController extends BaseController {
 			if (StringUtils.isNotBlank(owenedRoleIds) && owenedRoleIds.length() > 0) {
 				owenedRoleIds = owenedRoleIds.substring(0, owenedRoleIds.length() - 1);
 			}
+			model.addAttribute("pmsOperator", pmsOperator);
 			model.addAttribute("owenedRoleIds", owenedRoleIds);
 			return "/pms/pmsOperatorView";
 		} catch (Exception e) {
@@ -139,7 +140,7 @@ public class PmsOperatorController extends BaseController {
 	public String addPmsOperatorUI(HttpServletRequest req, Model model) {
 		try {
 			model.addAttribute("rolesList", pmsRoleService.listAllRole());
-			model.addAttribute("OperatorStatusEnumList", PublicStatusEnum.values());
+			model.addAttribute("OperatorStatusEnumList", PublicStatusEnum.toList());
 			return "/pms/pmsOperatorAdd";
 		} catch (Exception e) {
 			log.error("== addPmsOperatorUI exception:", e);
@@ -153,19 +154,15 @@ public class PmsOperatorController extends BaseController {
 	 */
 	@RequiresPermissions("pms:operator:add")
 	@RequestMapping("/add")
-	public String addPmsOperator(HttpServletRequest req, PmsOperator pmsOperator, String selectVal, Model model, DwzAjax dwz) {
+	public String addPmsOperator(HttpServletRequest req, PmsOperator pmsOperator, @RequestParam("selectVal") String selectVal, Model model, DwzAjax dwz) {
 		try {
 			pmsOperator.setType(OperatorTypeEnum.USER.name()); // 类型（
 																// "0":'普通操作员',"1":'超级管理员'），只能添加普通操作员
-
 			String roleOperatorStr = getRoleOperatorStr(selectVal);
 
 			// 表单数据校验
 			String validateMsg = validatePmsOperator(pmsOperator, roleOperatorStr);
 
-			// if (!loginPwdFormat(loginPwd)) {
-			// return operateError("登录密码必须由字母、数字、特殊符号组成");
-			// }
 
 			if (StringUtils.isNotBlank(validateMsg)) {
 				return operateError(validateMsg, model); // 返回错误信息
@@ -178,7 +175,8 @@ public class PmsOperatorController extends BaseController {
 			}
 
 			PasswordHelper.encryptPassword(pmsOperator);
-
+			pmsOperator.setCreater(getPmsOperator().getLoginName());
+			pmsOperator.setCreateTime(new Date());
 			pmsOperatorService.saveOperator(pmsOperator, roleOperatorStr);
 
 			return operateSuccess(model, dwz);
@@ -240,23 +238,23 @@ public class PmsOperatorController extends BaseController {
 		 * (operator.getLoginName().contains(specialChar)) { msg +=
 		 * "登录名不能包含特殊字符，"; }
 		 */
-		if (!realNameFormat(operator.getRealName())) {
-			msg += "操作员姓名必须为中文！";
-		}
+//		if (!realNameFormat(operator.getRealName())) {
+//			msg += "操作员姓名必须为中文！";
+//		}
 
 		// if (!emailFormat(operator.getLoginName())) {
 		// msg += "账户名格式必须为邮箱地址！";
 		// }
 
 		// 登录密码
-		String loginPwd = operator.getLoginPwd();
-		String loginPwdMsg = ValidateUtils.lengthValidate("登录密码", loginPwd, true, 6, 50);
-		/*
-		 * if (StringUtils.isBlank(loginPwdMsg) &&
-		 * !ValidateUtils.isAlphanumeric(loginPwd)) { loginPwdMsg +=
-		 * "登录密码应为字母或数字组成，"; }
-		 */
-		msg += loginPwdMsg;
+//		String loginPwd = operator.getLoginPwd();
+//		String loginPwdMsg = ValidateUtils.lengthValidate("登录密码", loginPwd, true, 6, 50);
+//		/*
+//		 * if (StringUtils.isBlank(loginPwdMsg) &&
+//		 * !ValidateUtils.isAlphanumeric(loginPwd)) { loginPwdMsg +=
+//		 * "登录密码应为字母或数字组成，"; }
+//		 */
+//		msg += loginPwdMsg;
 
 		// 手机号码
 		String mobileNo = operator.getMobileNo();
@@ -288,10 +286,9 @@ public class PmsOperatorController extends BaseController {
 	 * 
 	 * @return
 	 * */
-	@RequiresPermissions("pms:operator:delete")
 	@RequestMapping("/delete")
-	public String deleteOperatorStatus(HttpServletRequest req, Long operatorId, Model model, DwzAjax dwz) {
-		pmsOperatorService.deleteOperatorById(operatorId);
+	public String deleteOperatorStatus(HttpServletRequest req, Long id, Model model, DwzAjax dwz) {
+		pmsOperatorService.deleteOperatorById(id);
 		return this.operateSuccess(model, dwz);
 	}
 
@@ -302,9 +299,9 @@ public class PmsOperatorController extends BaseController {
 	 */
 	@RequiresPermissions("pms:operator:edit")
 	@RequestMapping("/editUI")
-	public String editPmsOperatorUI(HttpServletRequest req, Long operatorId, Model model) {
+	public String editPmsOperatorUI(HttpServletRequest req, Long id, Model model) {
 		try {
-			PmsOperator pmsOperator = pmsOperatorService.getDataById(operatorId);
+			PmsOperator pmsOperator = pmsOperatorService.getDataById(id);
 			if (pmsOperator == null) {
 				return operateError("无法获取要修改的数据", model);
 			}
@@ -313,13 +310,11 @@ public class PmsOperatorController extends BaseController {
 			if (OperatorTypeEnum.USER.name().equals(this.getPmsOperator().getType()) && OperatorTypeEnum.ADMIN.name().equals(pmsOperator.getType())) {
 				return operateError("权限不足", model);
 			}
-
-			// super.pushData(pmsOperator);
 			// 准备角色列表
 			model.addAttribute("rolesList", pmsRoleService.listAllRole());
 
 			// 准备该用户拥有的角色ID字符串
-			List<PmsOperatorRole> lisPmsOperatorRoles = pmsOperatorRoleService.listOperatorRoleByOperatorId(operatorId);
+			List<PmsOperatorRole> lisPmsOperatorRoles = pmsOperatorRoleService.listOperatorRoleByOperatorId(id);
 			StringBuffer owenedRoleIdBuffer = new StringBuffer("");
 			for (PmsOperatorRole pmsOperatorRole : lisPmsOperatorRoles) {
 				owenedRoleIdBuffer.append(pmsOperatorRole.getRoleId());
@@ -333,8 +328,8 @@ public class PmsOperatorController extends BaseController {
 
 			model.addAttribute("OperatorStatusEnum", PublicStatusEnum.toMap());
 			model.addAttribute("OperatorTypeEnum", OperatorTypeEnum.toMap());
-
-			return "pms/";
+			model.addAttribute("pmsOperator", pmsOperator);
+			return "pms/pmsOperatorEdit";
 		} catch (Exception e) {
 			log.error("== editPmsOperatorUI exception:", e);
 			return operateError("获取修改数据失败", model);
@@ -390,7 +385,7 @@ public class PmsOperatorController extends BaseController {
 	 * @return operateSuccess or operateError .
 	 */
 	@RequiresPermissions("pms:operator:changestatus")
-	@RequestMapping("/changestatus")
+	@RequestMapping("/changeStatus")
 	public String changeOperatorStatus(HttpServletRequest req, PmsOperator operator, Model model, DwzAjax dwz) {
 		try {
 			Long operatorId = operator.getId();
@@ -411,7 +406,7 @@ public class PmsOperatorController extends BaseController {
 			// 2014-01-02,由删除改为修改状态
 			// pmsPermissionBiz.deleteOperator(id);
 			// 激活的变冻结，冻结的则变激活
-			if (pmsOperator.getStatus() == PublicStatusEnum.ACTIVE.name()) {
+			if (pmsOperator.getStatus().equals(PublicStatusEnum.ACTIVE.name())) {
 				if ("ADMIN".equals(pmsOperator.getType())) {
 					return operateError("【" + pmsOperator.getLoginName() + "】为超级管理员，不能冻结", model);
 				}
@@ -446,7 +441,7 @@ public class PmsOperatorController extends BaseController {
 			return operateError("权限不足", model);
 		}
 
-		model.addAttribute("operatorId", operator.getId());
+		model.addAttribute("operator", operator);
 
 		return "pms/pmsOperatorResetPwd";
 	}
@@ -458,9 +453,9 @@ public class PmsOperatorController extends BaseController {
 	 */
 	@RequiresPermissions("pms:operator:resetpwd")
 	@RequestMapping("/resetPwd")
-	public String resetOperatorPwd(HttpServletRequest req, Long operatorId, String newPwd, String newPwd2, Model model, DwzAjax dwz) {
+	public String resetOperatorPwd(HttpServletRequest req, Long id, String newPwd, String newPwd2, Model model, DwzAjax dwz) {
 		try {
-			PmsOperator operator = pmsOperatorService.getDataById(operatorId);
+			PmsOperator operator = pmsOperatorService.getDataById(id);
 			if (operator == null) {
 				return operateError("无法获取要重置密码的操作员信息", model);
 			}
@@ -470,9 +465,6 @@ public class PmsOperatorController extends BaseController {
 				return operateError("权限不足", model);
 			}
 
-			if (!loginPwdFormat(newPwd)) {
-				return operateError("登录密码必须由字母、数字、特殊符号组成", model);
-			}
 
 			String validateMsg = validatePassword(newPwd, newPwd2);
 			if (StringUtils.isNotBlank(validateMsg)) {

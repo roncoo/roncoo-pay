@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib/taglib.jsp"%>
+<form id="pagerForm" method="post" action="${baseURL }/pms/permission/list">
+  <%@include file="../common/pageParameter.jsp" %>
+</form>
 <div class="pageHeader">
 	<form id="pagerForm" onsubmit="return navTabSearch(this);" action="${baseURL}/pms/permission/list" method="post">
 		<div class="searchBar">
@@ -42,7 +45,7 @@
 		</ul>
 	</div>
 
-	<table class="table" targetType="navTab" asc="asc" desc="desc" width="100%" layoutH="131">
+	<table class="table" targetType="navTab" asc="asc" desc="desc" width="100%" layoutH="111">
 		<thead>
 			<tr>
 				<th>序号</th>
@@ -65,9 +68,9 @@
 					</td>
 					<td>
 						[
-						<a href="${baseURL}/pms/permission/editUI?id=${id}" title="修改权限" target="dialog" width="550" height="300" rel="input" style="color: blue">修改</a>
+						<a href="${baseURL}/pms/permission/editUI?id=${item.id}" title="修改权限" target="dialog" width="550" height="300" rel="input" style="color: blue">修改</a>
 						] &nbsp;[
-						<a href="${baseURL}/pms/permission/delete?id=${id}" title="删除权限【${permission }】" target="ajaxTodo" style="color: blue">删除</a>
+						<a href="${baseURL}/pms/permission/delete?permissionId=${item.id}" title="删除权限【${item.permission }】" target="ajaxTodo" style="color: blue">删除</a>
 						]
 					</td>
 				</tr>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib/taglib.jsp"%>
 <div class="pageContent">
-<form id="form" method="post" action="${baseURL}/pms/role/assignPermission" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+<form id="form" method="post" action="${baseURL}/pms/role/assignMenu" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 	<div class="pageFormContent" layoutH="60">
 	<input type="hidden" name="navTabId" value="jsgl">
 	<input type="hidden" name="callbackType" value="closeCurrent">
@@ -12,7 +12,7 @@
 			<div class="tabsHeader">
 				<div class="tabsHeaderContent">
 					<ul>
-						<li><a href="javascript:;"><span>分配权限</span></a></li>
+						<li><a href="javascript:;"><span>分配菜单</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -21,9 +21,9 @@
 					<div id="treeDiv" layoutH="100" style="float:left; display:block;overflow:auto; width:489px; border:solid 1px #CCC; line-height:21px; background:#fff">
 					    <fieldset style="width:99%">
 							<legend>全选<input type="checkbox"  name="selectAll" id="selectAll" ></legend>
-							<c:forEach items="${permissionList}" var="v">
-								<label>
-									<input type="checkbox" class="selectPer" name="selectPer" id="perId${v.id }" value="${v.id }">${v.permissionName }
+							<c:forEach items="${menuList}" var="item"> 
+							     <label>
+									<input type="checkbox" class="selectMenu" name="selectMenu" id="menuId${item.id }" value="${item.id }">${item.name }
 								</label>
 							</c:forEach>
 						</fieldset>
@@ -78,18 +78,18 @@
 <script type="text/javascript">
 //回显
 $(document).ready(function() {
-	var str = "${permissionIds}";
+	var str = "${menuIds}";
 	var array = new Array();
 	array = str.split(",");
 	for ( var i = 0; i < array.length; i++) {
-		$("#perId" + array[i]).attr("checked", "checked");
+		$("#menuId" + array[i]).attr("checked", "checked");
 	}
 	
 	$("#selectAll").click(function(){
 		if($("#selectAll").is(':checked')){
-			$("input[name='selectPer']").attr("checked","checked"); 
+			$("input[name='selectMenu']").attr("checked","checked"); 
 		}else{
-			$("input[name='selectPer']").removeAttr("checked");
+			$("input[name='selectMenu']").removeAttr("checked");
 		}
 	}); 
 });
@@ -98,7 +98,7 @@ $(document).ready(function() {
 function submitForm() {
 	var str = "";
 	$(":checkbox:checked").each(function() {
-		if ($(this).hasClass('selectPer')){
+		if ($(this).hasClass('selectMenu')){
 			// 加样式判断，避免与其他复选框冲突
 			str += $(this).val() + ",";
 		}

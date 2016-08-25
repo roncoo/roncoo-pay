@@ -74,10 +74,6 @@
 					</div>
 				</form>
 
-				<div>
-					<br /> <br /> <br /> <br /> <font color="red">请先到<a href="http://www.roncoo.com" target="_blank">龙果学院</a>注册, 然后使用注册账户登录!
-					</font>
-				</div>
 
 			</div>
 			<div class="login_banner">

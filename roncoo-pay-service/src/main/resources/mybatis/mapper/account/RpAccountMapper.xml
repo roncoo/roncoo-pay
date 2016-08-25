@@ -81,10 +81,10 @@
 			and create_time_ between #{beginDate} AND CONCAT(#{endDate},'
 			23:59:59')
 		</if>
-		<if test="accountNo != null and accountNo !='' "> and account_no_ = #{accountNo}</if>
+		<if test="accountNo != null and accountNo !='' "> and account_no = #{accountNo}</if>
 		<if test="status != null and status !='' "> and status = #{status}</if>
 		<if test="userNo != null and userNo !='' "> and user_no = #{userNo}</if>
-		<if test="accountType != null and accountType !='' "> and account_type_ = #{accountType}</if>
+		<if test="accountType != null and accountType !='' "> and account_type = #{accountType}</if>
 		<if test="userNoNotIn != null and userNoNotIn != '' " >
 			and user_no not in
 			<foreach collection="userNoNotIn" separator="," open="(" close=")" item="userNo">

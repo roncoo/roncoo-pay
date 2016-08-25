@@ -40,4 +40,6 @@ public interface PmsMenuRoleService {
 	 */
 	public void deleteByRoleId(Long roleId);
 
+	public void saveRoleMenu(Long roleId, String roleMenuStr);
+
 }

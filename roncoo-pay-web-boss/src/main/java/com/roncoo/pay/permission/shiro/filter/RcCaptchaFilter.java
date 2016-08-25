@@ -75,7 +75,6 @@ public class RcCaptchaFilter extends OncePerRequestFilter {
 		gc.dispose();
 
 		request.getSession().setAttribute("rcCaptcha", rs);
-
 		ImageIO.write(bimg, "jpeg", out);
 		try {
 			out.flush();

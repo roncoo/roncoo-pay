@@ -15,6 +15,7 @@
  */
 package com.roncoo.pay.permission.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +30,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.roncoo.pay.common.core.dwz.DwzAjax;
+import com.roncoo.pay.common.core.enums.PublicStatusEnum;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.controller.common.BaseController;
@@ -67,6 +69,7 @@ public class PmsPermissionController extends BaseController {
 		try {
 			PageBean pageBean = pmsPermissionService.listPage(pageParam, pmsPermission);
 			model.addAttribute(pageBean);
+			model.addAttribute("pageParam", pageParam);
 			return "pms/pmsPermissionList";
 		} catch (Exception e) {
 			log.error("== listPmsPermission exception:", e);
@@ -113,7 +116,9 @@ public class PmsPermissionController extends BaseController {
 			if (checkPermission != null) {
 				return operateError("权限【" + permission + "】已存在", model);
 			}
-
+			pmsPermission.setStatus(PublicStatusEnum.ACTIVE.name());
+			pmsPermission.setCreater(getPmsOperator().getLoginName());
+			pmsPermission.setCreateTime(new Date());
 			pmsPermissionService.saveData(pmsPermission);
 
 			return operateSuccess(model, dwz); // 返回operateSuccess视图,并提示“操作成功”

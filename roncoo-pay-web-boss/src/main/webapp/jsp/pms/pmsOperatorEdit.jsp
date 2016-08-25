@@ -1,74 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../../common/taglib/taglib.jsp"%>
-<style>
-<!--
-.pageFormContent fieldset label{
-	width: 200px;
-}
--->
-</style>
 <div class="pageContent">
-	<form id="form" method="post" action="pms_editPmsOperator.action" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
+	<form id="form" method="post" action="${baseURL}/pms/operator/edit" class="pageForm required-validate" onsubmit="return validateCallback(this, dialogAjaxDone);">
 		<div class="pageFormContent" layoutH="60">
-		    <input type="hidden" name="navTabId" value="listPmsOperator">
+		    <input type="hidden" name="navTabId" value="czygl">
 			<input type="hidden" name="callbackType" value="closeCurrent">
 			<input type="hidden" name="forwardUrl" value="">
 			
-			<input type="operatorId" name="id" value="">
-			<input type="selectVal" name="selectVal" value="">
+			<input type="hidden" name="id" value="${pmsOperator.id }">
+			<input type="hidden" name="selectVal" id="selectVal" value="">
 			
 			<p style="width:99%">
 				<label>操作员姓名：</label>
-				<s:textfield name="realName" cssClass="required" minlength="2" maxlength="15" size="30" />
+				<input type="text" name="realName" class="required" minlength="2" maxlength="45" size="30" value="${pmsOperator.realName }"/>
 			</p>
 			<p style="width:99%">
 				<label>操作员登录名：</label>
-				<s:textfield name="loginName" cssClass="required" readonly="true" minlength="3" maxlength="30" size="30" />
+				<input type="text" name="loginName" class="required" readonly="true" minlength="2" maxlength="45" size="30" value="${pmsOperator.loginName }"/>
 			</p>
 			<p style="width:99%">
 				<label>手机号码：</label>
-				<s:textfield name="mobileNo" cssClass="required mobile"  maxlength="12" size="30" />
+				<input type="text" name="mobileNo" class="required mobile" maxlength="12" size="30" value="${pmsOperator.mobileNo }"/>
 			</p>
 			<p style="width:99%">
-				<label>状态：</label>
+				<label>状态：${pmsOperator.status}</label>
 				<c:choose>
-					<c:when test="${status eq OperatorStatusEnum.ACTIVE.value}">激活</c:when>
-					<c:when test="${status eq OperatorStatusEnum.INACTIVE.value}">冻结</c:when>
+					<c:when test="${pmsOperator.status eq OperatorStatusEnum.ACTIVE.value}">激活</c:when>
+					<c:when test="${pmsOperator.status eq OperatorStatusEnum.INACTIVE.value}">冻结</c:when>
 					<c:otherwise>--</c:otherwise>
 				</c:choose>
 			</p>
 			<p style="width:99%">
 				<label>操作员类型：</label>
 				<c:choose>
-					<c:when test="${type eq OperatorTypeEnum.USER.value }">普通操作员</c:when>
-					<c:when test="${type eq OperatorTypeEnum.ADMIN.value }">超级管理员</c:when>
+					<c:when test="${pmsOperator.type eq OperatorTypeEnum.USER.value }">普通操作员</c:when>
+					<c:when test="${pmsOperator.type eq OperatorTypeEnum.ADMIN.value }">超级管理员</c:when>
 					<c:otherwise>--</c:otherwise>
 				</c:choose>
 			</p>
 			<p style="width:99%;height:50px;">
 				<label>描述：</label>
-				<s:textarea name="remark" maxlength="100" rows="3" cols="30"></s:textarea>
+				<textarea name="remark" class="required" maxlength="100" rows="3" cols="30">${pmsOperator.remark }</textarea>
 			</p>
 			
 			<fieldset style="width:99%">
 				<legend>选择角色<font color="red">*</font></legend>
-				<s:iterator value="rolesList" status="st" var="v">
-					<c:choose>
-						<c:when test="${v.roleType eq RoleTypeEnum.ADMIN.value && type eq RoleTypeEnum.ADMIN.value}">
-							<label>
-								<input type="checkbox" <c:if test="${type eq RoleTypeEnum.ADMIN.value}">disabled="disabled"</c:if> 
-								class="selectOperatorRole" name="selectRole" id="roleId${v.id }" value="${v.id }">${v.roleName }
-							</label>
-						</c:when>
-						<c:when test="${v.roleType eq RoleTypeEnum.USER.value}">
-							<label>
-								<input type="checkbox" <c:if test="${type eq RoleTypeEnum.ADMIN.value}">disabled="disabled"</c:if> 
-								class="selectOperatorRole" name="selectRole" id="roleId${v.id }" value="${v.id }">${v.roleName }
-							</label>
-						</c:when>
-						<c:otherwise></c:otherwise>
-					</c:choose>
-				</s:iterator>
+				<c:forEach items="${rolesList}" var="v">
+					<label>
+						<input type="checkbox" class="selectOperatorRole" name="selectRole" id="roleId${v.id }" value="${v.id }">${v.roleName }
+					</label>
+				</c:forEach>
 			</fieldset>
 			
 		</div>

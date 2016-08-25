@@ -11,6 +11,7 @@
 				<label>上级菜单：</label>
 				<input type="text" name="parent.name" value="${pmsMenu.parent.name}" readonly="true" />
 				<input type="hidden" name="parent.id" value="${pmsMenu.parent.id}" />
+				<input type="hidden" name="parent.level" value="${pmsMenu.parent.level}" />
 				<span class="info"></span>
 			</p>
 			<p style="width: 99%">

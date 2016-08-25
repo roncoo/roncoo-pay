@@ -36,8 +36,12 @@
 	</select>
 
 	<select id="listByRoleId" parameterType="long" resultType="com.roncoo.pay.permission.entity.PmsMenuRole">
-		select * from
+		select d.id as "id",
+		d.role_id as "roleId",
+		d.menu_id as "menuId"
+		from
 		<include refid="pms_menu_role" />
+		d
 		where role_id = #{roleId}
 	</select>
 

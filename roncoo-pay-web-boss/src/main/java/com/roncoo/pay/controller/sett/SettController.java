@@ -28,8 +28,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.roncoo.pay.account.entity.RpAccount;
 import com.roncoo.pay.account.entity.RpSettRecord;
+import com.roncoo.pay.account.service.RpAccountService;
 import com.roncoo.pay.account.service.RpSettHandleService;
 import com.roncoo.pay.account.service.RpSettQueryService;
 import com.roncoo.pay.common.core.dwz.DWZ;
@@ -50,6 +53,8 @@ public class SettController {
 	private RpSettQueryService rpSettQueryService;
 	@Autowired
 	private RpSettHandleService rpSettHandleService;
+	@Autowired
+	private RpAccountService rpAccountService;
 
 	/**
 	 * 函数功能说明 ： 查询分页数据
@@ -184,5 +189,19 @@ public class SettController {
 		RpSettRecord settRecord = rpSettQueryService.getDataById(id);
 		model.addAttribute("settRecord", settRecord);
 		return "sett/view";
+	}
+	
+	/**
+	 * 函数功能说明 ：根据支付产品获取支付方式
+	 * 
+	 * @参数： @return
+	 * @return String
+	 * @throws
+	 */
+	@RequestMapping(value = "/getSettAmount", method = RequestMethod.GET)
+	@ResponseBody
+	public RpAccount getSettAmount(@RequestParam("userNo") String userNo) {
+		RpAccount rpAccount = rpAccountService.getDataByUserNo(userNo);
+        return rpAccount;
 	}
 }
