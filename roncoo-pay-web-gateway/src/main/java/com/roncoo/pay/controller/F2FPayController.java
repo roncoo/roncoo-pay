@@ -47,7 +47,7 @@ public class F2FPayController extends BaseController {
      * @return
      */
     @RequestMapping("/doPay")
-    public String initPay(HttpServletResponse httpServletResponse) {
+    public void initPay(HttpServletResponse httpServletResponse) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
 
         //获取商户传入参数
@@ -105,7 +105,6 @@ public class F2FPayController extends BaseController {
         httpServletResponse.setContentType("text/text;charset=UTF-8");
         write(httpServletResponse, payResultJson);
 
-        return "gateway";
     }
 
 }
