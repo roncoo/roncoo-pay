@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 
 import com.roncoo.pay.account.enums.AccountFundDirectionEnum;
 import com.roncoo.pay.common.core.entity.BaseEntity;
+import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.trade.enums.TrxTypeEnum;
 
 /**
@@ -169,5 +170,18 @@ public class RpAccountHistory extends BaseEntity implements Serializable {
 
     public void setUserNo(String userNo) {
         this.userNo = userNo == null ? null : userNo.trim();
+    }
+    
+    public String getAmountDesc() {
+    	if(this.getFundDirection().equals(AccountFundDirectionEnum.ADD.name())){
+    		System.out.println("<span style=\"color: blue;\">+<fmt:formatNumber value=\""+this.amount+"\" pattern=\"0.00\" /></span>");
+    		return "<span style=\"color: blue;\">+"+this.amount.doubleValue()+"</span>";
+    	}else{
+    		return "<span style=\"color: red;\">-"+this.amount.doubleValue()+"</span>";
+    	}
+    }
+    
+    public String getCreateTimeDesc() {
+    	return DateUtils.formatDate(this.getCreateTime(), "yyyy-MM-dd HH:mm:ss");
     }
 }

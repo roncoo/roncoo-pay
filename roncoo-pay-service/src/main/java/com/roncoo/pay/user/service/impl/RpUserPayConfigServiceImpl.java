@@ -22,6 +22,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.enums.PublicEnum;
@@ -134,6 +135,7 @@ public class RpUserPayConfigServiceImpl implements RpUserPayConfigService{
 	 * 创建用户支付配置
 	 */
 	@Override
+	@Transactional(rollbackFor = Exception.class)
 	public void createUserPayConfig(String userNo, String userName, String productCode, String productName, Integer riskDay,
 			String fundIntoType, String isAutoSett, String appId, String merchantId, String partnerKey,
 			String ali_partner, String ali_sellerId, String ali_key, String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException{

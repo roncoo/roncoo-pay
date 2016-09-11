@@ -4,7 +4,7 @@
 
 	<groupId>com.roncoo.pay.common</groupId>
 	<artifactId>roncoo-pay</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>roncoo-pay</name>
@@ -30,6 +30,8 @@
 		<module>roncoo-pay-web-gateway</module>
 		<!-- 支付系统核心业务 -->
 		<module>roncoo-pay-service</module>
+		<!-- 商户后台 -->
+		<module>roncoo-pay-web-merchant</module>
 	</modules>
 
 	<!-- 配置maven地址 -->

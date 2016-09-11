@@ -1038,3 +1038,6 @@ alter table rp_user_pay_info add offline_app_id varchar(50);
 alter table rp_user_pay_info add rsa_private_key varchar(100);
 alter table rp_user_pay_info add rsa_public_key varchar(100); 
 
+-- 2016.9.5 增加登录信息字段
+alter table rp_user_info add mobile varchar(15);
+alter table rp_user_info add password varchar(50);

@@ -85,5 +85,21 @@ public interface RpTradePaymentQueryService {
 	 * @return
 	 */
 	public PageBean<RpTradePaymentRecord> listPaymentRecordPage(PageParam pageParam ,PaymentOrderQueryParam paymentOrderQueryParam);
+	
+	/**
+	 * 获取交易流水报表
+	 * 
+	 * @param merchantNo
+	 * @return
+	 */
+	public List<Map<String, String>> getPaymentReport(String merchantNo);
+	
+	/**
+	 * 获取交易方式报表
+	 * 
+	 * @param merchantNo
+	 * @return
+	 */
+	public List<Map<String, String>> getPayWayReport(String merchantNo);
 
 }

@@ -15,6 +15,9 @@
  */
 package com.roncoo.pay.trade.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import com.roncoo.pay.common.core.dao.BaseDao;
 import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
 
@@ -47,5 +50,9 @@ public interface RpTradePaymentRecordDao extends BaseDao<RpTradePaymentRecord>{
 	 * @return
 	 */
 	RpTradePaymentRecord getByTrxNo(String trxNo);
+
+	List<Map<String, String>> getPaymentReport(String merchantNo);
+
+	List<Map<String, String>> getPayWayReport(String merchantNo);
 
 }

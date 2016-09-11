@@ -35,8 +35,6 @@
 
 系统搭建部署：http://www.roncoo.com/article/detail/124511
 
-系统视频介绍：http://www.roncoo.com/details/a09d8badbce04bd380f56034f8e68be0
-
 官方QQ群：287684257，欢迎大家加入，共同探讨互联网金融支付行业业务、技术等。
 
 ![Alt text](http://git.oschina.net/uploads/images/2016/0722/175850_9e020e87_860625.png)

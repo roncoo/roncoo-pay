@@ -30,6 +30,7 @@ import com.roncoo.pay.account.service.RpAccountService;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
+import com.roncoo.pay.common.core.utils.EncryptUtil;
 import com.roncoo.pay.common.core.utils.StringUtil;
 import com.roncoo.pay.user.dao.RpUserInfoDao;
 import com.roncoo.pay.user.entity.RpUserInfo;
@@ -80,11 +81,15 @@ public class RpUserInfoServiceImpl implements RpUserInfoService{
      * 
      * @param userName
      *            用户名
+     * @param mobile
+     *            手机号
+     * @param password
+     *            密码
      * @return
      */
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void registerOffline(String userName) {
+    public void registerOffline(String userName, String mobile, String password) {
         String userNo = buildNoService.buildUserNo();
         String accountNo = buildNoService.buildAccountNo();
 
@@ -96,6 +101,8 @@ public class RpUserInfoServiceImpl implements RpUserInfoService{
         rpUserInfo.setStatus(PublicStatusEnum.ACTIVE.name());
         rpUserInfo.setUserName(userName);
         rpUserInfo.setUserNo(userNo);
+        rpUserInfo.setMobile(mobile);
+        rpUserInfo.setPassword(EncryptUtil.encodeMD5String(password));
         rpUserInfo.setVersion(0);
         this.saveData(rpUserInfo);
 
@@ -129,6 +136,19 @@ public class RpUserInfoServiceImpl implements RpUserInfoService{
     public RpUserInfo getDataByMerchentNo(String merchantNo) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("userNo", merchantNo);
+		paramMap.put("status", PublicStatusEnum.ACTIVE.name());
+		return rpUserInfoDao.getBy(paramMap);
+    }
+    
+    /**
+	 * 根据手机号获取商户信息
+	 * @param mobile
+	 * @return
+	 */
+    @Override
+    public RpUserInfo getDataByMobile(String mobile){
+    	Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("mobile", mobile);
 		paramMap.put("status", PublicStatusEnum.ACTIVE.name());
 		return rpUserInfoDao.getBy(paramMap);
     }

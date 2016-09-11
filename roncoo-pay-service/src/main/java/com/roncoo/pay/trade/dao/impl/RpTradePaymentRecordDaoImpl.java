@@ -23,6 +23,7 @@ import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -72,6 +73,20 @@ public class RpTradePaymentRecordDaoImpl extends BaseDaoImpl<RpTradePaymentRecor
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("trxNo", trxNo);
 		return super.getBy(paramMap);
+	}
+	
+	public List<Map<String, String>> getPaymentReport(String merchantNo){
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("status", TradeStatusEnum.SUCCESS.name());
+		paramMap.put("merchantNo", merchantNo);
+		return super.getSqlSession().selectList(getStatement("getPaymentReport"),paramMap);
+	}
+
+	public List<Map<String, String>> getPayWayReport(String merchantNo){
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("status", TradeStatusEnum.SUCCESS.name());
+		paramMap.put("merchantNo", merchantNo);
+		return super.getSqlSession().selectList(getStatement("getPayWayReport"),paramMap);
 	}
 
 }

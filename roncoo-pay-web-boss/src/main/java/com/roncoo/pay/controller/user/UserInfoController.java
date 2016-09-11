@@ -81,8 +81,8 @@ public class UserInfoController {
 	 */
 	@RequiresPermissions("user:userInfo:add")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(Model model,@RequestParam("userName") String userName,DwzAjax dwz) {
-		rpUserInfoService.registerOffline(userName);
+	public String add(Model model,@RequestParam("userName") String userName,@RequestParam("mobile") String mobile,@RequestParam("password") String password,DwzAjax dwz) {
+		rpUserInfoService.registerOffline(userName, mobile, password);
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);
 		model.addAttribute("dwz", dwz);
