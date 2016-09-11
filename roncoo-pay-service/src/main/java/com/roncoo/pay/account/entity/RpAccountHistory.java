@@ -174,7 +174,6 @@ public class RpAccountHistory extends BaseEntity implements Serializable {
     
     public String getAmountDesc() {
     	if(this.getFundDirection().equals(AccountFundDirectionEnum.ADD.name())){
-    		System.out.println("<span style=\"color: blue;\">+<fmt:formatNumber value=\""+this.amount+"\" pattern=\"0.00\" /></span>");
     		return "<span style=\"color: blue;\">+"+this.amount.doubleValue()+"</span>";
     	}else{
     		return "<span style=\"color: red;\">-"+this.amount.doubleValue()+"</span>";
