@@ -8,6 +8,7 @@
 	</parent>
 	<groupId>com.roncoo.pay.web</groupId>
 	<artifactId>roncoo-pay-web-merchant</artifactId>
+	 <packaging>war</packaging>
 	<name>roncoo-pay-web-merchant</name>
 	<url>http://maven.apache.org</url>
 
