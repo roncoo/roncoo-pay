@@ -79,7 +79,10 @@ public class AccountController extends BaseController {
 		String userNo = rpUserInfo.getUserNo();
 		RpAccount rpAccount = rpAccountService.getDataByUserNo(userNo);
 		RpUserPayConfig rpUserPayConfig = rpUserPayConfigService.getByUserNo(userNo);
-		List<RpPayWay> rpPayWayList = rpPayWayService.listByProductCode(rpUserPayConfig.getProductCode());
+		List<RpPayWay> rpPayWayList = new ArrayList<RpPayWay>(); 
+		if(rpUserPayConfig != null){
+			rpPayWayList = rpPayWayService.listByProductCode(rpUserPayConfig.getProductCode());
+		}
 		
 		
 		request.setAttribute("rpAccount", rpAccount);
