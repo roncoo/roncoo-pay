@@ -85,12 +85,11 @@ display:none;;
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" onclick="editPassword();" class="btn btn-default btn-flat">修改密码</a>
-                </div>
-                <div class="pull-right">
-                  <a href="${baseURL }/logout" class="btn btn-default btn-flat">退 出</a>
-                </div>
+                <div class="col-xs-12 text-center">
+	                  <a href="#" onclick="editPassword();" class="btn btn-default btn-flat">登录密码</a>
+	                  <a href="#" onclick="editpayPass();" class="btn btn-default btn-flat">支付密码</a>
+	                  <a href="${baseURL }/logout" class="btn btn-default btn-flat">退 出</a>
+	                </div>
               </li>
             </ul>
           </li>
@@ -133,7 +132,12 @@ display:none;;
             </span>
           </a>
         </li>
-        
+        <li class="treeview">
+          <a target="navTab" href="${baseURL }/merchant/sett/getSettList">
+            <i class="fa fa-laptop"></i>
+            <span>结算信息</span>
+          </a>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -147,7 +151,7 @@ display:none;;
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="editPassword()">
                   <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">修改密码</h4>
+                <h4 class="modal-title">修改登录密码</h4>
               </div>
               <form class="form-horizontal">
               <div class="modal-body">
@@ -186,7 +190,49 @@ display:none;;
           <!-- /.modal-dialog -->
         </div>
         <!-- /.modal -->
+		<div class="modal" id="payPass_modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="editpayPass()">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">修改支付密码</h4>
+              </div>
+              <form class="form-horizontal">
+              <div class="modal-body">
+                
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">原支付密码：</label>
 
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="oldPayPass" name="oldPayPass" value=""/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">新支付密码：</label>
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="newPayPass" name="newPayPass" value=""/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">确认支付密码：</label>
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="newPayPass2" name="newPayPass2" value=""/>
+                    </div>
+                  </div>
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" onclick="editpayPass()">关 闭</button>
+                <button type="button" class="btn btn-primary" onclick="savePayPass()">保 存</button>
+              </div>
+              </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
 
     <!-- Main content -->
     <section class="content">
@@ -242,6 +288,56 @@ display:none;;
 <!-- FLOT CATEGORIES PLUGIN - Used to draw bar charts -->
 <script src="${baseURL }/lte/plugins/flot/jquery.flot.categories.min.js"></script>
 <script type="text/javascript">
+function editpayPass(){
+	if($('#payPass_modal').css('display') == 'block'){
+		$("#payPass_modal").hide();
+		$("#oldPayPass").val("");
+		$("#newPayPass").val("");
+		$("#newPayPass2").val("");
+	}else{
+		$("#payPass_modal").show();
+	}
+}
+
+function savePayPass(){
+	var oldPayPass = $("#oldPayPass").val();
+	var newPayPass = $("#newPayPass").val();
+	var newPayPass2 = $("#newPayPass2").val();
+	if(oldPayPass == "" || newPayPass == ""){
+		$("#alertDiv").show();
+    	$("#alertMsg").html("请输入密码");
+	}else if(newPayPass != newPayPass2){
+		$("#alertDiv").show();
+    	$("#alertMsg").html("请确认密码一致");
+	}else{
+		$.ajax({  
+            type: "POST",
+            data: {"oldPayPass":oldPayPass, "newPayPass":newPayPass},
+            dataType:'json',
+            url: "${baseURL }/merchant/account/savePayPass",
+            //请求成功完成后要执行的方法  
+            success: function(result){
+            	debugger;
+            	editpayPass();
+            	if(result.code!=0){
+            		$("#payPass_modal").hide();
+	            	$("#alertDiv").show();
+	            	$("#alertMsg").html(result.msg);
+            	}else{
+            		$("#payPass_modal").hide();
+	            	$("#alertDiv").show();
+	            	$("#alertMsg").html(result.msg);
+            	}
+            },  
+            error : function() {
+            	editpayPass();
+            	$("#alertDiv").show();
+            	$("#alertMsg").html(result.msg);
+            }   
+        });
+	}
+}
+
 	function editPassword(){
 		if($('#password_modal').css('display') == 'block'){
 			$("#password_modal").hide();

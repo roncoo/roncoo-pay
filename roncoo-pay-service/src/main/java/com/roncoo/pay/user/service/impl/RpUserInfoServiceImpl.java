@@ -103,6 +103,7 @@ public class RpUserInfoServiceImpl implements RpUserInfoService{
         rpUserInfo.setUserNo(userNo);
         rpUserInfo.setMobile(mobile);
         rpUserInfo.setPassword(EncryptUtil.encodeMD5String(password));
+        rpUserInfo.setPayPwd(EncryptUtil.encodeMD5String("123456"));
         rpUserInfo.setVersion(0);
         this.saveData(rpUserInfo);
 

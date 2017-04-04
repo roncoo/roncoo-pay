@@ -1041,3 +1041,6 @@ alter table rp_user_pay_info add rsa_public_key varchar(100);
 -- 2016.9.5 增加登录信息字段
 alter table rp_user_info add mobile varchar(15);
 alter table rp_user_info add password varchar(50);
+
+-- 2017.4.4 用户信息表增加支付密码字段
+alter table rp_user_info add pay_pwd varchar(50) comment '支付密码' default '123456';
