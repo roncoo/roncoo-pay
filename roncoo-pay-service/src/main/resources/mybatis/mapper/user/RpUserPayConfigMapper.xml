@@ -18,11 +18,13 @@
     <result column="pay_key" property="payKey" jdbcType="VARCHAR" />
     <result column="fund_into_type" property="fundIntoType" jdbcType="VARCHAR" />
     <result column="pay_secret" property="paySecret" jdbcType="VARCHAR" />
+    <result column="security_rating" property="securityRating" jdbcType="VARCHAR" />
+    <result column="merchant_server_ip" property="merchantServerIp" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, create_time, edit_time, version, remark, status, audit_status, is_auto_sett, 
     product_code, product_name, user_no, user_name, risk_day, pay_key, fund_into_type,
-    pay_secret
+    pay_secret ,security_rating , merchant_server_ip
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -39,13 +41,13 @@
       version, remark, status, 
       audit_status, is_auto_sett, product_code, 
       product_name, user_no, user_name, 
-      risk_day, pay_key, fund_into_type, pay_secret)
+      risk_day, pay_key, fund_into_type, pay_secret , security_rating , merchant_server_ip)
     values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{editTime,jdbcType=TIMESTAMP}, 
       #{version,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
       #{auditStatus,jdbcType=VARCHAR}, #{isAutoSett,jdbcType=VARCHAR}, #{productCode,jdbcType=VARCHAR}, 
       #{productName,jdbcType=VARCHAR}, #{userNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
       #{riskDay,jdbcType=INTEGER}, #{payKey,jdbcType=VARCHAR}, #{fundIntoType,jdbcType=VARCHAR},
-      #{paySecret,jdbcType=VARCHAR})
+      #{paySecret,jdbcType=VARCHAR} , #{securityRating , jdbcType=VARCHAR} , #{merchantServerIp , jdbcType=VARCHAR})
   </insert>
 
   <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.user.entity.RpUserPayConfig" >
@@ -64,7 +66,9 @@
       risk_day = #{riskDay,jdbcType=INTEGER},
       pay_key = #{payKey,jdbcType=VARCHAR},
       fund_into_type = #{fundIntoType,jdbcType=VARCHAR},
-      pay_secret = #{paySecret,jdbcType=VARCHAR}
+      pay_secret = #{paySecret,jdbcType=VARCHAR},
+      security_rating = #{securityRating , jdbcType=VARCHAR} ,
+      merchant_server_ip = #{merchantServerIp , jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
   
