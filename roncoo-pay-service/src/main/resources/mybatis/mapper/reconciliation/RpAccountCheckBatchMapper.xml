@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.roncoo.pay.reconciliation.dao.impl.RpAccountCheckBatchDaoImpl">
 
-	<sql id="table_name">RP_ACCOUNT_CHECK_BATCH</sql>
+	<sql id="table_name">rp_account_check_batch</sql>
 
 	<resultMap id="BaseResultMap" type="com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch">
 		<id column="id" property="id" jdbcType="VARCHAR" />
