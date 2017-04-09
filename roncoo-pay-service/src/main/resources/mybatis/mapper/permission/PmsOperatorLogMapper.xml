@@ -3,7 +3,7 @@
 <mapper namespace="com.roncoo.pay.permission.dao.impl.PmsOperatorLogDaoImpl">
 
 	<!-- Pms权限管理：操作员操作日志表 -->
-	<sql id="pms_operator_log"> PMS_OPERATOR_LOG </sql>
+	<sql id="pms_operator_log"> pms_operator_log </sql>
 
 	<resultMap id="beanMap" type="com.roncoo.pay.permission.entity.PmsOperatorLog">
 		<id column="id" property="id" jdbcType="INTEGER" />

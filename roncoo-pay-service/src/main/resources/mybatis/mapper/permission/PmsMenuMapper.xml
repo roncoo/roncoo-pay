@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.roncoo.pay.permission.dao.impl.PmsMenuDaoImpl">
 
-	<sql id="pms_menu"> PMS_MENU </sql>
-	<sql id="pms_role"> PMS_ROLE </sql>
-	<sql id="pms_role_menu"> PMS_MENU_ROLE </sql>
+	<sql id="pms_menu"> pms_menu </sql>
+	<sql id="pms_role"> pms_role </sql>
+	<sql id="pms_role_menu"> pms_menu_role </sql>
 
 	<insert id="insert" parameterType="com.roncoo.pay.permission.entity.PmsMenu" keyProperty="id" useGeneratedKeys="true">
 		insert into

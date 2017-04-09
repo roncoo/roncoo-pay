@@ -3,8 +3,8 @@
 <mapper namespace="com.roncoo.pay.permission.dao.impl.PmsRoleDaoImpl">
 
 	<!-- Pms权限管理：角色表 -->
-	<sql id="pms_role"> PMS_ROLE </sql>
-	<sql id="pms_role_permission"> PMS_ROLE_PERMISSION </sql>
+	<sql id="pms_role"> pms_role </sql>
+	<sql id="pms_role_permission"> pms_role_permission </sql>
 
 	<resultMap id="beanMap" type="com.roncoo.pay.permission.entity.PmsRole">
 
