@@ -3,6 +3,7 @@
 /* created on:     2016-6-29 18:28:57   www.roncoo.com          */
 /*==============================================================*/
 
+use cloud_pay_dev;
 
 drop table if exists rp_account;
 
@@ -620,24 +621,14 @@ INSERT INTO seq_table (SEQ_NAME, CURRENT_VALUE, INCREMENT, REMARK) VALUES ('RECO
 /*==============================================================*/
 /* create function                                              */
 /*==============================================================*/
+delimiter //
 CREATE FUNCTION `FUN_SEQ`(SEQ VARCHAR(50)) RETURNS BIGINT(20)
 BEGIN
      UPDATE SEQ_TABLE
      SET CURRENT_VALUE = CURRENT_VALUE + INCREMENT
      WHERE  SEQ_NAME=SEQ;
      RETURN FUN_SEQ_CURRENT_VALUE(SEQ);
-END;
-
-
-CREATE FUNCTION `FUN_SEQ_CURRENT_VALUE`(SEQ VARCHAR(50)) RETURNS BIGINT(20)
-BEGIN
-    DECLARE VALUE INTEGER;
-    SET VALUE=0;
-    SELECT CURRENT_VALUE INTO VALUE
-    FROM SEQ_TABLE 
-    WHERE SEQ_NAME=SEQ;
-    RETURN VALUE;
-END;
+END//
 
 CREATE FUNCTION `FUN_SEQ_SET_VALUE`(SEQ VARCHAR(50), VALUE INTEGER) RETURNS BIGINT(20)
 BEGIN
@@ -645,24 +636,23 @@ BEGIN
      SET CURRENT_VALUE=VALUE
      WHERE SEQ_NAME=SEQ;
      RETURN FUN_SEQ_CURRENT_VALUE(SEQ);
-END;
+END//
 
 CREATE FUNCTION  FUN_NOW()
  RETURNS DATETIME
 BEGIN 
 RETURN now();
-END;
+END//
 
 
 -- 时间函数
-
 CREATE FUNCTION `FUN_DATE_ADD`(STR_DATE VARCHAR(10), STR_INTERVAL INTEGER) RETURNS DATE
 BEGIN
      RETURN date_add(STR_DATE, INTERVAL STR_INTERVAL DAY);
-END;
+END//
 
 
-
+delimiter ;
 
 
 
@@ -1000,7 +990,7 @@ insert into pms_role_operator (id,version,status,creater,create_time, editor, ed
 -- -- 角色与用户功能点关联的初始化数据
 
 -- admin（拥有所有的权限点）
-insert into pms_role_permission  (role_id, permission_id) select 1,id from PMS_PERMISSION;
+insert into pms_role_permission  (role_id, permission_id) select 1,id from pms_permission;
 
 
 -- guest （只有所有的查看权限）
@@ -1028,10 +1018,10 @@ values
 --  角色与信息关联初始化数据
 -- admin
 
-insert into pms_menu_role(role_id, menu_id) select 1,id from PMS_MENU;
+insert into pms_menu_role(role_id, menu_id) select 1,id from pms_menu;
 
 -- guest  所有的菜单（只有查看权限）
-insert into pms_menu_role (role_id, menu_id) select 2,id from PMS_MENU;
+insert into pms_menu_role (role_id, menu_id) select 2,id from pms_menu;
 
 -- 2016.8.5 第三方支付信息表增加支付宝线下产品字段
 alter table rp_user_pay_info add offline_app_id varchar(50);

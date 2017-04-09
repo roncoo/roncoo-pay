@@ -208,7 +208,7 @@
 			<artifactId>jdom</artifactId>
 		</dependency>
 
-		<dependency>
+ 		<dependency>
 			<groupId>alipay</groupId>
 			<artifactId>alipay-sdk-java20151021120052</artifactId>
 		</dependency>
