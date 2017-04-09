@@ -3,7 +3,7 @@
 /* created on:     2016-6-29 18:28:57   www.roncoo.com          */
 /*==============================================================*/
 
-use cloud_pay_dev;
+use pay_dev;
 
 drop table if exists rp_account;
 
@@ -629,6 +629,17 @@ BEGIN
      WHERE  SEQ_NAME=SEQ;
      RETURN FUN_SEQ_CURRENT_VALUE(SEQ);
 END//
+
+CREATE FUNCTION `FUN_SEQ_CURRENT_VALUE`(SEQ VARCHAR(50)) RETURNS BIGINT(20)
+BEGIN
+    DECLARE VALUE INTEGER;
+    SET VALUE=0;
+    SELECT CURRENT_VALUE INTO VALUE
+    FROM SEQ_TABLE 
+    WHERE SEQ_NAME=SEQ;
+    RETURN VALUE;
+END//
+
 
 CREATE FUNCTION `FUN_SEQ_SET_VALUE`(SEQ VARCHAR(50), VALUE INTEGER) RETURNS BIGINT(20)
 BEGIN
