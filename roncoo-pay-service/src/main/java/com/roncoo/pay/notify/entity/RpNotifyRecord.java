@@ -1,10 +1,10 @@
 package com.roncoo.pay.notify.entity;
 
+import java.util.Date;
+
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.notify.enums.NotifyStatusEnum;
 import com.roncoo.pay.notify.enums.NotifyTypeEnum;
-
-import java.util.Date;
 
 /**
  * @功能说明:
@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class RpNotifyRecord  extends BaseEntity {
 
-    private static final long serialVersionUID = -6104194914044220447L;
+    
 
 //    private Long notifyId;
 //

@@ -25,7 +25,6 @@ import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import com.roncoo.pay.trade.enums.TrxTypeEnum;
-import com.roncoo.pay.user.enums.FundInfoTypeEnum;
 
 /**
  * <b>功能说明:商户支付记录实体类</b>

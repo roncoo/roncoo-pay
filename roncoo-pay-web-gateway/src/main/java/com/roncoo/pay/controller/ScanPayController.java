@@ -35,6 +35,7 @@ import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.common.core.utils.StringUtil;
 import com.roncoo.pay.controller.common.BaseController;
+import com.roncoo.pay.notify.service.RpNotifyService;
 import com.roncoo.pay.trade.exception.TradeBizException;
 import com.roncoo.pay.trade.service.RpTradePaymentManagerService;
 import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
@@ -71,6 +72,9 @@ public class ScanPayController extends BaseController {
 
     @Autowired
     private CnpPayService cnpPayService;
+    
+    @Autowired
+    private RpNotifyService rpNotifyService;
 
     /**
      * 扫码支付,预支付页面
@@ -161,9 +165,7 @@ public class ScanPayController extends BaseController {
             }else if (PayWayEnum.ALIPAY.name().equals(scanPayResultVo.getPayWayCode())){
                 return "alipayDirectPay";
             }
-
         }
-
         return "gateway";
     }
 

@@ -130,4 +130,13 @@ public interface RpTradePaymentManagerService {
      * @return
      */
     public ScanPayResultVo toNonDirectScanPay(String payKey , String orderNo , String payWayCode);
+
+    /**
+	 *	处理交易记录
+	 *		如果交易记录是成功或者本地未支付,查询上游已支付,返回TRUE
+	 *		如果上游支付结果为未支付,返回FALSE
+	 * @param bankOrderNo	银行订单号
+	 * @return
+	 */
+	public boolean processingTradeRecord(String bankOrderNo);
 }

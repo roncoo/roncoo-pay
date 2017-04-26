@@ -27,7 +27,12 @@ import com.roncoo.pay.common.core.exception.BizException;
  */
 public class UserBizException extends BizException {
 
-    /** 用户不存在 **/
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6402548375645868682L;
+
+	/** 用户不存在 **/
     public static final int USER_IS_NULL = 101;
 
     /** 用户支付配置有误 **/
