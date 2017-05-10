@@ -35,6 +35,8 @@
 		<module>roncoo-pay-web-merchant</module>
 		<!-- 商户订单通知 -->
 		<module>roncoo-pay-app-order-polling</module>
+		<!-- 模拟商城 -->
+		<module>roncoo-pay-web-sample-shop</module>		
 	</modules>
 
 	<!-- 配置maven地址 -->
