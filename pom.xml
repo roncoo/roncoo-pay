@@ -33,6 +33,8 @@
 		<module>roncoo-pay-service</module>
 		<!-- 商户后台 -->
 		<module>roncoo-pay-web-merchant</module>
+		<!-- 模拟商城工程 -->
+		<module>roncoo-pay-web-sample-shop</module>
 		<!-- 商户订单通知 -->
 		<module>roncoo-pay-app-order-polling</module>
 	</modules>
@@ -42,12 +44,12 @@
 		<repository>
 			<id>nexus-releases</id>
 			<name>Nexus Release Repository</name>
-			<url>http://192.168.1.221:8081/nexus/content/repositories/releases/</url>
+			<url>http://maven.cuisongliu.com/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Nexus Snapshot Repository</name>
-			<url>http://192.168.1.221:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://maven.cuisongliu.com/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
