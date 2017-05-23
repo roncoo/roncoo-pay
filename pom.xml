@@ -33,6 +33,8 @@
 		<module>roncoo-pay-service</module>
 		<!-- 商户后台 -->
 		<module>roncoo-pay-web-merchant</module>
+		<!-- 模拟商城工程 -->
+		<module>roncoo-pay-web-sample-shop</module>
 		<!-- 商户订单通知 -->
 		<module>roncoo-pay-app-order-polling</module>
 	</modules>
