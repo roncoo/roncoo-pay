@@ -38,9 +38,18 @@ public class RpUserInfo extends BaseEntity implements Serializable {
     private String mobile;
     
     private String password;
+    /** 支付密码 */
+	private String payPwd;
 
+    public String getPayPwd() {
+		return payPwd;
+	}
 
-    public String getMobile() {
+	public void setPayPwd(String payPwd) {
+		this.payPwd = payPwd;
+	}
+
+	public String getMobile() {
 		return mobile;
 	}
 

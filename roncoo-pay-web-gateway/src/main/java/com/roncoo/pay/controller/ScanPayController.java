@@ -21,8 +21,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.roncoo.pay.service.CnpPayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +35,7 @@ import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.common.core.utils.StringUtil;
 import com.roncoo.pay.controller.common.BaseController;
+import com.roncoo.pay.notify.service.RpNotifyService;
 import com.roncoo.pay.trade.exception.TradeBizException;
 import com.roncoo.pay.trade.service.RpTradePaymentManagerService;
 import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
@@ -68,7 +71,10 @@ public class ScanPayController extends BaseController {
     private RpUserPayConfigService rpUserPayConfigService;
 
     @Autowired
-    private RpPayWayService rpPayWayService;
+    private CnpPayService cnpPayService;
+    
+    @Autowired
+    private RpNotifyService rpNotifyService;
 
     /**
      * 扫码支付,预支付页面
@@ -79,7 +85,7 @@ public class ScanPayController extends BaseController {
      * @return
      */
     @RequestMapping("/initPay")
-    public String initPay(Model model){
+    public String initPay(Model model , HttpServletRequest httpServletRequest){
         Map<String , Object> paramMap = new HashMap<String , Object>();
 
         //获取商户传入参数
@@ -129,6 +135,8 @@ public class ScanPayController extends BaseController {
             throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR,"用户支付配置有误");
         }
 
+        cnpPayService.checkIp( rpUserPayConfig ,  httpServletRequest);//ip校验
+
         if (!MerchantApiUtil.isRightSign(paramMap,rpUserPayConfig.getPaySecret(),sign)){
             throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR,"订单签名异常");
         }
@@ -157,9 +165,7 @@ public class ScanPayController extends BaseController {
             }else if (PayWayEnum.ALIPAY.name().equals(scanPayResultVo.getPayWayCode())){
                 return "alipayDirectPay";
             }
-
         }
-
         return "gateway";
     }
 

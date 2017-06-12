@@ -1041,3 +1041,11 @@ alter table rp_user_pay_info add rsa_public_key varchar(100);
 -- 2016.9.5 增加登录信息字段
 alter table rp_user_info add mobile varchar(15);
 alter table rp_user_info add password varchar(50);
+
+-- 2017.4.4 用户信息表增加支付密码字段
+alter table rp_user_info add pay_pwd varchar(50) comment '支付密码' default '123456';
+
+-- 2017.4.5 增加用户支付配置表安全等级字段 商户服务器IP字段
+alter table rp_user_pay_config add security_rating varchar(20)  comment '安全等级' default 'MD5';
+
+alter table rp_user_pay_config add merchant_server_ip varchar(200) comment '商户服务器IP';

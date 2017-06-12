@@ -59,6 +59,22 @@
 								<input type="radio" name="isAutoSett" value="NO" checked="checked"/>否
 							</dd>
 					</dl>
+					<dl>
+						<dt>安全等级：</dt>
+						<dd>
+							<select name="securityRating" id="securityRating">
+								<c:forEach var="item" items="${SecurityRatingEnum}">
+									<option value="${item.name }">${item.desc }</option>
+								</c:forEach>
+							</select>
+						</dd>
+					</dl>
+					<dl>
+						<dt>IP白名单：</dt>
+						<dd>
+							<textarea  rows="2" cols="30" name="merchantServerIp" id="merchantServerIp" />
+						</dd>
+					</dl>
 				</fieldset>
 				
 				<fieldset id="we_field" style="display: none;">

@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.roncoo.pay.common</groupId>
 		<artifactId>roncoo-pay</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.2-SNAPSHOT</version>
 	</parent>
 	<groupId>com.roncoo.pay.web</groupId>
 	<artifactId>roncoo-pay-web-merchant</artifactId>

@@ -3,6 +3,7 @@ package com.roncoo.pay.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.controller.common.BaseController;
+import com.roncoo.pay.service.CnpPayService;
 import com.roncoo.pay.trade.exception.TradeBizException;
 import com.roncoo.pay.trade.service.RpTradePaymentManagerService;
 import com.roncoo.pay.trade.utils.MerchantApiUtil;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -41,13 +43,16 @@ public class F2FPayController extends BaseController {
     @Autowired
     private RpUserPayConfigService rpUserPayConfigService;
 
+    @Autowired
+    private CnpPayService cnpPayService;
+
     /**
      * 条码支付,商户通过前置设备获取到用户支付授权码后,请求支付网关支付.
      *
      * @return
      */
     @RequestMapping("/doPay")
-    public void initPay(HttpServletResponse httpServletResponse) {
+    public void initPay(HttpServletResponse httpServletResponse , HttpServletRequest httpServletRequest) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
 
         //获取商户传入参数
@@ -91,6 +96,8 @@ public class F2FPayController extends BaseController {
         if (rpUserPayConfig == null) {
             throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR, "用户支付配置有误");
         }
+
+        cnpPayService.checkIp( rpUserPayConfig ,  httpServletRequest);//ip校验
 
         if (!MerchantApiUtil.isRightSign(paramMap, rpUserPayConfig.getPaySecret(), sign)) {
             throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, "订单签名异常");

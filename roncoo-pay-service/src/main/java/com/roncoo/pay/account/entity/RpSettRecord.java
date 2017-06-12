@@ -21,6 +21,7 @@ import java.util.Date;
 import com.roncoo.pay.account.enums.SettModeTypeEnum;
 import com.roncoo.pay.account.enums.SettRecordStatusEnum;
 import com.roncoo.pay.common.core.entity.BaseEntity;
+import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.user.enums.BankAccountTypeEnum;
 
 /**
@@ -547,6 +548,10 @@ public class RpSettRecord extends BaseEntity {
 	
     public String getSettStatusDesc() {
     	return SettRecordStatusEnum.getEnum(this.getSettStatus()).getDesc();
+    }
+    
+    public String getCreateTimeDesc() {
+    	return DateUtils.formatDate(this.getCreateTime(), "yyyy-MM-dd HH:mm:ss");
     }
 
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.roncoo.pay.common</groupId>
 	<artifactId>roncoo-pay</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>roncoo-pay</name>
@@ -32,6 +33,8 @@
 		<module>roncoo-pay-service</module>
 		<!-- 商户后台 -->
 		<module>roncoo-pay-web-merchant</module>
+		<!-- 商户订单通知 -->
+		<module>roncoo-pay-app-order-polling</module>
 	</modules>
 
 	<!-- 配置maven地址 -->
@@ -73,7 +76,7 @@
 		<activeMQ.version>5.11.4</activeMQ.version>
 		<javassist.version>3.12.1.GA</javassist.version>
 		<transaction.version>1.1</transaction.version>
-		
+
 	</properties>
 
 	<dependencyManagement>
@@ -226,7 +229,7 @@
 				<artifactId>log4j</artifactId>
 				<version>${log4j_version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>javassist</groupId>
 				<artifactId>javassist</artifactId>

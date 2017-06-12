@@ -17,6 +17,8 @@ package com.roncoo.pay.controller.pay;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.roncoo.pay.common.core.enums.SecurityRatingEnum;
+import com.roncoo.pay.common.core.utils.StringUtil;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,6 +92,7 @@ public class UserPayConfigController {
 	@RequestMapping(value = "/addUI", method = RequestMethod.GET)
 	public String addUI(Model model) {
 		model.addAttribute("FundInfoTypeEnums", FundInfoTypeEnum.toList());
+		model.addAttribute("SecurityRatingEnum", SecurityRatingEnum.toList());
 		return "pay/config/add";
 	}
 	
@@ -107,6 +110,8 @@ public class UserPayConfigController {
 		String userName = request.getParameter("user.userName");
 		String productCode = request.getParameter("product.productCode");
 		String productName = request.getParameter("product.productName");
+		String securityRating = request.getParameter("securityRating");
+		String merchantServerIp = request.getParameter("merchantServerIp");
 		String we_appId = request.getParameter("we_appId");
 		String we_merchantId = request.getParameter("we_merchantId");
 		String we_partnerKey = request.getParameter("we_partnerKey");
@@ -116,9 +121,19 @@ public class UserPayConfigController {
 		String ali_appid = request.getParameter("ali_appid");
 		String ali_rsaPrivateKey = request.getParameter("ali_rsaPrivateKey");
 		String ali_rsaPublicKey = request.getParameter("ali_rsaPublicKey");
+
+		// 如果是商户且安全等级是MD5+IP白名单 , 则 IP白名单不能为空
+		if (SecurityRatingEnum.MD5_IP.name().equals(securityRating)) {
+			if (StringUtil.isEmpty(merchantServerIp)) {
+				dwz.setStatusCode(DWZ.ERROR);
+				dwz.setMessage("商户IP白名单不能为空");
+				model.addAttribute("dwz", dwz);
+				return DWZ.AJAX_DONE;
+			}
+		}
 		rpUserPayConfigService.createUserPayConfig(userNo, userName, productCode, productName, 
 				rpUserPayConfig.getRiskDay(), rpUserPayConfig.getFundIntoType(), rpUserPayConfig.getIsAutoSett(), we_appId
-				, we_merchantId, we_partnerKey, ali_partner, ali_sellerId, ali_key, ali_appid, ali_rsaPrivateKey, ali_rsaPublicKey);
+				, we_merchantId, we_partnerKey, ali_partner, ali_sellerId, ali_key, ali_appid, ali_rsaPrivateKey, ali_rsaPublicKey , securityRating , merchantServerIp);
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);
 		model.addAttribute("dwz", dwz);
@@ -142,6 +157,7 @@ public class UserPayConfigController {
 		model.addAttribute("rpUserPayConfig", rpUserPayConfig);
 		model.addAttribute("wxUserPayInfo", wxUserPayInfo);
 		model.addAttribute("aliUserPayInfo", aliUserPayInfo);
+		model.addAttribute("SecurityRatingEnum", SecurityRatingEnum.toList());
 		return "pay/config/edit";
 	}
 	
@@ -157,6 +173,8 @@ public class UserPayConfigController {
 	public String edit(HttpServletRequest request, Model model, RpUserPayConfig rpUserPayConfig,DwzAjax dwz) {
 		String productCode = request.getParameter("product.productCode");
 		String productName = request.getParameter("product.productName");
+		String securityRating = request.getParameter("securityRating");
+		String merchantServerIp = request.getParameter("merchantServerIp");
 		String we_appId = request.getParameter("we_appId");
 		String we_merchantId = request.getParameter("we_merchantId");
 		String we_partnerKey = request.getParameter("we_partnerKey");
@@ -166,9 +184,20 @@ public class UserPayConfigController {
 		String ali_appid = request.getParameter("ali_appid");
 		String ali_rsaPrivateKey = request.getParameter("ali_rsaPrivateKey");
 		String ali_rsaPublicKey = request.getParameter("ali_rsaPublicKey");
+
+		// 如果是商户且安全等级是MD5+IP白名单 , 则 IP白名单不能为空
+		if (SecurityRatingEnum.MD5_IP.name().equals(securityRating)) {
+			if (StringUtil.isEmpty(merchantServerIp)) {
+				dwz.setStatusCode(DWZ.ERROR);
+				dwz.setMessage("商户IP白名单不能为空");
+				model.addAttribute("dwz", dwz);
+				return DWZ.AJAX_DONE;
+			}
+		}
+
 		rpUserPayConfigService.updateUserPayConfig(rpUserPayConfig.getUserNo(), productCode, productName, 
 				rpUserPayConfig.getRiskDay(), rpUserPayConfig.getFundIntoType(), rpUserPayConfig.getIsAutoSett(),
-				we_appId, we_merchantId, we_partnerKey, ali_partner, ali_sellerId, ali_key, ali_appid, ali_rsaPrivateKey, ali_rsaPublicKey);
+				we_appId, we_merchantId, we_partnerKey, ali_partner, ali_sellerId, ali_key, ali_appid, ali_rsaPrivateKey, ali_rsaPublicKey , securityRating , merchantServerIp);
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);
 		model.addAttribute("dwz", dwz);
