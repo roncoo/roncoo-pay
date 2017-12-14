@@ -19,12 +19,16 @@
 	<bean id="pollingParam" class="com.roncoo.pay.app.polling.entity.PollingParam">
 		<property name="notifyParams">
 			<map>
-				<entry key="1" value="2" />
-				<entry key="2" value="3" />
+				<entry key="1" value="0" />
+				<entry key="2" value="5" />
 				<entry key="3" value="5" />
-				<entry key="4" value="10" />
-				<entry key="5" value="20" />
-				<entry key="6" value="30" />
+				<entry key="4" value="5" />
+				<entry key="5" value="5" />
+				<entry key="6" value="5" />
+				<entry key="7" value="10" />
+				<entry key="8" value="10" />
+				<entry key="9" value="15" />
+				<entry key="10" value="15" />
 			</map>
 		</property>
 		<property name="successValue" value="SUCCESS" />
