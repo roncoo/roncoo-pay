@@ -22,12 +22,10 @@
 <script src="${baseURL }/dwz/uploadify/scripts/jquery.uploadify.min.js" type="text/javascript"></script>
 
 <script src="${baseURL }/dwz/bin/dwz.min.js" type="text/javascript"></script>
-<script src="${baseURL }/dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
 
 <script src="${baseURL }/dwz/js/dwz.core.js" type="text/javascript"></script>
 <script src="${baseURL }/dwz/js/dwz.util.date.js" type="text/javascript"></script>
 <script src="${baseURL }/dwz/js/dwz.validate.method.js" type="text/javascript"></script>
-<script src="${baseURL }/dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
 <script src="${baseURL }/dwz/js/dwz.barDrag.js" type="text/javascript"></script>
 <script src="${baseURL }/dwz/js/dwz.drag.js" type="text/javascript"></script>
 <script src="${baseURL }/dwz/js/dwz.tree.js" type="text/javascript"></script>
@@ -57,7 +55,7 @@
 <script src="${baseURL }/dwz/js/dwz.combox.js" type="text/javascript"></script>
 <script src="${baseURL }/dwz/js/dwz.print.js" type="text/javascript"></script>
 
-
+<script src="${baseURL }/dwz/js/dwz.regional.zh.js" type="text/javascript"></script>
 <script type="text/javascript">
 
 $(function(){

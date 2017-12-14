@@ -15,16 +15,21 @@
 		<property name="queueCapacity" value="50" />
 	</bean>
 
-	<!-- 配置通知参数, 时间单位分-->
+	<!-- 配置通知参数, 时间单位秒-->
 	<bean id="pollingParam" class="com.roncoo.pay.app.polling.entity.PollingParam">
 		<property name="notifyParams">
 			<map>
 				<entry key="1" value="2" />
-				<entry key="2" value="3" />
-				<entry key="3" value="5" />
-				<entry key="4" value="10" />
-				<entry key="5" value="20" />
-				<entry key="6" value="30" />
+				<entry key="2" value="2" />
+				<entry key="3" value="2" />
+				<entry key="4" value="2" />
+				<entry key="5" value="3" />
+				<entry key="6" value="5" />
+				<entry key="7" value="10" />
+				<entry key="8" value="20" />
+				<entry key="9" value="30" />
+				<entry key="10" value="120" />
+				<entry key="11" value="240" />
 			</map>
 		</property>
 		<property name="successValue" value="SUCCESS" />

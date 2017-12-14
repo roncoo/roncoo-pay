@@ -270,7 +270,7 @@ img {
 	margin-left: 0;
 	display: inline;
 	float: right;
-	height: 310px;
+	height: 410px;
 	font-family: Microsoft YaHei;
 	text-align: center;
 }
@@ -304,8 +304,8 @@ img {
 }
 
 .x-right .er {
-	width: 190px;
-	height: 190px;
+	width: 250px;
+	height: 250px;
 	align-content: center;
 	margin: 0 auto;
 }

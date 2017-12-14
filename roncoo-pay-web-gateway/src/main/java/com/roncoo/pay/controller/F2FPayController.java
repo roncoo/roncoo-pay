@@ -6,6 +6,7 @@ import com.roncoo.pay.controller.common.BaseController;
 import com.roncoo.pay.service.CnpPayService;
 import com.roncoo.pay.trade.exception.TradeBizException;
 import com.roncoo.pay.trade.service.RpTradePaymentManagerService;
+import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
 import com.roncoo.pay.trade.utils.MerchantApiUtil;
 import com.roncoo.pay.trade.vo.F2FPayResultVo;
 import com.roncoo.pay.user.entity.RpUserPayConfig;
@@ -15,10 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
@@ -30,12 +32,12 @@ import java.util.Map;
  * </b>
  *
  * @author Peter
- *         <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
+ * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Controller
 @RequestMapping(value = "/f2fPay")
 public class F2FPayController extends BaseController {
-    private static final Logger LOG = LoggerFactory.getLogger(F2FPayController.class) ;
+    private static final Logger logger = LoggerFactory.getLogger(F2FPayController.class);
 
     @Autowired
     private RpTradePaymentManagerService rpTradePaymentManagerService;
@@ -46,13 +48,16 @@ public class F2FPayController extends BaseController {
     @Autowired
     private CnpPayService cnpPayService;
 
+    @Autowired
+    private RpTradePaymentQueryService queryService;
+
     /**
      * 条码支付,商户通过前置设备获取到用户支付授权码后,请求支付网关支付.
      *
      * @return
      */
     @RequestMapping("/doPay")
-    public void initPay(HttpServletResponse httpServletResponse , HttpServletRequest httpServletRequest) {
+    public String initPay(HttpServletRequest httpServletRequest, ModelMap modelMap) {
         Map<String, Object> paramMap = new HashMap<String, Object>();
 
         //获取商户传入参数
@@ -88,30 +93,38 @@ public class F2FPayController extends BaseController {
         paramMap.put("field4", field4);
         String field5 = getString_UrlDecode_UTF8("field5"); // 扩展字段5
         paramMap.put("field5", field5);
-
+        //格式化时间
         Date orderDate = DateUtils.parseDate(orderDateStr, "yyyyMMdd");
         Date orderTime = DateUtils.parseDate(orderTimeStr, "yyyyMMddHHmmss");
 
+        //获取支付配置
         RpUserPayConfig rpUserPayConfig = rpUserPayConfigService.getByPayKey(payKey);
         if (rpUserPayConfig == null) {
             throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR, "用户支付配置有误");
         }
-
-        cnpPayService.checkIp( rpUserPayConfig ,  httpServletRequest);//ip校验
-
+        //ip校验
+        cnpPayService.checkIp(rpUserPayConfig, httpServletRequest);
+        //验签
         if (!MerchantApiUtil.isRightSign(paramMap, rpUserPayConfig.getPaySecret(), sign)) {
             throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, "订单签名异常");
         }
 
+        //发起支付
         BigDecimal orderPrice = BigDecimal.valueOf(Double.valueOf(orderPriceStr));
         F2FPayResultVo f2FPayResultVo = rpTradePaymentManagerService.f2fPay(payKey, authCode, productName, orderNo, orderDate, orderTime, orderPrice, payWayCode, orderIp, remark, field1, field2, field3, field4, field5);
 
-        String payResultJson = JSONObject.toJSONString(f2FPayResultVo);
+        //String payResultJson = JSONObject.toJSONString(f2FPayResultVo);
+        logger.debug("条码支付--支付结果==>{}", f2FPayResultVo);
+        modelMap.put("result", f2FPayResultVo);
+        // httpServletResponse.setContentType("text/text;charset=UTF-8");
+        // write(httpServletResponse, payResultJson);
+        return "/f2fAffirmPay";
+    }
 
-        LOG.debug("支付结果==>{}" ,payResultJson);
-        httpServletResponse.setContentType("text/text;charset=UTF-8");
-        write(httpServletResponse, payResultJson);
-
+    @RequestMapping("/order/query")
+    @ResponseBody
+    public String orderQuery(String trxNo) {
+        return JSONObject.toJSONString(queryService.getRecordByTrxNo(trxNo));
     }
 
 }

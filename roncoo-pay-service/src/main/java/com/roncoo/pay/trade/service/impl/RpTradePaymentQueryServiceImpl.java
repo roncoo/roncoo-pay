@@ -15,14 +15,6 @@
  */
 package com.roncoo.pay.trade.service.impl;
 
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.roncoo.pay.common.core.enums.PublicEnum;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
@@ -39,6 +31,13 @@ import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
 import com.roncoo.pay.user.entity.RpUserPayConfig;
 import com.roncoo.pay.user.exception.UserBizException;
 import com.roncoo.pay.user.service.RpUserPayConfigService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * <b>功能说明:交易模块查询类实现</b>
@@ -59,7 +58,7 @@ public class RpTradePaymentQueryServiceImpl implements RpTradePaymentQueryServic
 
 	/**
 	 * 根据参数查询交易记录List
-	 * 
+	 *
 	 * @param paramMap
 	 * @return
 	 */
@@ -151,17 +150,17 @@ public class RpTradePaymentQueryServiceImpl implements RpTradePaymentQueryServic
 
 	/**
 	 * 根据银行订单号查询支付记录
-	 * 
+	 *
 	 * @param bankOrderNo
 	 * @return
 	 */
 	public RpTradePaymentRecord getRecordByBankOrderNo(String bankOrderNo) {
 		return rpTradePaymentRecordDao.getByBankOrderNo(bankOrderNo);
 	}
-	
+
 	/**
 	 * 根据支付流水号查询支付记录
-	 * 
+	 *
 	 * @param trxNo
 	 * @return
 	 */
@@ -231,20 +230,20 @@ public class RpTradePaymentQueryServiceImpl implements RpTradePaymentQueryServic
 
 		return rpTradePaymentRecordDao.listPage(pageParam,paramMap);
 	}
-	
+
 	/**
 	 * 获取交易流水报表
-	 * 
+	 *
 	 * @param merchantNo
 	 * @return
 	 */
 	public List<Map<String, String>> getPaymentReport(String merchantNo){
 		return rpTradePaymentRecordDao.getPaymentReport(merchantNo);
 	}
-	
+
 	/**
 	 * 获取交易方式报表
-	 * 
+	 *
 	 * @param merchantNo
 	 * @return
 	 */

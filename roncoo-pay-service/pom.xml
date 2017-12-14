@@ -18,6 +18,22 @@
 
 	<dependencies>
 
+		<!--<dependency>
+			<groupId>com.alipay</groupId>  &lt;!&ndash;自定义&ndash;&gt;
+			<artifactId>alipay-sdk-java</artifactId>    &lt;!&ndash;自定义&ndash;&gt;
+			<version>1.0</version> &lt;!&ndash;自定义&ndash;&gt;
+			<scope>system</scope> &lt;!&ndash;system，类似provided，需要显式提供依赖的jar以后，Maven就不会在Repository中查找它&ndash;&gt;
+			<systemPath>${basedir}/lib/alipay-sdk-java20171201160035.jar</systemPath> &lt;!&ndash;项目根目录下的lib文件夹下&ndash;&gt;
+		</dependency>-->
+
+
+
+		<!--<dependency>-->
+			<!--<groupId>commons-logging</groupId>-->
+			<!--<artifactId>commons-logging</artifactId>-->
+			<!--<version>1.1.1</version>-->
+		<!--</dependency>-->
+
 		<dependency>
 			<groupId>com.roncoo.pay.common</groupId>
 			<artifactId>roncoo-pay-common-core</artifactId>
@@ -81,6 +97,14 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<encoding>UTF-8</encoding>
+					<compilerArgs>
+						<arg>-verbose</arg>
+						<arg>-Xlint:unchecked</arg>
+						<arg>-Xlint:deprecation</arg>
+						<arg>-bootclasspath</arg>
+						<arg>-extdirs</arg>
+						<arg>${project.basedir}/lib</arg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>
