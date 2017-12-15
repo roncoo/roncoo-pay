@@ -33,6 +33,10 @@ public enum PayTypeEnum {
 
     DIRECT_PAY("ALIPAY","即时到账"),
 
+    MICRO_PAY("WEIXIN","刷卡支付"),
+
+    WX_PROGRAM_PAY("WEIXIN","微信小程序"),
+
     F2F_PAY("ALIPAY","条码支付"),
 
 	ALI_TEST("ALIPAY","支付宝测试");

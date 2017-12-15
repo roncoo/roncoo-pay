@@ -13,6 +13,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<dependencies>
+
+		<dependency>
+			<groupId>com.alipay</groupId>
+			<artifactId>alipay-sdk-java20171201160035</artifactId>
+			<version>20171201160035</version>
+		</dependency>
+
 		<!-- Spring libs Begin -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -208,15 +215,15 @@
 			<artifactId>jdom</artifactId>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>alipay</groupId>
 			<artifactId>alipay-sdk-java20151021120052</artifactId>
-		</dependency>
+		</dependency>-->
 
-		<dependency>
-			<groupId>alipay</groupId>
-			<artifactId>alipay-trade-sdk</artifactId>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>alipay</groupId>-->
+			<!--<artifactId>alipay-trade-sdk</artifactId>-->
+		<!--</dependency>-->
 
 		<!-- http://mvnrepository.com/artifact/jaxen/jaxen -->
 

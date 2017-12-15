@@ -97,11 +97,11 @@
         <div class="pro"><span>${productName}</span><span>应付金额 <b>￥<fmt:parseNumber type="number" pattern="#,#00.0#">${orderPrice}</fmt:parseNumber></b></span></div>
         <div class="weixin" id="weixinDiv">
             <div class="x-left"><img src="${path}pay_files/weixin.jpg" alt="微信导航图"></div>
-            <div class="x-right">
+            <div class="x-right" style="height: 410px;">
                 <div class="saoma_panel">
                     <h4>使用微信扫一扫即可付款</h4>
                     <p class="tip">提示:支付成功前请勿手动关闭页面</p>
-                    <div class="er" id="code" oid="4835a85a4e01402aa17f8a73c356f80d"></div>
+                    <div class="er" id="code" oid="4835a85a4e01402aa17f8a73c356f80d" style="height: 250px;width: 250px"></div>
                     <p class="tipa">二维码两小时内有效，请计算扫码支付</p>
                 </div>
             </div>
@@ -133,8 +133,8 @@
           var str = $("#codeUrl").val();
           $("#code").qrcode({
               render: "table",
-              width: 190,
-              height:190,
+              width: 250,
+              height:250,
               text: str
           });
       })

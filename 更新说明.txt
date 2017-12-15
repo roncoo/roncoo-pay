@@ -1,0 +1,11 @@
+更新说明：
+
+1、更新支付宝sdk(alipay-sdk-java)版本，从20151021120052到20171201160035；
+
+2、支付宝sdk添加本地引入,使用maven制作 alipay-sdk-java包到本地仓库(注:alipay-sdk-java20171201160035.jar这个jar包已经本地打包的说明在roncoo-pay-common-core工程的lib目录)；
+
+3、添加支付宝条码支付和微信条码支付功能，还有条码支付的订单查询（注：在roncoo-pay-web-sample-shop有模拟演示）；
+
+4、修改roncoo-pay-app-order-polling订单轮询的查询次数为10次和缩短查询的时间间隔
+
+5、修改支付宝底层实现，抽取成工具类方便移植使用（注:不在需要读取zfbinfo.properties固定的配置文件，可以自定义配置文件）；
