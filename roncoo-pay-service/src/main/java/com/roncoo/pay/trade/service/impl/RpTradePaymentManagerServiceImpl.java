@@ -1135,6 +1135,8 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         if (PayWayEnum.WEIXIN.name().equals(payWayCode)) {
             payType = PayTypeEnum.WX_PROGRAM_PAY;
             payWay = rpPayWayService.getByPayWayTypeCode(rpUserPayConfig.getProductCode(), payWayCode, payType.name());
+        }else{
+            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR , "暂不支持此支付方式");
         }
         if (payWay == null) {
             throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR, "用户支付配置有误");
@@ -1181,6 +1183,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
             payType = PayTypeEnum.WX_PROGRAM_PAY;
         } else if (PayWayEnum.ALIPAY.name().equals(payWay.getPayWayCode())) {
             // TODO 支付宝小程序支付，需要自定义枚举
+            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR , "暂不支持此支付方式");
         }
 
         tradePaymentOrder.setPayTypeCode(payType.name());// 支付类型
@@ -1228,7 +1231,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
                 }
             }
         } else if (PayWayEnum.ALIPAY.name().equals(payWayCode)) {// 支付宝支付
-
+            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR , "暂不支持此支付方式");
         }
 
         Map<String, Object> paramMap = new HashMap<>();
