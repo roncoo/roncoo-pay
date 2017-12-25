@@ -71,4 +71,11 @@ public class WeixinConfigUtil {
     //商户秘钥
     public static final String partnerKey = (String) properties.get("partnerKey");
 
+    //小程序支付
+    public static final String xAuthUrl = (String) properties.get("x_auth_url");
+    public static final String xGrantType = (String) properties.get("x_grant_type");
+    public static final String xAppId = (String) properties.get("x_appId");
+    public static final String xPartnerKey = (String) properties.get("x_partnerKey");
+    public static final String xPayKey = (String) properties.get("x_payKey");
+    public static final String xMchId = (String) properties.get("x_mch_id");
 }

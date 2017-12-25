@@ -76,8 +76,8 @@ public class WeiXinPayUtil {
         String tradeType = "JSAPI";
 
         SortedMap<String, Object> paramMap = new TreeMap<>();
-        paramMap.put("appid", WeixinConfigUtil.appId);
-        paramMap.put("mch_id", WeixinConfigUtil.mch_id);
+        paramMap.put("appid", WeixinConfigUtil.xAppId);
+        paramMap.put("mch_id", WeixinConfigUtil.xMchId);
         paramMap.put("nonce_str", nonce_str);
         paramMap.put("sign_type", "MD5");
         paramMap.put("body", body);
@@ -101,7 +101,7 @@ public class WeiXinPayUtil {
             goodsDetailJson.put("goods_detail", goodList);
             paramMap.put("detail", goodsDetailJson.toJSONString());
         }
-        paramMap.put("sign", getSign(paramMap, WeixinConfigUtil.partnerKey));
+        paramMap.put("sign", getSign(paramMap, WeixinConfigUtil.xPayKey));
         String data = mapToXml(paramMap);
         logger.info("微信小程序统一下单，请求报文:{}", data);
         Map<String, Object> resultMap = WeiXinPayUtils.httpXmlRequest("https://api.mch.weixin.qq.com/pay/unifiedorder", "POST", data);
@@ -111,7 +111,7 @@ public class WeiXinPayUtil {
         }
         SortedMap<String, Object> responseMap = new TreeMap<>();
         responseMap.putAll(resultMap);
-        String resultSign = getSign(responseMap, WeixinConfigUtil.partnerKey);
+        String resultSign = getSign(responseMap, WeixinConfigUtil.xPayKey);
         if (resultSign.equals(resultMap.get("sign"))) {
             resultMap.put("verify", "YES");
         } else {
@@ -171,4 +171,20 @@ public class WeiXinPayUtil {
         logger.info("Map转Xml结果:{}", dataBuilder.toString());
         return dataBuilder.toString();
     }
+
+    public static void main(String[] args) {
+//        String authUrl = WeixinConfigUtil.xAuthUrl.replace("{APPID}", WeixinConfigUtil.xAppId).replace("{SECRET}", WeixinConfigUtil.xPartnerKey).replace("{JSCODE}", "0034kWcV07jzeU11VMdV0IhTcV04kWcc").replace("{GRANTTYPE}", WeixinConfigUtil.xGrantType);
+//        System.out.println(authUrl);
+//        try {
+//            HttpClient httpClient = new HttpClient();
+//            GetMethod getMethod = new GetMethod(authUrl);
+//            httpClient.executeMethod(getMethod);
+//            String result = getMethod.getResponseBodyAsString();
+//            System.out.println("获取到结果:" + result);
+//        } catch (IOException e) {
+//            logger.info("获取openId失败!");
+//        }
+
+        appletPay("1111", "test", new BigDecimal(0.01), "127.0.0.1", "https://www.baidu.com", "oTpsH0UHgDOsP3rEx9kSVLCZdBYk", null);
     }
+}
