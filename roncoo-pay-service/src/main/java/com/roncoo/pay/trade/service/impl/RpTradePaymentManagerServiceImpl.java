@@ -1214,7 +1214,8 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
                         returnMap.put("nonceStr", WeiXinPayUtil.getnonceStr());//随机数
                         returnMap.put("package", "prepay_id=" + prepayId);//
                         returnMap.put("signType", "MD5");//签名方式
-                        returnMap.put("paySign", WeiXinPayUtil.getSign(returnMap, WeixinConfigUtil.partnerKey));
+                        returnMap.put("paySign", WeiXinPayUtil.getSign(returnMap, WeixinConfigUtil.xPayKey));
+                        returnMap.remove("appId");
                         String jsonString = JSON.toJSONString(returnMap);
                         resultVo.setPayMessage(jsonString);
                         //请求成功，发起轮询
@@ -1237,6 +1238,9 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         Map<String, Object> paramMap = new HashMap<>();
         if (!StringUtil.isEmpty(resultVo.getPayMessage())) {
             paramMap.put("payMessage", resultVo.getPayMessage());//支付信息
+        }
+        if(!StringUtil.isEmpty(resultVo.getBankReturnMsg())){
+            paramMap.put("bankReturnMsg", resultVo.getBankReturnMsg());
         }
         resultVo.setStatus(rpTradePaymentRecord.getStatus());// 支付结果
         paramMap.put("status", rpTradePaymentRecord.getStatus());

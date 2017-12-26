@@ -39,7 +39,7 @@ public class MerchantApiUtil {
         StringBuffer stringBuffer = new StringBuffer();
         for (Map.Entry<String, Object> m : smap.entrySet()) {
             Object value = m.getValue();
-            if (value != null && StringUtils.isNotBlank(String.valueOf(value))){
+            if (!"sign".equals(m.getKey())&&value != null && StringUtils.isNotBlank(String.valueOf(value))){
                 stringBuffer.append(m.getKey()).append("=").append(m.getValue()).append("&");
             }
         }

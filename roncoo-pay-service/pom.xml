@@ -48,7 +48,7 @@
 			<artifactId>shiro-web</artifactId>
 			<version>1.2.5</version>
 		</dependency>
-		
+
 
 	</dependencies>
 
@@ -81,14 +81,6 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<encoding>UTF-8</encoding>
-					<compilerArgs>
-						<arg>-verbose</arg>
-						<arg>-Xlint:unchecked</arg>
-						<arg>-Xlint:deprecation</arg>
-						<arg>-bootclasspath</arg>
-						<arg>-extdirs</arg>
-						<arg>${project.basedir}/lib</arg>
-					</compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>
