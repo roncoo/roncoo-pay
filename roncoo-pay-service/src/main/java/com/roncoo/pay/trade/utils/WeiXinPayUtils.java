@@ -297,18 +297,18 @@ public class WeiXinPayUtils {
      * @param outTradeNo
      * @return
      */
-    public static Map<String, Object> orderQuery(String outTradeNo) {
+    public static Map<String, Object> orderQuery(String outTradeNo, String appId, String MchId, String partnerKey) {
         Random random = new Random();
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("appid", WeixinConfigUtil.readConfig("appId"));
-        paramMap.put("mch_id", WeixinConfigUtil.readConfig("mch_id"));
+        paramMap.put("appid", appId);
+        paramMap.put("mch_id", MchId);
         String nonce_str = "";
         for (int i = 0; i < 31; i++) {
             nonce_str += random.nextInt(10);
         }
         paramMap.put("nonce_str", nonce_str);
         paramMap.put("out_trade_no", outTradeNo);
-        String signStr = getStringByMap(paramMap) + "&key=" + WeixinConfigUtil.readConfig("partnerKey");
+        String signStr = getStringByMap(paramMap) + "&key=" + partnerKey;
         paramMap.put("sign", MD5Util.encode(signStr).toUpperCase());
         Set<String> ks = paramMap.keySet();
         StringBuilder sb = new StringBuilder("<xml>");

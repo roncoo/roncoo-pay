@@ -274,15 +274,4 @@ public class RoncooPayController extends BaseController {
         }
         return null;
     }
-
-    public static void main(String[] args) {
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("bankReturnMsg","OK");
-        paramMap.put("payMessage", "{\"appId\":\"wx6d0f52cbb7415944\",\"nonceStr\":\"4945310513542385235173729851087\",\"package\":\"prepay_id=wx20171225163935d8b30456190851416325\",\"paySign\":\"CAB50E6946C19393F4EEBFFEC79EDD12\",\"signType\":\"MD5\",\"timeStamp\":1514191175854}");
-        paramMap.put("sign", "A7157C78201C5297E159A5D7568A897B");
-        paramMap.put("status", "WAITING_PAYMENT");
-
-        String sign = MerchantApiUtil.getSign(paramMap, PayConfigUtil.readConfig("paySecret"));
-        System.out.println(sign);
-    }
 }

@@ -78,4 +78,5 @@ public class WeixinConfigUtil {
     public static final String xPartnerKey = (String) properties.get("x_partnerKey");
     public static final String xPayKey = (String) properties.get("x_payKey");
     public static final String xMchId = (String) properties.get("x_mch_id");
+    public static final String x_notify_url = (String) properties.get("x_notify_url");
 }

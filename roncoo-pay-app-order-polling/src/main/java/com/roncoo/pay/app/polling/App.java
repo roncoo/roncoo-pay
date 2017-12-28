@@ -31,7 +31,7 @@ import java.util.concurrent.DelayQueue;
  * @author  Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
-public class App 
+public class App
 {
     private static final Log LOG = LogFactory.getLog(App.class);
 

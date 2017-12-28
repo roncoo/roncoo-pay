@@ -172,19 +172,4 @@ public class WeiXinPayUtil {
         return dataBuilder.toString();
     }
 
-    public static void main(String[] args) {
-//        String authUrl = WeixinConfigUtil.xAuthUrl.replace("{APPID}", WeixinConfigUtil.xAppId).replace("{SECRET}", WeixinConfigUtil.xPartnerKey).replace("{JSCODE}", "0034kWcV07jzeU11VMdV0IhTcV04kWcc").replace("{GRANTTYPE}", WeixinConfigUtil.xGrantType);
-//        System.out.println(authUrl);
-//        try {
-//            HttpClient httpClient = new HttpClient();
-//            GetMethod getMethod = new GetMethod(authUrl);
-//            httpClient.executeMethod(getMethod);
-//            String result = getMethod.getResponseBodyAsString();
-//            System.out.println("获取到结果:" + result);
-//        } catch (IOException e) {
-//            logger.info("获取openId失败!");
-//        }
-
-        appletPay("1111", "test", new BigDecimal(0.01), "127.0.0.1", "https://www.baidu.com", "oTpsH0UHgDOsP3rEx9kSVLCZdBYk", null);
-    }
 }
