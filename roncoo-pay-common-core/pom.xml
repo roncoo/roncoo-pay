@@ -15,11 +15,9 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>com.alipay</groupId>
-			<artifactId>alipay-sdk-java20171201160035ms</artifactId>
+			<groupId>alipay</groupId>
+			<artifactId>alipay-sdk-java20171201160035</artifactId>
 			<version>1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/lib/alipay-sdk-java20171201160035.jar</systemPath>
 		</dependency>
 
 		<!-- Spring libs Begin -->
@@ -260,26 +258,4 @@
 		<!-- Other Common libs End -->
 
 	</dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.10</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                            <includeScope>system</includeScope>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
