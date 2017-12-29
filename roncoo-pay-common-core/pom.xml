@@ -260,4 +260,16 @@
 		<!-- Other Common libs End -->
 
 	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<targetPath>lib/</targetPath>
+				<directory>lib/</directory>
+				<includes>
+					<include>alipay-sdk-java20171201160035.jar</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
 </project>
