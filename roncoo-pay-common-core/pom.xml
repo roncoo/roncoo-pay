@@ -260,16 +260,26 @@
 		<!-- Other Common libs End -->
 
 	</dependencies>
-
-	<build>
-		<resources>
-			<resource>
-				<targetPath>lib/</targetPath>
-				<directory>lib/</directory>
-				<includes>
-					<include>alipay-sdk-java20171201160035.jar</include>
-				</includes>
-			</resource>
-		</resources>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/lib</outputDirectory>
+                            <includeScope>system</includeScope>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>
