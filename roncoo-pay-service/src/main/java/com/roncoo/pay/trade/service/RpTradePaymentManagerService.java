@@ -16,6 +16,7 @@
 package com.roncoo.pay.trade.service;
 
 import com.roncoo.pay.trade.vo.*;
+import com.roncoo.pay.user.entity.RpUserPayConfig;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -164,4 +165,24 @@ public interface RpTradePaymentManagerService {
      * @return
      */
     ProgramPayResultVo programPay(String payKey, String openId, String productName, String orderNo, Date orderDate, Date orderTime, BigDecimal orderPrice, String payWayCode, String orderIp, String notifyUrl, String remark, String field1, String field2, String field3, String field4, String field5);
+
+    /**
+     * 初始化鉴权
+     *
+     * @param productName
+     * @param orderPrice
+     * @param orderIp
+     * @param paramVo
+     * @return
+     */
+    AuthInitResultVo initDirectAuth(String productName, BigDecimal orderPrice, String orderIp, AuthParamVo paramVo, RpUserPayConfig userPayConfig);
+
+    /**
+     * 用户鉴权
+     *
+     * @param merchantNo
+     * @param orderNo
+     * @return
+     */
+    AuthResultVo userAuth(String merchantNo, String orderNo);
 }

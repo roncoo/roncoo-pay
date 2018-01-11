@@ -167,6 +167,9 @@ public class ScanPayController extends BaseController {
                 model.addAttribute("queryUrl", WeixinConfigUtil.readConfig("order_query_url") + "?orderNO=" + orderNo + "&payKey=" + payKey);
                 model.addAttribute("productName", productName);//产品名称
                 model.addAttribute("orderPrice", orderPrice);//订单价格
+                model.addAttribute("orderNo", orderNo);//订单号
+                model.addAttribute("payKey", payKey);//支付Key
+
                 return "weixinPayScanPay";
             } else if (PayWayEnum.ALIPAY.name().equals(scanPayResultVo.getPayWayCode())) {
                 return "alipayDirectPay";
