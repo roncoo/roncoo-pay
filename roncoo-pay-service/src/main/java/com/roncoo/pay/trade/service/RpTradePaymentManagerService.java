@@ -178,6 +178,17 @@ public interface RpTradePaymentManagerService {
     AuthInitResultVo initDirectAuth(String productName, BigDecimal orderPrice, String orderIp, AuthParamVo paramVo, RpUserPayConfig userPayConfig);
 
     /**
+     * 初始化小程序鉴权
+     *
+     * @param productName
+     * @param orderPrice
+     * @param orderIp
+     * @param paramVo
+     * @return
+     */
+    AuthProgramInitResultVo initProgramDirectAuth(String productName, BigDecimal orderPrice, String orderIp, AuthProgramInitParamVo paramVo, RpUserPayConfig userPayConfig);
+
+    /**
      * 用户鉴权
      *
      * @param merchantNo

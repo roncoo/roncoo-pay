@@ -1231,8 +1231,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         } else {
             if (TradeStatusEnum.SUCCESS.name().equals(tradePaymentOrder.getStatus())) {
                 authInitResultVo.setTradeStatus(TradeStatusEnum.SUCCESS);
-            }
-            if (tradePaymentOrder.getOrderAmount().compareTo(orderPrice) != 0) {
+            } else if (tradePaymentOrder.getOrderAmount().compareTo(orderPrice) != 0) {
                 tradePaymentOrder.setOrderAmount(orderPrice);// 如果金额不一致,修改金额为最新的金额
             }
         }
@@ -1283,6 +1282,102 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         }
         authInitResultVo.setPayWayEnumMap(payWayEnumMap);
         return authInitResultVo;
+    }
+
+    @Override
+    public AuthProgramInitResultVo initProgramDirectAuth(String productName, BigDecimal orderPrice, String orderIp, AuthProgramInitParamVo paramVo, RpUserPayConfig userPayConfig) {
+        if (userPayConfig == null) {
+            throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR, "用户支付配置有误");
+        }
+
+        String merchantNo = userPayConfig.getUserNo();// 商户编号
+        RpUserInfo userInfo = rpUserInfoService.getDataByMerchentNo(merchantNo);
+        if (userInfo == null) {
+            throw new UserBizException(UserBizException.USER_IS_NULL, "用户不存在");
+        }
+
+        // 根据支付产品及支付方式获取费率
+        RpPayWay payWay;
+        PayTypeEnum payType;
+        LOG.info("支付[payWayCode]:{}", paramVo.getPayWayCode());
+        if (PayWayEnum.WEIXIN.name().equals(paramVo.getPayWayCode())) {
+            payType = PayTypeEnum.WX_PROGRAM_PAY;
+            payWay = rpPayWayService.getByPayWayTypeCode(userPayConfig.getProductCode(), paramVo.getPayWayCode(), payType.name());
+        } else {
+            throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR, "暂不支持此支付方式");
+        }
+        if (payWay == null) {
+            throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR, "用户支付配置有误");
+        }
+
+        Date orderDate = new Date();
+        Date orderTime = orderDate;
+        //通知地址，因为订单为不能为空，没有什么意义
+        String returnUrl = "http://www.roncoo.com";
+        String notifyUrl = "http://www.roncoo.com";
+
+        AuthProgramInitResultVo resultVo = new AuthProgramInitResultVo();
+        resultVo.setMchOrderNo(paramVo.getOrderNo());
+        RpTradePaymentOrder tradePaymentOrder = rpTradePaymentOrderDao.selectByMerchantNoAndMerchantOrderNo(merchantNo, paramVo.getOrderNo());
+
+        LOG.info("====>小程序鉴权--创建订单!");
+        if (tradePaymentOrder == null) {
+            tradePaymentOrder = sealRpTradePaymentOrder(merchantNo, userInfo.getUserName(), productName, paramVo.getOrderNo(), orderDate, orderTime, orderPrice, null, null, null, userPayConfig.getFundIntoType(), orderIp, 30, returnUrl, notifyUrl, paramVo.getRemark(), null, null, null, null, null);
+            rpTradePaymentOrderDao.insert(tradePaymentOrder);
+        } else {
+            if (TradeStatusEnum.SUCCESS.name().equals(tradePaymentOrder.getStatus())) {
+                resultVo.setTradeStatus(TradeStatusEnum.SUCCESS);
+            } else if (tradePaymentOrder.getOrderAmount().compareTo(orderPrice) != 0) {
+                tradePaymentOrder.setOrderAmount(orderPrice);// 如果金额不一致,修改金额为最新的金额
+            }
+        }
+
+        RpUserBankAuth userBankAuth = userBankAuthDao.findByMerchantNoAndPayOrderNo(merchantNo, paramVo.getOrderNo());
+        if (TradeStatusEnum.SUCCESS.equals(resultVo.getTradeStatus())) {
+            if (userBankAuth == null) {
+                throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, "用户鉴权非法订单请求,鉴权记录不存在!");
+            }
+            if (AuthStatusEnum.WAITING_AUTH.name().equals(userBankAuth.getStatus()) || AuthStatusEnum.SUCCESS.name().equals(userBankAuth.getStatus()) || AuthStatusEnum.FAILED.name().equals(userBankAuth.getStatus())) {
+                resultVo.setAuth(true);
+            } else {
+                throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, "非法鉴权记录");
+            }
+        } else {
+            //调用小程序支付
+            ProgramPayResultVo programPayResultVo = getProgramPayResultVo(tradePaymentOrder, payWay, userPayConfig.getPaySecret(), paramVo.getOpenId(), null);
+            if (!PublicEnum.YES.name().equals(programPayResultVo.getStatus())) {
+                throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR, "请求小程序支付失败!");
+            }
+            resultVo.setPayMessage(programPayResultVo.getPayMessage());
+            resultVo.setBankReturnMsg(programPayResultVo.getBankReturnMsg());
+            if (userBankAuth == null) {
+                LOG.info("小程序鉴权--创建鉴权记录!");
+                userBankAuth = new RpUserBankAuth();
+                userBankAuth.setMerchantNo(merchantNo);
+                userBankAuth.setPayOrderNo(paramVo.getOrderNo());
+                userBankAuth.setUserName(paramVo.getUserName());
+                userBankAuth.setPhone(paramVo.getPhone());
+                userBankAuth.setIdNo(paramVo.getIdNo());
+                userBankAuth.setBankAccountNo(paramVo.getBankAccountNo());
+                userBankAuth.setStatus(AuthStatusEnum.WAITING_AUTH.name());
+                userBankAuth.setRemark(paramVo.getRemark());
+                userBankAuthDao.insert(userBankAuth);
+            } else if (AuthStatusEnum.WAITING_AUTH.name().equals(userBankAuth.getStatus())) {
+                LOG.info("小程序鉴权--鉴权记录已存在，更新记录!");
+                userBankAuth.setUserName(paramVo.getUserName());
+                userBankAuth.setPhone(paramVo.getPhone());
+                userBankAuth.setIdNo(paramVo.getIdNo());
+                userBankAuth.setBankAccountNo(paramVo.getBankAccountNo());
+                userBankAuthDao.update(userBankAuth);
+            } else {
+                throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, "用户鉴权,非法请求");
+            }
+        }
+
+        resultVo.setErrCode(PublicEnum.YES.name());
+        Map<String, Object> paramMap = JSON.parseObject(JSON.toJSONString(resultVo));
+        resultVo.setSign(MerchantApiUtil.getSign(paramMap, userPayConfig.getPaySecret()));
+        return resultVo;
     }
 
     @Override
@@ -1388,14 +1483,13 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
                         returnMap.remove("appId");
                         String jsonString = JSON.toJSONString(returnMap);
                         resultVo.setPayMessage(jsonString);
+                        resultVo.setStatus(PublicEnum.YES.name());
                         //请求成功，发起轮询
                         rpNotifyService.orderSend(rpTradePaymentRecord.getBankOrderNo());
                     } else {
                         resultVo.setStatus(PublicEnum.NO.name());
                         resultVo.setBankReturnMsg(String.valueOf(resultMap.get("return_msg")));
                     }
-
-
                 } else {
                     resultVo.setStatus(PublicEnum.NO.name());
                     resultVo.setBankReturnMsg("请求微信返回信息验签不通过！");
@@ -1412,8 +1506,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         if (!StringUtil.isEmpty(resultVo.getBankReturnMsg())) {
             paramMap.put("bankReturnMsg", resultVo.getBankReturnMsg());
         }
-        resultVo.setStatus(rpTradePaymentRecord.getStatus());// 支付结果
-        paramMap.put("status", rpTradePaymentRecord.getStatus());
+        paramMap.put("status", resultVo.getStatus());
         String sign = MerchantApiUtil.getSign(paramMap, merchantPaySecret);
         resultVo.setSign(sign);
         return resultVo;
