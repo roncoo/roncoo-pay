@@ -109,7 +109,7 @@ public class AuthController extends BaseController {
             //参数校验
             if (bindingResult.hasErrors()) {
                 String errMsg = getErrorMsg(bindingResult);
-                logger.info("用户鉴权--请求参数异常：[{}]", errMsg);
+                logger.info("小程序用户鉴权--请求参数异常：[{}]", errMsg);
                 throw new TradeBizException(TradeBizException.TRADE_PARAM_ERROR, errMsg);
             }
 
@@ -147,7 +147,7 @@ public class AuthController extends BaseController {
             payResultJson = resultJson.toJSONString();
         }
 
-        logger.debug("小程序--支付结果==>{}", payResultJson);
+        logger.debug("小程序--初始化支付结果==>{}", payResultJson);
         response.setContentType(CONTENT_TYPE);
         response.setStatus(200);
         write(response, payResultJson);
