@@ -80,6 +80,13 @@
                         <input type="button" value="0.5元鉴权体验"/>
                     </p>
                 </a>
+            </li>
+
+            <li style="float: left;margin-left: 60px;margin-top: 20px;">
+                <img width="344px;" src="${path}images/wx_xiaochengxu.jpg" alt="微信小程序"/>
+                <p style="font-size: 20px; margin-top: 15px;font-weight: bold">
+                    小程序演示
+                </p>
             </li>--%>
 
         </ul>
