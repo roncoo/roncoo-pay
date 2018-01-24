@@ -73,14 +73,15 @@
                 </form>
             </li>
 
-            <li style="float: left;margin-left: 60px;margin-top: 20px;">
+            <%--<li style="float: left;margin-left: 60px;margin-top: 20px;">
                 <img src="${path}images/jianquan.png" alt="鉴权支付"/>
                 <a href="${path}auth/init">
                     <p class="pay_btn">
                         <input type="button" value="0.5元鉴权体验"/>
                     </p>
                 </a>
-            </li>
+            </li>--%>
+
         </ul>
     </div>
 </div>
