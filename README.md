@@ -8,6 +8,7 @@ fastpay的目标是打造一款开源的、轻量级的、微服务化的、可�
 
 加入项目请关注云时代架构公众号，后台回复"+fastpay"，然后，提供微信、github账户号等。
 
+
 ![](云时代架构公众号.jpg)
 
 # 饮水思源
@@ -15,14 +16,6 @@ fastpay的目标是打造一款开源的、轻量级的、微服务化的、可�
 目前以龙果支付为基础，虽然处于初级阶段，但是我们对整个实施的过程和思路都是非常清晰的，我们后续会梳理龙果支付的项目代码，进行微服务化，当前可参考龙果支付的演示页面：
 
 在线支付演示：http://demo.pay.roncoo.com
-
-后台运营管理：http://demo.pay.roncoo.com/boss
-
-系统操作说明：http://www.roncoo.com/article/detail/124375
-
-系统详细介绍：http://www.roncoo.com/article/detail/124373
-
-系统搭建部署：http://www.roncoo.com/article/detail/124511
 
 
  
