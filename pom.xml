@@ -8,7 +8,7 @@
 	<version>2.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>roncoo-pay</name>
+	<name>ronguo-pay</name>
 	<url>http://maven.apache.org</url>
 
 	<organization>
@@ -436,27 +436,9 @@
 	<!-- developer -->
 	<developers>
 		<developer>
-			<name>Along</name>
-			<id>shen.jialong</id>
-			<email>shenjl@roncoo.com</email>
-			<roles>
-				<role>Developer</role>
-			</roles>
-			<timezone>+8</timezone>
-		</developer>
-		<developer>
-			<name>peter</name>
-			<id>hu.peter</id>
-			<email>hupt@roncoo.com</email>
-			<roles>
-				<role>Developer</role>
-			</roles>
-			<timezone>+8</timezone>
-		</developer>
-		<developer>
-			<name>hugo</name>
-			<id>zeng.hao</id>
-			<email>zengh@roncoo.com</email>
+			<name>lance</name>
+			<id>lance.xu</id>
+			<email>13554225105@163.com</email>
 			<roles>
 				<role>Developer</role>
 			</roles>
