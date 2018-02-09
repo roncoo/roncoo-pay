@@ -31,7 +31,13 @@ Fastpay的目标是打造一款开源的、轻量级的、微服务化的、可�
 
 第1步替换方法：
 
-针对文件内容和针对文件全路径替换：roncoo -> fast    Roncoo -> Fast RONCOO -> FAST
+针对文件内容和针对文件全路径替换：
+
+1. roncoo -> fast    
+2. Roncoo -> Fast
+3. RONCOO -> FAST
+
+这里请注意，一定要小写对小写、大写对大写。
 
 ## 总体架构
 
