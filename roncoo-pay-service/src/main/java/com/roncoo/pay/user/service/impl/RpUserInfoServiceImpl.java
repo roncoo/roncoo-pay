@@ -39,8 +39,6 @@ import com.roncoo.pay.user.service.RpUserInfoService;
 
 /**
  * 用户信息service实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Service("rpUserInfoService")
 public class RpUserInfoServiceImpl implements RpUserInfoService{

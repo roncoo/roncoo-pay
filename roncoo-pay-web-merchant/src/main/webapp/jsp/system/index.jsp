@@ -5,7 +5,7 @@
 <head>
   <%@include file="../../common/taglib.jsp"%>
   <%@include file="../../common/lte.jsp"%>
-  <title>龙果支付-商户后台</title>
+  <title>云架构社区支付-商户后台</title>
     <style>
     .modal {
 display:none;;
@@ -52,7 +52,7 @@ display:none;;
     <!-- Logo -->
     <a href="${baseURL }/index" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>龙果</b></span>
+      <span class="logo-mini"><b>云架构社区</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><img src="${baseURL }/lte/images/logo.png" /></span>
     </a>

@@ -18,8 +18,6 @@ package com.roncoo.pay.app.settlement.scheduled;
 
 /**
  * 结算定时任务接口.
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 public interface SettScheduled {
 

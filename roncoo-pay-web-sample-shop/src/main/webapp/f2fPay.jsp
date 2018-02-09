@@ -16,10 +16,10 @@
   <div class="header clearfix">
     <div class="logo_panel clearfix">
       <div class="logo fl"><img src="${path}pay_files/logo.png" alt="logo"></div>
-      <div class="lg_txt">| 龙果支付体验平台</div>
+      <div class="lg_txt">| 云架构社区支付体验平台</div>
     </div>
     <div class="fr tip_panel">
-      <div class="txt">欢迎使用龙果支付付款</div>
+      <div class="txt">欢迎使用云架构社区支付付款</div>
       <a href="">常见问题</a>
     </div>
   </div>

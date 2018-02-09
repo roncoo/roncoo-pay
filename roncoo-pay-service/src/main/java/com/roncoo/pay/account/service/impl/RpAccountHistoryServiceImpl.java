@@ -29,8 +29,6 @@ import java.util.Map;
 
 /**
  * 账户历史service实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Service("rpAccountHistoryService")
 public class RpAccountHistoryServiceImpl implements RpAccountHistoryService{

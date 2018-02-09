@@ -22,8 +22,6 @@ import java.io.Serializable;
 
 /**
  * <b>功能说明:微信预支付实体类</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class WeiXinPrePay implements Serializable {
 

@@ -30,8 +30,6 @@ import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
 /**
  * <b>功能说明:
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Component
 public class PollingQueue implements Serializable {

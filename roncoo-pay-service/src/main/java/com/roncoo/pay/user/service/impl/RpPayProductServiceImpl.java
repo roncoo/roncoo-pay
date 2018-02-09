@@ -39,8 +39,6 @@ import com.roncoo.pay.user.service.RpUserPayConfigService;
 
 /**
  * 支付产品service实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Service("rpPayProductService")
 public class RpPayProductServiceImpl implements RpPayProductService{

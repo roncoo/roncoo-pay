@@ -22,8 +22,6 @@ import com.roncoo.pay.common.core.entity.BaseEntity;
 
 /**
  * 每日待结算汇总实体
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public class RpSettDailyCollect extends BaseEntity {
 	/**

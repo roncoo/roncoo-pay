@@ -22,9 +22,6 @@ import java.util.Map;
 
 /**
  * 公共状态枚举. 只有 (冻结) 与(激活) 两种状态
- * 
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
- * @author along
  */
 public enum PublicStatusEnum {
 

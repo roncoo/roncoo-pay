@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * 分页组件.
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
- * @author along
  */
 public class PageBean<T> implements Serializable {
     /**

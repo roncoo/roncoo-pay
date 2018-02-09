@@ -23,8 +23,6 @@ import com.roncoo.pay.user.entity.RpUserInfo;
 
 /**
  * 用户信息service接口
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpUserInfoService{
 	

@@ -32,8 +32,6 @@ import com.roncoo.pay.user.service.RpUserBankAccountService;
 
 /**
  * 用户银行账户service实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Service("rpUserBankAccountService")
 public class RpUserBankAccountServiceImpl implements RpUserBankAccountService{

@@ -21,8 +21,6 @@ import java.util.ArrayList;
 
 /**
  * API请求,返回分页数据时,统一实体类,将返回的数据统一封装到该实体中,返回给客户端
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 public class ApiPageListResultVo {
 

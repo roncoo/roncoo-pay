@@ -23,8 +23,6 @@ import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
 
 /**
  * <b>功能说明:商户支付记录,dao层接口</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public interface RpTradePaymentRecordDao extends BaseDao<RpTradePaymentRecord>{
 

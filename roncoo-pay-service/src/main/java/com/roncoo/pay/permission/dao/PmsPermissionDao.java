@@ -21,10 +21,6 @@ import com.roncoo.pay.permission.entity.PmsPermission;
 
 /**
  * 权限点dao
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface PmsPermissionDao extends PermissionBaseDao<PmsPermission> {
 	/**

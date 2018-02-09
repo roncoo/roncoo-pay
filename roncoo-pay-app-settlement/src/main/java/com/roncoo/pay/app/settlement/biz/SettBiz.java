@@ -31,8 +31,6 @@ import com.roncoo.pay.user.service.RpUserPayConfigService;
 
 /**
  * 结算业务逻辑类.
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 @Component("settBiz")
 public class SettBiz {

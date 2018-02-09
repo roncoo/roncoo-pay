@@ -20,10 +20,6 @@ import java.util.Date;
 
 /**
  * 支付宝对账文件vo转换实体.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class AlipayAccountLogVO {
 

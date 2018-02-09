@@ -22,8 +22,6 @@ import com.roncoo.pay.common.core.exception.BizException;
 
 /**
  *  账户操作service接口
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpAccountTransactionService {
 

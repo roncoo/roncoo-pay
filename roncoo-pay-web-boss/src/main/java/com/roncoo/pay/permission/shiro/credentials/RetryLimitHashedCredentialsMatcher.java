@@ -33,10 +33,6 @@ import com.roncoo.pay.permission.service.PmsOperatorService;
 
 /**
  * 自定义的市容凭证匹配器
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
 

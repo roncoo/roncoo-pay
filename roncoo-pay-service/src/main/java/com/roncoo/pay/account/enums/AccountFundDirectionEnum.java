@@ -22,7 +22,6 @@ import java.util.Map;
 
 /**
  * 账户资金变动方向
- * 龙果学院：www.roncoo.com
  * @author：zenghao
  */
 public enum AccountFundDirectionEnum {

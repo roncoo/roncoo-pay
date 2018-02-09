@@ -9,13 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @功能说明:
- * @创建者: Peter
- * @创建时间: 16/6/2  下午2:31
- * @公司名称:广州市领课网络科技有限公司 龙果学院(www.roncoo.com)
- * @版本:V1.0
- */
 @Repository("rpNotifyRecordDao")
 public class RpNotifyRecordDaoImpl extends BaseDaoImpl<RpNotifyRecord> implements RpNotifyRecordDao {
 

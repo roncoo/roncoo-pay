@@ -40,10 +40,6 @@ import com.roncoo.pay.reconciliation.service.RpAccountCheckTransactionService;
 
 /**
  * 对账验证biz，(检查是否已经对过账).
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Component("reconciliationValidateBiz")
 public class ReconciliationValidateBiz {

@@ -28,10 +28,6 @@ import com.roncoo.pay.reconciliation.fileDown.service.ReconciliationFactory;
 
 /**
  * 对账文件下载业务逻辑.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Component("reconciliationFileDownBiz")
 public class ReconciliationFileDownBiz {

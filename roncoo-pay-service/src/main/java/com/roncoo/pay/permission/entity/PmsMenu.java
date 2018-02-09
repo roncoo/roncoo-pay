@@ -2,10 +2,6 @@ package com.roncoo.pay.permission.entity;
 
 /**
  * 菜单实体
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class PmsMenu extends PermissionBaseEntity {
 	private static final long serialVersionUID = 1L;

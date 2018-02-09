@@ -26,10 +26,6 @@ import com.roncoo.pay.permission.entity.PmsOperatorRole;
 
 /**
  * 权限-操作员与角色dao实现
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Repository
 public class PmsOperatorRoleDaoImpl extends PermissionBaseDaoImpl<PmsOperatorRole> implements PmsOperatorRoleDao {

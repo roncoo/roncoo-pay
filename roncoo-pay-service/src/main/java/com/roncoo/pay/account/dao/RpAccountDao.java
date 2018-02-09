@@ -22,8 +22,6 @@ import com.roncoo.pay.common.core.dao.BaseDao;
 
 /**
  * 账户dao
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpAccountDao  extends BaseDao<RpAccount> {
 	RpAccount getByAccountNo(String accountNo);

@@ -20,8 +20,6 @@ import com.roncoo.pay.user.entity.RpUserPayInfo;
 
 /**
  * 用户第三方支付信息dao
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpUserPayInfoDao  extends BaseDao<RpUserPayInfo> {
 

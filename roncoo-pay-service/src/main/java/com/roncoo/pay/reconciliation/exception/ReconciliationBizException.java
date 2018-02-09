@@ -22,10 +22,6 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * 对账业务 .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class ReconciliationBizException extends BizException {
 

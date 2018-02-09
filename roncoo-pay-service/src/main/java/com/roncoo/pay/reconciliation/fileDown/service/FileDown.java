@@ -21,10 +21,6 @@ import java.util.Date;
 
 /**
  * 对账文件下载
- * 
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface FileDown {
 

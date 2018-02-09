@@ -18,8 +18,6 @@ package com.roncoo.pay.controller;
 /**
  * <b>功能说明:后台通知结果控制类
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 
 import java.io.InputStream;

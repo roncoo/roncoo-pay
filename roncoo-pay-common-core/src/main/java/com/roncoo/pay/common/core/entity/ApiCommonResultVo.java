@@ -19,8 +19,6 @@ import com.alibaba.fastjson.JSONObject;
 
 /**
  * api请求正常返回结果,该实体作为API请求时,按照规范返回的实体. code 为返回码 msg 为返回描述 data 为返回的具体结果 Created
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 public class ApiCommonResultVo {
 

@@ -42,10 +42,6 @@ import com.roncoo.pay.permission.service.PmsRolePermissionService;
 
 /**
  * 自定义realm .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class OperatorRealm extends AuthorizingRealm {
 

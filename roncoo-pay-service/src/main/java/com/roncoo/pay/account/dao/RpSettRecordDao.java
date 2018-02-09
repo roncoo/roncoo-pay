@@ -20,8 +20,6 @@ import com.roncoo.pay.common.core.dao.BaseDao;
 
 /**
  * 结算记录dao
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpSettRecordDao  extends BaseDao<RpSettRecord> {
 }

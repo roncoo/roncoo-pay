@@ -21,8 +21,6 @@ import com.roncoo.pay.common.core.utils.StringUtil;
 
 /**
  * 基类.
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
- * @author Along
  */
 public class BaseEntity {
 

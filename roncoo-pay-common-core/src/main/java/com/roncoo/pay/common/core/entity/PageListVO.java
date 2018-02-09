@@ -20,8 +20,6 @@ import java.util.List;
 
 /**
  * 返回的分页实体
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 public class PageListVO {
 

@@ -8,10 +8,6 @@ import com.roncoo.pay.common.core.exception.BizException;
 
 /**
  * 管理系统权限模块异常.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class PermissionException extends BizException {
 	private static final long serialVersionUID = -5371846727040729628L;
@@ -22,7 +18,7 @@ public class PermissionException extends BizException {
 	public static final Integer PERMISSION_QUERY_MENU_BY_ROLE_ERROR = 1002;
 	/** 分配菜单权限时，角色不能为空 **/
 	public static final Integer PERMISSION_ASSIGN_MENU_ROLE_NULL = 1003;
-	/** 对接龙果平台用户体系异常 **/
+	/** 对接云架构社区平台用户体系异常 **/
 	public static final Integer RONCOO_NETWORK_EXCEPTION = 1004;
 
 	public PermissionException() {

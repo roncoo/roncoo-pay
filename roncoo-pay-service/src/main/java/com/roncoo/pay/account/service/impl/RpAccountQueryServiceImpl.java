@@ -42,8 +42,6 @@ import com.roncoo.pay.common.core.utils.DateUtils;
 
 /**
  * 账户查询service实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Service("rpAccountQueryService")
 public class RpAccountQueryServiceImpl implements RpAccountQueryService {

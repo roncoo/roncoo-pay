@@ -23,10 +23,6 @@ import org.springframework.stereotype.Repository;
 
 /**
  * 对账缓存池
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Repository
 public class RpAccountCheckMistakeScratchPoolDaoImpl extends BaseDaoImpl<RpAccountCheckMistakeScratchPool> implements RpAccountCheckMistakeScratchPoolDao {

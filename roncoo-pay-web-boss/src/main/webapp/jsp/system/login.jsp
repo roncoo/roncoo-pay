@@ -4,7 +4,7 @@
 <jsp:include page="${baseURL }/common/taglib/taglib.jsp" />
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>龙果支付后台</title>
+<title>云架构社区支付后台</title>
 <link rel="stylesheet" type="text/css" href="${baseURL }/dwz/themes/css/login.css" />
 <script type="text/javascript" language="javascript" src="${baseURL }/common/js/login/login.js"></script>
 </head>
@@ -87,7 +87,7 @@
 		</div>
 		<div id="login_footer">
 			Copyright &copy; 2015-2016
-			<a href="http://www.roncoo.com" target="_blank">龙果学院</a>
+			<a href="http://www.cloudate.net/" target="_blank">云时代架构社区</a>
 		</div>
 	</div>
 

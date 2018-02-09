@@ -24,8 +24,6 @@ import java.util.Date;
 
 /**
  * <b>功能说明:商户支付订单实体类</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class RpTradePaymentOrder extends BaseEntity implements Serializable {
 

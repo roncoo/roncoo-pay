@@ -28,8 +28,6 @@ import java.util.concurrent.DelayQueue;
 /**
  * <b>功能说明:消息APP启动类
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class App 
 {

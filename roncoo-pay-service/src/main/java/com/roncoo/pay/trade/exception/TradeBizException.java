@@ -22,8 +22,6 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * <b>功能说明:交易模块异常类</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class TradeBizException extends BizException {
 

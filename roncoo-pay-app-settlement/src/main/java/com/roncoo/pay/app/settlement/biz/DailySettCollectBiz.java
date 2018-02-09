@@ -29,8 +29,6 @@ import com.roncoo.pay.user.service.RpUserPayConfigService;
 
 /**
  * 每日待结算数据汇总.
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 @Component("dailySettCollectBiz")
 public class DailySettCollectBiz {

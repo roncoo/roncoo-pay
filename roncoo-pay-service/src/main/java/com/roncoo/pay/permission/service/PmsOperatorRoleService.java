@@ -23,10 +23,6 @@ import com.roncoo.pay.permission.entity.PmsOperatorRole;
 
 /**
  * 操作员角色service接口
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface PmsOperatorRoleService {
 

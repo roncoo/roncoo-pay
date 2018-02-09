@@ -24,10 +24,6 @@ import com.roncoo.pay.permission.entity.PmsMenuRole;
 
 /**
  * 菜单角色
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Repository("pmsRoleMenuDao")
 public class PmsMenuRoleDaoImpl extends PermissionBaseDaoImpl<PmsMenuRole> implements PmsMenuRoleDao {

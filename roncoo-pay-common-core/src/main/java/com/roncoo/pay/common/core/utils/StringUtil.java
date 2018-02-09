@@ -28,8 +28,6 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * String字符串工具类.
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
- * @author zenghao
  */
 public final class StringUtil {
 

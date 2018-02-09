@@ -20,10 +20,6 @@ import java.util.Date;
 
 /**
  * 该接口是用来对外开放的银行相关业务接口
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface ReconciliationFactory {
 

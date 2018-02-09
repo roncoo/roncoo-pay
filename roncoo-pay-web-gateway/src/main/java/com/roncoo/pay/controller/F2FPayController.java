@@ -27,13 +27,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-/**
- * <b>功能说明:
- * </b>
- *
- * @author Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
- */
 @Controller
 @RequestMapping(value = "/f2fPay")
 public class F2FPayController extends BaseController {

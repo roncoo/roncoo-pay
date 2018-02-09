@@ -25,8 +25,6 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * 线程池工具类
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 public class SettThreadPoolExecutor {
 	private static final Log LOG = LogFactory.getLog(SettThreadPoolExecutor.class);

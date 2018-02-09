@@ -29,10 +29,6 @@ import com.roncoo.pay.reconciliation.service.RpAccountCheckBatchService;
 
 /**
  * 对账批次接口实现 .
- * 
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Service("rpAccountCheckBatchService")
 public class RpAccountCheckBatchServiceImpl implements RpAccountCheckBatchService {

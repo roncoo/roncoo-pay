@@ -19,8 +19,6 @@ import javax.net.ssl.KeyManagerFactory;
 
 /**
  * <b>功能说明:</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class ClientKeyStore {
 	private KeyManagerFactory keyManagerFactory;

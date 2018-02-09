@@ -32,8 +32,6 @@ import com.roncoo.pay.permission.exception.PermissionException;
 
 /**
  * Spring异常拦截器.
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 @ControllerAdvice
 public class WebExceptionHandler {

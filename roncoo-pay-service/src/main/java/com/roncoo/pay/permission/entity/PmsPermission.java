@@ -18,10 +18,6 @@ package com.roncoo.pay.permission.entity;
 
 /**
  * 权限-权限表实体..
- * 
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class PmsPermission extends PermissionBaseEntity {
 

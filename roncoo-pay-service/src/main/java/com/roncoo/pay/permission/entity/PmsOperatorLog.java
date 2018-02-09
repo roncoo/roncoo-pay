@@ -17,10 +17,6 @@ package com.roncoo.pay.permission.entity;
 
 /**
  * 权限管理-操作员操作日志..
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class PmsOperatorLog extends PermissionBaseEntity {
 

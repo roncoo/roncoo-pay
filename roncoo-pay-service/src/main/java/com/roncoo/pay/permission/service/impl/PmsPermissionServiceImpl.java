@@ -32,10 +32,6 @@ import com.roncoo.pay.permission.service.PmsPermissionService;
 
 /**
  * 权限service接口实现
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Service("pmsPermissionService")
 public class PmsPermissionServiceImpl implements PmsPermissionService {

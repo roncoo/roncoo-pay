@@ -17,10 +17,6 @@ package com.roncoo.pay.permission.entity;
 
 /**
  * 权限管理-操作员
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class PmsOperator extends PermissionBaseEntity {
 

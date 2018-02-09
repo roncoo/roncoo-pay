@@ -42,8 +42,6 @@ import com.roncoo.pay.common.core.page.PageParam;
  
 /**
  * 结算管理
- * @company：广州领课网络科技有限公司（龙果学院:www.roncoo.com）
- * @author：zenghao
  */
 @Controller
 @RequestMapping("/sett")

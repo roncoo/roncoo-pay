@@ -33,10 +33,6 @@ import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
 
 /**
  * 对账文件解析业务逻辑.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Component("reconciliationFileParserBiz")
 public class ReconciliationFileParserBiz implements BeanFactoryAware {

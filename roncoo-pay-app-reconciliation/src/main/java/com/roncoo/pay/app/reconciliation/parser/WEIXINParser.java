@@ -44,10 +44,6 @@ import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
 
 /**
  * 微信对账单解析器 .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Component("WEIXINParser")
 public class WEIXINParser implements ParserInterface {

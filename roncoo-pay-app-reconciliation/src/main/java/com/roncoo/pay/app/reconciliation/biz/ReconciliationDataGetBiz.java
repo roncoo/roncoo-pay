@@ -33,10 +33,6 @@ import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
 
 /**
  * 平台数据获取biz业务类.
- * 
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Component("reconciliationDataGetBiz")
 public class ReconciliationDataGetBiz {

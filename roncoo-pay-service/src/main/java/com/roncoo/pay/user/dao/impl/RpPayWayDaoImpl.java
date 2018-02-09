@@ -23,8 +23,6 @@ import com.roncoo.pay.user.entity.RpPayWay;
 
 /**
  * 支付方式dao实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Repository
 public class RpPayWayDaoImpl  extends BaseDaoImpl<RpPayWay> implements RpPayWayDao{

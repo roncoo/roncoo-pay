@@ -22,10 +22,6 @@ import com.roncoo.pay.permission.entity.PmsOperatorLog;
 
 /**
  * 权限操作员dao实现
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Repository
 public class PmsOperatorLogDaoImpl extends PermissionBaseDaoImpl<PmsOperatorLog> implements PmsOperatorLogDao {

@@ -17,10 +17,6 @@ package com.roncoo.pay.permission.service;
 
 /**
  * 菜单角色service接口
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface PmsMenuRoleService {
 

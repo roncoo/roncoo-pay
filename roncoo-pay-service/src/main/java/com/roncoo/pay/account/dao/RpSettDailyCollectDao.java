@@ -20,8 +20,6 @@ import com.roncoo.pay.common.core.dao.BaseDao;
 
 /**
  * 每日待结算汇总dao
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpSettDailyCollectDao  extends BaseDao<RpSettDailyCollect> {
 }

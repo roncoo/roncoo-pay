@@ -20,8 +20,6 @@ import java.util.Date;
 
 /**
  *  结算核心业务处理接口
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpSettHandleService {
 

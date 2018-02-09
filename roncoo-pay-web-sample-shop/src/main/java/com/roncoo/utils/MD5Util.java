@@ -20,8 +20,6 @@ import java.security.MessageDigest;
 /**
  * <b>功能说明:MD5工具类
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class MD5Util {
 

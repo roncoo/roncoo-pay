@@ -35,7 +35,6 @@ import com.roncoo.pay.common.core.page.PageParam;
 
 /**
  * 据访问层基础支撑类.
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
  */
 public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSupport implements BaseDao<T> {
 

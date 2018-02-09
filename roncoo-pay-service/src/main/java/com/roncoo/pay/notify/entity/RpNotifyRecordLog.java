@@ -4,13 +4,6 @@ import com.roncoo.pay.common.core.entity.BaseEntity;
 
 import java.util.Date;
 
-/**
- * @功能说明:
- * @创建者: Peter
- * @创建时间: 16/6/2  上午11:25
- * @公司名称:广州市领课网络科技有限公司 龙果学院(www.roncoo.com)
- * @版本:V1.0
- */
 public class RpNotifyRecordLog extends BaseEntity {
     /** 通知记录ID **/
     private String notifyId;

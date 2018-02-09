@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * 银行账户类型
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public enum BankAccountTypeEnum {
 

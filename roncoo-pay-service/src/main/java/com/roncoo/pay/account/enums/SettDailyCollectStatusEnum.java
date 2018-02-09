@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * 结算日汇总记录状态
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public enum SettDailyCollectStatusEnum {
 

@@ -32,12 +32,6 @@ import java.security.cert.X509Certificate;
 import java.util.*;
 import java.util.Map.Entry;
 
-/**
- * <b>功能说明:
- * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
- */
 public class SimpleHttpUtils {
 	private static final Logger logger = Logger.getLogger(SimpleHttpUtils.class);
 

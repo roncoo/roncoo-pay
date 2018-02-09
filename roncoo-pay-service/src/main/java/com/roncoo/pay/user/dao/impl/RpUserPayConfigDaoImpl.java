@@ -27,8 +27,6 @@ import com.roncoo.pay.user.entity.RpUserPayConfig;
 
 /**
  * 用户支付配置dao实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Repository
 public class RpUserPayConfigDaoImpl  extends BaseDaoImpl<RpUserPayConfig> implements RpUserPayConfigDao{

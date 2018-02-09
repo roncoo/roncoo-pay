@@ -22,10 +22,6 @@ import java.util.Map;
 
 /**
  * 对账差错类型枚举 .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public enum ReconciliationMistakeTypeEnum {
 

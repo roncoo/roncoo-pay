@@ -32,10 +32,6 @@ import org.springframework.cache.support.SimpleValueWrapper;
 
 /**
  * 包装Spring cache抽象.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class SpringCacheManagerWrapper implements CacheManager {
 

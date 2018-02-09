@@ -8,7 +8,7 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>龙果学院</title>
+    <title>云时代架构社区</title>
     <meta charset="utf-8">
     <link href="${path}pay_files/pay.css" rel="stylesheet" type="text/css">
     <style>
@@ -31,7 +31,7 @@
             <div class="lg_txt">| 收银台</div>
         </div>
         <div class="fr tip_panel">
-            <div class="txt">欢迎使用龙果支付付款</div>
+            <div class="txt">欢迎使用云架构社区支付付款</div>
             <a href="">常见问题</a>
         </div>
     </div>

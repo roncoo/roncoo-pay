@@ -17,8 +17,6 @@ package com.roncoo.pay.user.service;
 
 /**
  *  生成编号service接口
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface BuildNoService {
 

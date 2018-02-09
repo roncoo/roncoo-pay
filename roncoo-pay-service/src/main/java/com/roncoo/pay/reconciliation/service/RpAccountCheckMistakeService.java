@@ -24,10 +24,6 @@ import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistake;
 
 /**
  * 对账差错接口 .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface RpAccountCheckMistakeService {
 

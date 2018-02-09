@@ -34,8 +34,6 @@ import com.roncoo.pay.user.service.RpUserInfoService;
 
 /**
  * 账户信息
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 @Controller
 @RequestMapping("/account")

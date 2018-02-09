@@ -21,10 +21,6 @@ import org.springframework.context.ApplicationContextAware;
 
 /**
  * SpringContextUtil .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class SpringContextUtil implements ApplicationContextAware {
 

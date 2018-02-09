@@ -37,10 +37,6 @@ import com.roncoo.pay.trade.utils.WeixinConfigUtil;
 
 /**
  * 微信文件下载类
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class WinXinFileDown implements FileDown {
 

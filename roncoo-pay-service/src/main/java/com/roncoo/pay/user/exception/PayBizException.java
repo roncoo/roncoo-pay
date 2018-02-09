@@ -22,8 +22,6 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * 支付业务异常类
- * 龙果学院：www.roncoo.com
- * @author：Peter
  */
 public class PayBizException extends BizException {
 

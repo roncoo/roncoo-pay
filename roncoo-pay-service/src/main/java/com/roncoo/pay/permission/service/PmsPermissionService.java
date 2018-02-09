@@ -23,10 +23,6 @@ import com.roncoo.pay.permission.entity.PmsPermission;
 
 /**
  * 权限service接口
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface PmsPermissionService {
 

@@ -29,10 +29,6 @@ import com.roncoo.pay.permission.service.PmsMenuService;
 
 /**
  * 菜单service接口实现
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Service("pmsMenuService")
 public class PmsMenuServiceImpl implements PmsMenuService {

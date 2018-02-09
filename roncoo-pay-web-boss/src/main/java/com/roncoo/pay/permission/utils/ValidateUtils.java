@@ -31,10 +31,6 @@ import org.apache.commons.lang.StringUtils;
 
 /**
  * 验证工具类
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class ValidateUtils {
 

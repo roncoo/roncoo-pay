@@ -21,8 +21,6 @@ import com.roncoo.pay.common.core.entity.BaseEntity;
 
 /**
  * 用户第三方支付信息实体类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public class RpUserPayInfo extends BaseEntity implements Serializable {
 

@@ -19,8 +19,6 @@ import com.roncoo.pay.user.entity.RpUserBankAccount;
 
 /**
  * 用户银行账户service接口
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpUserBankAccountService{
 	

@@ -28,10 +28,6 @@ import com.roncoo.pay.reconciliation.utils.ReconciliationConfigUtil;
 
 /**
  * 文件下载factory
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Service("reconciliationFactory")
 public class ReconciliationFactoryImpl implements ReconciliationFactory, BeanFactoryAware {

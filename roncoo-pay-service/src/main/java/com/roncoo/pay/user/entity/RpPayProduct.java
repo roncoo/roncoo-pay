@@ -22,8 +22,6 @@ import com.roncoo.pay.common.core.enums.PublicEnum;
 
 /**
  * 支付产品实体类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public class RpPayProduct extends BaseEntity implements Serializable {
 

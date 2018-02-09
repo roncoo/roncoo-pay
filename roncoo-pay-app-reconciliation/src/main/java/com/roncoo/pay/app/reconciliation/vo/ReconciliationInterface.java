@@ -23,10 +23,6 @@ import com.roncoo.pay.common.core.enums.PublicStatusEnum;
 
 /**
  * 对账接口实体
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class ReconciliationInterface {
 

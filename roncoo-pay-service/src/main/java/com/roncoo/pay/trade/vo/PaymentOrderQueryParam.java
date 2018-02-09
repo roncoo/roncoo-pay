@@ -21,8 +21,6 @@ import java.util.Date;
 /**
  * <b>功能说明:支付订单查询条件实体
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 
 public class PaymentOrderQueryParam implements Serializable{

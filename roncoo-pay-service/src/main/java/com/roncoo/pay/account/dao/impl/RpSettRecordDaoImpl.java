@@ -23,8 +23,6 @@ import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 
 /**
  *  结算记录dao实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Repository
 public class RpSettRecordDaoImpl  extends BaseDaoImpl<RpSettRecord> implements RpSettRecordDao{

@@ -20,8 +20,6 @@ import com.roncoo.pay.user.entity.RpUserBankAccount;
 
 /**
  *  用户银行账户dao
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpUserBankAccountDao  extends BaseDao<RpUserBankAccount> {
 }

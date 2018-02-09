@@ -32,8 +32,6 @@ import com.roncoo.pay.user.service.RpUserInfoService;
 
 /**
  * 登录
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 @Controller
 public class LoginController extends BaseController {

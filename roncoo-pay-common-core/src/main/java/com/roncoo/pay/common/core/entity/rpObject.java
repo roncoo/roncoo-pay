@@ -17,9 +17,5 @@ package com.roncoo.pay.common.core.entity;
 
 import java.io.Serializable;
 
-/**
- * 龙果学院：www.roncoo.com
- * @author zenghao
- */
 public class rpObject  extends Object implements Serializable {
 }

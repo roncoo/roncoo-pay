@@ -24,10 +24,6 @@ import com.roncoo.pay.permission.entity.PmsOperator;
 
 /**
  * 生成密码工具类
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class PasswordHelper {
 

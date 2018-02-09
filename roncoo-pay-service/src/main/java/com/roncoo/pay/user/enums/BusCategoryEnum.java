@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * 经营类目枚举
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public enum BusCategoryEnum {
 

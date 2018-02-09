@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * 公共枚举. 针对只有“是”，“否”两种状态
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
- * @author zenghao
  */
 public enum PublicEnum {
 

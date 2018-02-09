@@ -41,10 +41,6 @@ import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
 
 /**
  * 支付宝对账单解析器 .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Component("ALIPAYParser")
 public class ALIPAYParser implements ParserInterface {

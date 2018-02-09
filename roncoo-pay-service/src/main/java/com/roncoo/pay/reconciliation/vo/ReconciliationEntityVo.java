@@ -20,10 +20,6 @@ import java.util.Date;
 
 /**
  * 根据对账单解析出来的实体vo，用户与平台的交易记录对账.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class ReconciliationEntityVo {
 

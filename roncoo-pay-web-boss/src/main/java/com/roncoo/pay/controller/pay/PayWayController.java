@@ -47,8 +47,6 @@ import com.roncoo.pay.user.service.RpPayWayService;
 
 /**
  * 支付方式管理
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Controller
 @RequestMapping("/pay/way")

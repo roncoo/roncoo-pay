@@ -30,10 +30,6 @@ import com.roncoo.pay.reconciliation.service.RpAccountCheckMistakeScratchPoolSer
 
 /**
  * 对账暂存池接口实现 .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Service("rpAccountCheckMistakeScratchPoolService")
 public class RpAccountCheckMistakeScratchPoolServiceImpl implements RpAccountCheckMistakeScratchPoolService {

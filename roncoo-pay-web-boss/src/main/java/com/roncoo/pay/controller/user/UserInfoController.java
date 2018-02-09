@@ -30,11 +30,7 @@ import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.user.entity.RpUserInfo;
 import com.roncoo.pay.user.service.RpUserInfoService;
 
-/**
- * 用户信息
- * 龙果学院：www.roncoo.com
- * @author：zenghao
- */
+
 @Controller
 @RequestMapping("/user/info")
 public class UserInfoController {

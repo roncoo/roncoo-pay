@@ -30,10 +30,6 @@ import com.roncoo.pay.permission.service.PmsRoleService;
 
 /**
  * 角色service接口实现
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Service("pmsRoleService")
 public class PmsRoleServiceImpl implements PmsRoleService {

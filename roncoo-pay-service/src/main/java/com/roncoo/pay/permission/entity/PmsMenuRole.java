@@ -17,10 +17,6 @@ package com.roncoo.pay.permission.entity;
 
 /**
  * 权限管理-角色权限关联表..
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class PmsMenuRole extends PermissionBaseEntity {
 

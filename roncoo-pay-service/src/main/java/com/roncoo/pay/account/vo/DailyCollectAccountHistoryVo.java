@@ -21,8 +21,6 @@ import java.util.Date;
 
 /**
  * 结算日汇总vo.
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public class DailyCollectAccountHistoryVo implements Serializable {
 

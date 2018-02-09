@@ -39,10 +39,6 @@ import com.roncoo.pay.permission.service.PmsMenuService;
 
 /**
  * 权限-菜单控制器
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Controller
 @RequestMapping("/pms/menu")

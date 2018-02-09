@@ -37,10 +37,6 @@ import com.roncoo.pay.trade.enums.TradeStatusEnum;
 
 /**
  * 对账的核心业务biz.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Component("reconciliationCheckBiz")
 public class ReconciliationCheckBiz {

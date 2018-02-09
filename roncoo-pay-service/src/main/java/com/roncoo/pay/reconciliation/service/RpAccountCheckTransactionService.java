@@ -23,10 +23,6 @@ import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool;
 
 /**
  * 对账数据事务一致性service.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface RpAccountCheckTransactionService {
 

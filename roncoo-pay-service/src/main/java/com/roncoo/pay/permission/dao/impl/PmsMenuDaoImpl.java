@@ -26,10 +26,6 @@ import com.roncoo.pay.permission.entity.PmsMenu;
 
 /**
  * 权限菜单
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Repository("pmsMenuDao")
 public class PmsMenuDaoImpl extends PermissionBaseDaoImpl<PmsMenu> implements PmsMenuDao {

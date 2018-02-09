@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * 结算发起方式
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public enum SettModeTypeEnum {
 

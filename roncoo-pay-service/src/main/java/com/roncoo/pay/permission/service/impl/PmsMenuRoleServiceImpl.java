@@ -28,10 +28,6 @@ import com.roncoo.pay.permission.service.PmsMenuRoleService;
 
 /**
  * 菜单角色service接口实现
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Service("pmsMenuRoleService")
 public class PmsMenuRoleServiceImpl implements PmsMenuRoleService {

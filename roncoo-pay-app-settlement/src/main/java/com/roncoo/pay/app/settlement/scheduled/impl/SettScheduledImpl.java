@@ -29,8 +29,6 @@ import com.roncoo.pay.app.settlement.scheduled.SettScheduled;
 
 /**
  * 结算定时任务实现.
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */
 @Component("settScheduled")
 public class SettScheduledImpl implements SettScheduled {

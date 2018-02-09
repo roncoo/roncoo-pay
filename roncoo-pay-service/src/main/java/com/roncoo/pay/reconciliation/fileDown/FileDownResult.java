@@ -19,10 +19,6 @@ import java.io.Serializable;
 
 /**
  * 微信文件下载返回结果实体
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class FileDownResult implements Serializable {
 

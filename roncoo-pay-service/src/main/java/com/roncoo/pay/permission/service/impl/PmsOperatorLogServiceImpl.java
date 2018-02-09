@@ -29,10 +29,6 @@ import com.roncoo.pay.permission.service.PmsOperatorLogService;
 
 /**
  * 操作员service接口实现
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Service("pmsOperatorLogService")
 public class PmsOperatorLogServiceImpl implements PmsOperatorLogService {

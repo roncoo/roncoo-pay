@@ -35,10 +35,6 @@ import com.roncoo.pay.permission.entity.PermissionBaseEntity;
 
 /**
  * 数据访问层基础支撑类.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public abstract class PermissionBaseDaoImpl<T extends PermissionBaseEntity> extends SqlSessionDaoSupport implements PermissionBaseDao<T> {
 

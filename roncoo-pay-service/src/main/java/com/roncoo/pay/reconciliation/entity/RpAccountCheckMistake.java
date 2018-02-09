@@ -22,10 +22,6 @@ import com.roncoo.pay.common.core.entity.BaseEntity;
 
 /**
  * 对账差错表.
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public class RpAccountCheckMistake extends BaseEntity {
 

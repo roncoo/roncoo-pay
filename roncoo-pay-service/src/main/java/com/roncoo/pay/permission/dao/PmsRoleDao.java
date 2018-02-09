@@ -21,10 +21,6 @@ import com.roncoo.pay.permission.entity.PmsRole;
 
 /**
  * 权限角色dao
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface PmsRoleDao extends PermissionBaseDao<PmsRole> {
 

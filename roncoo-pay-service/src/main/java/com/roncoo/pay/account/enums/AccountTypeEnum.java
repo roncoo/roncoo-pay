@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * 账户类型
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public enum AccountTypeEnum {
 

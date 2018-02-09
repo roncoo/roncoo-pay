@@ -23,8 +23,6 @@ import org.slf4j.LoggerFactory;
 /**
  * <b>功能说明:MD5签名工具类
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class MD5Util {
 

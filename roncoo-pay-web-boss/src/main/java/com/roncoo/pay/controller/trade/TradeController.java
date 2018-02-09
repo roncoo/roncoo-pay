@@ -37,8 +37,6 @@ import com.roncoo.pay.user.enums.FundInfoTypeEnum;
 
 /**
  * 交易管理
- * 龙果学院：www.roncoo.com
- * @author：Peter
  */
 @Controller
 @RequestMapping("/trade")

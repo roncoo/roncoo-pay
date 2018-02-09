@@ -22,8 +22,6 @@ import com.roncoo.pay.common.core.enums.PublicEnum;
 
 /**
  * 结算附件表
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public class RpSettRecordAnnex extends BaseEntity implements Serializable {
 

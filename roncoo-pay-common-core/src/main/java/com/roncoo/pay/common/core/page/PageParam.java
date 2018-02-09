@@ -19,8 +19,6 @@ import java.io.Serializable;
 
 /**
  * 分页参数传递工具类 .
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
- * @author along
  */
 public class PageParam implements Serializable {
 

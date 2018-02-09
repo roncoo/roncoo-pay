@@ -22,8 +22,6 @@ import java.util.Map;
 
 /**
  * 资金流入类型
- * 龙果学院：www.roncoo.com
- * @author：Peter
  */
 public enum FundInfoTypeEnum {
 

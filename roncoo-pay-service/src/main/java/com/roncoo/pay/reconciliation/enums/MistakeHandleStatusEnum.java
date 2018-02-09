@@ -22,10 +22,6 @@ import java.util.Map;
 
 /**
  * 差错处理状态 .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public enum MistakeHandleStatusEnum {
 

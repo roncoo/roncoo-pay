@@ -28,8 +28,6 @@ import com.roncoo.pay.trade.enums.TrxTypeEnum;
 
 /**
  * <b>功能说明:商户支付记录实体类</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class RpTradePaymentRecord extends BaseEntity implements Serializable {
 

@@ -28,8 +28,6 @@ import java.util.Map;
 
 /**
  * <b>功能说明:商户支付记录,dao层实现类</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Repository("rpTradePaymentRecordDao")
 public class RpTradePaymentRecordDaoImpl extends BaseDaoImpl<RpTradePaymentRecord> implements RpTradePaymentRecordDao {

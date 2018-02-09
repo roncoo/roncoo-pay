@@ -21,10 +21,8 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 /**
- * <b>功能说明:龙果支付网关页面展示实体
+ * <b>功能说明:云架构社区支付网关页面展示实体
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class RpPayGateWayPageShowVo {
 

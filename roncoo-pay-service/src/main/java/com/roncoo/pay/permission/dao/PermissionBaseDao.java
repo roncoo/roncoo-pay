@@ -26,10 +26,6 @@ import com.roncoo.pay.common.core.page.PageParam;
 
 /**
  * 权限点数据访问层基础支撑接口
- * 
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface PermissionBaseDao<T> {
 

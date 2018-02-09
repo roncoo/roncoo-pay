@@ -26,8 +26,6 @@ import java.util.Map;
 
 /**
  * <b>功能说明:商户支付订单,dao层实现类</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Repository("rpTradePaymentOrderDao")
 public class RpTradePaymentOrderDaoImpl extends BaseDaoImpl<RpTradePaymentOrder> implements RpTradePaymentOrderDao{

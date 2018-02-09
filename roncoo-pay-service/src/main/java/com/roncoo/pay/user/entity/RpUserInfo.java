@@ -22,8 +22,6 @@ import com.roncoo.pay.common.core.enums.PublicStatusEnum;
 
 /**
  * 用户信息
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public class RpUserInfo extends BaseEntity implements Serializable {
 

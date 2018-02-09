@@ -24,8 +24,6 @@ import org.apache.commons.lang.StringUtils;
 /**
  * <b>功能说明:商户API工具类
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class MerchantApiUtil {
 

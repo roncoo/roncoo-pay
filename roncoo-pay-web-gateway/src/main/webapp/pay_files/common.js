@@ -31541,7 +31541,7 @@ module.exports = warning;
 	        // 上传签名信息
 	        uploadToken: src+'plupload',
 	
-	        // 龙果社区
+	        // 云架构社区
 	        articlesIndex: src+'knowledge/index',  //社区首页
 	        editor: src+'knowledge/editor'  //文章标记
 	    }

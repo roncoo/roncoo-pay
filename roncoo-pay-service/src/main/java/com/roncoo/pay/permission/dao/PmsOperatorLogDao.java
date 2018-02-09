@@ -19,10 +19,6 @@ import com.roncoo.pay.permission.entity.PmsOperatorLog;
 
 /**
  * 操作员日志dao
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 public interface PmsOperatorLogDao extends PermissionBaseDao<PmsOperatorLog> {
 

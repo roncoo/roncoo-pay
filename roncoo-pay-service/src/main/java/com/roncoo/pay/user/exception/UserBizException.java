@@ -22,8 +22,6 @@ import com.roncoo.pay.common.core.exception.BizException;
 
 /**
  * 用户业务异常类
- * 龙果学院：www.roncoo.com
- * @author：Peter
  */
 public class UserBizException extends BizException {
 

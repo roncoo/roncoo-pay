@@ -21,8 +21,6 @@ import com.roncoo.pay.common.core.page.PageParam;
 
 /**
  * 账户历史service接口
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 public interface RpAccountHistoryService{
 	

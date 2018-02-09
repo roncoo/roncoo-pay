@@ -42,10 +42,6 @@ import com.roncoo.pay.permission.utils.ValidateUtils;
 
 /**
  * 权限管理模块的Permission类，包括权限点管理、角色管理、操作员管理.<br/>
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
  */
 @Controller
 @RequestMapping("/pms/permission")

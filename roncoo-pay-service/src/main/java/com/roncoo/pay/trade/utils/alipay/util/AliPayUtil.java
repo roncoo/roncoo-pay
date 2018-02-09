@@ -4,13 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * @功能说明:
- * @创建者: Peter
- * @创建时间: 16/6/14  下午3:43
- * @公司名称:广州市领课网络科技有限公司 龙果学院(www.roncoo.com)
- * @版本:V1.0
- */
+
 public class AliPayUtil {
 
     public static Map<String , String> parseNotifyMsg(Map<String, String[]> requestParams){

@@ -42,11 +42,6 @@ import com.roncoo.pay.permission.exception.PermissionException;
 import com.roncoo.pay.permission.service.PmsMenuService;
 import com.roncoo.pay.permission.service.PmsOperatorRoleService;
 
-/**
- * 龙果学院：www.roncoo.com
- * 
- * @author：Along
- */
 @Controller
 public class LoginController extends BaseController {
 
@@ -74,7 +69,7 @@ public class LoginController extends BaseController {
 		} else if (IncorrectCredentialsException.class.getName().equals(exceptionClassName)) {
 			error = "用户名/密码错误";
 		} else if (PermissionException.class.getName().equals(exceptionClassName)) {
-			error = "网络异常,请联系龙果管理员";
+			error = "网络异常,请联系云架构社区管理员";
 		} else if (exceptionClassName != null) {
 			error = "错误提示：" + exceptionClassName;
 		}

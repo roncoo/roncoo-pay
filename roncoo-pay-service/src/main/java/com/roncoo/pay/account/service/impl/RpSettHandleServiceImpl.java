@@ -51,8 +51,6 @@ import com.roncoo.pay.user.service.RpUserInfoService;
 
 /**
  * 结算核心业务处理实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Service("rpSettHandleService")
 public class RpSettHandleServiceImpl implements RpSettHandleService {

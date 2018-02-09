@@ -27,9 +27,7 @@ import com.roncoo.pay.permission.entity.PmsOperator;
 
 /**
  * controller基类
- * 龙果学院：www.roncoo.com
- * @author zenghao
- */ 
+ */
 public abstract class BaseController {
 
 	/**
