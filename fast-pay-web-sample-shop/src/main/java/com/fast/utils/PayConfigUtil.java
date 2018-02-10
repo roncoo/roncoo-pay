@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.roncoo.utils;
+package com.fast.utils;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

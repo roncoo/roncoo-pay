@@ -40,7 +40,7 @@ import java.util.*;
  */
 @Controller
 @RequestMapping(value = "/roncooPay")
-public class RoncooPayController extends BaseController {
+public class FastPayController extends BaseController {
 
     @RequestMapping("/scanPay")
     public String scanPay(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Model model) {
