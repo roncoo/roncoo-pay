@@ -10,7 +10,7 @@
 	<context:annotation-config />
 
 	<!-- 配置要扫描的包 -->
-	<context:component-scan base-package="com.roncoo" />
+	<context:component-scan base-package="com.fast" />
 
 	<!-- <context:property-placeholder location="classpath:db.properties, classpath:public_system.properties"/> 读入配置属性文件 -->
 	<!-- proxy-target-class默认"false",更改为"ture"使用CGLib动态代理 -->

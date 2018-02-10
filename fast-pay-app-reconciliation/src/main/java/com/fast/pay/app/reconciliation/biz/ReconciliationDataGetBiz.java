@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,9 +27,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
-import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
+import com.fast.pay.trade.entity.RpTradePaymentRecord;
+import com.fast.pay.trade.enums.TradeStatusEnum;
+import com.fast.pay.trade.service.RpTradePaymentQueryService;
 
 /**
  * 平台数据获取biz业务类.

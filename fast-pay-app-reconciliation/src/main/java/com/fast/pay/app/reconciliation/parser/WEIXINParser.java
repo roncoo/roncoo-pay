@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,11 +36,11 @@ import org.jdom2.JDOMException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
-import com.roncoo.pay.reconciliation.enums.BatchStatusEnum;
-import com.roncoo.pay.reconciliation.service.RpAccountCheckBatchService;
-import com.roncoo.pay.reconciliation.utils.XmlUtils;
-import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
+import com.fast.pay.reconciliation.entity.RpAccountCheckBatch;
+import com.fast.pay.reconciliation.enums.BatchStatusEnum;
+import com.fast.pay.reconciliation.service.RpAccountCheckBatchService;
+import com.fast.pay.reconciliation.utils.XmlUtils;
+import com.fast.pay.reconciliation.vo.ReconciliationEntityVo;
 
 /**
  * 微信对账单解析器 .

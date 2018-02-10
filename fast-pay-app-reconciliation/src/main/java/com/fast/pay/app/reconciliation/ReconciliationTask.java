@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,11 +31,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
-import com.roncoo.pay.reconciliation.enums.BatchStatusEnum;
-import com.roncoo.pay.reconciliation.service.RpAccountCheckBatchService;
-import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
-import com.roncoo.pay.user.service.BuildNoService;
+import com.fast.pay.reconciliation.entity.RpAccountCheckBatch;
+import com.fast.pay.reconciliation.enums.BatchStatusEnum;
+import com.fast.pay.reconciliation.service.RpAccountCheckBatchService;
+import com.fast.pay.reconciliation.vo.ReconciliationEntityVo;
+import com.fast.pay.user.service.BuildNoService;
 
 /**
  * 对账处理(包括下载对账文件、转换对账文件、对账) .
@@ -148,7 +148,7 @@ public class ReconciliationTask {
 			// 如果缓冲池中有三天前的数据就清理掉并记录差错
 			validateBiz.validateScratchPool();
 		} catch (Exception e) {
-			LOG.error("roncoo-app-reconciliation error:", e);
+			LOG.error("fast-app-reconciliation error:", e);
 		}
 
 	}

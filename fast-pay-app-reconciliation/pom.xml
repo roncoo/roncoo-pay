@@ -2,14 +2,14 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.roncoo.pay.common</groupId>
-		<artifactId>roncoo-pay</artifactId>
+		<groupId>com.fast.pay.common</groupId>
+		<artifactId>fast-pay</artifactId>
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.roncoo.pay.app</groupId>
-	<artifactId>roncoo-pay-app-reconciliation</artifactId>
+	<groupId>com.fast.pay.app</groupId>
+	<artifactId>fast-pay-app-reconciliation</artifactId>
 
-	<name>roncoo-pay-app-reconciliation</name>
+	<name>fast-pay-app-reconciliation</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -19,15 +19,15 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>com.roncoo.pay.common</groupId>
-			<artifactId>roncoo-pay-common-core</artifactId>
+			<groupId>com.fast.pay.common</groupId>
+			<artifactId>fast-pay-common-core</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 
 
 		<dependency>
-			<groupId>com.roncoo.pay.service</groupId>
-			<artifactId>roncoo-pay-service</artifactId>
+			<groupId>com.fast.pay.service</groupId>
+			<artifactId>fast-pay-service</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 
@@ -44,7 +44,7 @@
 
 	<!-- 打包插件 -->
 	<build>
-		<finalName>roncoo-pay-app-reconciliation</finalName>
+		<finalName>fast-pay-app-reconciliation</finalName>
 
 		<plugins>
 
