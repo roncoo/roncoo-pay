@@ -11,7 +11,7 @@
                         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
                         
 	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
-	<context:component-scan base-package="com.roncoo.pay.controller" />
+	<context:component-scan base-package="com.fast.pay.controller" />
 
 	<!-- 相当于注册了DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter两个bean，配置一些messageconverter。即解决了@Controller注解的使用前提配置。  -->
 	<mvc:annotation-driven/>
@@ -28,5 +28,5 @@
 	<mvc:resources mapping="/pay_files/**" location="/pay_files/" cache-period="31536000"/>
 	<mvc:resources mapping="/images/**" location="/images/" cache-period="31536000"/>
 
-	<bean id="roncooPayExceptionResolver" class="com.roncoo.pay.resolver.RoncooPayExceptionResolver"></bean>
+	<bean id="FastPayExceptionResolver" class="com.fast.pay.resolver.FastExceptionResolver"></bean>
 </beans>
