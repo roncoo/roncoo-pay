@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.fast.pay.app.notify.App;
 import com.fast.pay.app.notify.entity.NotifyParam;
 import com.fast.pay.common.core.exception.BizException;
-import com.roncoo.pay.notify.entity.RpNotifyRecord;
-import com.roncoo.pay.notify.enums.NotifyStatusEnum;
-import com.roncoo.pay.trade.utils.httpclient.SimpleHttpParam;
-import com.roncoo.pay.trade.utils.httpclient.SimpleHttpResult;
-import com.roncoo.pay.trade.utils.httpclient.SimpleHttpUtils;
+import com.fast.pay.notify.entity.RpNotifyRecord;
+import com.fast.pay.notify.enums.NotifyStatusEnum;
+import com.fast.pay.trade.utils.httpclient.SimpleHttpParam;
+import com.fast.pay.trade.utils.httpclient.SimpleHttpResult;
+import com.fast.pay.trade.utils.httpclient.SimpleHttpUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

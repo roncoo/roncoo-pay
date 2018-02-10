@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,9 @@ import com.fast.pay.app.notify.core.NotifyPersist;
 import com.fast.pay.app.notify.core.NotifyQueue;
 import com.fast.pay.common.core.exception.BizException;
 import com.fast.pay.common.core.utils.StringUtil;
-import com.roncoo.pay.notify.entity.RpNotifyRecord;
-import com.roncoo.pay.notify.enums.NotifyStatusEnum;
-import com.roncoo.pay.notify.service.RpNotifyService;
+import com.fast.pay.notify.entity.RpNotifyRecord;
+import com.fast.pay.notify.enums.NotifyStatusEnum;
+import com.fast.pay.notify.service.RpNotifyService;
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102  Fast(http://www.cloudate.net) Group.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,9 @@
  */
 package com.fast.pay.app.notify.core;
 
-import com.roncoo.pay.notify.entity.RpNotifyRecord;
-import com.roncoo.pay.notify.entity.RpNotifyRecordLog;
-import com.roncoo.pay.notify.service.RpNotifyService;
+import com.fast.pay.notify.entity.RpNotifyRecord;
+import com.fast.pay.notify.entity.RpNotifyRecordLog;
+import com.fast.pay.notify.service.RpNotifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,8 @@ package com.fast.pay.app.notify.core;
 
 import com.fast.pay.app.notify.App;
 import com.fast.pay.app.notify.entity.NotifyParam;
-import com.roncoo.pay.notify.entity.RpNotifyRecord;
-import com.roncoo.pay.notify.enums.NotifyStatusEnum;
+import com.fast.pay.notify.entity.RpNotifyRecord;
+import com.fast.pay.notify.enums.NotifyStatusEnum;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
