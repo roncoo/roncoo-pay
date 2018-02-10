@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,10 +39,10 @@ import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fast.pay.common.core.enums.PublicStatusEnum;
-import com.roncoo.pay.permission.entity.PmsOperator;
-import com.roncoo.pay.permission.service.PmsOperatorRoleService;
-import com.roncoo.pay.permission.service.PmsOperatorService;
-import com.roncoo.pay.permission.service.PmsRolePermissionService;
+import com.fast.pay.permission.entity.PmsOperator;
+import com.fast.pay.permission.service.PmsOperatorRoleService;
+import com.fast.pay.permission.service.PmsOperatorService;
+import com.fast.pay.permission.service.PmsRolePermissionService;
 
 /**
  * 自定义realm .

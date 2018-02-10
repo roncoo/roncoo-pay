@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,18 +37,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.fast.pay.common.core.dwz.DwzAjax;
 import com.fast.pay.common.core.page.PageBean;
 import com.fast.pay.common.core.page.PageParam;
-import com.roncoo.pay.controller.common.BaseController;
-import com.roncoo.pay.permission.entity.PmsOperator;
-import com.roncoo.pay.permission.entity.PmsPermission;
-import com.roncoo.pay.permission.entity.PmsRole;
-import com.roncoo.pay.permission.enums.OperatorTypeEnum;
-import com.roncoo.pay.permission.service.PmsMenuRoleService;
-import com.roncoo.pay.permission.service.PmsMenuService;
-import com.roncoo.pay.permission.service.PmsOperatorRoleService;
-import com.roncoo.pay.permission.service.PmsPermissionService;
-import com.roncoo.pay.permission.service.PmsRolePermissionService;
-import com.roncoo.pay.permission.service.PmsRoleService;
-import com.roncoo.pay.permission.utils.ValidateUtils;
+import com.fast.pay.controller.common.BaseController;
+import com.fast.pay.permission.entity.PmsOperator;
+import com.fast.pay.permission.entity.PmsPermission;
+import com.fast.pay.permission.entity.PmsRole;
+import com.fast.pay.permission.enums.OperatorTypeEnum;
+import com.fast.pay.permission.service.PmsMenuRoleService;
+import com.fast.pay.permission.service.PmsMenuService;
+import com.fast.pay.permission.service.PmsOperatorRoleService;
+import com.fast.pay.permission.service.PmsPermissionService;
+import com.fast.pay.permission.service.PmsRolePermissionService;
+import com.fast.pay.permission.service.PmsRoleService;
+import com.fast.pay.permission.utils.ValidateUtils;
 
 /**
  * 权限管理模块角色管理、.<br/>

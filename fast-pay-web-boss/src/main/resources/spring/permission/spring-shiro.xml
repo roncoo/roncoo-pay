@@ -10,12 +10,12 @@
 	default-autowire="byName" default-lazy-init="false">
 
 	<!-- 缓存管理器 -->
-	<bean id="cacheManager" class="com.roncoo.pay.permission.shiro.spring.SpringCacheManagerWrapper">
+	<bean id="cacheManager" class="com.fast.pay.permission.shiro.spring.SpringCacheManagerWrapper">
 		<property name="cacheManager" ref="springCacheManager" />
 	</bean>
 
 	<!-- 凭证匹配器，做登录次数验证，和密码匹配验证 -->
-	<bean id="credentialsMatcher" class="com.roncoo.pay.permission.shiro.credentials.RetryLimitHashedCredentialsMatcher">
+	<bean id="credentialsMatcher" class="com.fast.pay.permission.shiro.credentials.RetryLimitHashedCredentialsMatcher">
 		<!-- 登录次数放入缓存 -->
 		<constructor-arg ref="cacheManager" />
 		<property name="hashAlgorithmName" value="md5" />
@@ -24,7 +24,7 @@
 	</bean>
 
 	<!-- 自定义的user Realm实现 -->
-	<bean id="userRealm" class="com.roncoo.pay.permission.shiro.realm.OperatorRealm">
+	<bean id="userRealm" class="com.fast.pay.permission.shiro.realm.OperatorRealm">
 		<property name="credentialsMatcher" ref="credentialsMatcher" />
 		<property name="cachingEnabled" value="false" />
 		<!--<property name="authorizationCachingEnabled" value="true"/> -->
@@ -45,17 +45,17 @@
 
 
 	<!-- 基于Form表单的身份验证过滤器，为了控制验证码 -->
-	<bean id="authcFilter" class="com.roncoo.pay.permission.shiro.filter.RcFormAuthenticationFilter">
+	<bean id="authcFilter" class="com.fast.pay.permission.shiro.filter.RcFormAuthenticationFilter">
 		<!-- from表达提交参数的属性命名 -->
 		<property name="usernameParam" value="loginName" />
-		<property name="passwordParam" value="roncooPwd" />
+		<property name="passwordParam" value="fastPwd" />
 		<property name="rememberMeParam" value="rememberMe" />
 		<property name="loginUrl" value="/login" />
 		<property name="failureKeyAttribute" value="shiroLoginFailure" />
 	</bean>
 
 	<!-- 验证码验证过滤器 -->
-	<bean id="rcCaptchaValidateFilter" class="com.roncoo.pay.permission.shiro.filter.RcCaptchaValidateFilter">
+	<bean id="rcCaptchaValidateFilter" class="com.fast.pay.permission.shiro.filter.RcCaptchaValidateFilter">
 		<property name="captchaEbabled" value="true" />
 		<property name="captchaParam" value="captchaCode" />
 		<property name="failureKeyAttribute" value="shiroLoginFailure" />

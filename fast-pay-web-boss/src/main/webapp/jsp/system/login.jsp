@@ -48,7 +48,7 @@
 								<label>密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
 							</li>
 							<li>
-								<input type="password" name="roncooPwd" size="18" class="login_input" />
+								<input type="password" name="fastPwd" size="18" class="login_input" />
 							</li>
 						</ul>
 					</div>

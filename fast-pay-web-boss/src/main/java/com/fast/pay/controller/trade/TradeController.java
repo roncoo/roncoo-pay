@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import com.fast.pay.trade.enums.TrxTypeEnum;
 import com.fast.pay.trade.service.RpTradePaymentQueryService;
 import com.fast.pay.trade.vo.PaymentOrderQueryParam;
 import com.fast.pay.user.enums.FundInfoTypeEnum;
-import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
+import com.fast.pay.trade.vo.PaymentOrderQueryParam;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +35,10 @@ import com.fast.pay.common.core.enums.PayTypeEnum;
 import com.fast.pay.common.core.enums.PayWayEnum;
 import com.fast.pay.common.core.page.PageBean;
 import com.fast.pay.common.core.page.PageParam;
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
-import com.roncoo.pay.trade.enums.TrxTypeEnum;
-import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
-import com.roncoo.pay.user.enums.FundInfoTypeEnum;
+import com.fast.pay.trade.enums.TradeStatusEnum;
+import com.fast.pay.trade.enums.TrxTypeEnum;
+import com.fast.pay.trade.service.RpTradePaymentQueryService;
+import com.fast.pay.user.enums.FundInfoTypeEnum;
 
 /**
  * 交易管理

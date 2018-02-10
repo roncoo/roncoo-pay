@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,11 +44,11 @@ import com.fast.pay.common.core.enums.PublicStatusEnum;
 import com.fast.pay.common.core.page.PageBean;
 import com.fast.pay.common.core.page.PageParam;
 import com.fast.pay.common.core.utils.StringUtil;
-import com.roncoo.pay.user.entity.RpPayProduct;
-import com.roncoo.pay.user.entity.RpPayWay;
-import com.roncoo.pay.user.exception.PayBizException;
-import com.roncoo.pay.user.service.RpPayProductService;
-import com.roncoo.pay.user.service.RpPayWayService;
+import com.fast.pay.user.entity.RpPayProduct;
+import com.fast.pay.user.entity.RpPayWay;
+import com.fast.pay.user.exception.PayBizException;
+import com.fast.pay.user.service.RpPayProductService;
+import com.fast.pay.user.service.RpPayWayService;
 
 /**
  * 支付方式管理

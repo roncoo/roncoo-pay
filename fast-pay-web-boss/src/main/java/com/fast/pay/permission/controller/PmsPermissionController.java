@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,12 +37,12 @@ import com.fast.pay.common.core.dwz.DwzAjax;
 import com.fast.pay.common.core.enums.PublicStatusEnum;
 import com.fast.pay.common.core.page.PageBean;
 import com.fast.pay.common.core.page.PageParam;
-import com.roncoo.pay.controller.common.BaseController;
-import com.roncoo.pay.permission.entity.PmsPermission;
-import com.roncoo.pay.permission.entity.PmsRole;
-import com.roncoo.pay.permission.service.PmsPermissionService;
-import com.roncoo.pay.permission.service.PmsRoleService;
-import com.roncoo.pay.permission.utils.ValidateUtils;
+import com.fast.pay.controller.common.BaseController;
+import com.fast.pay.permission.entity.PmsPermission;
+import com.fast.pay.permission.entity.PmsRole;
+import com.fast.pay.permission.service.PmsPermissionService;
+import com.fast.pay.permission.service.PmsRoleService;
+import com.fast.pay.permission.utils.ValidateUtils;
 
 /**
  * 权限管理模块的Permission类，包括权限点管理、角色管理、操作员管理.<br/>

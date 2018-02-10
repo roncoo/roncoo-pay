@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,11 +35,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.roncoo.pay.account.entity.RpAccount;
-import com.roncoo.pay.account.entity.RpSettRecord;
-import com.roncoo.pay.account.service.RpAccountService;
-import com.roncoo.pay.account.service.RpSettHandleService;
-import com.roncoo.pay.account.service.RpSettQueryService;
+import com.fast.pay.account.entity.RpAccount;
+import com.fast.pay.account.entity.RpSettRecord;
+import com.fast.pay.account.service.RpAccountService;
+import com.fast.pay.account.service.RpSettHandleService;
+import com.fast.pay.account.service.RpSettQueryService;
 import com.fast.pay.common.core.dwz.DWZ;
 import com.fast.pay.common.core.dwz.DwzAjax;
 import com.fast.pay.common.core.page.PageBean;

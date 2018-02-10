@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,10 +34,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.fast.pay.common.core.dwz.DwzAjax;
 import com.fast.pay.common.core.enums.PublicEnum;
 import com.fast.pay.common.core.enums.PublicStatusEnum;
-import com.roncoo.pay.controller.common.BaseController;
-import com.roncoo.pay.permission.biz.PmsMenuBiz;
-import com.roncoo.pay.permission.entity.PmsMenu;
-import com.roncoo.pay.permission.service.PmsMenuService;
+import com.fast.pay.controller.common.BaseController;
+import com.fast.pay.permission.biz.PmsMenuBiz;
+import com.fast.pay.permission.entity.PmsMenu;
+import com.fast.pay.permission.service.PmsMenuService;
 
 /**
  * 权限-菜单控制器

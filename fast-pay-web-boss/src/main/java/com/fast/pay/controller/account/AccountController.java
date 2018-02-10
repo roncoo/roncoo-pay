@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,14 +29,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.roncoo.pay.account.entity.RpAccount;
-import com.roncoo.pay.account.entity.RpAccountHistory;
-import com.roncoo.pay.account.service.RpAccountHistoryService;
-import com.roncoo.pay.account.service.RpAccountService;
+import com.fast.pay.account.entity.RpAccount;
+import com.fast.pay.account.entity.RpAccountHistory;
+import com.fast.pay.account.service.RpAccountHistoryService;
+import com.fast.pay.account.service.RpAccountService;
 import com.fast.pay.common.core.page.PageBean;
 import com.fast.pay.common.core.page.PageParam;
-import com.roncoo.pay.user.entity.RpUserInfo;
-import com.roncoo.pay.user.service.RpUserInfoService;
+import com.fast.pay.user.entity.RpUserInfo;
+import com.fast.pay.user.service.RpUserInfoService;
 
 /**
  * 账户信息

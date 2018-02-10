@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,18 +44,18 @@ import com.fast.pay.common.core.dwz.DwzAjax;
 import com.fast.pay.common.core.enums.PayWayEnum;
 import com.fast.pay.common.core.page.PageBean;
 import com.fast.pay.common.core.page.PageParam;
-import com.roncoo.pay.user.entity.RpUserBankAccount;
-import com.roncoo.pay.user.entity.RpUserInfo;
-import com.roncoo.pay.user.entity.RpUserPayConfig;
-import com.roncoo.pay.user.entity.RpUserPayInfo;
-import com.roncoo.pay.user.enums.BankAccountTypeEnum;
-import com.roncoo.pay.user.enums.BankCodeEnum;
-import com.roncoo.pay.user.enums.CardTypeEnum;
-import com.roncoo.pay.user.enums.FundInfoTypeEnum;
-import com.roncoo.pay.user.service.RpUserBankAccountService;
-import com.roncoo.pay.user.service.RpUserInfoService;
-import com.roncoo.pay.user.service.RpUserPayConfigService;
-import com.roncoo.pay.user.service.RpUserPayInfoService;
+import com.fast.pay.user.entity.RpUserBankAccount;
+import com.fast.pay.user.entity.RpUserInfo;
+import com.fast.pay.user.entity.RpUserPayConfig;
+import com.fast.pay.user.entity.RpUserPayInfo;
+import com.fast.pay.user.enums.BankAccountTypeEnum;
+import com.fast.pay.user.enums.BankCodeEnum;
+import com.fast.pay.user.enums.CardTypeEnum;
+import com.fast.pay.user.enums.FundInfoTypeEnum;
+import com.fast.pay.user.service.RpUserBankAccountService;
+import com.fast.pay.user.service.RpUserInfoService;
+import com.fast.pay.user.service.RpUserPayConfigService;
+import com.fast.pay.user.service.RpUserPayInfoService;
 
 /**
  * 用户支付设置管理
