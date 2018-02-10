@@ -344,9 +344,9 @@
 			</dependency>
 
 			<dependency>
-				<groupId>alipay</groupId>
-				<artifactId>alipay-sdk-java20151021120052</artifactId>
-				<version>1.0</version>
+				<groupId>com.alipay</groupId>
+				<artifactId>alipay-sdk-java20171201160035</artifactId>
+				<version>20171201160035</version>
 			</dependency>
 
 			<dependency>
