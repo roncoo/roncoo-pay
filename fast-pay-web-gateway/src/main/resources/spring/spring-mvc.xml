@@ -28,5 +28,5 @@
 	<mvc:resources mapping="/pay_files/**" location="/pay_files/" cache-period="31536000"/>
 	<mvc:resources mapping="/images/**" location="/images/" cache-period="31536000"/>
 
-	<bean id="FastPayExceptionResolver" class="com.fast.pay.resolver.FastExceptionResolver"></bean>
+	<bean id="FastPayExceptionResolver" class="com.fast.pay.resolver.FastPayExceptionResolver"></bean>
 </beans>

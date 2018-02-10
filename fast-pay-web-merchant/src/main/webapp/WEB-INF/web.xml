@@ -25,7 +25,7 @@
   	<!-- 粗粒度权限控制拦截过滤器 -->
 	<filter>
 		<filter-name>UserFilter</filter-name>
-		<filter-class>com.roncoo.pay.controller.filter.UserFilter</filter-class>
+		<filter-class>com.fast.pay.controller.filter.UserFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>UserFilter</filter-name>
