@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.roncoo.pay.reconciliation.dao.impl.RpAccountCheckBatchDaoImpl">
+<mapper namespace="com.fast.pay.reconciliation.dao.impl.RpAccountCheckBatchDaoImpl">
 
 	<sql id="table_name">RP_ACCOUNT_CHECK_BATCH</sql>
 
-	<resultMap id="BaseResultMap" type="com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch">
+	<resultMap id="BaseResultMap" type="com.fast.pay.reconciliation.entity.RpAccountCheckBatch">
 		<id column="id" property="id" jdbcType="VARCHAR" />
 		<result column="version" property="version" jdbcType="INTEGER" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -54,7 +54,7 @@
 		where id = #{id,jdbcType=VARCHAR}
 	</delete>
 
-	<insert id="insert" parameterType="com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch">
+	<insert id="insert" parameterType="com.fast.pay.reconciliation.entity.RpAccountCheckBatch">
 		insert into
 		<include refid="table_name" />
 		(id, version, create_time, editor, creater, edit_time,status,remark,batch_no,
@@ -79,7 +79,7 @@
 		#{releaseStatus,jdbcType=VARCHAR},#{checkFailMsg,jdbcType=VARCHAR},#{bankErrMsg,jdbcType=VARCHAR})
 	</insert>
 
-	<update id="updateByPrimaryKey" parameterType="com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch">
+	<update id="updateByPrimaryKey" parameterType="com.fast.pay.reconciliation.entity.RpAccountCheckBatch">
 		update
 		<include refid="table_name" />
 		set

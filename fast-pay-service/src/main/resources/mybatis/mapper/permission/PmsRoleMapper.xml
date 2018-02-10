@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.roncoo.pay.permission.dao.impl.PmsRoleDaoImpl">
+<mapper namespace="com.fast.pay.permission.dao.impl.PmsRoleDaoImpl">
 
 	<!-- Pms权限管理：角色表 -->
 	<sql id="pms_role"> PMS_ROLE </sql>
 	<sql id="pms_role_permission"> PMS_ROLE_PERMISSION </sql>
 
-	<resultMap id="beanMap" type="com.roncoo.pay.permission.entity.PmsRole">
+	<resultMap id="beanMap" type="com.fast.pay.permission.entity.PmsRole">
 
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="version" property="version" jdbcType="INTEGER" />
@@ -20,7 +20,7 @@
 		<result column="role_name" property="roleName" jdbcType="VARCHAR" />
 	</resultMap>
 
-	<insert id="insert" parameterType="com.roncoo.pay.permission.entity.PmsRole" keyProperty="id" useGeneratedKeys="true">
+	<insert id="insert" parameterType="com.fast.pay.permission.entity.PmsRole" keyProperty="id" useGeneratedKeys="true">
 		insert into
 		<include refid="pms_role" />
 
@@ -29,7 +29,7 @@
 		(#{id},0,#{status},#{creater}, #{createTime}, #{editor},#{editTime},#{remark},#{roleCode},#{roleName})
 	</insert>
 
-	<update id="update" parameterType="com.roncoo.pay.permission.entity.PmsRole">
+	<update id="update" parameterType="com.fast.pay.permission.entity.PmsRole">
 		update
 		<include refid="pms_role" />
 		<set>

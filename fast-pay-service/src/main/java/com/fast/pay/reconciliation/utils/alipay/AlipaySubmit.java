@@ -14,7 +14,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
-import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+import com.fast.pay.trade.utils.AlipayConfigUtil;
 
 /* *
  *类名：AlipaySubmit

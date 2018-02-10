@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.roncoo.pay.user.dao.impl.RpUserInfoDaoImpl" >
-  <resultMap id="BaseResultMap" type="com.roncoo.pay.user.entity.RpUserInfo" >
+<mapper namespace="com.fast.pay.user.dao.impl.RpUserInfoDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.fast.pay.user.entity.RpUserInfo" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="status" property="status" jdbcType="VARCHAR" />
@@ -25,7 +25,7 @@
     delete from rp_user_info
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.roncoo.pay.user.entity.RpUserInfo" >
+  <insert id="insert" parameterType="com.fast.pay.user.entity.RpUserInfo" >
     insert into rp_user_info (id, create_time, status, 
       user_no, user_name, account_no, mobile, password,
       pay_pwd
@@ -36,7 +36,7 @@
       )
   </insert>
 
-  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.user.entity.RpUserInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.fast.pay.user.entity.RpUserInfo" >
     update rp_user_info
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=VARCHAR},

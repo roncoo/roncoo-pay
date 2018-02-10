@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.roncoo.pay.account.dao.impl.RpSettDailyCollectDaoImpl" >
-  <resultMap id="BaseResultMap" type="com.roncoo.pay.account.entity.RpSettDailyCollect" >
+<mapper namespace="com.fast.pay.account.dao.impl.RpSettDailyCollectDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.fast.pay.account.entity.RpSettDailyCollect" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
     <result column="VERSION" property="version" jdbcType="INTEGER" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
@@ -30,7 +30,7 @@
     delete from rp_sett_daily_collect
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.roncoo.pay.account.entity.RpSettDailyCollect" >
+  <insert id="insert" parameterType="com.fast.pay.account.entity.RpSettDailyCollect" >
     insert into rp_sett_daily_collect (ID, VERSION, CREATE_TIME, 
       EDIT_TIME, ACCOUNT_NO, USER_NAME, 
       COLLECT_DATE, COLLECT_TYPE, TOTAL_AMOUNT, 
@@ -42,7 +42,7 @@
       #{totalCount,jdbcType=INTEGER}, #{settStatus,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
       #{riskDay,jdbcType=INTEGER})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.account.entity.RpSettDailyCollect" >
+  <update id="updateByPrimaryKey" parameterType="com.fast.pay.account.entity.RpSettDailyCollect" >
     update rp_sett_daily_collect
     set VERSION = #{version,jdbcType=INTEGER},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},

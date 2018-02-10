@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,9 +25,9 @@ import org.springframework.stereotype.Service;
 
 import com.fast.pay.common.core.page.PageBean;
 import com.fast.pay.common.core.page.PageParam;
-import com.roncoo.pay.reconciliation.dao.RpAccountCheckMistakeScratchPoolDao;
-import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool;
-import com.roncoo.pay.reconciliation.service.RpAccountCheckMistakeScratchPoolService;
+import com.fast.pay.reconciliation.dao.RpAccountCheckMistakeScratchPoolDao;
+import com.fast.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool;
+import com.fast.pay.reconciliation.service.RpAccountCheckMistakeScratchPoolService;
 
 /**
  * 对账暂存池接口实现 .

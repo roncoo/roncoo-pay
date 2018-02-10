@@ -26,7 +26,7 @@ import com.fast.pay.reconciliation.utils.https.HttpResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import com.roncoo.pay.reconciliation.utils.https.HttpResponse;
+import com.fast.pay.reconciliation.utils.https.HttpResponse;
 
 /**
  * 

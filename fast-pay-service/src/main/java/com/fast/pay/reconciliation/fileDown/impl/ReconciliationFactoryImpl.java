@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,9 +25,9 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.stereotype.Service;
 
-import com.roncoo.pay.reconciliation.fileDown.service.FileDown;
-import com.roncoo.pay.reconciliation.fileDown.service.ReconciliationFactory;
-import com.roncoo.pay.reconciliation.utils.ReconciliationConfigUtil;
+import com.fast.pay.reconciliation.fileDown.service.FileDown;
+import com.fast.pay.reconciliation.fileDown.service.ReconciliationFactory;
+import com.fast.pay.reconciliation.utils.ReconciliationConfigUtil;
 
 /**
  * 文件下载factory

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.roncoo.pay.permission.dao.impl.PmsOperatorLogDaoImpl">
+<mapper namespace="com.fast.pay.permission.dao.impl.PmsOperatorLogDaoImpl">
 
 	<!-- Pms权限管理：操作员操作日志表 -->
 	<sql id="pms_operator_log"> PMS_OPERATOR_LOG </sql>
 
-	<resultMap id="beanMap" type="com.roncoo.pay.permission.entity.PmsOperatorLog">
+	<resultMap id="beanMap" type="com.fast.pay.permission.entity.PmsOperatorLog">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="version" property="version" jdbcType="INTEGER" />
 		<result column="status" property="status" jdbcType="VARCHAR" />
@@ -21,7 +21,7 @@
 		<result column="content" property="content" />
 	</resultMap>
 
-	<insert id="insert" parameterType="com.roncoo.pay.permission.entity.PmsOperatorLog" keyProperty="id" useGeneratedKeys="true">
+	<insert id="insert" parameterType="com.fast.pay.permission.entity.PmsOperatorLog" keyProperty="id" useGeneratedKeys="true">
 		insert into
 		<include refid="pms_operator_log" />
 		(id,version,status,creater,create_time, editor, edit_time, remark, operator_id, operator_name,operate_type,ip,content)
@@ -29,7 +29,7 @@
 		(#{id},0,#{status}, #{creater},#{createTime}, #{editor},#{editTime},#{remark},#{operatorId},#{operatorName},#{operateType},#{ip}, #{content})
 	</insert>
 
-	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.roncoo.pay.permission.entity.PmsOperatorLog">
+	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.fast.pay.permission.entity.PmsOperatorLog">
 		select * from
 		<include refid="pms_operator_log" />
 		where id = #{id}

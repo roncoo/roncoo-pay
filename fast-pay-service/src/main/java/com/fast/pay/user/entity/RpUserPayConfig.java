@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import java.io.Serializable;
 import com.fast.pay.common.core.entity.BaseEntity;
 import com.fast.pay.common.core.enums.PublicEnum;
 import com.fast.pay.common.core.enums.SecurityRatingEnum;
-import com.roncoo.pay.user.enums.FundInfoTypeEnum;
+import com.fast.pay.user.enums.FundInfoTypeEnum;
 
 /**
  * 用户支付配置实体类

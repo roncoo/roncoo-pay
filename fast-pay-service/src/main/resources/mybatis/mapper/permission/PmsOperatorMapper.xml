@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.roncoo.pay.permission.dao.impl.PmsOperatorDaoImpl">
+<mapper namespace="com.fast.pay.permission.dao.impl.PmsOperatorDaoImpl">
 
 	<!-- Pms权限管理：操作员表 -->
 	<sql id="pms_operator"> PMS_OPERATOR </sql>
 	<sql id="pms_role_operator"> PMS_ROLE_OPERATOR </sql>
 
-	<resultMap id="beanMap" type="com.roncoo.pay.permission.entity.PmsOperator">
+	<resultMap id="beanMap" type="com.fast.pay.permission.entity.PmsOperator">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="version" property="version" jdbcType="INTEGER" />
 		<result column="status" property="status" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
 		<result column="salt" property="salt" jdbcType="VARCHAR"  />
 	</resultMap>
 
-	<insert id="insert" parameterType="com.roncoo.pay.permission.entity.PmsOperator" keyProperty="id" useGeneratedKeys="true">
+	<insert id="insert" parameterType="com.fast.pay.permission.entity.PmsOperator" keyProperty="id" useGeneratedKeys="true">
 		insert into
 		<include refid="pms_operator" />
 		(id,version,status,creater,create_time, editor, edit_time, remark, login_name, login_pwd,real_name,mobile_no,type,salt)
@@ -31,7 +31,7 @@
 		(#{id},0,#{status}, #{creater},#{createTime}, #{editor},#{editTime},#{remark},#{loginName},#{loginPwd},#{realName},#{mobileNo},#{type},#{salt})
 	</insert>
 
-	<update id="update" parameterType="com.roncoo.pay.permission.entity.PmsOperator">
+	<update id="update" parameterType="com.fast.pay.permission.entity.PmsOperator">
 		update
 		<include refid="pms_operator" />
 		<set>

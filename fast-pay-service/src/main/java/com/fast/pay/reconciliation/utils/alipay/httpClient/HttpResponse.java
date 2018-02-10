@@ -5,7 +5,7 @@ import java.io.UnsupportedEncodingException;
 import com.fast.pay.trade.utils.AlipayConfigUtil;
 import org.apache.commons.httpclient.Header;
 
-import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+import com.fast.pay.trade.utils.AlipayConfigUtil;
 
 /* *
  *类名：HttpResponse

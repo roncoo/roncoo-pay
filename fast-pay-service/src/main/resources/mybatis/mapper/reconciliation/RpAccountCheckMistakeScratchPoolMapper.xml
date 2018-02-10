@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.roncoo.pay.reconciliation.dao.impl.RpAccountCheckMistakeScratchPoolDaoImpl">
+<mapper namespace="com.fast.pay.reconciliation.dao.impl.RpAccountCheckMistakeScratchPoolDaoImpl">
 
 	<sql id="table_name">rp_account_check_mistake_scratch_pool</sql>
 
-	<resultMap id="BaseResultMap" type="com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool">
+	<resultMap id="BaseResultMap" type="com.fast.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool">
 		<id column="id" property="id" jdbcType="VARCHAR" />
 		<result column="version" property="version" jdbcType="INTEGER" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -48,7 +48,7 @@
 		where id = #{id,jdbcType=VARCHAR}
 	</delete>
 
-	<insert id="insert" parameterType="com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool">
+	<insert id="insert" parameterType="com.fast.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool">
 		insert into
 		<include refid="table_name" />
 		(id, version, create_time, editor, creater, edit_time,

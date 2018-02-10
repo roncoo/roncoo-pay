@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.roncoo.pay.user.dao.impl.RpUserPayConfigDaoImpl" >
-  <resultMap id="BaseResultMap" type="com.roncoo.pay.user.entity.RpUserPayConfig" >
+<mapper namespace="com.fast.pay.user.dao.impl.RpUserPayConfigDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.fast.pay.user.entity.RpUserPayConfig" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
@@ -36,7 +36,7 @@
     delete from rp_user_pay_config
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.roncoo.pay.user.entity.RpUserPayConfig" >
+  <insert id="insert" parameterType="com.fast.pay.user.entity.RpUserPayConfig" >
     insert into rp_user_pay_config (id, create_time, edit_time, 
       version, remark, status, 
       audit_status, is_auto_sett, product_code, 
@@ -50,7 +50,7 @@
       #{paySecret,jdbcType=VARCHAR} , #{securityRating , jdbcType=VARCHAR} , #{merchantServerIp , jdbcType=VARCHAR})
   </insert>
 
-  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.user.entity.RpUserPayConfig" >
+  <update id="updateByPrimaryKey" parameterType="com.fast.pay.user.entity.RpUserPayConfig" >
     update rp_user_pay_config
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       edit_time = #{editTime,jdbcType=TIMESTAMP},

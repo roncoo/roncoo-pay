@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.roncoo.pay.trade.dao.impl.RpTradePaymentOrderDaoImpl" >
-  <resultMap id="BaseResultMap" type="com.roncoo.pay.trade.entity.RpTradePaymentOrder" >
+<mapper namespace="com.fast.pay.trade.dao.impl.RpTradePaymentOrderDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.fast.pay.trade.entity.RpTradePaymentOrder" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="version" property="version" jdbcType="SMALLINT" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -96,7 +96,7 @@
     </where>
   </select>
 
-  <insert id="insert" parameterType="com.roncoo.pay.trade.entity.RpTradePaymentOrder" >
+  <insert id="insert" parameterType="com.fast.pay.trade.entity.RpTradePaymentOrder" >
     insert into rp_trade_payment_order (id, version, create_time, 
       editor, creater, edit_time, 
       status, product_name, merchant_order_no, 
@@ -125,7 +125,7 @@
       #{field5,jdbcType=VARCHAR})
   </insert>
 
-  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.trade.entity.RpTradePaymentOrder" >
+  <update id="updateByPrimaryKey" parameterType="com.fast.pay.trade.entity.RpTradePaymentOrder" >
     update rp_trade_payment_order
     set version = #{version,jdbcType=SMALLINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.roncoo.pay.permission.dao.impl.PmsMenuDaoImpl">
+<mapper namespace="com.fast.pay.permission.dao.impl.PmsMenuDaoImpl">
 
 	<sql id="pms_menu"> PMS_MENU </sql>
 	<sql id="pms_role"> PMS_ROLE </sql>
 	<sql id="pms_role_menu"> PMS_MENU_ROLE </sql>
 
-	<insert id="insert" parameterType="com.roncoo.pay.permission.entity.PmsMenu" keyProperty="id" useGeneratedKeys="true">
+	<insert id="insert" parameterType="com.fast.pay.permission.entity.PmsMenu" keyProperty="id" useGeneratedKeys="true">
 		insert into
 		<include refid="pms_menu" />
 		(id,version,status,creater,create_time, editor, edit_time, remark,
@@ -23,7 +23,7 @@
 		)
 	</insert>
 
-	<update id="update" parameterType="com.roncoo.pay.permission.entity.PmsMenu">
+	<update id="update" parameterType="com.fast.pay.permission.entity.PmsMenu">
 		update
 		<include refid="pms_menu" />
 		<set>
@@ -45,7 +45,7 @@
 		where ID = #{id}
 	</delete>
 
-	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.roncoo.pay.permission.entity.PmsMenu">
+	<select id="selectByPrimaryKey" parameterType="Long" resultType="com.fast.pay.permission.entity.PmsMenu">
 		select
 		d.id,d.version,d.status,d.creater,
 		d.create_time as "createTime", d.editor,
@@ -68,7 +68,7 @@
 		where d.id = #{id}
 	</select>
 
-	<select id="listPage" parameterType="java.util.Map" resultType="com.roncoo.pay.permission.entity.PmsMenu">
+	<select id="listPage" parameterType="java.util.Map" resultType="com.fast.pay.permission.entity.PmsMenu">
 		select
 		d.id,d.version,d.status,d.creater,
 		d.create_time as "createTime", d.editor,
@@ -98,7 +98,7 @@
 		<if test="parentId != null and parentId != ''"> and parent_id = #{parentId}</if>
 	</sql>
 
-	<select id="listBy" parameterType="java.util.Map" resultType="com.roncoo.pay.permission.entity.PmsMenu">
+	<select id="listBy" parameterType="java.util.Map" resultType="com.fast.pay.permission.entity.PmsMenu">
 		select * from
 		<include refid="pms_menu" />
 		<where>
@@ -126,7 +126,7 @@
 		</where>
 		order by m.number asc
 	</select>
-	<select id="listByParentId" parameterType="long" resultType="com.roncoo.pay.permission.entity.PmsMenu">
+	<select id="listByParentId" parameterType="long" resultType="com.fast.pay.permission.entity.PmsMenu">
 		select
 		id as "id" ,
 		version as "version",

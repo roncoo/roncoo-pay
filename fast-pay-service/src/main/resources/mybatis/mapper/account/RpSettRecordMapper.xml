@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.roncoo.pay.account.dao.impl.RpSettRecordDaoImpl" >
-  <resultMap id="BaseResultMap" type="com.roncoo.pay.account.entity.RpSettRecord" >
+<mapper namespace="com.fast.pay.account.dao.impl.RpSettRecordDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.fast.pay.account.entity.RpSettRecord" >
     <id column="ID" property="id" jdbcType="VARCHAR" />
     <result column="VERSION" property="version" jdbcType="INTEGER" />
     <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
@@ -50,7 +50,7 @@
     delete from rp_sett_record
     where ID = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.roncoo.pay.account.entity.RpSettRecord" >
+  <insert id="insert" parameterType="com.fast.pay.account.entity.RpSettRecord" >
     insert into rp_sett_record (ID, VERSION, CREATE_TIME, 
       EDIT_TIME, SETT_MODE, ACCOUNT_NO, 
       USER_NO, USER_NAME, USER_TYPE, 
@@ -74,7 +74,7 @@
       #{remitRemark,jdbcType=VARCHAR}, #{operatorLoginname,jdbcType=VARCHAR}, #{operatorRealname,jdbcType=VARCHAR}
       )
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.account.entity.RpSettRecord" >
+  <update id="updateByPrimaryKey" parameterType="com.fast.pay.account.entity.RpSettRecord" >
     update rp_sett_record
     set VERSION = #{version,jdbcType=INTEGER},
       CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},

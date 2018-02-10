@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package com.fast.pay.user.dao;
 
 import com.fast.pay.common.core.dao.BaseDao;
 import com.fast.pay.user.entity.RpUserPayConfig;
-import com.roncoo.pay.user.entity.RpUserPayConfig;
+import com.fast.pay.user.entity.RpUserPayConfig;
 
 /**
  * @类功能说明： 用户支付配置dao

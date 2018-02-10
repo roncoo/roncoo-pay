@@ -7,10 +7,10 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.roncoo.pay.account.service.RpAccountTransactionService;
+import com.fast.pay.account.service.RpAccountTransactionService;
 import com.fast.pay.common.core.page.PageBean;
 import com.fast.pay.common.core.page.PageParam;
-import com.roncoo.pay.permission.service.PmsOperatorService;
+import com.fast.pay.permission.service.PmsOperatorService;
 
 /**
  * @描述: 启动Dubbo服务用的MainClass.

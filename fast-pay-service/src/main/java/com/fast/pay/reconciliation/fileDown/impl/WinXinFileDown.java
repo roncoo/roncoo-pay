@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,13 +29,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.alibaba.druid.util.StringUtils;
-import com.roncoo.pay.reconciliation.fileDown.service.FileDown;
-import com.roncoo.pay.reconciliation.utils.FileUtils;
-import com.roncoo.pay.reconciliation.utils.SignHelper;
-import com.roncoo.pay.reconciliation.utils.WeiXinBaseUtils;
-import com.roncoo.pay.reconciliation.utils.https.HttpClientUtil;
-import com.roncoo.pay.reconciliation.utils.https.HttpResponse;
-import com.roncoo.pay.trade.utils.WeixinConfigUtil;
+import com.fast.pay.reconciliation.fileDown.service.FileDown;
+import com.fast.pay.reconciliation.utils.FileUtils;
+import com.fast.pay.reconciliation.utils.SignHelper;
+import com.fast.pay.reconciliation.utils.WeiXinBaseUtils;
+import com.fast.pay.reconciliation.utils.https.HttpClientUtil;
+import com.fast.pay.reconciliation.utils.https.HttpResponse;
+import com.fast.pay.trade.utils.WeixinConfigUtil;
 
 /**
  * 微信文件下载类
@@ -87,7 +87,7 @@ public class WinXinFileDown implements FileDown {
 
 			response = HttpClientUtil.httpsRequest(url, "POST", xml);
 
-			// String dir = "/home/roncoo/app/accountcheck/billfile/weixin";
+			// String dir = "/home/fast/app/accountcheck/billfile/weixin";
 
 			File file = new File(dir, bill_date + "_" + bill_type.toLowerCase() + ".txt");
 			int index = 1;

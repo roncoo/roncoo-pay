@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,9 +18,9 @@ package com.fast.pay.reconciliation.service;
 import java.util.List;
 
 import com.fast.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool;
-import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
-import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistake;
-import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool;
+import com.fast.pay.reconciliation.entity.RpAccountCheckBatch;
+import com.fast.pay.reconciliation.entity.RpAccountCheckMistake;
+import com.fast.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool;
 
 /**
  * 对账数据事务一致性service.

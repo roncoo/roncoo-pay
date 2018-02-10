@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@ import com.fast.pay.user.entity.SeqBuild;
 import org.springframework.stereotype.Repository;
 
 import com.fast.pay.common.core.dao.impl.BaseDaoImpl;
-import com.roncoo.pay.user.dao.BuildNoDao;
-import com.roncoo.pay.user.entity.SeqBuild;
+import com.fast.pay.user.dao.BuildNoDao;
+import com.fast.pay.user.entity.SeqBuild;
 
 /**
  *  生成编号dao实现类

@@ -7,7 +7,7 @@ import java.net.URL;
 import java.util.Map;
 
 import com.fast.pay.trade.utils.AlipayConfigUtil;
-import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+import com.fast.pay.trade.utils.AlipayConfigUtil;
 
 /* *
  *类名：AlipayNotify

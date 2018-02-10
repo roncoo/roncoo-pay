@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,13 +29,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.fast.pay.common.core.utils.DateUtils;
-import com.roncoo.pay.reconciliation.fileDown.service.FileDown;
-import com.roncoo.pay.reconciliation.utils.alipay.AlipaySubmit;
-import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpProtocolHandler;
-import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpRequest;
-import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResponse;
-import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResultType;
-import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+import com.fast.pay.reconciliation.fileDown.service.FileDown;
+import com.fast.pay.reconciliation.utils.alipay.AlipaySubmit;
+import com.fast.pay.reconciliation.utils.alipay.httpClient.HttpProtocolHandler;
+import com.fast.pay.reconciliation.utils.alipay.httpClient.HttpRequest;
+import com.fast.pay.reconciliation.utils.alipay.httpClient.HttpResponse;
+import com.fast.pay.reconciliation.utils.alipay.httpClient.HttpResultType;
+import com.fast.pay.trade.utils.AlipayConfigUtil;
 
 /**
  * 支付宝账单下载.
@@ -150,7 +150,7 @@ public class AlipayFileDown implements FileDown {
 	private File createFile(String bill_date, String stringResult, String dir) throws IOException {
 
 		// 创建本地文件，用于存储支付宝对账文件
-		// String dir = "/home/roncoo/app/accountcheck/billfile/alipay";
+		// String dir = "/home/fast/app/accountcheck/billfile/alipay";
 		File file = new File(dir, bill_date + "_" + ".xml");
 		int index = 1;
 		// 判断文件是否已经存在

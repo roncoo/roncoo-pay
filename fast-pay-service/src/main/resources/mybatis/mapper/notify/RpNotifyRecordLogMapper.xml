@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.roncoo.pay.notify.dao.impl.RpNotifyRecordLogDaoImpl" >
-  <resultMap id="BaseResultMap" type="com.roncoo.pay.notify.entity.RpNotifyRecordLog" >
+<mapper namespace="com.fast.pay.notify.dao.impl.RpNotifyRecordLogDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.fast.pay.notify.entity.RpNotifyRecordLog" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="version" property="version" jdbcType="SMALLINT" />
     <result column="editor" property="editor" jdbcType="VARCHAR" />
@@ -33,7 +33,7 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
 
-  <insert id="insert" parameterType="com.roncoo.pay.notify.entity.RpNotifyRecordLog" >
+  <insert id="insert" parameterType="com.fast.pay.notify.entity.RpNotifyRecordLog" >
     insert into rp_notify_record_log (id, version, editor, 
       creater, edit_time, create_time, 
       notify_id, request, response, 
@@ -46,7 +46,7 @@
       )
   </insert>
 
-  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.notify.entity.RpNotifyRecordLog" >
+  <update id="updateByPrimaryKey" parameterType="com.fast.pay.notify.entity.RpNotifyRecordLog" >
     update rp_notify_record_log
     set version = #{version,jdbcType=SMALLINT},
       editor = #{editor,jdbcType=VARCHAR},
