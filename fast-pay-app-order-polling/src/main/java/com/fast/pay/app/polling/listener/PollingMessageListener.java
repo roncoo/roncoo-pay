@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,8 +30,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.alibaba.fastjson.JSONObject;
 import com.fast.pay.app.polling.core.PollingQueue;
 import com.fast.pay.common.core.exception.BizException;
-import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
-import com.roncoo.pay.notify.enums.NotifyStatusEnum;
+import com.fast.pay.notify.entity.RpOrderResultQueryVo;
+import com.fast.pay.notify.enums.NotifyStatusEnum;
 
 /**
  * 

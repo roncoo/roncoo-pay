@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@ package com.fast.pay.app.polling.core;
 
 import com.fast.pay.app.polling.App;
 import com.fast.pay.common.core.utils.DateUtils;
-import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
+import com.fast.pay.notify.entity.RpOrderResultQueryVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
