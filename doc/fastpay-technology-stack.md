@@ -83,6 +83,10 @@ RPC - gRPC vs Thrift
 - Spring体系没啥别的可选吧 
 
 
+断路器 - Hystrix
+
+- 既然Cloud 就它了
+
 
 数据库 - Mysql and Redis 
 
