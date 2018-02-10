@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.user.dao.impl.RpUserInfoDaoImpl" >
+  <resultMap id="BaseResultMap" type="com.roncoo.pay.user.entity.RpUserInfo" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="user_no" property="userNo" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="account_no" property="accountNo" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="pay_pwd" property="payPwd" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_time, status, user_no, user_name, account_no, mobile, password, pay_pwd
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rp_user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rp_user_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.roncoo.pay.user.entity.RpUserInfo" >
+    insert into rp_user_info (id, create_time, status, 
+      user_no, user_name, account_no, mobile, password,
+      pay_pwd
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=VARCHAR}, 
+      #{userNo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{accountNo,jdbcType=VARCHAR},
+      #{mobile,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{payPwd,jdbcType=VARCHAR}
+      )
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.user.entity.RpUserInfo" >
+    update rp_user_info
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=VARCHAR},
+      user_no = #{userNo,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      account_no = #{accountNo,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      pay_pwd = #{payPwd,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+    <sql id="table_name">  rp_user_info </sql>
+    
+    <!-- 根据搜索条件获取数据 -->
+	<sql id="condition_sql">
+		<if test="status != null and status != ''"> and status = #{status,jdbcType=VARCHAR}</if>
+		<if test="userNo != null and userNo != ''"> and user_no = #{userNo,jdbcType=VARCHAR}</if>
+		<if test="mobile != null and mobile != ''"> and mobile = #{mobile,jdbcType=VARCHAR}</if>
+	</sql>
+	
+	  	<select id="listBy" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc
+	</select>
+  
+  	<!-- 分页查询 -->
+	<select id="listPage" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select * from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		order by create_time desc limit #{pageFirst}, #{pageSize}
+	</select>
+
+	<!-- 分页查询时要用到的总数统计 -->
+	<select id="listPageCount" parameterType="java.util.Map"
+		resultType="java.lang.Long">
+		select count(1) from
+		<include refid="table_name" />
+		<where>
+			<include refid="condition_sql" />
+		</where>
+	</select>
+</mapper>
