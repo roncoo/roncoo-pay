@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
+ * Copyright 2015-2102 Fast(http://www.cloudate.net) Group.
  *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,11 +23,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.roncoo.pay.account.entity.RpAccount;
-import com.roncoo.pay.account.service.RpSettHandleService;
+import com.fast.pay.account.entity.RpAccount;
+import com.fast.pay.account.service.RpSettHandleService;
 import com.fast.pay.common.core.enums.PublicEnum;
-import com.roncoo.pay.user.entity.RpUserPayConfig;
-import com.roncoo.pay.user.service.RpUserPayConfigService;
+import com.fast.pay.user.entity.RpUserPayConfig;
+import com.fast.pay.user.service.RpUserPayConfigService;
 
 /**
  * 结算业务逻辑类.

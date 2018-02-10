@@ -3,13 +3,13 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-		<groupId>com.roncoo.pay.common</groupId>
-		<artifactId>roncoo-pay</artifactId>
+		<groupId>com.fast.pay.common</groupId>
+		<artifactId>fast-pay</artifactId>
 		<version>2.0.0-SNAPSHOT</version>
   </parent>
-  <groupId>com.roncoo.pay.app</groupId>
-  <artifactId>roncoo-pay-app-settlement</artifactId>
-  <name>roncoo-pay-app-settlement</name>
+  <groupId>com.fast.pay.app</groupId>
+  <artifactId>fast-pay-app-settlement</artifactId>
+  <name>fast-pay-app-settlement</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,15 +17,15 @@
   <dependencies>
 
 		<dependency>
-			<groupId>com.roncoo.pay.common</groupId>
-			<artifactId>roncoo-pay-common-core</artifactId>
+			<groupId>com.fast.pay.common</groupId>
+			<artifactId>fast-pay-common-core</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 
 
 		<dependency>
-			<groupId>com.roncoo.pay.service</groupId>
-			<artifactId>roncoo-pay-service</artifactId>
+			<groupId>com.fast.pay.service</groupId>
+			<artifactId>fast-pay-service</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 
@@ -44,7 +44,7 @@
 
 
 	<build>
-		<finalName>roncoo-pay-app-settlement</finalName>
+		<finalName>fast-pay-app-settlement</finalName>
 
 		<plugins>
 
