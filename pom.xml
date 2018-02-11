@@ -35,7 +35,7 @@
 		<module>fast-pay-web-merchant</module>
 		<!-- 商户订单通知 -->
 		<module>fast-pay-app-order-polling</module>
-
+		<!-- 网店示例-->
 		<module>fast-pay-web-sample-shop</module>
 	</modules>
 
