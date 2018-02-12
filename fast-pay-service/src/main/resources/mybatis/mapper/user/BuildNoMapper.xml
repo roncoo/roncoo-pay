@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fast.pay.user.dao.impl.BuildNoDaoImpl" >
+
+  <select id="getSeqNextValue" resultType="java.lang.String" parameterType="com.fast.pay.user.entity.SeqBuild" >
+    select FUN_SEQ ('${seqName}')
+  </select>
+  
+</mapper>

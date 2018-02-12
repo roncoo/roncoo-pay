@@ -3,38 +3,40 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.roncoo.pay.common</groupId>
-	<artifactId>roncoo-pay</artifactId>
+	<groupId>com.fast.pay.common</groupId>
+	<artifactId>fastpay</artifactId>
 	<version>2.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<name>roncoo-pay</name>
+	<name>fastpay</name>
 	<url>http://maven.apache.org</url>
 
 	<organization>
-		<name>Roncoo</name>
-		<url>http://www.roncoo.com</url>
+		<name>FastPay</name>
+		<url>http://www.cloudate.net</url>
 	</organization>
 
 	<modules>
 		<!-- core 是支付系统核心基础包 -->
-		<module>roncoo-pay-common-core</module>
+		<module>fast-pay-common-core</module>
 		<!-- 运营boss后台 -->
-		<module>roncoo-pay-web-boss</module>
+		<module>fast-pay-web-boss</module>
 		<!-- 对账流程app,发起对账核心业务 -->
-		<module>roncoo-pay-app-reconciliation</module>
+		<module>fast-pay-app-reconciliation</module>
 		<!-- 平台通知消息的处理 -->
-		<module>roncoo-pay-app-notify</module>
+		<module>fast-pay-app-notify</module>
 		<!-- 结算定时处理app，发起定时跑批处理，统计结算数据 -->
-		<module>roncoo-pay-app-settlement</module>
+		<module>fast-pay-app-settlement</module>
 		<!-- 支付网关web -->
-		<module>roncoo-pay-web-gateway</module>
+		<module>fast-pay-web-gateway</module>
 		<!-- 支付系统核心业务 -->
-		<module>roncoo-pay-service</module>
+		<module>fast-pay-service</module>
 		<!-- 商户后台 -->
-		<module>roncoo-pay-web-merchant</module>
+		<module>fast-pay-web-merchant</module>
 		<!-- 商户订单通知 -->
-		<module>roncoo-pay-app-order-polling</module>
+		<module>fast-pay-app-order-polling</module>
+		<!-- 网店示例-->
+		<module>fast-pay-web-sample-shop</module>
 	</modules>
 
 	<!-- 配置maven地址 -->
@@ -344,9 +346,9 @@
 			</dependency>
 
 			<dependency>
-				<groupId>alipay</groupId>
-				<artifactId>alipay-sdk-java20151021120052</artifactId>
-				<version>1.0</version>
+				<groupId>com.alipay</groupId>
+				<artifactId>alipay-sdk-java20171201160035</artifactId>
+				<version>20171201160035</version>
 			</dependency>
 
 			<dependency>
