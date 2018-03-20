@@ -26,6 +26,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,6 +76,8 @@ public class LoginController extends BaseController {
 			error = "用户名/密码错误";
 		} else if (PermissionException.class.getName().equals(exceptionClassName)) {
 			error = "网络异常,请联系龙果管理员";
+		} else if (LockedAccountException.class.getName().equals(exceptionClassName)) {
+			error = "您的帐号被冻结,请联系龙果管理员";
 		} else if (exceptionClassName != null) {
 			error = "错误提示：" + exceptionClassName;
 		}
@@ -85,9 +88,8 @@ public class LoginController extends BaseController {
 	/**
 	 * 函数功能说明 ： 登陆后台管理系统. 修改者名字： 修改日期： 修改内容：
 	 * 
-	 * @参数： @param request
-	 * @参数： @param model
-	 * @参数： @return
+	 * @参数： @param request @参数： @param model @参数： @return
+	 * 
 	 * @return String
 	 * @throws PermissionException
 	 */
@@ -109,9 +111,7 @@ public class LoginController extends BaseController {
 	/**
 	 * 函数功能说明 ：进入退出系统确认页面. 修改者名字： 修改日期： 修改内容：
 	 * 
-	 * @参数： @return
-	 * @return String
-	 * @throws
+	 * @参数： @return @return String @throws
 	 */
 	@RequestMapping(value = "/admin/confirm", method = RequestMethod.GET)
 	public String confirm() {
@@ -121,9 +121,7 @@ public class LoginController extends BaseController {
 	/**
 	 * 函数功能说明 ： 退出系统. 修改者名字： 修改日期： 修改内容：
 	 * 
-	 * @参数： @return
-	 * @return String
-	 * @throws
+	 * @参数： @return @return String @throws
 	 */
 	@RequestMapping(value = "/admin/logout", method = RequestMethod.POST)
 	public String logout(HttpServletRequest request, Model model) {
@@ -217,7 +215,8 @@ public class LoginController extends BaseController {
 			}
 
 			if ("YES".equals(isLeaf)) {
-				treeBuf.append("<li><a href='" + url + "' target='navTab' rel='" + navTabId + "'>" + name + "</a></li>");
+				treeBuf.append(
+						"<li><a href='" + url + "' target='navTab' rel='" + navTabId + "'>" + name + "</a></li>");
 			} else {
 
 				if ("1".equals(level)) {
