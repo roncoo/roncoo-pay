@@ -26,7 +26,7 @@
 				<label>状态：${pmsOperator.status}</label>
 				<c:choose>
 					<c:when test="${pmsOperator.status eq OperatorStatusEnum.ACTIVE.value}">激活</c:when>
-					<c:when test="${pmsOperator.status eq OperatorStatusEnum.INACTIVE.value}">冻结</c:when>
+					<c:when test="${pmsOperator.status eq OperatorStatusEnum.UNACTIVE.value}">冻结</c:when>
 					<c:otherwise>--</c:otherwise>
 				</c:choose>
 			</p>
