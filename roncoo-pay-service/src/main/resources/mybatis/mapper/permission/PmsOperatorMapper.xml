@@ -84,7 +84,7 @@
 		<if test="status != null and status != ''"> and status = #{status}</if>
 		<if test="type != null and type != ''"> and type = #{type}</if>
 		<!-- Like query -->
-		<if test="realName != null and realName != ''"> and REALNAME like CONCAT(CONCAT('%', #{realName}), '%')</if>
+		<if test="realName != null and realName != ''"> and real_name like CONCAT(CONCAT('%', #{realName}), '%')</if>
 	</sql>
 
 	<select id="listPage" parameterType="java.util.Map" resultMap="beanMap">
