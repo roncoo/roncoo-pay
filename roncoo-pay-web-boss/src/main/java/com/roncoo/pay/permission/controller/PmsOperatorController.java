@@ -268,9 +268,10 @@ public class PmsOperatorController extends BaseController {
 		String status = operator.getStatus();
 		if (status == null) {
 			msg += "请选择状态，";
-		} else if (!PublicStatusEnum.ACTIVE.name().equals(status) || PublicStatusEnum.UNACTIVE.name().equals(status)) {
-			msg += "状态值不正确，";
 		}
+		/*else if (!PublicStatusEnum.ACTIVE.name().equals(status) || PublicStatusEnum.UNACTIVE.name().equals(status)) {
+			msg += "状态值不正确，";
+		}*/
 
 		msg += ValidateUtils.lengthValidate("描述", operator.getRemark(), true, 3, 100);
 
