@@ -107,7 +107,7 @@ public class OperatorRealm extends AuthorizingRealm {
 			throw new UnknownAccountException();// 没找到帐号
 		}
 
-		if (PublicStatusEnum.UNACTIVE.equals(operator.getStatus())) {
+		if (PublicStatusEnum.UNACTIVE.name().equals(operator.getStatus())) {
 			throw new LockedAccountException(); // 帐号锁定
 		}
 
