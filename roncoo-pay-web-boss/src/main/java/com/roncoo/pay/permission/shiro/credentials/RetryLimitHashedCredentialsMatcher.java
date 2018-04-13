@@ -15,8 +15,8 @@
  */
 package com.roncoo.pay.permission.shiro.credentials;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
+import com.roncoo.pay.permission.entity.PmsOperator;
+import com.roncoo.pay.permission.service.PmsOperatorService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -28,8 +28,7 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.roncoo.pay.permission.entity.PmsOperator;
-import com.roncoo.pay.permission.service.PmsOperatorService;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 自定义的市容凭证匹配器
@@ -70,7 +69,9 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
 		if (matches) {
 			// clear retry count
 			passwordRetryCache.remove(username);
-
+			if (!"admin".equals(username)) {
+				username = "guest";
+			}
 			// 根据登录名查询操作员
 			PmsOperator operator = pmsOperatorService.findOperatorByLoginName(username);
 			Subject subject = SecurityUtils.getSubject();
