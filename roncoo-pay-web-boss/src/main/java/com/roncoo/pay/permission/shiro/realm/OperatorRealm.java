@@ -165,7 +165,7 @@ public class OperatorRealm extends AuthorizingRealm {
 		PmsOperator operator = (PmsOperator) session.getAttribute("PmsOperator");
 		if (operator == null) {
 			// 对接龙果平台
-			if (!"admin".equals(loginName)) {
+			if (!"admin_roncoo".equals(loginName)) {
 				loginName = "guest";
 			}
 			operator = pmsOperatorService.findOperatorByLoginName(loginName);
