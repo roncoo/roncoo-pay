@@ -64,14 +64,14 @@
 		<cglib.version>3.2.2</cglib.version>
 		<aspectjrt.version>1.5.4</aspectjrt.version>
 		<aspectjweaver.version>1.8.9</aspectjweaver.version>
-		<mysql.version>5.1.30</mysql.version>
+		<mysql.version>5.1.47</mysql.version>
 		<dbcp.version>1.4</dbcp.version>
 		<jstl.version>1.2</jstl.version>
-		<druid.version>1.0.19</druid.version>
-		<fastjson.version>1.2.11</fastjson.version>
-		<javaee-api.version>7.0</javaee-api.version>
+		<druid.version>1.1.12</druid.version>
+		<fastjson.version>1.2.51</fastjson.version>
+		<javaee-api.version>8.0</javaee-api.version>
 		<commons-lang.version>2.6</commons-lang.version>
-		<commons-io.version>2.5</commons-io.version>
+		<commons-io.version>2.6</commons-io.version>
 		<commons-codec.version>1.11</commons-codec.version>
 		<jdom.version>2.0.2</jdom.version>
 		<activeMQ.version>5.11.4</activeMQ.version>
