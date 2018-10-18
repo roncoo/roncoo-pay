@@ -78,6 +78,7 @@
 		<transaction.version>1.1</transaction.version>
 		<shiro.version>1.4.0</shiro.version>
 		<httpclient.version>4.5.6</httpclient.version>
+		<commons-pool.version>1.6</commons-pool.version>
 
 	</properties>
 
@@ -419,6 +420,12 @@
 				<version>${httpclient.version}</version>
 			</dependency>
 			<!-- Shiro libs End -->
+
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>${commons-pool.version}</version>
+			</dependency>
 
 		</dependencies>
 	</dependencyManagement>
