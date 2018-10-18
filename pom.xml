@@ -79,6 +79,9 @@
 		<shiro.version>1.4.0</shiro.version>
 		<httpclient.version>4.5.6</httpclient.version>
 		<commons-pool.version>1.6</commons-pool.version>
+		<jackson.version>2.9.7</jackson.version>
+		<commons-httpclient.version>3.1</commons-httpclient.version>
+		<dom4j.version>1.6.1</dom4j.version>
 
 	</properties>
 
@@ -427,6 +430,43 @@
 				<version>${commons-pool.version}</version>
 			</dependency>
 
+			<!-- json -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<!--commons-httpclient-->
+			<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>${commons-httpclient.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.tomcat</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>6.0.53</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.tomcat</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>6.0.53</version>
+				<scope>provided</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
