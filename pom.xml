@@ -72,6 +72,7 @@
 		<javaee-api.version>7.0</javaee-api.version>
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-io.version>2.5</commons-io.version>
+		<commons-codec.version>1.11</commons-codec.version>
 		<jdom.version>2.0.2</jdom.version>
 		<activeMQ.version>5.11.4</activeMQ.version>
 		<javassist.version>3.12.1.GA</javassist.version>
@@ -311,7 +312,7 @@
 			<dependency>
 				<groupId>commons-codec</groupId>
 				<artifactId>commons-codec</artifactId>
-				<version>1.10</version>
+				<version>${commons-codec.version}</version>
 			</dependency>
 
 			<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
@@ -322,18 +323,18 @@
 			</dependency>
 
 			<!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
-			<dependency>
+			<!--<dependency>
 				<groupId>com.google.zxing</groupId>
 				<artifactId>core</artifactId>
 				<version>2.1</version>
-			</dependency>
+			</dependency>-->
 
 			<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-			<dependency>
+			<!--<dependency>
 				<groupId>com.google.code.gson</groupId>
 				<artifactId>gson</artifactId>
 				<version>2.3.1</version>
-			</dependency>
+			</dependency>-->
 
 
 			<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
