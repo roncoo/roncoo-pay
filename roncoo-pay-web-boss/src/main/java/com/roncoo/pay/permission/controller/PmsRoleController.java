@@ -305,6 +305,7 @@ public class PmsRoleController extends BaseController {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
+	@RequiresPermissions("pms:role:assignmenu")
 	@RequestMapping("/assignMenuUI")
 	public String assignMenuUI(HttpServletRequest req, Model model, Long roleId) {
 		PmsRole role = pmsRoleService.getDataById(roleId);
@@ -330,6 +331,7 @@ public class PmsRoleController extends BaseController {
 	/**
 	 * 分配角色菜单
 	 */
+	@RequiresPermissions("pms:role:assignmenu")
 	@RequestMapping("/assignMenu")
 	public String assignMenu(HttpServletRequest req, Model model, @RequestParam("roleId") Long roleId, DwzAjax dwz, @RequestParam("selectVal") String selectVal) {
 		try {
