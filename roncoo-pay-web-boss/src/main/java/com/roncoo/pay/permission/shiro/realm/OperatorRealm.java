@@ -200,7 +200,7 @@ public class OperatorRealm extends AuthorizingRealm {
         if (StringUtils.isEmpty(loginName)) {
             throw new UnknownAccountException();// 没找到帐号
         }
-        if (!"admin_roncoo".equals(loginName)) {
+        if (!"admin".equals(loginName)) {
 
             String loginPwd = new String((char[]) token.getCredentials());
             Map<String, Object> loginParam = new HashMap<>();
