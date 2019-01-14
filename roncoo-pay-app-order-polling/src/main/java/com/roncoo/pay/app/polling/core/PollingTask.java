@@ -15,16 +15,15 @@
  */
 package com.roncoo.pay.app.polling.core;
 
-import java.util.Date;
-import java.util.concurrent.Delayed;
-import java.util.concurrent.TimeUnit;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.roncoo.pay.app.polling.App;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Date;
+import java.util.concurrent.Delayed;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <b>功能说明:
@@ -64,7 +63,7 @@ public class PollingTask implements Runnable, Delayed {
         LOG.info("===>pollingTimes:{}",notifyTimes);
         //Integer nextNotifyTimeInterval = pollingParam.getNotifyParams().get(notifyTimes + 1); // 当前发送次数对应的时间间隔数（分钟数）
         Integer nextNotifyTimeInterval = rpOrderResultQueryVo.getNotifyRuleMap().get(String.valueOf(notifyTimes + 1)); // 当前发送次数对应的时间间隔数（分钟数）
-        long nextNotifyTime = (nextNotifyTimeInterval == null ? 0 : nextNotifyTimeInterval * 60 * 1000) + lastNotifyTime;
+        long nextNotifyTime = (nextNotifyTimeInterval == null ? 0 : nextNotifyTimeInterval * 1000) + lastNotifyTime;
         LOG.info("===>notify id:{}, nextNotifyTime:{}" ,rpOrderResultQueryVo.getId() , DateUtils.formatDate(new Date(nextNotifyTime), "yyyy-MM-dd HH:mm:ss SSS"));
         return nextNotifyTime;
     }

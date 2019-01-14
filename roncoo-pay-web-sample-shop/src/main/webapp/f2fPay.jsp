@@ -28,13 +28,31 @@
 <div class="cashier_desk pay_ment">
   <div class="bd">
     <ul class="payment">
-      <li><img src="${path}images/pay.png" alt="支付宝支付" />
+      <li>
         <form action="${path}roncooPay/f2fPay" method="post">
-          <label>请输入支付宝支付授权码:</label><input type="text" size="30" name="authCode"/><br />
-          <input type="hidden" name="productName" value="支付宝支付产品测试" /><br />
-          <input type="hidden" name="orderPrice" value="0.1" /><br />
+          <img src="${path}images/pay.png" alt="支付宝支付" />
+          <br />
+          <label>请输入支付宝支付授权码:</label><br />
+          <input type="text" size="30" name="authCode" style="line-height: 25px;">
+          <input type="hidden" name="productName" value="支付宝支付产品测试" />
+          <input type="hidden" name="orderPrice" value="0.1" />
           <input type="hidden" name="payWayCode" value="ALIPAY">
-          <input type="hidden" name="remark" value="支付宝支付备注信息" /><br />
+          <input type="hidden" name="remark" value="支付宝支付备注信息" />
+          <p class="pay_btn">
+            <input type="submit" value="0.1元支付体验" />
+          </p>
+        </form>
+      </li>
+      <li>
+        <form action="${path}roncooPay/f2fPay" method="post">
+          <img src="${path}images/weixin.png" alt="微信支付" />
+          <br />
+          <label>请输入微信支付授权码:</label><br />
+          <input type="text" size="30" name="authCode" style="line-height: 25px;">
+          <input type="hidden" name="productName" value="微信支付产品测试" />
+          <input type="hidden" name="orderPrice" value="0.1" />
+          <input type="hidden" name="payWayCode" value="WEIXIN">
+          <input type="hidden" name="remark" value="微信支付备注信息" />
           <p class="pay_btn">
             <input type="submit" value="0.1元支付体验" />
           </p>
