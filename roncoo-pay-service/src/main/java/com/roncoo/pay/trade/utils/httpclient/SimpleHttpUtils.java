@@ -15,8 +15,8 @@
  */
 package com.roncoo.pay.trade.utils.httpclient;
 
-import org.apache.commons.io.output.ByteArrayOutputStream;
-import org.apache.log4j.Logger;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import javax.net.ssl.*;
 import java.io.*;
@@ -39,7 +39,7 @@ import java.util.Map.Entry;
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class SimpleHttpUtils {
-	private static final Logger logger = Logger.getLogger(SimpleHttpUtils.class);
+	private static final Log logger = LogFactory.getLog(SimpleHttpUtils.class);
 
 	/**
 	 * 默认字符编码

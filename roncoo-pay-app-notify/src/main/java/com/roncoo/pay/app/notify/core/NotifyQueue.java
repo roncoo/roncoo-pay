@@ -15,11 +15,10 @@
  */
 package com.roncoo.pay.app.notify.core;
 
-import com.roncoo.pay.app.notify.App;
+import com.roncoo.pay.AppNotifyApplication;
 import com.roncoo.pay.app.notify.entity.NotifyParam;
 import com.roncoo.pay.notify.entity.RpNotifyRecord;
 import com.roncoo.pay.notify.enums.NotifyStatusEnum;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +77,7 @@ public class NotifyQueue implements Serializable {
             if (next != null) {
                 time += 1000 * 60 * next + 1;
                 notifyRecord.setLastNotifyTime(new Date(time));
-                App.tasks.put(new NotifyTask(notifyRecord, this, notifyParam));
+                AppNotifyApplication.tasks.put(new NotifyTask(notifyRecord, this, notifyParam));
             }
         } else {
             try {

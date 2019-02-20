@@ -15,15 +15,14 @@
  */
 package com.roncoo.pay.user.dao.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
 import com.roncoo.pay.user.dao.RpUserPayConfigDao;
 import com.roncoo.pay.user.entity.RpUserPayConfig;
+import org.springframework.stereotype.Repository;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户支付配置dao实现类
@@ -31,7 +30,7 @@ import com.roncoo.pay.user.entity.RpUserPayConfig;
  * @author：zenghao
  */
 @Repository
-public class RpUserPayConfigDaoImpl  extends BaseDaoImpl<RpUserPayConfig> implements RpUserPayConfigDao{
+public class RpUserPayConfigDaoImpl  extends BaseDaoImpl<RpUserPayConfig> implements RpUserPayConfigDao {
     @Override
     public RpUserPayConfig getByUserNo(String userNo, String auditStatus) {
         Map<String , Object> paramMap = new HashMap<String , Object>();

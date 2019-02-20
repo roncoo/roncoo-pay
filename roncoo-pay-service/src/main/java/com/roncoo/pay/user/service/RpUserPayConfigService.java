@@ -15,12 +15,12 @@
  */
 package com.roncoo.pay.user.service;
 
-import java.util.List;
-
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.user.entity.RpUserPayConfig;
 import com.roncoo.pay.user.exception.PayBizException;
+
+import java.util.List;
 
 /**
  *  用户支付配置service接口
@@ -85,35 +85,35 @@ public interface RpUserPayConfigService{
 	 * 创建用户支付配置
 	 */
 	void createUserPayConfig(String userNo, String userName, String productCode, String productName, Integer riskDay, String fundIntoType,
-			String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
-			String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException;
+                             String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
+                             String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException;
 
 	/**
 	 * 创建用户支付配置
 	 */
 	void createUserPayConfig(String userNo, String userName, String productCode, String productName, Integer riskDay, String fundIntoType,
-			String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
-			String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey, String securityRating , String merchantServerIp)  throws PayBizException;
+                             String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
+                             String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey, String securityRating, String merchantServerIp)  throws PayBizException;
 
 	/**
 	 * 删除支付产品
 	 * @param userNo
 	 */
 	void deleteUserPayConfig(String userNo) throws PayBizException;
-	
-	/**
-	 * 修改用户支付配置
-	 */
-	void updateUserPayConfig(String userNo, String productCode, String productName, Integer riskDay, String fundIntoType,
-			String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
-			String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException;
 
 	/**
 	 * 修改用户支付配置
 	 */
 	void updateUserPayConfig(String userNo, String productCode, String productName, Integer riskDay, String fundIntoType,
-			String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
-			String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey, String securityRating , String merchantServerIp)  throws PayBizException;
+                             String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
+                             String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey)  throws PayBizException;
+
+	/**
+	 * 修改用户支付配置
+	 */
+	void updateUserPayConfig(String userNo, String productCode, String productName, Integer riskDay, String fundIntoType,
+                             String isAutoSett, String appId, String merchantId, String partnerKey, String ali_partner, String ali_sellerId, String ali_key,
+                             String ali_appid, String ali_rsaPrivateKey, String ali_rsaPublicKey, String securityRating, String merchantServerIp)  throws PayBizException;
 
 	/**
 	 * 审核

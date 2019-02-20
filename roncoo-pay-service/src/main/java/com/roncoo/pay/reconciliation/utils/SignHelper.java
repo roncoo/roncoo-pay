@@ -1,20 +1,14 @@
 package com.roncoo.pay.reconciliation.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * 签名算法<br>
@@ -93,8 +87,8 @@ public class SignHelper {
 
         // sort
         List<Entry<String, String>> paramsArray = new ArrayList<Entry<String, String>>(temp.entrySet());
-        Collections.sort(paramsArray, new Comparator<Map.Entry<String, String>>() {
-            public int compare(Map.Entry<String, String> o1, Map.Entry<String, String> o2) {
+        Collections.sort(paramsArray, new Comparator<Entry<String, String>>() {
+            public int compare(Entry<String, String> o1, Entry<String, String> o2) {
                 return (o1.getKey()).toString().compareTo(o2.getKey());
             }
         });

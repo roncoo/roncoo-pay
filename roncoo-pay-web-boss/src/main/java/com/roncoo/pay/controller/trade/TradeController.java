@@ -15,17 +15,6 @@
  */
 package com.roncoo.pay.controller.trade;
 
-import javax.servlet.http.HttpServletRequest;
-
-import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.roncoo.pay.common.core.enums.PayTypeEnum;
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.page.PageBean;
@@ -33,7 +22,16 @@ import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import com.roncoo.pay.trade.enums.TrxTypeEnum;
 import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
+import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
 import com.roncoo.pay.user.enums.FundInfoTypeEnum;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 交易管理
@@ -47,8 +45,8 @@ public class TradeController {
     @Autowired
     private RpTradePaymentQueryService rpTradePaymentQueryService;
     @RequiresPermissions("trade:order:view")
-    @RequestMapping(value = "/listPaymentOrder", method ={RequestMethod.POST,RequestMethod.GET})
-    public String listPaymentOrder(HttpServletRequest request,PaymentOrderQueryParam paymentOrderQueryParam,PageParam pageParam, Model model) {
+    @RequestMapping(value = "/listPaymentOrder", method ={RequestMethod.POST, RequestMethod.GET})
+    public String listPaymentOrder(HttpServletRequest request, PaymentOrderQueryParam paymentOrderQueryParam, PageParam pageParam, Model model) {
         PageBean pageBean = rpTradePaymentQueryService.listPaymentOrderPage(pageParam, paymentOrderQueryParam);
         model.addAttribute("pageBean", pageBean);
         model.addAttribute("pageParam", pageParam);
@@ -63,8 +61,8 @@ public class TradeController {
     }
 
     @RequiresPermissions("trade:record:view")
-    @RequestMapping(value = "/listPaymentRecord", method ={RequestMethod.POST,RequestMethod.GET})
-    public String listPaymentRecord(HttpServletRequest request,PaymentOrderQueryParam paymentOrderQueryParam,PageParam pageParam, Model model) {
+    @RequestMapping(value = "/listPaymentRecord", method ={RequestMethod.POST, RequestMethod.GET})
+    public String listPaymentRecord(HttpServletRequest request, PaymentOrderQueryParam paymentOrderQueryParam, PageParam pageParam, Model model) {
         PageBean pageBean = rpTradePaymentQueryService.listPaymentRecordPage(pageParam, paymentOrderQueryParam);
         model.addAttribute("pageBean", pageBean);
         model.addAttribute("pageParam", pageParam);

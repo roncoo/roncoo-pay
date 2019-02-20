@@ -15,14 +15,6 @@
  */
 package com.roncoo.pay.controller.pay;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.roncoo.pay.common.core.dwz.DWZ;
 import com.roncoo.pay.common.core.dwz.DwzAjax;
 import com.roncoo.pay.common.core.enums.PublicEnum;
@@ -30,6 +22,13 @@ import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.user.entity.RpPayProduct;
 import com.roncoo.pay.user.service.RpPayProductService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 支付产品管理
@@ -52,7 +51,7 @@ public class PayProductController{
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/list", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/list", method ={RequestMethod.POST, RequestMethod.GET})
 	public String list(RpPayProduct rpPayProduct, PageParam pageParam, Model model) {
 		PageBean pageBean = rpPayProductService.listPage(pageParam, rpPayProduct);
 		model.addAttribute("pageBean", pageBean);
@@ -84,7 +83,7 @@ public class PayProductController{
 	 */
 	@RequiresPermissions("pay:product:add")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(Model model, RpPayProduct rpPayProduct,DwzAjax dwz) {
+	public String add(Model model, RpPayProduct rpPayProduct, DwzAjax dwz) {
 		rpPayProductService.createPayProduct(rpPayProduct.getProductCode(), rpPayProduct.getProductName());
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);
@@ -100,7 +99,7 @@ public class PayProductController{
 	 * @throws
 	 */
 	@RequiresPermissions("pay:product:delete")
-	@RequestMapping(value = "/delete", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/delete", method ={RequestMethod.POST, RequestMethod.GET})
 	public String delete(Model model, DwzAjax dwz, @RequestParam("productCode") String productCode) {
 		rpPayProductService.deletePayProduct(productCode);
 		dwz.setStatusCode(DWZ.SUCCESS);
@@ -117,7 +116,7 @@ public class PayProductController{
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/lookupList", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/lookupList", method ={RequestMethod.POST, RequestMethod.GET})
 	public String lookupList(RpPayProduct rpPayProduct, PageParam pageParam, Model model) {
 		//查询已生效数据
 		rpPayProduct.setAuditStatus(PublicEnum.YES.name());
@@ -136,7 +135,7 @@ public class PayProductController{
 	 * @throws
 	 */
 	@RequiresPermissions("pay:product:add")
-	@RequestMapping(value = "/audit", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/audit", method ={RequestMethod.POST, RequestMethod.GET})
 	public String audit(Model model, DwzAjax dwz, @RequestParam("productCode") String productCode
 			, @RequestParam("auditStatus") String auditStatus) {
 		rpPayProductService.audit(productCode, auditStatus);

@@ -15,15 +15,14 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
+import com.roncoo.pay.permission.dao.PmsRolePermissionDao;
+import com.roncoo.pay.permission.entity.PmsRolePermission;
+import org.springframework.stereotype.Repository;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
-
-import com.roncoo.pay.permission.dao.PmsRolePermissionDao;
-import com.roncoo.pay.permission.entity.PmsRolePermission;
 
 /**
  * 权限-角色与权限点dao实现
@@ -43,7 +42,7 @@ public class PmsRolePermissionDaoImpl extends PermissionBaseDaoImpl<PmsRolePermi
 	 * @return rolePermissionList .
 	 */
 	public List<PmsRolePermission> listByRoleId(final long roleId) {
-		return super.getSqlSession().selectList(getStatement("listByRoleId"), roleId);
+		return super.getSessionTemplate().selectList(getStatement("listByRoleId"), roleId);
 	}
 
 	/**
@@ -54,17 +53,17 @@ public class PmsRolePermissionDaoImpl extends PermissionBaseDaoImpl<PmsRolePermi
 	 */
 	public List<PmsRolePermission> listByRoleIds(String roleIdsStr) {
 		List<String> roldIds = Arrays.asList(roleIdsStr.split(","));
-		return super.getSqlSession().selectList(getStatement("listByRoleIds"), roldIds);
+		return super.getSessionTemplate().selectList(getStatement("listByRoleIds"), roldIds);
 	}
 	
 	public void deleteByRoleIdAndPermissionId(Long roleId, Long permissionId){
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("roleId", roleId);
 		paramMap.put("permissionId", permissionId);
-		super.getSqlSession().delete(getStatement("deleteByRoleIdAndPermissionId"), paramMap);
+		super.getSessionTemplate().delete(getStatement("deleteByRoleIdAndPermissionId"), paramMap);
 	}
 	
 	public void deleteByRoleId(Long roleId){
-		super.getSqlSession().delete(getStatement("deleteByRoleId"), roleId);
+		super.getSessionTemplate().delete(getStatement("deleteByRoleId"), roleId);
 	}
 }

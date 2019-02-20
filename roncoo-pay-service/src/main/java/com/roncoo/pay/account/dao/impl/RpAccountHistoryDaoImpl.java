@@ -19,11 +19,10 @@ import com.roncoo.pay.account.dao.RpAccountHistoryDao;
 import com.roncoo.pay.account.entity.RpAccountHistory;
 import com.roncoo.pay.account.vo.DailyCollectAccountHistoryVo;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
 
 
 /**
@@ -32,7 +31,7 @@ import org.springframework.stereotype.Repository;
  * @author：zenghao
  */
 @Repository
-public class RpAccountHistoryDaoImpl  extends BaseDaoImpl<RpAccountHistory> implements RpAccountHistoryDao{
+public class RpAccountHistoryDaoImpl  extends BaseDaoImpl<RpAccountHistory> implements RpAccountHistoryDao {
 	
 	public List<RpAccountHistory> listPageByParams(Map<String, Object> params){
 		return this.listBy(params);

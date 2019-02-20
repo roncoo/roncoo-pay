@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.permission.dao;
 
+import com.roncoo.pay.permission.entity.PmsMenu;
+
 import java.util.List;
 import java.util.Map;
-
-import com.roncoo.pay.permission.entity.PmsMenu;
 
 /**
  * 权限菜单

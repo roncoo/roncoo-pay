@@ -15,15 +15,14 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
+import com.roncoo.pay.permission.dao.PmsPermissionDao;
+import com.roncoo.pay.permission.entity.PmsPermission;
+import org.springframework.stereotype.Repository;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
-
-import com.roncoo.pay.permission.dao.PmsPermissionDao;
-import com.roncoo.pay.permission.entity.PmsPermission;
 
 /**
  * 权限功能点dao实现
@@ -43,7 +42,7 @@ public class PmsPermissionDaoImpl extends PermissionBaseDaoImpl<PmsPermission> i
 	 */
 	public List<PmsPermission> findByIds(String idStr) {
 		List<String> ids = Arrays.asList(idStr.split(","));
-		return this.getSqlSession().selectList(getStatement("findByIds"), ids);
+		return this.getSessionTemplate().selectList(getStatement("findByIds"), ids);
 	}
 
 	/**
@@ -53,7 +52,7 @@ public class PmsPermissionDaoImpl extends PermissionBaseDaoImpl<PmsPermission> i
 	 * @return
 	 */
 	public PmsPermission getByPermissionName(String permissionName) {
-		return this.getSqlSession().selectOne(getStatement("getByPermissionName"), permissionName);
+		return this.getSessionTemplate().selectOne(getStatement("getByPermissionName"), permissionName);
 
 	}
 
@@ -64,7 +63,7 @@ public class PmsPermissionDaoImpl extends PermissionBaseDaoImpl<PmsPermission> i
 	 * @return
 	 */
 	public PmsPermission getByPermission(String permission) {
-		return this.getSqlSession().selectOne(getStatement("getByPermission"), permission);
+		return this.getSessionTemplate().selectOne(getStatement("getByPermission"), permission);
 	}
 
 	/**
@@ -78,7 +77,7 @@ public class PmsPermissionDaoImpl extends PermissionBaseDaoImpl<PmsPermission> i
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("permissionName", permissionName);
 		paramMap.put("id", id);
-		return this.getSqlSession().selectOne(getStatement("getByPermissionNameNotEqId"), paramMap);
+		return this.getSessionTemplate().selectOne(getStatement("getByPermissionNameNotEqId"), paramMap);
 	}
 
 	/**
@@ -90,6 +89,6 @@ public class PmsPermissionDaoImpl extends PermissionBaseDaoImpl<PmsPermission> i
 	public List<PmsPermission> listAllByMenuId(Long menuId) {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("menuId", menuId);
-		return this.getSqlSession().selectList(getStatement("listAllByMenuId"), param);
+		return this.getSessionTemplate().selectList(getStatement("listAllByMenuId"), param);
 	}
 }

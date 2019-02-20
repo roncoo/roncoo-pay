@@ -18,7 +18,6 @@ package com.roncoo.pay.reconciliation.dao.impl;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import com.roncoo.pay.reconciliation.dao.RpAccountCheckMistakeScratchPoolDao;
 import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistakeScratchPool;
-
 import org.springframework.stereotype.Repository;
 
 /**

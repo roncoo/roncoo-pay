@@ -15,13 +15,6 @@
  */
 package com.roncoo.pay.user.service.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.roncoo.pay.common.core.enums.PublicEnum;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
 import com.roncoo.pay.common.core.utils.StringUtil;
@@ -29,6 +22,12 @@ import com.roncoo.pay.user.dao.RpUserBankAccountDao;
 import com.roncoo.pay.user.entity.RpUserBankAccount;
 import com.roncoo.pay.user.enums.BankCodeEnum;
 import com.roncoo.pay.user.service.RpUserBankAccountService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户银行账户service实现类
@@ -36,7 +35,7 @@ import com.roncoo.pay.user.service.RpUserBankAccountService;
  * @author：zenghao
  */
 @Service("rpUserBankAccountService")
-public class RpUserBankAccountServiceImpl implements RpUserBankAccountService{
+public class RpUserBankAccountServiceImpl implements RpUserBankAccountService {
 
 	@Autowired
 	private RpUserBankAccountDao rpUserBankAccountDao;

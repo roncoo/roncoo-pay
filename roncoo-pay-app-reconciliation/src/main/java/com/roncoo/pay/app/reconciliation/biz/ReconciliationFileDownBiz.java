@@ -15,16 +15,15 @@
  */
 package com.roncoo.pay.app.reconciliation.biz;
 
-import java.io.File;
-import java.util.Date;
-
+import com.roncoo.pay.common.core.utils.StringUtil;
+import com.roncoo.pay.reconciliation.fileDown.service.ReconciliationFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.roncoo.pay.common.core.utils.StringUtil;
-import com.roncoo.pay.reconciliation.fileDown.service.ReconciliationFactory;
+import java.io.File;
+import java.util.Date;
 
 /**
  * 对账文件下载业务逻辑.

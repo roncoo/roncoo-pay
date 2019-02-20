@@ -87,6 +87,7 @@ public class WeiXinPayUtils {
             for (Element e : elementList) {
                 map.put(e.getName(), e.getText());
             }
+            LOG.info("微信查询返回结果:"+map.toString());
             inputStreamReader.close();
             inputStream.close();
             inputStream = null;

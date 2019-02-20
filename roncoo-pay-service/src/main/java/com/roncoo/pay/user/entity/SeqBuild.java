@@ -15,9 +15,9 @@
  */
 package com.roncoo.pay.user.entity;
 
-import java.io.Serializable;
-
 import com.roncoo.pay.common.core.entity.BaseEntity;
+
+import java.io.Serializable;
 
 /**
  * 此实体没有关联的表，只作用于序列查找时传参使用 

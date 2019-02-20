@@ -16,7 +16,6 @@
 package com.roncoo.pay.user.exception;
 
 import com.roncoo.pay.common.core.exception.BizException;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

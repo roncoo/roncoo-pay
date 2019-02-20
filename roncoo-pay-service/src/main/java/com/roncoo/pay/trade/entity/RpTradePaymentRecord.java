@@ -15,16 +15,16 @@
  */
 package com.roncoo.pay.trade.entity;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
-
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.enums.PayTypeEnum;
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import com.roncoo.pay.trade.enums.TrxTypeEnum;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <b>功能说明:商户支付记录实体类</b>
@@ -537,7 +537,7 @@ public class RpTradePaymentRecord extends BaseEntity implements Serializable {
     }
     
     public String getPayWayNameDesc() {
-    	return PayWayEnum.getEnum(this.getPayWayCode()).getDesc()+"-"+PayTypeEnum.getEnum(this.getPayTypeCode()).getDesc();
+    	return PayWayEnum.getEnum(this.getPayWayCode()).getDesc()+"-"+ PayTypeEnum.getEnum(this.getPayTypeCode()).getDesc();
     }
     
     public String getStatusDesc() {

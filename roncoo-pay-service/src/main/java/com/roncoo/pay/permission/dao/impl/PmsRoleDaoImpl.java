@@ -15,14 +15,13 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
+import com.roncoo.pay.permission.dao.PmsRoleDao;
+import com.roncoo.pay.permission.entity.PmsRole;
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
-
-import com.roncoo.pay.permission.dao.PmsRoleDao;
-import com.roncoo.pay.permission.entity.PmsRole;
 
 /**
  * 权限角色dao实现
@@ -40,7 +39,7 @@ public class PmsRoleDaoImpl extends PermissionBaseDaoImpl<PmsRole> implements Pm
 	 * @return roleList .
 	 */
 	public List<PmsRole> listAll() {
-		return super.getSqlSession().selectList(getStatement("listAll"));
+		return super.getSessionTemplate().selectList(getStatement("listAll"));
 	}
 
 	/**
@@ -50,7 +49,7 @@ public class PmsRoleDaoImpl extends PermissionBaseDaoImpl<PmsRole> implements Pm
 	 * @return
 	 */
 	public List<PmsRole> listByPermissionId(Long permissionId) {
-		return super.getSqlSession().selectList(getStatement("listByPermissionId"), permissionId);
+		return super.getSessionTemplate().selectList(getStatement("listByPermissionId"), permissionId);
 	}
 
 	/**
@@ -64,6 +63,6 @@ public class PmsRoleDaoImpl extends PermissionBaseDaoImpl<PmsRole> implements Pm
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("roleName", roleName);
 		paramMap.put("roleCode", roleCode);
-		return super.getSqlSession().selectOne(getStatement("getByRoleNameOrRoleCode"), paramMap);
+		return super.getSessionTemplate().selectOne(getStatement("getByRoleNameOrRoleCode"), paramMap);
 	}
 }

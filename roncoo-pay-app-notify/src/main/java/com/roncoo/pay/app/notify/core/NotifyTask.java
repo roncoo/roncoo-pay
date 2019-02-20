@@ -16,7 +16,7 @@
 package com.roncoo.pay.app.notify.core;
 
 import com.alibaba.fastjson.JSONObject;
-import com.roncoo.pay.app.notify.App;
+import com.roncoo.pay.AppNotifyApplication;
 import com.roncoo.pay.app.notify.entity.NotifyParam;
 import com.roncoo.pay.common.core.exception.BizException;
 import com.roncoo.pay.notify.entity.RpNotifyRecord;
@@ -48,7 +48,7 @@ public class NotifyTask implements Runnable, Delayed {
 
     private NotifyParam notifyParam;
 
-    private NotifyPersist notifyPersist = App.notifyPersist;
+    private NotifyPersist notifyPersist = AppNotifyApplication.notifyPersist;
 
     public NotifyTask() {
     }

@@ -15,9 +15,9 @@
  */
 package com.roncoo.pay.common.core.entity;
 
-import java.util.Date;
-
 import com.roncoo.pay.common.core.utils.StringUtil;
+
+import java.util.Date;
 
 /**
  * 基类.

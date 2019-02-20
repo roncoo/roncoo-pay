@@ -101,7 +101,7 @@ public class RpTradePaymentQueryServiceImpl implements RpTradePaymentQueryServic
 	}
 
 
-	private String getMerchantNotifyUrl(RpTradePaymentRecord rpTradePaymentRecord ,RpTradePaymentOrder rpTradePaymentOrder ,String sourceUrl , TradeStatusEnum tradeStatusEnum){
+	private String getMerchantNotifyUrl(RpTradePaymentRecord rpTradePaymentRecord , RpTradePaymentOrder rpTradePaymentOrder , String sourceUrl , TradeStatusEnum tradeStatusEnum){
 
 		RpUserPayConfig rpUserPayConfig = rpUserPayConfigService.getByUserNo(rpTradePaymentRecord.getMerchantNo());
 		if (rpUserPayConfig == null){

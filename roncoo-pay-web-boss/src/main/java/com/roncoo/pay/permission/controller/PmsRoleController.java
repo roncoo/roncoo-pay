@@ -15,11 +15,16 @@
  */
 package com.roncoo.pay.permission.controller;
 
-import java.util.Date;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import com.roncoo.pay.common.core.dwz.DwzAjax;
+import com.roncoo.pay.common.core.page.PageBean;
+import com.roncoo.pay.common.core.page.PageParam;
+import com.roncoo.pay.controller.common.BaseController;
+import com.roncoo.pay.permission.entity.PmsOperator;
+import com.roncoo.pay.permission.entity.PmsPermission;
+import com.roncoo.pay.permission.entity.PmsRole;
+import com.roncoo.pay.permission.enums.OperatorTypeEnum;
+import com.roncoo.pay.permission.service.*;
+import com.roncoo.pay.permission.utils.ValidateUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,22 +35,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.roncoo.pay.common.core.dwz.DwzAjax;
-import com.roncoo.pay.common.core.page.PageBean;
-import com.roncoo.pay.common.core.page.PageParam;
-import com.roncoo.pay.controller.common.BaseController;
-import com.roncoo.pay.permission.biz.PmsMenuBiz;
-import com.roncoo.pay.permission.entity.PmsOperator;
-import com.roncoo.pay.permission.entity.PmsPermission;
-import com.roncoo.pay.permission.entity.PmsRole;
-import com.roncoo.pay.permission.enums.OperatorTypeEnum;
-import com.roncoo.pay.permission.service.PmsMenuRoleService;
-import com.roncoo.pay.permission.service.PmsMenuService;
-import com.roncoo.pay.permission.service.PmsOperatorRoleService;
-import com.roncoo.pay.permission.service.PmsPermissionService;
-import com.roncoo.pay.permission.service.PmsRolePermissionService;
-import com.roncoo.pay.permission.service.PmsRoleService;
-import com.roncoo.pay.permission.utils.ValidateUtils;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 权限管理模块角色管理、.<br/>

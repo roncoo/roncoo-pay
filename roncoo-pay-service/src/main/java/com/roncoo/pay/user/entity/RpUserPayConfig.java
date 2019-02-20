@@ -15,12 +15,12 @@
  */
 package com.roncoo.pay.user.entity;
 
-import java.io.Serializable;
-
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.enums.PublicEnum;
 import com.roncoo.pay.common.core.enums.SecurityRatingEnum;
 import com.roncoo.pay.user.enums.FundInfoTypeEnum;
+
+import java.io.Serializable;
 
 /**
  * 用户支付配置实体类
