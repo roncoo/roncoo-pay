@@ -62,8 +62,7 @@ public class ReconciliationTask {
 	@Autowired
 	private BuildNoService buildNoService;
 
-//	@Scheduled(cron = "0 15 10 * * ?")
-	@Scheduled(cron = "*/5 * * * * ?")
+	@Scheduled(cron = "0 0 1 * * ?")
 	public void taskRun() {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");

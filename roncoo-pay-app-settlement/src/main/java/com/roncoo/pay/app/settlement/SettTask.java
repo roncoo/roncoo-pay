@@ -37,7 +37,7 @@ public class SettTask {
 	@Autowired
 	private SettScheduled settScheduled;
 
-	@Scheduled(cron = "0 0 1 * * ?")
+	@Scheduled(cron = "0 0 2 * * ?")
 	public void runTask() {
 
 		try {
