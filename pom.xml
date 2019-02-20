@@ -42,7 +42,7 @@
 		<!--支付网关web-->
 		<module>roncoo-pay-web-gateway</module>
 		<!--商户后台-->
-		<module>roncoo-pay-web-merchant</module>
+			<module>roncoo-pay-web-merchant</module>
 		<!--模拟工程-->
 		<module>roncoo-pay-web-sample-shop</module>
 	</modules>
