@@ -5,7 +5,7 @@ server:
       timeout: 30m
 spring:
   application:
-    name: roncoo-pay-spring-boot-web-merchant
+    name: roncoo-pay-web-merchant
   mvc:
     view:
       prefix: /jsp/
