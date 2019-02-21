@@ -1,20 +1,18 @@
 package com.roncoo.pay.permission.shiro.filter;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Random;
+import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.imageio.ImageIO;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.web.filter.OncePerRequestFilter;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.Random;
 
 /**
  * 定义验证码拦截器 生成验证码方式：<br/>
@@ -25,6 +23,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
  * 
  * @author：shenjialong
  */
+@WebFilter(filterName = "rcCaptchaFilter", asyncSupported = true, urlPatterns = "/rcCaptcha.jpg")
 public class RcCaptchaFilter extends OncePerRequestFilter {
 
 	@Override

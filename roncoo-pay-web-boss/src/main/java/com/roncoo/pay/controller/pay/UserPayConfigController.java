@@ -19,6 +19,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.roncoo.pay.common.core.enums.SecurityRatingEnum;
 import com.roncoo.pay.common.core.utils.StringUtil;
+import com.roncoo.pay.user.service.RpUserBankAccountService;
+import com.roncoo.pay.user.service.RpUserInfoService;
+import com.roncoo.pay.user.service.RpUserPayConfigService;
+import com.roncoo.pay.user.service.RpUserPayInfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,10 +44,6 @@ import com.roncoo.pay.user.enums.BankAccountTypeEnum;
 import com.roncoo.pay.user.enums.BankCodeEnum;
 import com.roncoo.pay.user.enums.CardTypeEnum;
 import com.roncoo.pay.user.enums.FundInfoTypeEnum;
-import com.roncoo.pay.user.service.RpUserBankAccountService;
-import com.roncoo.pay.user.service.RpUserInfoService;
-import com.roncoo.pay.user.service.RpUserPayConfigService;
-import com.roncoo.pay.user.service.RpUserPayInfoService;
 
 /**
  * 用户支付设置管理

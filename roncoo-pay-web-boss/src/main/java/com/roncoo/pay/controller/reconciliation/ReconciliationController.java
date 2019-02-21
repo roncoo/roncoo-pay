@@ -20,6 +20,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -44,7 +45,6 @@ import com.roncoo.pay.reconciliation.service.RpAccountCheckBatchService;
 import com.roncoo.pay.reconciliation.service.RpAccountCheckMistakeScratchPoolService;
 import com.roncoo.pay.reconciliation.service.RpAccountCheckMistakeService;
 import com.roncoo.pay.reconciliation.service.RpAccountCheckTransactionService;
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
 
 /**
  * 

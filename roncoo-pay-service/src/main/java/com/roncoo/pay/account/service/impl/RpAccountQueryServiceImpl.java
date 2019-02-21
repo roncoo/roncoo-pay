@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.roncoo.pay.account.exception.AccountBizException;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,6 @@ import com.roncoo.pay.account.dao.RpAccountDao;
 import com.roncoo.pay.account.dao.RpAccountHistoryDao;
 import com.roncoo.pay.account.entity.RpAccount;
 import com.roncoo.pay.account.entity.RpAccountHistory;
-import com.roncoo.pay.account.exception.AccountBizException;
 import com.roncoo.pay.account.service.RpAccountQueryService;
 import com.roncoo.pay.account.vo.DailyCollectAccountHistoryVo;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;

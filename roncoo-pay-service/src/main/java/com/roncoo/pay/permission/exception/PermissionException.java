@@ -1,10 +1,8 @@
 package com.roncoo.pay.permission.exception;
 
+import com.roncoo.pay.common.core.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.roncoo.pay.account.exception.AccountBizException;
-import com.roncoo.pay.common.core.exception.BizException;
 
 /**
  * 管理系统权限模块异常.

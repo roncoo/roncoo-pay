@@ -15,11 +15,10 @@
  */
 package com.roncoo.pay.app.settlement;
 
+import com.roncoo.pay.app.settlement.scheduled.SettScheduled;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.roncoo.pay.app.settlement.scheduled.SettScheduled;
 
 /**
  * 结算定时任务.(分商户统计账户历史进行汇总)

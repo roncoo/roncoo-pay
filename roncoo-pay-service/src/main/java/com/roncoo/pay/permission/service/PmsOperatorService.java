@@ -15,12 +15,9 @@
  */
 package com.roncoo.pay.permission.service;
 
-import java.util.List;
-
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.permission.entity.PmsOperator;
-import com.roncoo.pay.permission.entity.PmsOperatorRole;
 
 /**
  * 操作员service接口

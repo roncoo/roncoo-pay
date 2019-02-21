@@ -15,29 +15,26 @@
  */
 package com.roncoo.pay.common.core.dao.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.roncoo.pay.common.core.dao.BaseDao;
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.exception.BizException;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 据访问层基础支撑类.
  * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
  */
-public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSupport implements BaseDao<T> {
+public abstract class BaseDaoImpl<T extends BaseEntity>  implements BaseDao<T> {
 
     protected static final Log LOG = LogFactory.getLog(BaseDaoImpl.class);
 
@@ -73,9 +70,6 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
         this.sessionTemplate = sessionTemplate;
     }
 
-    public SqlSession getSqlSession() {
-        return super.getSqlSession();
-    }
 
     /**
      * 单条插入数据.

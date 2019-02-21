@@ -19,8 +19,8 @@ import java.util.List;
 
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
-import com.roncoo.pay.user.entity.RpUserPayConfig;
 import com.roncoo.pay.user.exception.PayBizException;
+import com.roncoo.pay.user.entity.RpUserPayConfig;
 
 /**
  *  用户支付配置service接口

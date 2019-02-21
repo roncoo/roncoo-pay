@@ -17,6 +17,8 @@ package com.roncoo.pay.controller.trade;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.roncoo.pay.trade.enums.TradeStatusEnum;
+import com.roncoo.pay.trade.enums.TrxTypeEnum;
 import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -30,8 +32,6 @@ import com.roncoo.pay.common.core.enums.PayTypeEnum;
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
-import com.roncoo.pay.trade.enums.TrxTypeEnum;
 import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
 import com.roncoo.pay.user.enums.FundInfoTypeEnum;
 
@@ -48,7 +48,7 @@ public class TradeController {
     private RpTradePaymentQueryService rpTradePaymentQueryService;
     @RequiresPermissions("trade:order:view")
     @RequestMapping(value = "/listPaymentOrder", method ={RequestMethod.POST,RequestMethod.GET})
-    public String listPaymentOrder(HttpServletRequest request,PaymentOrderQueryParam paymentOrderQueryParam,PageParam pageParam, Model model) {
+    public String listPaymentOrder(HttpServletRequest request, PaymentOrderQueryParam paymentOrderQueryParam, PageParam pageParam, Model model) {
         PageBean pageBean = rpTradePaymentQueryService.listPaymentOrderPage(pageParam, paymentOrderQueryParam);
         model.addAttribute("pageBean", pageBean);
         model.addAttribute("pageParam", pageParam);

@@ -22,10 +22,9 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import com.roncoo.pay.reconciliation.utils.https.HttpResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import com.roncoo.pay.reconciliation.utils.https.HttpResponse;
 
 /**
  * 

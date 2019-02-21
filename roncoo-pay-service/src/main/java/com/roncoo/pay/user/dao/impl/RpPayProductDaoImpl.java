@@ -15,11 +15,11 @@
  */
 package com.roncoo.pay.user.dao.impl;
 
+import com.roncoo.pay.user.entity.RpPayProduct;
 import org.springframework.stereotype.Repository;
 
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import com.roncoo.pay.user.dao.RpPayProductDao;
-import com.roncoo.pay.user.entity.RpPayProduct;
 
 /**
  * 支付产品dao实现类

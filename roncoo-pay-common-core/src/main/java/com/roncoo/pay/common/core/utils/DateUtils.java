@@ -15,6 +15,9 @@
  */
 package com.roncoo.pay.common.core.utils;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,8 +25,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
-import org.apache.log4j.Logger;
 
 /**
  * 日期工具类
@@ -53,7 +54,7 @@ public class DateUtils extends org.apache.commons.lang.time.DateUtils {
 	 */
 	public final static int COMP_MODEL_DATETIME = 3;
 
-	private static Logger logger = Logger.getLogger(DateUtils.class);
+	private static Log logger = LogFactory.getLog(DateUtils.class);
 
 	/**
 	 * 要用到的DATE Format的定义

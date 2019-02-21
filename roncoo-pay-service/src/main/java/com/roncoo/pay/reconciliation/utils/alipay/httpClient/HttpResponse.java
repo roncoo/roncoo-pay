@@ -2,9 +2,8 @@ package com.roncoo.pay.reconciliation.utils.alipay.httpClient;
 
 import java.io.UnsupportedEncodingException;
 
-import org.apache.commons.httpclient.Header;
-
 import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+import org.apache.commons.httpclient.Header;
 
 /* *
  *类名：HttpResponse

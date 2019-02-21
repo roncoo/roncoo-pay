@@ -15,14 +15,12 @@
  */
 package com.roncoo.pay.common.core.dao;
 
-import java.util.List;
-import java.util.Map;
-
-import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.SqlSessionTemplate;
-
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
+import org.mybatis.spring.SqlSessionTemplate;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * 数据访问层基础支撑接口.
@@ -176,5 +174,4 @@ public interface BaseDao<T> {
 
     public SqlSessionTemplate getSessionTemplate();
 
-    public SqlSession getSqlSession();
 }

@@ -1,8 +1,8 @@
 package com.roncoo.pay.trade.service.impl;
 
 import com.roncoo.pay.trade.dao.RpUserBankAuthDao;
-import com.roncoo.pay.trade.entity.RpUserBankAuth;
 import com.roncoo.pay.trade.service.RpUserBankAuthService;
+import com.roncoo.pay.trade.entity.RpUserBankAuth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

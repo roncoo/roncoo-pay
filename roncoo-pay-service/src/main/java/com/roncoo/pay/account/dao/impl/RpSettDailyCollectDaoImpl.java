@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.account.dao.impl;
 
+import com.roncoo.pay.account.entity.RpSettDailyCollect;
 import org.springframework.stereotype.Repository;
 
 import com.roncoo.pay.account.dao.RpSettDailyCollectDao;
-import com.roncoo.pay.account.entity.RpSettDailyCollect;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 
 /**

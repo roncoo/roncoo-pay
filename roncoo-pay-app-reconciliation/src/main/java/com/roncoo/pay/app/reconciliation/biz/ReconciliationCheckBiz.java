@@ -19,6 +19,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,6 @@ import com.roncoo.pay.reconciliation.service.RpAccountCheckMistakeScratchPoolSer
 import com.roncoo.pay.reconciliation.service.RpAccountCheckTransactionService;
 import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
 import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
 
 /**
  * 对账的核心业务biz.

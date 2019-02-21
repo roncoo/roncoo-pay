@@ -19,11 +19,10 @@ import com.roncoo.pay.account.dao.RpAccountDao;
 import com.roncoo.pay.account.entity.RpAccount;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
 
 
 /**

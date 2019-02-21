@@ -537,7 +537,7 @@ public class RpTradePaymentRecord extends BaseEntity implements Serializable {
     }
     
     public String getPayWayNameDesc() {
-    	return PayWayEnum.getEnum(this.getPayWayCode()).getDesc()+"-"+PayTypeEnum.getEnum(this.getPayTypeCode()).getDesc();
+    	return PayWayEnum.getEnum(this.getPayWayCode()).getDesc()+"-"+ PayTypeEnum.getEnum(this.getPayTypeCode()).getDesc();
     }
     
     public String getStatusDesc() {

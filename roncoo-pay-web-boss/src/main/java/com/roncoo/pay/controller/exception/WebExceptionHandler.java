@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.roncoo.pay.common.core.dwz.DWZ;
 import com.roncoo.pay.common.core.dwz.DwzAjax;
 import com.roncoo.pay.common.core.exception.BizException;
-import com.roncoo.pay.permission.exception.PermissionException;
 
 /**
  * Spring异常拦截器.
