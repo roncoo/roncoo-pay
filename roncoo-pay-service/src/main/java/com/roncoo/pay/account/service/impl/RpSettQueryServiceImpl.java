@@ -15,11 +15,6 @@
  */
 package com.roncoo.pay.account.service.impl;
 
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.roncoo.pay.account.dao.RpSettDailyCollectDao;
 import com.roncoo.pay.account.dao.RpSettRecordDao;
 import com.roncoo.pay.account.entity.RpSettRecord;
@@ -27,6 +22,10 @@ import com.roncoo.pay.account.service.RpSettQueryService;
 import com.roncoo.pay.common.core.exception.BizException;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * 结算查询service实现类
@@ -51,7 +50,7 @@ public class RpSettQueryServiceImpl implements RpSettQueryService {
 	 * @return
 	 * @throws BizException
 	 */
-	public PageBean querySettRecordListPage(PageParam pageParam, Map<String, Object> params) throws BizException{
+	public PageBean querySettRecordListPage(PageParam pageParam, Map<String, Object> params) throws BizException {
 		return rpSettRecordDao.listPage(pageParam, params);
 	}
 
@@ -65,7 +64,7 @@ public class RpSettQueryServiceImpl implements RpSettQueryService {
 	 * @return
 	 * @throws BizException
 	 */
-	public PageBean querySettDailyCollectListPage(PageParam pageParam, Map<String, Object> params) throws BizException{
+	public PageBean querySettDailyCollectListPage(PageParam pageParam, Map<String, Object> params) throws BizException {
 		return settDailyCollectMapper.listPage(pageParam, params);
 	}
 	

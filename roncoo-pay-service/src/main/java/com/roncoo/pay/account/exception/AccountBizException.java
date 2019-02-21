@@ -15,10 +15,9 @@
  */
 package com.roncoo.pay.account.exception;
 
+import com.roncoo.pay.common.core.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.roncoo.pay.common.core.exception.BizException;
 
 /**
  * 账户服务业务异常类,异常代码8位数字组成,前4位固定1001打头,后4位自定义

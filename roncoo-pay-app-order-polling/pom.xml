@@ -10,7 +10,7 @@
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.roncoo.pay.app</groupId>
+	<groupId>com.roncoo.pay</groupId>
 	<artifactId>roncoo-pay-app-order-polling</artifactId>
 
 	<name>roncoo-pay-app-order-polling</name>

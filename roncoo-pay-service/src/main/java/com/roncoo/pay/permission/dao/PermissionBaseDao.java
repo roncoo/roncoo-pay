@@ -173,8 +173,7 @@ public interface PermissionBaseDao<T> {
 	 * @return：PageBean
 	 * @throws
 	 */
-	public PageBean listPage(PageParam pageParam, Map<String, Object> paramMap);
+	PageBean listPage(PageParam pageParam, Map<String, Object> paramMap);
 
-	public SqlSessionTemplate getSessionTemplate();
-
+	SqlSessionTemplate getSessionTemplate();
 }

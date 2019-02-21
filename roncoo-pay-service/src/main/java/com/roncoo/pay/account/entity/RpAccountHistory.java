@@ -15,13 +15,13 @@
  */
 package com.roncoo.pay.account.entity;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-
 import com.roncoo.pay.account.enums.AccountFundDirectionEnum;
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.trade.enums.TrxTypeEnum;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * 账户历史信息

@@ -1,12 +1,12 @@
 package com.roncoo.pay.reconciliation.utils.alipay;
 
+import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Map;
-
-import com.roncoo.pay.trade.utils.AlipayConfigUtil;
 
 /* *
  *类名：AlipayNotify

@@ -8,7 +8,7 @@
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
 
-	<groupId>com.roncoo.pay.app</groupId>
+	<groupId>com.roncoo.pay</groupId>
 	<artifactId>roncoo-pay-app-reconciliation</artifactId>
 
 	<name>roncoo-pay-app-reconciliation</name>
@@ -40,7 +40,6 @@
 		</dependency>
 	</dependencies>
 
-	<!-- 打包插件 -->
 	<build>
 		<finalName>${project.name}</finalName>
 

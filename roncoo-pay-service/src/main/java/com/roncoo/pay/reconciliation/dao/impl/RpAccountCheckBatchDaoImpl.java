@@ -16,9 +16,8 @@
 package com.roncoo.pay.reconciliation.dao.impl;
 
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
-import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
 import com.roncoo.pay.reconciliation.dao.RpAccountCheckBatchDao;
-
+import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
 import org.springframework.stereotype.Repository;
 
 /**

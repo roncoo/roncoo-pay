@@ -1,9 +1,8 @@
 package com.roncoo.pay.notify.dao.impl;
 
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
-import com.roncoo.pay.notify.entity.RpNotifyRecordLog;
 import com.roncoo.pay.notify.dao.RpNotifyRecordLogDao;
-
+import com.roncoo.pay.notify.entity.RpNotifyRecordLog;
 import org.springframework.stereotype.Repository;
 
 /**

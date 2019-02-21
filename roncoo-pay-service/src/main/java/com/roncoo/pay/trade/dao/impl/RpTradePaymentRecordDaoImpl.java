@@ -16,10 +16,9 @@
 package com.roncoo.pay.trade.dao.impl;
 
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import com.roncoo.pay.trade.dao.RpTradePaymentRecordDao;
 import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
-
+import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

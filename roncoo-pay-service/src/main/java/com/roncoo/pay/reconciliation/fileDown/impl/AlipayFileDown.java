@@ -15,6 +15,17 @@
  */
 package com.roncoo.pay.reconciliation.fileDown.impl;
 
+import com.roncoo.pay.common.core.utils.DateUtils;
+import com.roncoo.pay.reconciliation.fileDown.service.FileDown;
+import com.roncoo.pay.reconciliation.utils.alipay.AlipaySubmit;
+import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpProtocolHandler;
+import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpRequest;
+import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResponse;
+import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResultType;
+import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,18 +33,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.roncoo.pay.common.core.utils.DateUtils;
-import com.roncoo.pay.reconciliation.fileDown.service.FileDown;
-import com.roncoo.pay.trade.utils.AlipayConfigUtil;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import com.roncoo.pay.reconciliation.utils.alipay.AlipaySubmit;
-import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpProtocolHandler;
-import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpRequest;
-import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResponse;
-import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResultType;
 
 /**
  * 支付宝账单下载.

@@ -15,14 +15,6 @@
  */
 package com.roncoo.pay.controller.account;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.roncoo.pay.account.entity.RpAccount;
 import com.roncoo.pay.account.entity.RpAccountHistory;
 import com.roncoo.pay.account.service.RpAccountHistoryService;
@@ -31,6 +23,13 @@ import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.user.entity.RpUserInfo;
 import com.roncoo.pay.user.service.RpUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.List;
 
 /**
  * 账户信息
@@ -54,8 +53,8 @@ public class AccountController {
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/list", method ={RequestMethod.POST,RequestMethod.GET})
-	public String list(RpAccount rpAccount,PageParam pageParam, Model model) {
+	@RequestMapping(value = "/list", method ={RequestMethod.POST, RequestMethod.GET})
+	public String list(RpAccount rpAccount, PageParam pageParam, Model model) {
 		PageBean pageBean = rpAccountService.listPage(pageParam, rpAccount);
 		List<Object> recordList = pageBean.getRecordList();
 		for(Object obj : recordList){
@@ -76,8 +75,8 @@ public class AccountController {
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/historyList", method ={RequestMethod.POST,RequestMethod.GET})
-	public String historyList(RpAccountHistory rpAccountHistory,PageParam pageParam, Model model) {
+	@RequestMapping(value = "/historyList", method ={RequestMethod.POST, RequestMethod.GET})
+	public String historyList(RpAccountHistory rpAccountHistory, PageParam pageParam, Model model) {
 		PageBean pageBean = rpAccountHistoryService.listPage(pageParam, rpAccountHistory);
 		List<Object> recordList = pageBean.getRecordList();
 		for(Object obj : recordList){

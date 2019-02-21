@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.roncoo.pay</groupId>
-        <artifactId>roncoo-pay</artifactId>
-        <version>2.0.0-SNAPSHOT</version>
-    </parent>
+	<parent>
+		<groupId>com.roncoo.pay</groupId>
+		<artifactId>roncoo-pay</artifactId>
+		<version>2.0.0-SNAPSHOT</version>
+	</parent>
 
-    <groupId>com.roncoo.pay.common</groupId>
-    <artifactId>roncoo-pay-common-core</artifactId>
+	<groupId>com.roncoo.pay.common</groupId>
+	<artifactId>roncoo-pay-common-core</artifactId>
 
-    <name>roncoo-pay-common-core</name>
-    <description>core 是支付系统核心基础包</description>
+	<name>roncoo-pay-common-core</name>
+	<description>core 是支付系统核心基础包</description>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-    <dependencies>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
@@ -27,31 +27,31 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
         </dependency>
-        <!--spring boot-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
+		<!--spring boot-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+		</dependency>
 
-        <!--Alibaba-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
+		<!--Alibaba-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
 
-        <!--第三方jar-->
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-        </dependency>
+		<!--第三方jar-->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+		</dependency>
 
-    </dependencies>
+	</dependencies>
 
-    <build>
-        <finalName>${project.name}</finalName>
-    </build>
+	<build>
+		<finalName>${project.name}</finalName>
+	</build>
 </project>

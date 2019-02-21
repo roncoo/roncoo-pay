@@ -1,51 +1,49 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.roncoo.pay</groupId>
+        <artifactId>roncoo-pay</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
 
-  <parent>
-		<groupId>com.roncoo.pay</groupId>
-		<artifactId>roncoo-pay</artifactId>
-		<version>2.0.0-SNAPSHOT</version>
-  </parent>
+    <groupId>com.roncoo.pay</groupId>
+    <artifactId>roncoo-pay-app-settlement</artifactId>
 
-  <groupId>com.roncoo.pay.app</groupId>
-  <artifactId>roncoo-pay-app-settlement</artifactId>
+    <name>roncoo-pay-app-settlement</name>
+    <description>结算定时处理app，发起定时跑批处理，统计结算数据</description>
 
-  <name>roncoo-pay-app-settlement</name>
-	<description>结算定时处理app，发起定时跑批处理，统计结算数据</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.roncoo.pay.service</groupId>
+            <artifactId>roncoo-pay-service</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-  <dependencies>
-	  <dependency>
-		  <groupId>com.roncoo.pay.service</groupId>
-		  <artifactId>roncoo-pay-service</artifactId>
-	  </dependency>
-	  <dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-starter-web</artifactId>
-	  </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
 
-	  <dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-devtools</artifactId>
-		  <scope>runtime</scope>
-	  </dependency>
-	</dependencies>
+    <build>
+        <finalName>${project.name}</finalName>
 
-	<!-- 打包插件 -->
-	<build>
-		<finalName>${project.name}</finalName>
-
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

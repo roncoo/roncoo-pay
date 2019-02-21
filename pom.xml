@@ -23,6 +23,7 @@
 		<url>http://www.roncoo.com</url>
 	</organization>
 
+	<!--项目模块-->
 	<modules>
 		<!--平台通知消息的处理-->
 		<module>roncoo-pay-app-notify</module>
@@ -41,10 +42,24 @@
 		<!--支付网关web-->
 		<module>roncoo-pay-web-gateway</module>
 		<!--商户后台-->
-		<module>roncoo-pay-web-merchant</module>
+			<module>roncoo-pay-web-merchant</module>
 		<!--模拟工程-->
 		<module>roncoo-pay-web-sample-shop</module>
 	</modules>
+
+	<!-- 配置maven地址 -->
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://192.168.1.221:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://192.168.1.221:8081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<!--版本维护-->
 	<properties>
@@ -70,6 +85,7 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<!--版本管理-->
 	<dependencyManagement>
 		<dependencies>
 			<!--项目模块-->
@@ -160,11 +176,6 @@
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${commons-io.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.httpcomponents</groupId>
-				<artifactId>httpclient</artifactId>
-				<version>${httpclient.version}</version>
 			</dependency>
 
 		</dependencies>

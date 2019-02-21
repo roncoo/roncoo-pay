@@ -15,16 +15,16 @@
  */
 package com.roncoo.pay.trade.entity;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
-
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.enums.PayTypeEnum;
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import com.roncoo.pay.trade.enums.TrxTypeEnum;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * <b>功能说明:商户支付记录实体类</b>

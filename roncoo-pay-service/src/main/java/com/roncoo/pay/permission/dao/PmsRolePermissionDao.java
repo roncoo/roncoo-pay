@@ -15,9 +15,9 @@
  */
 package com.roncoo.pay.permission.dao;
 
-import java.util.List;
-
 import com.roncoo.pay.permission.entity.PmsRolePermission;
+
+import java.util.List;
 
 /**
  * 角色权限dao

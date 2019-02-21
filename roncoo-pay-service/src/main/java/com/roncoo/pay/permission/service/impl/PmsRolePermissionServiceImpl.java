@@ -15,25 +15,20 @@
  */
 package com.roncoo.pay.permission.service.impl;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.alibaba.druid.util.StringUtils;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.permission.dao.PmsPermissionDao;
 import com.roncoo.pay.permission.dao.PmsRolePermissionDao;
 import com.roncoo.pay.permission.entity.PmsPermission;
 import com.roncoo.pay.permission.entity.PmsRolePermission;
+import com.roncoo.pay.permission.service.PmsOperatorRoleService;
 import com.roncoo.pay.permission.service.PmsRolePermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.druid.util.StringUtils;
-import com.roncoo.pay.permission.service.PmsOperatorRoleService;
+import java.util.*;
 
 /**
  * 角色权限service接口实现

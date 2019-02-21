@@ -10,7 +10,7 @@ import org.springframework.cache.annotation.EnableCaching;
 @SpringBootApplication
 @EnableCaching
 @ServletComponentScan
-public class WebBossApplication extends SpringBootServletInitializer {
+public class WebBossApplication  extends SpringBootServletInitializer {
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

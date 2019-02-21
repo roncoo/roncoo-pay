@@ -9,7 +9,7 @@
         <version>2.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.roncoo.pay.common</groupId>
+    <groupId>com.roncoo.pay</groupId>
     <artifactId>roncoo-pay-app-notify</artifactId>
 
     <name>roncoo-app-notify</name>

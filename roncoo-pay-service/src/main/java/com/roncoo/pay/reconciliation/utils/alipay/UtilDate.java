@@ -1,10 +1,10 @@
 
 package com.roncoo.pay.reconciliation.utils.alipay;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
-import java.text.SimpleDateFormat;
-import java.text.DateFormat;
 
 /* *
  *类名：UtilDate

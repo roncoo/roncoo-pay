@@ -29,22 +29,22 @@ public class AppNotifyApplication {
     public static DelayQueue<NotifyTask> tasks = new DelayQueue<NotifyTask>();
 
     @Autowired
-    private ThreadPoolTaskExecutor threadPool;
+    private ThreadPoolTaskExecutor cacheThreadPool;
     @Autowired
-    public RpNotifyService rpNotifyService;
+    public RpNotifyService cacheRpNotifyService;
     @Autowired
-    private NotifyQueue notifyQueue;
+    private NotifyQueue cacheNotifyQueue;
     @Autowired
-    public NotifyPersist notifyPersist;
+    public NotifyPersist cacheNotifyPersist;
 
 
-    private static ThreadPoolTaskExecutor cacheThreadPool;
+    private static ThreadPoolTaskExecutor threadPool;
 
-    public static RpNotifyService cacheRpNotifyService;
+    public static RpNotifyService rpNotifyService;
 
-    private static NotifyQueue cacheNotifyQueue;
+    private static NotifyQueue notifyQueue;
 
-    public static NotifyPersist cacheNotifyPersist;
+    public static NotifyPersist notifyPersist;
 
     public static void main(String[] args) {
         SpringApplication.run(AppNotifyApplication.class, args);
@@ -52,10 +52,10 @@ public class AppNotifyApplication {
 
     @PostConstruct
     public void init() {
-        cacheThreadPool = threadPool;
-        cacheRpNotifyService = rpNotifyService;
-        cacheNotifyQueue = notifyQueue;
-        cacheNotifyPersist = notifyPersist;
+        threadPool = cacheThreadPool;
+        rpNotifyService = cacheRpNotifyService;
+        notifyQueue = cacheNotifyQueue;
+        notifyPersist = cacheNotifyPersist;
 
         startInitFromDB();
         startThread();
@@ -64,18 +64,18 @@ public class AppNotifyApplication {
     private static void startThread() {
         LOG.info("startThread");
 
-        cacheThreadPool.execute(new Runnable() {
+        threadPool.execute(new Runnable() {
             public void run() {
                 try {
                     while (true) {
                         Thread.sleep(50);//50毫秒执行一次
                         // 如果当前活动线程等于最大线程，那么不执行
-                        if (cacheThreadPool.getActiveCount() < cacheThreadPool.getMaxPoolSize()) {
+                        if (threadPool.getActiveCount() < threadPool.getMaxPoolSize()) {
                             final NotifyTask task = tasks.poll();
                             if (task != null) {
-                                cacheThreadPool.execute(new Runnable() {
+                                threadPool.execute(new Runnable() {
                                     public void run() {
-                                        LOG.info(cacheThreadPool.getActiveCount() + "---------");
+                                        LOG.info(threadPool.getActiveCount() + "---------");
                                         tasks.remove(task);
                                         task.run();
                                     }
@@ -110,19 +110,19 @@ public class AppNotifyApplication {
         paramMap.put("statusList", status);
         paramMap.put("notifyTimeList", notifyTime);
 
-        PageBean<RpNotifyRecord> pager = cacheRpNotifyService.queryNotifyRecordListPage(pageParam, paramMap);
+        PageBean<RpNotifyRecord> pager = rpNotifyService.queryNotifyRecordListPage(pageParam, paramMap);
         int totalSize = (pager.getNumPerPage() - 1) / numPerPage + 1;//总页数
         while (pageNum <= totalSize) {
             List<RpNotifyRecord> list = pager.getRecordList();
             for (int i = 0; i < list.size(); i++) {
                 RpNotifyRecord notifyRecord = list.get(i);
                 notifyRecord.setLastNotifyTime(new Date());
-                cacheNotifyQueue.addElementToList(notifyRecord);
+                notifyQueue.addElementToList(notifyRecord);
             }
             pageNum++;
             LOG.info(String.format("调用通知服务.rpNotifyService.queryNotifyRecordListPage(%s, %s, %s)", pageNum, numPerPage, paramMap));
             pageParam = new PageParam(pageNum, numPerPage);
-            pager = cacheRpNotifyService.queryNotifyRecordListPage(pageParam, paramMap);
+            pager = rpNotifyService.queryNotifyRecordListPage(pageParam, paramMap);
         }
     }
 

@@ -16,12 +16,6 @@
  */
 package com.roncoo.pay.permission.controller;
 
-import java.util.Date;
-import java.util.List;
-import java.util.regex.Pattern;
-
-import javax.servlet.http.HttpServletRequest;
-
 import com.roncoo.pay.common.core.dwz.DwzAjax;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
 import com.roncoo.pay.common.core.page.PageBean;
@@ -30,9 +24,11 @@ import com.roncoo.pay.controller.common.BaseController;
 import com.roncoo.pay.permission.entity.PmsOperator;
 import com.roncoo.pay.permission.entity.PmsOperatorRole;
 import com.roncoo.pay.permission.enums.OperatorTypeEnum;
+import com.roncoo.pay.permission.service.PmsOperatorRoleService;
 import com.roncoo.pay.permission.service.PmsOperatorService;
 import com.roncoo.pay.permission.service.PmsRoleService;
 import com.roncoo.pay.permission.utils.PasswordHelper;
+import com.roncoo.pay.permission.utils.ValidateUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -43,8 +39,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.roncoo.pay.permission.service.PmsOperatorRoleService;
-import com.roncoo.pay.permission.utils.ValidateUtils;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * 权限管理模块操作员管理
@@ -286,7 +284,6 @@ public class PmsOperatorController extends BaseController {
 	 * 
 	 * @return
 	 * */
-	@RequiresPermissions("pms:operator:delete")
 	@RequestMapping("/delete")
 	public String deleteOperatorStatus(HttpServletRequest req, Long id, Model model, DwzAjax dwz) {
 		pmsOperatorService.deleteOperatorById(id);

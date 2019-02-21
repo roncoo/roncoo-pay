@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.user.entity;
 
-import java.io.Serializable;
-
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
+
+import java.io.Serializable;
 
 /**
  * 用户信息

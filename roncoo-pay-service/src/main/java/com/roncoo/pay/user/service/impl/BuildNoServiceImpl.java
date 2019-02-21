@@ -15,20 +15,19 @@
  */
 package com.roncoo.pay.user.service.impl;
 
-import java.util.Date;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.alibaba.druid.util.StringUtils;
 import com.roncoo.pay.common.core.exception.BizException;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.user.dao.BuildNoDao;
 import com.roncoo.pay.user.entity.SeqBuild;
 import com.roncoo.pay.user.service.BuildNoService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 /**
  * 生成编号service实现类,每个编号前面都会有一个前缀用来方便区分是那种编号

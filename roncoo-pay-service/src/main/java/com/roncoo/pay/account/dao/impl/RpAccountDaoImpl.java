@@ -31,7 +31,7 @@ import java.util.Map;
  * @author：zenghao
  */
 @Repository
-public class RpAccountDaoImpl  extends BaseDaoImpl<RpAccount> implements RpAccountDao{
+public class RpAccountDaoImpl  extends BaseDaoImpl<RpAccount> implements RpAccountDao {
 	public RpAccount getByAccountNo(String accountNo){
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("accountNo", accountNo);

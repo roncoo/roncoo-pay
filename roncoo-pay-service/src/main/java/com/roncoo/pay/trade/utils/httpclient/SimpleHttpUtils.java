@@ -39,7 +39,7 @@ import java.util.Map.Entry;
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class SimpleHttpUtils {
-	private static Log logger = LogFactory.getLog(SimpleHttpUtils.class);
+	private static final Log logger = LogFactory.getLog(SimpleHttpUtils.class);
 
 	/**
 	 * 默认字符编码

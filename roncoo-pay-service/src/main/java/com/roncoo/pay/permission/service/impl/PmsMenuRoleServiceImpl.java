@@ -15,8 +15,7 @@
  */
 package com.roncoo.pay.permission.service.impl;
 
-import java.util.List;
-
+import com.alibaba.druid.util.StringUtils;
 import com.roncoo.pay.permission.dao.PmsMenuRoleDao;
 import com.roncoo.pay.permission.entity.PmsMenuRole;
 import com.roncoo.pay.permission.service.PmsMenuRoleService;
@@ -24,7 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.druid.util.StringUtils;
+import java.util.List;
 
 /**
  * 菜单角色service接口实现

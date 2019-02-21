@@ -57,7 +57,7 @@ public interface RpNotifyService {
 	 * @return
 	 */
 	public RpNotifyRecord getNotifyByMerchantNoAndMerchantOrderNoAndNotifyType(String merchantNo,
-			String merchantOrderNo, String notifyType);
+                                                                               String merchantOrderNo, String notifyType);
 
 	public PageBean<RpNotifyRecord> queryNotifyRecordListPage(PageParam pageParam, Map<String, Object> paramMap);
 

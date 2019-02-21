@@ -1,12 +1,12 @@
 /*
  * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
- *
+ *  
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ *  
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ *  
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -41,7 +41,7 @@ import java.util.List;
  * 对账处理(包括下载对账文件、转换对账文件、对账) .
  *
  * 龙果学院：www.roncoo.com
- *
+ * 
  * @author：shenjialong
  */
 @Component
@@ -72,7 +72,7 @@ public class ReconciliationTask {
 
 			@SuppressWarnings("rawtypes")
 			// 获取全部有效的对账接口(目前是写死了，可以做持久化到数据库，再查出来)
-					List reconciliationInterList = ReconciliationInterface.getInterface();
+			List reconciliationInterList = ReconciliationInterface.getInterface();
 
 			// 根据不同的渠道发起对账
 			for (int num = 0; num < reconciliationInterList.size(); num++) {
