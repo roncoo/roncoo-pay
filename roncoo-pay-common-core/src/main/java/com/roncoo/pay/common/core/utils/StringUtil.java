@@ -189,4 +189,18 @@ public final class StringUtil {
         return list;
     }
 
+    /**
+     * 判断对象是否为空
+     *
+     * @param obj
+     * @return
+     */
+    public static boolean isNotNull(Object obj) {
+        if (obj != null && obj.toString() != null && !"".equals(obj.toString().trim())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -1049,3 +1049,50 @@ alter table rp_user_info add pay_pwd varchar(50) comment '支付密码' default 
 alter table rp_user_pay_config add security_rating varchar(20)  comment '安全等级' default 'MD5';
 
 alter table rp_user_pay_config add merchant_server_ip varchar(200) comment '商户服务器IP';
+
+/*==============================小微商户进件==start=================================*/
+drop table if exists rp_micro_submit_record;
+create table rp_micro_submit_record
+(
+   id                   varchar(50) not null comment '编号',
+   version              int(11) not null default 0 comment '版本号',
+   create_time          datetime not null comment '创建时间',
+   creater              varchar(100) comment '创建者',
+   edit_time            datetime not null comment '修改时间',
+   editor               varchar(100) comment '修改者',
+   status               varchar(50) not null comment '状态',
+   business_code        varchar(32) not null comment '业务申请编号',
+   sub_mch_id           varchar(32) comment '小微商户号',
+   id_card_copy         varchar(256) not null comment '身份证人像面照片',
+   id_card_national     varchar(256) not null comment '身份证国徽面照片',
+   id_card_name         varchar(64) not null comment '身份证姓名',
+   id_card_number       varchar(18) not null comment '身份证号码',
+   id_card_valid_time   varchar(50) not null comment '身份证有效期限',
+   account_bank         varchar(50) not null comment '开户名称',
+   bank_address_code    varchar(6) not null comment '开户银行省市编码',
+   account_number       varchar(50) not null comment '银行账号',
+   store_name           varchar(128) not null comment '门店名称',
+   store_address_code   varchar(6) not null comment '门店省市编码',
+   store_street         varchar(500) not null comment '门店街道名称',
+   store_entrance_pic   varchar(256) not null comment '门店门口照片',
+   indoor_pic           varchar(256) not null comment '店内环境照片',
+   merchant_shortname   varchar(50) not null comment '商户简称',
+   service_phone        varchar(50) not null comment '客服电话',
+   product_desc         varchar(50) not null comment '服务描述',
+   rate                 varchar(50) not null comment '费率',
+   contact_phone        varchar(11) not null comment '手机号码',
+   primary key (id)
+);
+alter table rp_micro_submit_record comment '小微商户进件记录';
+
+--  菜单
+insert into pms_menu (id,version,status,creater,create_time, editor, edit_time, remark, name, url, number, is_leaf, level, parent_id, target_name) values
+(47,0, 'ACTIVE','roncoo','2016-06-03 11:07:43', 'admin','2016-06-03 11:07:43', '', '进件记录管理', '/trade/micro/submit/record/list', '00107', 'YES',2, 40, 'jjjlgl');
+
+-- 分账权限
+insert into pms_permission (id,version,status,creater,create_time, editor, edit_time, remark, permission_name, permission) values
+ (266, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','进件记录管理--查看','进件记录管理--查看','trade:micro:submit:record:list'),
+ (267, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','进件记录管理--添加','进件记录管理--添加','trade:micro:submit:record:add'),
+ (268, 0,'ACTIVE', 'roncoo','2016-06-03 11:07:43', 'test', '2016-06-03 11:07:43','进件记录管理--查询','进件记录管理--查询','trade:micro:submit:record:query');
+
+/*==============================小微商户进件==end=================================*/
