@@ -15,7 +15,7 @@
  */
 package com.roncoo.pay.app.polling.core;
 
-import com.roncoo.pay.app.polling.App;
+import com.roncoo.pay.AppOrderPollingApplication;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
 import org.slf4j.Logger;
@@ -38,7 +38,7 @@ public class PollingTask implements Runnable, Delayed {
 
     private long executeTime;
 
-    private PollingPersist pollingPersist = App.pollingPersist;
+    private PollingPersist pollingPersist = AppOrderPollingApplication.cachePollingPersist;
 
     private RpOrderResultQueryVo rpOrderResultQueryVo;
 

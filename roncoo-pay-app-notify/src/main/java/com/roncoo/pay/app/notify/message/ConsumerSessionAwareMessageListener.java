@@ -55,7 +55,7 @@ public class ConsumerSessionAwareMessageListener implements MessageListener {
     @Autowired
     private NotifyPersist notifyPersist;
 
-    @SuppressWarnings("static-access")
+    @Override
     public void onMessage(Message message) {
         try {
             ActiveMQTextMessage msg = (ActiveMQTextMessage) message;
