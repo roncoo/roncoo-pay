@@ -15,23 +15,13 @@
  */
 package com.roncoo.pay.controller.pay;
 
-import javax.servlet.http.HttpServletRequest;
-
-import com.roncoo.pay.common.core.enums.SecurityRatingEnum;
-import com.roncoo.pay.common.core.utils.StringUtil;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.roncoo.pay.common.core.dwz.DWZ;
 import com.roncoo.pay.common.core.dwz.DwzAjax;
 import com.roncoo.pay.common.core.enums.PayWayEnum;
+import com.roncoo.pay.common.core.enums.SecurityRatingEnum;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
+import com.roncoo.pay.common.core.utils.StringUtil;
 import com.roncoo.pay.user.entity.RpUserBankAccount;
 import com.roncoo.pay.user.entity.RpUserInfo;
 import com.roncoo.pay.user.entity.RpUserPayConfig;
@@ -44,6 +34,15 @@ import com.roncoo.pay.user.service.RpUserBankAccountService;
 import com.roncoo.pay.user.service.RpUserInfoService;
 import com.roncoo.pay.user.service.RpUserPayConfigService;
 import com.roncoo.pay.user.service.RpUserPayInfoService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户支付设置管理
@@ -72,7 +71,7 @@ public class UserPayConfigController {
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/list", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/list", method ={RequestMethod.POST, RequestMethod.GET})
 	public String list(RpUserPayConfig rpUserPayConfig, PageParam pageParam, Model model) {
 		PageBean pageBean = rpUserPayConfigService.listPage(pageParam, rpUserPayConfig);
 		model.addAttribute("pageBean", pageBean);
@@ -149,7 +148,7 @@ public class UserPayConfigController {
 	 */
 	@RequiresPermissions("pay:config:edit")
 	@RequestMapping(value = "/editUI", method = RequestMethod.GET)
-	public String editUI(Model model,@RequestParam("userNo") String userNo) {
+	public String editUI(Model model, @RequestParam("userNo") String userNo) {
 		RpUserPayConfig rpUserPayConfig = rpUserPayConfigService.getByUserNo(userNo,null);
 		RpUserPayInfo wxUserPayInfo = rpUserPayInfoService.getByUserNo(userNo, PayWayEnum.WEIXIN.name());
 		RpUserPayInfo aliUserPayInfo = rpUserPayInfoService.getByUserNo(userNo, PayWayEnum.ALIPAY.name());
@@ -170,7 +169,7 @@ public class UserPayConfigController {
 	 */
 	@RequiresPermissions("pay:config:edit")
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String edit(HttpServletRequest request, Model model, RpUserPayConfig rpUserPayConfig,DwzAjax dwz) {
+	public String edit(HttpServletRequest request, Model model, RpUserPayConfig rpUserPayConfig, DwzAjax dwz) {
 		String productCode = request.getParameter("product.productCode");
 		String productName = request.getParameter("product.productName");
 		String securityRating = request.getParameter("securityRating");
@@ -212,7 +211,7 @@ public class UserPayConfigController {
 	 * @throws
 	 */
 	@RequiresPermissions("pay:config:delete")
-	@RequestMapping(value = "/delete", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/delete", method ={RequestMethod.POST, RequestMethod.GET})
 	public String delete(Model model, DwzAjax dwz, @RequestParam("userNo") String userNo) {
 		rpUserPayConfigService.deleteUserPayConfig(userNo);
 		dwz.setStatusCode(DWZ.SUCCESS);
@@ -229,7 +228,7 @@ public class UserPayConfigController {
 	 * @throws
 	 */
 	@RequiresPermissions("pay:config:add")
-	@RequestMapping(value = "/audit", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/audit", method ={RequestMethod.POST, RequestMethod.GET})
 	public String audit(Model model, DwzAjax dwz, @RequestParam("userNo") String userNo
 			, @RequestParam("auditStatus") String auditStatus) {
 		rpUserPayConfigService.audit(userNo, auditStatus);
@@ -248,7 +247,7 @@ public class UserPayConfigController {
 	 */
 	@RequiresPermissions("pay:config:edit")
 	@RequestMapping(value = "/editBankUI", method = RequestMethod.GET)
-	public String editBankUI(Model model,@RequestParam("userNo") String userNo) {
+	public String editBankUI(Model model, @RequestParam("userNo") String userNo) {
 		RpUserBankAccount rpUserBankAccount = rpUserBankAccountService.getByUserNo(userNo);
 		RpUserInfo rpUserInfo = rpUserInfoService.getDataByMerchentNo(userNo);
 		model.addAttribute("BankCodeEnums", BankCodeEnum.toList());
@@ -268,7 +267,7 @@ public class UserPayConfigController {
 	 */
 	@RequiresPermissions("pay:config:edit")
 	@RequestMapping(value = "/editBank", method = RequestMethod.POST)
-	public String editBank(Model model, RpUserBankAccount rpUserBankAccount,DwzAjax dwz) {
+	public String editBank(Model model, RpUserBankAccount rpUserBankAccount, DwzAjax dwz) {
 		rpUserBankAccountService.createOrUpdate(rpUserBankAccount);
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);

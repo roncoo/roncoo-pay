@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.account.entity;
 
+import com.roncoo.pay.common.core.entity.BaseEntity;
+
 import java.math.BigDecimal;
 import java.util.Date;
-
-import com.roncoo.pay.common.core.entity.BaseEntity;
 
 /**
  * 每日待结算汇总实体

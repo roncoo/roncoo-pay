@@ -1,10 +1,9 @@
 package com.roncoo.pay.reconciliation.utils.https;
 
+import javax.net.ssl.HttpsURLConnection;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
-
-import javax.net.ssl.HttpsURLConnection;
 
 public class HttpResponse implements Closeable {
 

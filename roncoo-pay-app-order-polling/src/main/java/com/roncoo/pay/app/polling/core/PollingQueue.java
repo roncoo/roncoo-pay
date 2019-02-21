@@ -16,16 +16,15 @@
 package com.roncoo.pay.app.polling.core;
 
 
-import java.io.Serializable;
-import java.util.Date;
-
+import com.roncoo.pay.AppOrderPollingApplication;
+import com.roncoo.pay.common.core.utils.DateUtils;
+import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 
-import com.roncoo.pay.app.polling.App;
-import com.roncoo.pay.common.core.utils.DateUtils;
-import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  * <b>功能说明:
@@ -65,7 +64,7 @@ public class PollingQueue implements Serializable {
         if (notifyTimes < maxNotifyTimes) {
             // 未超过最大通知次数，继续下一次通知
             LOG.info("===>bank order No  " + rpOrderResultQueryVo.getBankOrderNo() + ", 上次通知时间lastNotifyTime:" + DateUtils.formatDate(rpOrderResultQueryVo.getLastNotifyTime(), "yyyy-MM-dd HH:mm:ss SSS"));
-            App.tasks.put(new PollingTask(rpOrderResultQueryVo));
+            AppOrderPollingApplication.tasks.put(new PollingTask(rpOrderResultQueryVo));
         }
 
     }

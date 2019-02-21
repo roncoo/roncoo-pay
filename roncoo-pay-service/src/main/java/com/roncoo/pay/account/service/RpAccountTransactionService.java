@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.account.service;
 
-import java.math.BigDecimal;
-
 import com.roncoo.pay.account.entity.RpAccount;
 import com.roncoo.pay.common.core.exception.BizException;
+
+import java.math.BigDecimal;
 
 /**
  *  账户操作service接口
@@ -28,10 +28,10 @@ import com.roncoo.pay.common.core.exception.BizException;
 public interface RpAccountTransactionService {
 
 	/** 加款:有银行流水 **/
-	RpAccount creditToAccount(String userNo, BigDecimal amount, String requestNo,String bankTrxNo, String trxType, String remark) throws BizException;
+	RpAccount creditToAccount(String userNo, BigDecimal amount, String requestNo, String bankTrxNo, String trxType, String remark) throws BizException;
 
 	/** 减款 :有银行流水**/
-	RpAccount debitToAccount(String userNo, BigDecimal amount, String requestNo,String bankTrxNo, String trxType, String remark) throws BizException;
+	RpAccount debitToAccount(String userNo, BigDecimal amount, String requestNo, String bankTrxNo, String trxType, String remark) throws BizException;
 	
 	/** 加款 **/
 	RpAccount creditToAccount(String userNo, BigDecimal amount, String requestNo, String trxType, String remark) throws BizException;

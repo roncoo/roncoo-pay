@@ -15,14 +15,6 @@
  */
 package com.roncoo.pay.user.service.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.roncoo.pay.common.core.enums.PublicEnum;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
 import com.roncoo.pay.common.core.page.PageBean;
@@ -36,6 +28,13 @@ import com.roncoo.pay.user.exception.PayBizException;
 import com.roncoo.pay.user.service.RpPayProductService;
 import com.roncoo.pay.user.service.RpPayWayService;
 import com.roncoo.pay.user.service.RpUserPayConfigService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 支付产品service实现类
@@ -43,7 +42,7 @@ import com.roncoo.pay.user.service.RpUserPayConfigService;
  * @author：zenghao
  */
 @Service("rpPayProductService")
-public class RpPayProductServiceImpl implements RpPayProductService{
+public class RpPayProductServiceImpl implements RpPayProductService {
 
 	@Autowired
 	private RpPayProductDao rpPayProductDao;

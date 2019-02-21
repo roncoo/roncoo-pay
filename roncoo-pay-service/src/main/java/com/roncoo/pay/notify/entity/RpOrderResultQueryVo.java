@@ -1,11 +1,11 @@
 package com.roncoo.pay.notify.entity;
 
-import java.util.Date;
-import java.util.Map;
-
 import com.alibaba.fastjson.JSONObject;
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.notify.enums.NotifyStatusEnum;
+
+import java.util.Date;
+import java.util.Map;
 
 /**
  * @功能说明:   订单结果查询实体,主要用于MQ查询上游订单结果时,查询规则及查询结果
@@ -68,7 +68,7 @@ public class RpOrderResultQueryVo extends BaseEntity {
      * @return
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    public Map<String, Integer> getNotifyRuleMap(){
+    public Map<Integer, Integer> getNotifyRuleMap(){
         return (Map) JSONObject.parseObject(getNotifyRule());
     }
 

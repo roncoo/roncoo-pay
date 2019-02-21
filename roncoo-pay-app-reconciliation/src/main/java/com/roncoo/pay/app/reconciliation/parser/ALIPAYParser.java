@@ -15,6 +15,19 @@
  */
 package com.roncoo.pay.app.reconciliation.parser;
 
+import com.roncoo.pay.app.reconciliation.vo.AlipayAccountLogVO;
+import com.roncoo.pay.common.core.enums.PayWayEnum;
+import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
+import com.roncoo.pay.reconciliation.enums.BatchStatusEnum;
+import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
+import org.springframework.stereotype.Component;
+
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -24,20 +37,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
-import org.springframework.stereotype.Component;
-
-import com.roncoo.pay.app.reconciliation.vo.AlipayAccountLogVO;
-import com.roncoo.pay.common.core.enums.PayWayEnum;
-import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
-import com.roncoo.pay.reconciliation.enums.BatchStatusEnum;
-import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
 
 /**
  * 支付宝对账单解析器 .

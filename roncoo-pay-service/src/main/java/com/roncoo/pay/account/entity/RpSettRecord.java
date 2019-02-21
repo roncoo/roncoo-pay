@@ -15,14 +15,14 @@
  */
 package com.roncoo.pay.account.entity;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 import com.roncoo.pay.account.enums.SettModeTypeEnum;
 import com.roncoo.pay.account.enums.SettRecordStatusEnum;
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.user.enums.BankAccountTypeEnum;
+
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 结算记录

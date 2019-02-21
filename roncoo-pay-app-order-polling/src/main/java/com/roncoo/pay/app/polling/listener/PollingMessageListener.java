@@ -15,28 +15,28 @@
  */
 package com.roncoo.pay.app.polling.listener;
 
-import java.util.Date;
-import java.util.Map;
-
-import javax.jms.Message;
-import javax.jms.MessageListener;
-
-import org.apache.activemq.command.ActiveMQTextMessage;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.alibaba.fastjson.JSONObject;
 import com.roncoo.pay.app.polling.core.PollingQueue;
 import com.roncoo.pay.app.polling.entity.PollingParam;
 import com.roncoo.pay.common.core.exception.BizException;
 import com.roncoo.pay.notify.entity.RpOrderResultQueryVo;
 import com.roncoo.pay.notify.enums.NotifyStatusEnum;
+import org.apache.activemq.command.ActiveMQTextMessage;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import java.util.Date;
+import java.util.Map;
 
 /**
  * 
  * @author wujing
  */
+@Component("pollingMessageListener")
 public class PollingMessageListener implements MessageListener {
 	private static final Log log = LogFactory.getLog(PollingMessageListener.class);
 
@@ -46,6 +46,7 @@ public class PollingMessageListener implements MessageListener {
 	@Autowired
 	private PollingParam pollingParam;
 
+	@Override
 	public void onMessage(Message message) {
 		try {
 			ActiveMQTextMessage msg = (ActiveMQTextMessage) message;

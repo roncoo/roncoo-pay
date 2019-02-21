@@ -78,7 +78,7 @@ public class SimpleHttpParam {
 	/**
 	 * 客户端信任的证书
 	 */
-	private TrustKeyStore TrustKeyStore;
+	private com.roncoo.pay.trade.utils.httpclient.TrustKeyStore TrustKeyStore;
 	/**
 	 * 如果需要验证服务端证书，是否验证host与证书匹配
 	 */
@@ -169,10 +169,10 @@ public class SimpleHttpParam {
 	public void setClientKeyStore(ClientKeyStore clientKeyStore) {
 		this.clientKeyStore = clientKeyStore;
 	}
-	public TrustKeyStore getTrustKeyStore() {
+	public com.roncoo.pay.trade.utils.httpclient.TrustKeyStore getTrustKeyStore() {
 		return TrustKeyStore;
 	}
-	public void setTrustKeyStore(TrustKeyStore trustKeyStore) {
+	public void setTrustKeyStore(com.roncoo.pay.trade.utils.httpclient.TrustKeyStore trustKeyStore) {
 		TrustKeyStore = trustKeyStore;
 	}
 	public boolean isHostnameVerify() {

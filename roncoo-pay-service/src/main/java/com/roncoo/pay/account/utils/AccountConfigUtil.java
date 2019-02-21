@@ -15,11 +15,11 @@
  */
 package com.roncoo.pay.account.utils;
 
-import java.io.IOException;
-import java.util.Properties;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * 龙果学院：www.roncoo.com

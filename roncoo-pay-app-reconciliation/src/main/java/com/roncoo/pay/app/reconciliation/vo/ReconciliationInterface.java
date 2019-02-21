@@ -15,11 +15,11 @@
  */
 package com.roncoo.pay.app.reconciliation.vo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 对账接口实体

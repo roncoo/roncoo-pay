@@ -15,14 +15,13 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
+import com.roncoo.pay.permission.dao.PmsOperatorRoleDao;
+import com.roncoo.pay.permission.entity.PmsOperatorRole;
+import org.springframework.stereotype.Repository;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
-
-import com.roncoo.pay.permission.dao.PmsOperatorRoleDao;
-import com.roncoo.pay.permission.entity.PmsOperatorRole;
 
 /**
  * 权限-操作员与角色dao实现
@@ -42,7 +41,7 @@ public class PmsOperatorRoleDaoImpl extends PermissionBaseDaoImpl<PmsOperatorRol
 	 * @return list .
 	 */
 	public List<PmsOperatorRole> listByOperatorId(Long operatorId) {
-		return super.getSqlSession().selectList(getStatement("listByOperatorId"), operatorId);
+		return super.getSessionTemplate().selectList(getStatement("listByOperatorId"), operatorId);
 	}
 
 	/**
@@ -52,7 +51,7 @@ public class PmsOperatorRoleDaoImpl extends PermissionBaseDaoImpl<PmsOperatorRol
 	 * @return
 	 */
 	public List<PmsOperatorRole> listByRoleId(Long roleId) {
-		return super.getSqlSession().selectList(getStatement("listByRoleId"), roleId);
+		return super.getSessionTemplate().selectList(getStatement("listByRoleId"), roleId);
 	}
 
 	/**
@@ -63,7 +62,7 @@ public class PmsOperatorRoleDaoImpl extends PermissionBaseDaoImpl<PmsOperatorRol
 	 */
 	public void deleteByOperatorId(Long operatorId) {
 
-		super.getSqlSession().delete(getStatement("deleteByOperatorId"), operatorId);
+		super.getSessionTemplate().delete(getStatement("deleteByOperatorId"), operatorId);
 	}
 
 	/**
@@ -73,7 +72,7 @@ public class PmsOperatorRoleDaoImpl extends PermissionBaseDaoImpl<PmsOperatorRol
 	 *            .
 	 */
 	public void deleteByRoleId(Long roleId) {
-		super.getSqlSession().delete(getStatement("deleteByRoleId"), roleId);
+		super.getSessionTemplate().delete(getStatement("deleteByRoleId"), roleId);
 	}
 
 	/**
@@ -89,7 +88,7 @@ public class PmsOperatorRoleDaoImpl extends PermissionBaseDaoImpl<PmsOperatorRol
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("roleId", roleId);
 		paramMap.put("operatorId", operatorId);
-		super.getSqlSession().delete(getStatement("deleteByRoleIdAndOperatorId"), paramMap);
+		super.getSessionTemplate().delete(getStatement("deleteByRoleIdAndOperatorId"), paramMap);
 	}
 
 }

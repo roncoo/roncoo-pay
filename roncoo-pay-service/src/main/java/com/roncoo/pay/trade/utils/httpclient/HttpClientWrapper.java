@@ -66,10 +66,10 @@ public interface HttpClientWrapper {
 	 * @throws IOException
 	 */
 	public String doRequest(MethodType method, String url,
-							Map<String, String> params, String charset) throws HttpException,
+                            Map<String, String> params, String charset) throws HttpException,
 			IOException;
  /**
-  * 
+  *
   * @param method
   * @param url
   * @param charset
@@ -82,7 +82,7 @@ public interface HttpClientWrapper {
 
 	/**
 	 * 无返回值 实现HttpResponseCallBack接口 对流进行处理封转返回值 外部可以利用到流来得到结果 主要考虑的是多线程下载的情况
-	 * 
+	 *
 	 * @param method
 	 * @param url
 	 * @param params
@@ -90,16 +90,16 @@ public interface HttpClientWrapper {
 	 * @throws HttpException
 	 * @throws IOException
 	 */
-	
+
 	// HttpResponseCallBack 是设置的一个回调类 ，主要是考虑由于httpClient 返回的流 当连接关闭时流也关闭了
 	// 所以利用回调的方式在流关闭之间嵌入用户代码，来操做流
 	public void doRequest(HttpResponseCallBack callback, MethodType method,
-						  String url, Map<String, String> params, String charset)
+                          String url, Map<String, String> params, String charset)
 			throws HttpException, IOException;
 
 	/**
 	 * 无返回值 外部可以利用到流来得到结果 主要考虑的是多线程下载的情况
-	 * 
+	 *
 	 * @param method
 	 * @param url
 	 * @param charset
@@ -111,6 +111,6 @@ public interface HttpClientWrapper {
 	// HttpResponseCallBack 是设置的一个回调类 ，主要是考虑由于httpClient 返回的流 当连接关闭时流也关闭了
 	// 所以利用回调的方式在流关闭之间嵌入用户代码，来操做流
 	public void doRequest(HttpResponseCallBack callback, MethodType method,
-						  String url, String charset) throws HttpException, IOException;
+                          String url, String charset) throws HttpException, IOException;
 
 }

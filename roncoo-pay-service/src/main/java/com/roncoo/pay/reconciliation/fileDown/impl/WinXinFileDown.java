@@ -15,17 +15,6 @@
  */
 package com.roncoo.pay.reconciliation.fileDown.impl;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.alibaba.druid.util.StringUtils;
 import com.roncoo.pay.reconciliation.fileDown.service.FileDown;
 import com.roncoo.pay.reconciliation.utils.FileUtils;
@@ -34,6 +23,16 @@ import com.roncoo.pay.reconciliation.utils.WeiXinBaseUtils;
 import com.roncoo.pay.reconciliation.utils.https.HttpClientUtil;
 import com.roncoo.pay.reconciliation.utils.https.HttpResponse;
 import com.roncoo.pay.trade.utils.WeixinConfigUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 /**
  * 微信文件下载类

@@ -15,11 +15,11 @@
  */
 package com.roncoo.pay.user.service;
 
-import java.util.List;
-
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.user.entity.RpUserInfo;
+
+import java.util.List;
 
 /**
  * 用户信息service接口

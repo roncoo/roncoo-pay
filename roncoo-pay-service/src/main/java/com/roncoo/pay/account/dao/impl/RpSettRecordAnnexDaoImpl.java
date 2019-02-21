@@ -15,11 +15,10 @@
  */
 package com.roncoo.pay.account.dao.impl;
 
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.account.dao.RpSettRecordAnnexDao;
 import com.roncoo.pay.account.entity.RpSettRecordAnnex;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
+import org.springframework.stereotype.Repository;
 
 /**
  *  结算记录附件dao实现类

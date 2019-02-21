@@ -15,15 +15,15 @@
  */
 package com.roncoo.pay.trade.service;
 
-import java.util.List;
-import java.util.Map;
-
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.trade.entity.RpTradePaymentOrder;
 import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
 import com.roncoo.pay.trade.vo.OrderPayResultVo;
 import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * <b>功能说明:交易模块查询接口</b>
@@ -76,7 +76,7 @@ public interface RpTradePaymentQueryService {
 	 * @param paymentOrderQueryParam
 	 * @return
 	 */
-	public PageBean<RpTradePaymentOrder> listPaymentOrderPage(PageParam pageParam ,PaymentOrderQueryParam paymentOrderQueryParam);
+	public PageBean<RpTradePaymentOrder> listPaymentOrderPage(PageParam pageParam, PaymentOrderQueryParam paymentOrderQueryParam);
 
 	/**
 	 * 分页查询支付记录
@@ -84,7 +84,7 @@ public interface RpTradePaymentQueryService {
 	 * @param paymentOrderQueryParam
 	 * @return
 	 */
-	public PageBean<RpTradePaymentRecord> listPaymentRecordPage(PageParam pageParam ,PaymentOrderQueryParam paymentOrderQueryParam);
+	public PageBean<RpTradePaymentRecord> listPaymentRecordPage(PageParam pageParam, PaymentOrderQueryParam paymentOrderQueryParam);
 	
 	/**
 	 * 获取交易流水报表

@@ -15,6 +15,12 @@
  */
 package com.roncoo.pay.controller.user;
 
+import com.roncoo.pay.common.core.dwz.DWZ;
+import com.roncoo.pay.common.core.dwz.DwzAjax;
+import com.roncoo.pay.common.core.page.PageBean;
+import com.roncoo.pay.common.core.page.PageParam;
+import com.roncoo.pay.user.entity.RpUserInfo;
+import com.roncoo.pay.user.service.RpUserInfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,13 +28,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.roncoo.pay.common.core.dwz.DWZ;
-import com.roncoo.pay.common.core.dwz.DwzAjax;
-import com.roncoo.pay.common.core.page.PageBean;
-import com.roncoo.pay.common.core.page.PageParam;
-import com.roncoo.pay.user.entity.RpUserInfo;
-import com.roncoo.pay.user.service.RpUserInfoService;
 
 /**
  * 用户信息
@@ -49,8 +48,8 @@ public class UserInfoController {
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/list", method ={RequestMethod.POST,RequestMethod.GET})
-	public String list(RpUserInfo rpUserInfo,PageParam pageParam, Model model) {
+	@RequestMapping(value = "/list", method ={RequestMethod.POST, RequestMethod.GET})
+	public String list(RpUserInfo rpUserInfo, PageParam pageParam, Model model) {
 		PageBean pageBean = rpUserInfoService.listPage(pageParam, rpUserInfo);
 		model.addAttribute("pageBean", pageBean);
         model.addAttribute("pageParam", pageParam);
@@ -81,7 +80,7 @@ public class UserInfoController {
 	 */
 	@RequiresPermissions("user:userInfo:add")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(Model model,@RequestParam("userName") String userName,@RequestParam("mobile") String mobile,@RequestParam("password") String password,DwzAjax dwz) {
+	public String add(Model model, @RequestParam("userName") String userName, @RequestParam("mobile") String mobile, @RequestParam("password") String password, DwzAjax dwz) {
 		rpUserInfoService.registerOffline(userName, mobile, password);
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);
@@ -96,8 +95,8 @@ public class UserInfoController {
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/lookupList", method ={RequestMethod.POST,RequestMethod.GET})
-	public String lookupList(RpUserInfo rpUserInfo,PageParam pageParam, Model model) {
+	@RequestMapping(value = "/lookupList", method ={RequestMethod.POST, RequestMethod.GET})
+	public String lookupList(RpUserInfo rpUserInfo, PageParam pageParam, Model model) {
 		PageBean pageBean = rpUserInfoService.listPage(pageParam, rpUserInfo);
 		model.addAttribute("pageBean", pageBean);
         model.addAttribute("pageParam", pageParam);

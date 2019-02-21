@@ -15,11 +15,10 @@
  */
 package com.roncoo.pay.user.dao.impl;
 
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import com.roncoo.pay.user.dao.BuildNoDao;
 import com.roncoo.pay.user.entity.SeqBuild;
+import org.springframework.stereotype.Repository;
 
 /**
  *  生成编号dao实现类
@@ -31,6 +30,6 @@ public class BuildNoDaoImpl   extends BaseDaoImpl<SeqBuild> implements BuildNoDa
 
     @Override
     public String getSeqNextValue(SeqBuild seqBuild) {
-        return super.getSqlSession().selectOne(getStatement("getSeqNextValue"),seqBuild);
+        return super.getSessionTemplate().selectOne(getStatement("getSeqNextValue"),seqBuild);
     }
 }

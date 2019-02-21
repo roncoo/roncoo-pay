@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!--应用名称-->
+    <property name="APPLICATION_NAME" value="roncoo-pay-web-sample-shop"/>
+    <!-- 文件输出格式 -->
+    <property name="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n"/>
+    <!-- 文件路径 -->
+    <property name="FILE_PATH" value="/opt/roncoo/logs"/>
+
+
+    <!-- 控制台 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!--日志文件策略-->
+    <!--<appender name="LOGGER_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${FILE_PATH}/${APPLICATION_NAME}/${APPLICATION_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${FILE_PATH}/${APPLICATION_NAME}/${APPLICATION_NAME}.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <MaxHistory>100</MaxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${PATTERN}</pattern>
+        </layout>
+    </appender>-->
+
+    <logger name="com.roncoo.pay" level="debug"/>
+
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <!--<appender-ref ref="LOGGER_FILE"/>-->
+    </root>
+
+</configuration>

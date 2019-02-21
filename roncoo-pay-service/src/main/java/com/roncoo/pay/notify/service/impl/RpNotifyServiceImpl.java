@@ -1,17 +1,5 @@
 package com.roncoo.pay.notify.service.impl;
 
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.Session;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.core.MessageCreator;
-import org.springframework.stereotype.Service;
-
 import com.alibaba.fastjson.JSONObject;
 import com.roncoo.pay.common.core.config.MqConfig;
 import com.roncoo.pay.common.core.page.PageBean;
@@ -23,6 +11,16 @@ import com.roncoo.pay.notify.entity.RpNotifyRecordLog;
 import com.roncoo.pay.notify.enums.NotifyStatusEnum;
 import com.roncoo.pay.notify.enums.NotifyTypeEnum;
 import com.roncoo.pay.notify.service.RpNotifyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import java.util.Map;
 
 /**
  * @功能说明:
@@ -120,7 +118,7 @@ public class RpNotifyServiceImpl implements RpNotifyService {
 	 */
 	@Override
 	public RpNotifyRecord getNotifyByMerchantNoAndMerchantOrderNoAndNotifyType(String merchantNo,
-			String merchantOrderNo, String notifyType) {
+                                                                               String merchantOrderNo, String notifyType) {
 		return rpNotifyRecordDao.getNotifyByMerchantNoAndMerchantOrderNoAndNotifyType(merchantNo, merchantOrderNo,
 				notifyType);
 	}

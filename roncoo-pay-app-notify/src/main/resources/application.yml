@@ -1,0 +1,12 @@
+server:
+  port: 8086
+  servlet:
+    session:
+      timeout: 30
+spring:
+  application:
+    name: roncoo-pay-app-notify
+logging:
+  config: classpath:logback.xml
+mybatis:
+  mapper-locations: classpath*:mybatis/mapper/**/*.xml

@@ -15,27 +15,27 @@
  */
 package com.roncoo.pay.app.reconciliation;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.roncoo.pay.app.reconciliation.biz.ReconciliationCheckBiz;
 import com.roncoo.pay.app.reconciliation.biz.ReconciliationFileDownBiz;
 import com.roncoo.pay.app.reconciliation.biz.ReconciliationFileParserBiz;
 import com.roncoo.pay.app.reconciliation.biz.ReconciliationValidateBiz;
 import com.roncoo.pay.app.reconciliation.utils.DateUtil;
-import com.roncoo.pay.app.reconciliation.utils.SpringContextUtil;
 import com.roncoo.pay.app.reconciliation.vo.ReconciliationInterface;
 import com.roncoo.pay.reconciliation.entity.RpAccountCheckBatch;
 import com.roncoo.pay.reconciliation.enums.BatchStatusEnum;
 import com.roncoo.pay.reconciliation.service.RpAccountCheckBatchService;
 import com.roncoo.pay.reconciliation.vo.ReconciliationEntityVo;
 import com.roncoo.pay.user.service.BuildNoService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 对账处理(包括下载对账文件、转换对账文件、对账) .
@@ -44,32 +44,35 @@ import com.roncoo.pay.user.service.BuildNoService;
  * 
  * @author：shenjialong
  */
+@Component
 public class ReconciliationTask {
 
 	private static final Log LOG = LogFactory.getLog(ReconciliationTask.class);
 
-	public static void main(String[] args) {
+	@Autowired
+	private ReconciliationFileDownBiz fileDownBiz;
+	@Autowired
+	private ReconciliationFileParserBiz parserBiz;
+	@Autowired
+	private ReconciliationCheckBiz checkBiz;
+	@Autowired
+	private ReconciliationValidateBiz validateBiz;
+	@Autowired
+	private RpAccountCheckBatchService batchService;
+	@Autowired
+	private BuildNoService buildNoService;
+
+	@Scheduled(cron = "0 15 10 * * ?")
+	public void taskRun() {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
 		try {
-			// 加载Spring配置文件
-			ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "spring-context.xml" });
-			// 初始化SpringContextUtil
-			final SpringContextUtil ctxUtil = new SpringContextUtil();
-			ctxUtil.setApplicationContext(context);
+
 
 			@SuppressWarnings("rawtypes")
 			// 获取全部有效的对账接口(目前是写死了，可以做持久化到数据库，再查出来)
 			List reconciliationInterList = ReconciliationInterface.getInterface();
-
-			// 获取业务biz实体
-			ReconciliationFileDownBiz fileDownBiz = (ReconciliationFileDownBiz) SpringContextUtil.getBean("reconciliationFileDownBiz");
-			ReconciliationFileParserBiz parserBiz = (ReconciliationFileParserBiz) SpringContextUtil.getBean("reconciliationFileParserBiz");
-			ReconciliationCheckBiz checkBiz = (ReconciliationCheckBiz) SpringContextUtil.getBean("reconciliationCheckBiz");
-			ReconciliationValidateBiz validateBiz = (ReconciliationValidateBiz) SpringContextUtil.getBean("reconciliationValidateBiz");
-			RpAccountCheckBatchService batchService = (RpAccountCheckBatchService) SpringContextUtil.getBean("rpAccountCheckBatchService");
-			BuildNoService buildNoService = (BuildNoService) SpringContextUtil.getBean("buildNoService");
 
 			// 根据不同的渠道发起对账
 			for (int num = 0; num < reconciliationInterList.size(); num++) {

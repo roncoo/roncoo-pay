@@ -3,6 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <%@include file="../../common/taglib/taglib.jsp"%>
 <%@include file="../common/dwz.jsp"%>
+<link href="${baseURL }/dwz/select2/css/select2.css" rel="stylesheet" />
+<script src="${baseURL }/dwz/select2/js/select2.js"></script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />

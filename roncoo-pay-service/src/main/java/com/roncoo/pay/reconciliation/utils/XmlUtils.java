@@ -1,20 +1,16 @@
 package com.roncoo.pay.reconciliation.utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.dom4j.Attribute;
-import org.dom4j.DocumentException;
-import org.dom4j.io.SAXReader;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.xml.sax.InputSource;
+
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class XmlUtils {
 	/**

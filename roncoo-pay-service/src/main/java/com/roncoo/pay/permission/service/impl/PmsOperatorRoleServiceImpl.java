@@ -15,17 +15,6 @@
  */
 package com.roncoo.pay.permission.service.impl;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.roncoo.pay.permission.dao.PmsOperatorDao;
 import com.roncoo.pay.permission.dao.PmsOperatorRoleDao;
 import com.roncoo.pay.permission.dao.PmsRoleDao;
@@ -33,6 +22,11 @@ import com.roncoo.pay.permission.entity.PmsOperator;
 import com.roncoo.pay.permission.entity.PmsOperatorRole;
 import com.roncoo.pay.permission.entity.PmsRole;
 import com.roncoo.pay.permission.service.PmsOperatorRoleService;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.*;
 
 /**
  * 操作员角色service接口实现
