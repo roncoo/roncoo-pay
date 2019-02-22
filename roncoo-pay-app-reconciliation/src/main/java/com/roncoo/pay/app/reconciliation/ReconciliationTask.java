@@ -15,6 +15,7 @@
  */
 package com.roncoo.pay.app.reconciliation;
 
+import com.roncoo.pay.AppReconciliationApplication;
 import com.roncoo.pay.app.reconciliation.biz.ReconciliationCheckBiz;
 import com.roncoo.pay.app.reconciliation.biz.ReconciliationFileDownBiz;
 import com.roncoo.pay.app.reconciliation.biz.ReconciliationFileParserBiz;
@@ -29,9 +30,9 @@ import com.roncoo.pay.user.service.BuildNoService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -62,13 +63,12 @@ public class ReconciliationTask {
 	@Autowired
 	private BuildNoService buildNoService;
 
-	@Scheduled(cron = "0 15 10 * * ?")
+	@PostConstruct
 	public void taskRun() {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 
 		try {
-
 
 			@SuppressWarnings("rawtypes")
 			// 获取全部有效的对账接口(目前是写死了，可以做持久化到数据库，再查出来)
@@ -156,6 +156,13 @@ public class ReconciliationTask {
 			validateBiz.validateScratchPool();
 		} catch (Exception e) {
 			LOG.error("roncoo-app-reconciliation error:", e);
+		}
+
+
+		try {
+			AppReconciliationApplication.context.close();
+		} catch (Exception e) {
+			LOG.info(e);
 		}
 
 	}

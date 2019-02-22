@@ -48,7 +48,7 @@ public class NotifyTask implements Runnable, Delayed {
 
     private NotifyParam notifyParam;
 
-    private NotifyPersist notifyPersist = AppNotifyApplication.notifyPersist;
+    private NotifyPersist notifyPersist = AppNotifyApplication.cacheNotifyPersist;
 
     public NotifyTask() {
     }

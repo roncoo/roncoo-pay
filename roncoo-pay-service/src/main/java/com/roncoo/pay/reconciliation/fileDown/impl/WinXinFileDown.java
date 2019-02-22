@@ -25,6 +25,7 @@ import com.roncoo.pay.reconciliation.utils.https.HttpResponse;
 import com.roncoo.pay.trade.utils.WeixinConfigUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +42,7 @@ import java.util.Map.Entry;
  * 
  * @author：shenjialong
  */
+@Component("WEIXIN")
 public class WinXinFileDown implements FileDown {
 
 	private static final Log LOG = LogFactory.getLog(WinXinFileDown.class);

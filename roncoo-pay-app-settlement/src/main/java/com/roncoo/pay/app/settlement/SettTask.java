@@ -15,12 +15,14 @@
  */
 package com.roncoo.pay.app.settlement;
 
+import com.roncoo.pay.AppSettlementApplication;
 import com.roncoo.pay.app.settlement.scheduled.SettScheduled;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 /**
  * 结算定时任务.(分商户统计账户历史进行汇总)
@@ -37,7 +39,7 @@ public class SettTask {
 	@Autowired
 	private SettScheduled settScheduled;
 
-	@Scheduled(cron = "0 0 11 * * ?")
+	@PostConstruct
 	public void runTask() {
 
 		try {
@@ -51,6 +53,8 @@ public class SettTask {
 			LOG.debug("执行(定期自动结算)任务开始");
 			settScheduled.launchAutoSett();
 			LOG.debug("执行(定期自动结算)任务结束");
+
+			AppSettlementApplication.context.close();
 
 		} catch (Exception e) {
 			LOG.error("SettTask execute error:", e);

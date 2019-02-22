@@ -25,6 +25,7 @@ import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResultType;
 import com.roncoo.pay.trade.utils.AlipayConfigUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -41,6 +42,7 @@ import java.util.Map;
  * 
  * @author：shenjialong
  */
+@Component("ALIPAY")
 public class AlipayFileDown implements FileDown {
 	private static final Log LOG = LogFactory.getLog(AlipayFileDown.class);
 	SimpleDateFormat timestampSDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
