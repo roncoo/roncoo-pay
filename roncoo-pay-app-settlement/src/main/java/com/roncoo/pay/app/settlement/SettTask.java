@@ -54,12 +54,16 @@ public class SettTask {
 			settScheduled.launchAutoSett();
 			LOG.debug("执行(定期自动结算)任务结束");
 
-			AppSettlementApplication.context.close();
 
 		} catch (Exception e) {
 			LOG.error("SettTask execute error:", e);
 		} finally {
-			System.exit(0);
+			try {
+				AppSettlementApplication.context.close();
+			} catch (Exception e) {
+				LOG.error(e);
+			}
+//			System.exit(0);
 			LOG.debug("SettTask Complete");
 		}
 	}
