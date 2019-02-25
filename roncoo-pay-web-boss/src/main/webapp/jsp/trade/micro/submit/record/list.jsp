@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="../../../../../common/taglib/taglib.jsp" %>
-<form id="pagerForm" method="post" action="${baseURL }/trade/micro/submit/record/list">
+<form id="pagerForm" method="post" action="${baseURL }/boss/trade/micro/submit/record/list">
     <%@include file="../../../../common/pageParameter.jsp" %>
 </form>
 <div class="pageHeader">
-    <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="${baseURL }/trade/micro/submit/record/list" method="post">
+    <form rel="pagerForm" onsubmit="return navTabSearch(this);" action="${baseURL }/boss/trade/micro/submit/record/list" method="post">
         <div class="searchBar">
             <table class="searchContent">
                 <tr>
@@ -34,11 +34,11 @@
     <div class="panelBar">
         <ul class="toolBar">
             <li>
-                <shiro:hasPermission name="trade:micro:submit:record:add">
+                <%--<shiro:hasPermission name="trade:micro:submit:record:add">--%>
                     <a title="微信-小微商户进件" class="add" href="${baseURL }/trade/micro/submit/record/addUI" target="navTab">
                         <span>微信-小微商户进件</span>
                     </a>
-                </shiro:hasPermission>
+                <%--</shiro:hasPermission>--%>
             </li>
             <li class="line">line</li>
         </ul>
@@ -65,10 +65,10 @@
                 <td>${item.accountBank}<br>${item.accountNumber}</td>
                 <td>${item.servicePhone}<br>(${item.productDesc})(${item.rate})</td>
                 <td>
-                    <shiro:hasPermission name="trade:micro:submit:record:query">
+                    <%--<shiro:hasPermission name="trade:micro:submit:record:query">--%>
                         <a target="dialog" width="600" height="470" rel="input" href="${baseURL }/trade/micro/submit/record/query/${item.businessCode}"
                            style="color: blue;">查询(进行绑定)</a>
-                    </shiro:hasPermission>
+                    <%--</shiro:hasPermission>--%>
                 </td>
             </tr>
         </c:forEach>
