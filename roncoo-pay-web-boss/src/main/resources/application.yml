@@ -3,6 +3,7 @@ server:
   servlet:
     session:
       timeout: 30M
+    context-path: boss
 spring:
   application:
     name: roncoo-pay-web-boss
