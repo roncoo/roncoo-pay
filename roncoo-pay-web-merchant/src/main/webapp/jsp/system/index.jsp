@@ -269,7 +269,7 @@ display:none;;
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
     </div>
-    <strong>Copyright &copy; 2015-2016 <a href="http://roncoo.com">广州市领课网络科技有限公司</a></strong> 版权所有
+    <strong id="footer">Copyright © 2015-2019 <a href="http://roncoo.com">广州市领课网络科技有限公司</a></strong> 版权所有
   </footer>
 
 
@@ -382,7 +382,9 @@ function savePayPass(){
 	}
 	
 	$(function () {
-		
+
+	  $("#footer").text("Copyright © 2015-"+new Date().getFullYear()+' <a href="http://roncoo.com">广州市领课网络科技有限公司</a>');
+
 		$.ajax({  
             type: "POST",
             dataType:'json',

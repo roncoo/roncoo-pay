@@ -97,7 +97,7 @@
     <div class="container">
         <ul class="con-content">
             <li><strong class="a">联系电话：</strong></li>
-            <li>陈老师：18027263931</li>
+            <li>吴老师：18926215592</li>
             <!-- <li class="lightly">电话繁忙时，请联系在线客服</li> -->
         </ul>
         <ul class="con-content">
@@ -110,9 +110,13 @@
             <li>service@roncoo.com</li>
         </ul>
     </div>
-    <div class="copyright">Copyright © 2015-2016 广州市领课网络科技有限公司版权所有</div>
+    <div class="copyright" id="footer">Copyright © 2015-2019 广州市领课网络科技有限公司版权所有</div>
     <p class="yue"><a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备16009964号</a></p>
 </div>
 </body>
-
 </html>
+<script>
+    $(function () {
+        $("#footer").text("Copyright © 2015-" + new Date().getFullYear() + " 广州市领课网络科技有限公司版权所有");
+    })
+</script>
