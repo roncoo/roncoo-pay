@@ -86,13 +86,15 @@
 			</div>
 		</div>
 		<div id="login_footer">
-			Copyright &copy; 2015-2016
+			Copyright © 2015-2019
 			<a href="http://www.roncoo.com" target="_blank">龙果学院</a>
 		</div>
 	</div>
 
 	<script>
 		$(function() {
+			$("#login_footer").text("Copyright © 2015-"+new Date().getFullYear());
+
 			$(".rcCaptcha-btn").click(
 					function() {
 						$(".rcCaptcha-img").attr(
