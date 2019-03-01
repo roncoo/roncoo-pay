@@ -92,12 +92,12 @@
     </div>
 </div>
 <div id="footer">
-    Copyright © 2015-2019 <a href="http://www.roncoo.com" target="_blank">龙果学院</a>
+    Copyright © 2015-2019 <a href="http://www.roncoo.com" target="_blank">广州市领课网络科技有限公司版权所有</a>
 </div>
 </body>
 </html>
 <script>
     $(function () {
-        $("#footer").text("Copyright © 2015-" + new Date().getFullYear() + '<a href="http://www.roncoo.com" target="_blank">龙果学院</a>');
+        $("#footer").text("Copyright © 2015-" + new Date().getFullYear() + "广州市领课网络科技有限公司版权所有");
     })
 </script>
