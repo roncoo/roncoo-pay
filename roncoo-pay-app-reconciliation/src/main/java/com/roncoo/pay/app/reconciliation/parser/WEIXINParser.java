@@ -24,7 +24,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jdom2.JDOMException;
+import org.dom4j.DocumentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -262,7 +262,7 @@ public class WEIXINParser implements ParserInterface {
 					rpAccountCheckBatchService.saveData(batch);
 				}
 			}
-		} catch (JDOMException e) {
+		} catch (DocumentException e) {
 			LOG.error("解析微信账单(判断返回是否正确)失败", e);
 		} catch (IOException e) {
 			LOG.error("解析微信账单(判断返回是否正确)失败", e);
