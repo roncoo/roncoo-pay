@@ -29,11 +29,11 @@
 
 后台运营管理：http://demo.pay.roncoo.com/boss
 
-系统操作说明：http://www.roncoo.com/article/detail/124375
+系统操作说明：https://blog.roncoo.com/article/124375
 
-系统详细介绍：http://www.roncoo.com/article/detail/124373
+系统详细介绍：https://blog.roncoo.com/article/124373
 
-系统搭建部署：http://www.roncoo.com/article/detail/124511
+系统搭建部署：https://blog.roncoo.com/article/124511
 
 ###### 欢迎加群
 QQ2群：597865269   
