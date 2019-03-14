@@ -1,4 +1,4 @@
-![logo](logo.png "logo") http://pay.roncoo.net
+![logo](logo.png "logo") 
 
 # 龙果支付系统 roncoo-pay
 
@@ -126,7 +126,7 @@ QQ1群：287684257(已满)
 欢迎加群，共同探讨互联网支付行业的技术经验！
 
 系统官网：http://pay.roncoo.net
-
+![logo](logo.png "logo") 
 
 
  
