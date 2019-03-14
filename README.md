@@ -44,7 +44,8 @@ QQ1群：287684257(已满)
 
 商业系统合作：http://pay.roncoo.net
 
-![Alt text](http://git.oschina.net/uploads/images/2016/0722/175850_9e020e87_860625.png)
+![应用架构图](应用架构图.jpg)
+
 
  
 
