@@ -125,7 +125,8 @@ QQ1群：287684257(已满)
 
 欢迎加群，共同探讨互联网支付行业的技术经验！
 
-系统官网：http://pay.roncoo.net
+龙果支付系统官网：http://pay.roncoo.net
+
 ![logo](logo.png "logo") 
 
 
