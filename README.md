@@ -1,4 +1,4 @@
-![logo](logo.png "logo")
+![logo](logo.png "logo") http://pay.roncoo.net
 
 # 龙果支付系统 roncoo-pay
 
