@@ -29,7 +29,7 @@
 ![支付流程图](pay-flow.png "支付流程图")
 
 
-##### 技术选型
+##### 技术框架
 | 技术 | 描述|
 |---|--- |
 | [Spring Boot](https://spring.io/projects/spring-boot) | 核心框架 |
