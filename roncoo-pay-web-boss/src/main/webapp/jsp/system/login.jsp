@@ -94,7 +94,7 @@
         </div>
     </div>
     <div id="login_footer">
-        <span id="login_footer_text"></span> <a href="http://www.roncoo.com" target="_blank">龙果学院</a>
+        <span id="login_footer_text"></span> <a href="http://www.roncoo.net" target="_blank">龙果支付</a>
     </div>
 </div>
 
