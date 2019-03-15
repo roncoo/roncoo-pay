@@ -15,7 +15,7 @@
     <div id="login_header">
         <h1 class="login_logo">
             <a href="http://demo.dwzjs.com">
-                <img src="${baseURL }/dwz/themes/default/images/login_logo.png"/>
+                <img src="${baseURL }/dwz/themes/default/images/login_logo1.png"/>
             </a>
         </h1>
         <div class="login_headerContent">
