@@ -7,6 +7,7 @@
     <title>龙果支付后台</title>
     <link rel="stylesheet" type="text/css" href="${baseURL }/dwz/themes/css/login.css"/>
     <script type="text/javascript" language="javascript" src="${baseURL }/common/js/login/login.js"></script>
+    <script src="${baseURL }/dwz/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -93,13 +94,13 @@
         </div>
     </div>
     <div id="login_footer">
-        Copyright © 2015-2019 <a href="http://www.roncoo.com" target="_blank">龙果学院</a>
+        <span id="login_footer_text"></span> <a href="http://www.roncoo.com" target="_blank">龙果学院</a>
     </div>
 </div>
 
 <script>
     $(function () {
-        $("#login_footer").text("Copyright © 2015-"+new Date().getFullYear()+' <a href="http://www.roncoo.com" target="_blank">龙果学院</a>');
+        $("#login_footer_text").text("Copyright © 2015-"+new Date().getFullYear());
         $(".rcCaptcha-btn").click(
             function () {
                 $(".rcCaptcha-img").attr(
