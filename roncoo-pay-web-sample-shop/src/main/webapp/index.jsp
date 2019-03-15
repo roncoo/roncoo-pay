@@ -100,6 +100,6 @@
 </html>
 <script>
     $(function () {
-        $("#footer").text("Copyright © 2015-" + new Date() + " 广州市领课网络科技有限公司版权所有");
+        $("#footer").text("Copyright © 2015-" + new Date().getFullYear() + " 广州市领课网络科技有限公司版权所有");
     })
 </script>
