@@ -100,7 +100,7 @@
 					function() {
 						$(".rcCaptcha-img").attr(
 								"src",
-								'${baseURL}/rcCaptcha.jsp?'
+								'${baseURL}/rcCaptcha.jpg?'
 										+ new Date().getTime());
 					});
 		})
