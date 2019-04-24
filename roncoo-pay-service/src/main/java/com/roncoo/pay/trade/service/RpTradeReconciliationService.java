@@ -19,8 +19,6 @@ import com.roncoo.pay.reconciliation.entity.RpAccountCheckMistake;
 
 /**
  * <b>功能说明:交易模块对账差错处理接口</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public interface RpTradeReconciliationService {
 

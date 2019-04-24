@@ -39,8 +39,6 @@ import java.util.Map;
 
 /**
  * 账户操作service实现类
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Service("rpAccountTransactionService")
 public class RpAccountTransactionServiceImpl implements RpAccountTransactionService {

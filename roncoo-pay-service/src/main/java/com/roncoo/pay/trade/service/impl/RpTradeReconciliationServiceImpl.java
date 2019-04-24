@@ -36,8 +36,6 @@ import java.math.BigDecimal;
 
 /**
  * <b>功能说明:交易模块对账差错实现</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Service("rpTradeReconciliationService")
 public class RpTradeReconciliationServiceImpl implements RpTradeReconciliationService {

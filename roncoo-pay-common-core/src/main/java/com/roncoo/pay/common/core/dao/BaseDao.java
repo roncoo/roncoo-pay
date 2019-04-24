@@ -24,7 +24,6 @@ import java.util.Map;
 
 /**
  * 数据访问层基础支撑接口.
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
  */
 public interface BaseDao<T> {
 

@@ -46,8 +46,6 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户支付设置管理
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Controller
 @RequestMapping("/pay/config")

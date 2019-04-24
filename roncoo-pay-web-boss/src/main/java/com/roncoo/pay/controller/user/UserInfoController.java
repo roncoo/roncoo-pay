@@ -31,8 +31,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 用户信息
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Controller
 @RequestMapping("/user/info")

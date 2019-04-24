@@ -29,9 +29,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Spring异常拦截器.
- * 龙果学院：www.roncoo.com
- * @author zenghao
+ * Spring异常拦截器
  */
 @ControllerAdvice
 public class WebExceptionHandler {

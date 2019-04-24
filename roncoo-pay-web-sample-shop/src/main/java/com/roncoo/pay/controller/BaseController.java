@@ -40,7 +40,6 @@ import java.util.Set;
  * <b>功能说明:模拟商户商城控制层基础类
  * </b>
  * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public abstract class BaseController {
 

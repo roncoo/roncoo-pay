@@ -35,11 +35,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * <b>功能说明:龙果支付控制类
+ * <b>功能说明:支付控制类
  * </b>
- *
- * @author Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Controller
 @RequestMapping(value = "/roncooPay")

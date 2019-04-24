@@ -26,8 +26,6 @@ import java.util.Map;
  * 		让用户 不适用任何HttpClient的api
  * 		直接调用该接口就可以实现相应的操作
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public interface HttpClientWrapper {
 	/**

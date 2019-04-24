@@ -40,8 +40,6 @@ import java.util.Set;
 /**
  * <b>功能说明:支付网关Controller基础类
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public abstract class BaseController {
 

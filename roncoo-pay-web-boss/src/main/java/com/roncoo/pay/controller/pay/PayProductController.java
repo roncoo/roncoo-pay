@@ -32,8 +32,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 支付产品管理
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Controller
 @RequestMapping("/pay/product")

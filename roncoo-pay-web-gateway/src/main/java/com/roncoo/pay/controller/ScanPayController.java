@@ -52,9 +52,6 @@ import java.util.Map;
 /**
  * <b>功能说明:扫码支付控制类
  * </b>
- *
- * @author Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Controller
 @RequestMapping(value = "/scanPay")

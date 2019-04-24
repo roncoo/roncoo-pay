@@ -27,8 +27,6 @@ import java.util.Map;
 
 /**
  * <b>功能说明:交易模块查询接口</b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public interface RpTradePaymentQueryService {
 

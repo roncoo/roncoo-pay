@@ -64,8 +64,6 @@ import java.util.*;
 
 /**
  * <b>功能说明:交易模块管理实现类实现</b>
- *
- * @author Peter <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 @Service("rpTradePaymentManagerService")
 public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerService {

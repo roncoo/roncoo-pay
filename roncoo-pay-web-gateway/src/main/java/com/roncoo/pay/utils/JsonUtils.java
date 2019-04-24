@@ -29,8 +29,6 @@ import java.util.Map;
 /**
  * <b>功能说明:JsonUtils工具类,用来通过流的方式将Json数据写回前端
  * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class JsonUtils {
 

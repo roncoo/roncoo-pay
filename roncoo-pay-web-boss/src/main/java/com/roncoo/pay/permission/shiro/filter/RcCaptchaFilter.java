@@ -18,10 +18,6 @@ import java.util.Random;
  * 定义验证码拦截器 生成验证码方式：<br/>
  * 1.可以自建image <br/>
  * 2.调用JCaptcha.captchaService.getImageChallengeForID(id),第三方jar包生成
- * <p>
- * 龙果学院：www.roncoo.com
- *
- * @author：shenjialong
  */
 @WebFilter(filterName = "rcCaptchaFilter", asyncSupported = true, urlPatterns = "/rcCaptcha.jpg")
 public class RcCaptchaFilter extends OncePerRequestFilter {

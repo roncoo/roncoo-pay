@@ -35,11 +35,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Set;
 
 /**
- * 自定义realm .
- *
- * 龙果学院：www.roncoo.com
- * 
- * @author：shenjialong
+ * 自定义realm
  */
 public class OperatorRealm extends AuthorizingRealm {
 

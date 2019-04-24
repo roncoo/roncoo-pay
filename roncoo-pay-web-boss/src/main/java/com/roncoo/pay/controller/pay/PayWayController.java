@@ -42,8 +42,6 @@ import java.util.*;
 
 /**
  * 支付方式管理
- * 龙果学院：www.roncoo.com
- * @author：zenghao
  */
 @Controller
 @RequestMapping("/pay/way")

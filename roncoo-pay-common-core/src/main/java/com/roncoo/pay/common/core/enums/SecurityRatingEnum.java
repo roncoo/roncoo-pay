@@ -22,7 +22,6 @@ import java.util.Map;
 
 /**
  * 安全等级枚举
- * 龙果学院：www.roncoo.com
  * @author：zenghao
  */
 public enum SecurityRatingEnum {

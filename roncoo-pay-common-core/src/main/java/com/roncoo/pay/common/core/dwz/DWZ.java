@@ -16,8 +16,7 @@
 package com.roncoo.pay.common.core.dwz;
 
 /**
- * 封装DWZ框架ajax请求及响应的参数. 
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
+ * 封装DWZ框架ajax请求及响应的参数.
  */
 public final class DWZ {
 

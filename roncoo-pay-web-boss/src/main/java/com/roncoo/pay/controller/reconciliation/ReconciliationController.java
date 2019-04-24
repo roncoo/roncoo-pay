@@ -46,10 +46,7 @@ import java.util.Map;
 
 /**
  * 
- * 对账控制器.
- * 
- * @company：广州领课网络科技有限公司（龙果学院:www.roncoo.com）
- * @author：Along.shen
+ * 对账控制器
  *
  */
 @Controller

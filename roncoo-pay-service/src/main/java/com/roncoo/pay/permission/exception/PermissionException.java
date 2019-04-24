@@ -20,7 +20,7 @@ public class PermissionException extends BizException {
 	public static final Integer PERMISSION_QUERY_MENU_BY_ROLE_ERROR = 1002;
 	/** 分配菜单权限时，角色不能为空 **/
 	public static final Integer PERMISSION_ASSIGN_MENU_ROLE_NULL = 1003;
-	/** 对接龙果平台用户体系异常 **/
+	/** 对接平台用户体系异常 **/
 	public static final Integer RONCOO_NETWORK_EXCEPTION = 1004;
 
 	public PermissionException() {

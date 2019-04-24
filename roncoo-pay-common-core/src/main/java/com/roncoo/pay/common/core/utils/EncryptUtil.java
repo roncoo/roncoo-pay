@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.common.core.utils;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
+
 
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -26,8 +26,6 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * 加密工具类
- * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
- * @author zenghao
  */
 public class EncryptUtil {
 
@@ -72,8 +70,7 @@ public class EncryptUtil {
 	 * @return base64加密后的结果
 	 */
 	public static String encodeBase64String(String str) {
-		BASE64Encoder encoder = new BASE64Encoder();
-		return encoder.encode(str.getBytes());
+		return Base64.encodeBase64String(str.getBytes());
 	}
 
 	/**
@@ -85,8 +82,8 @@ public class EncryptUtil {
 	 * @throws IOException
 	 */
 	public static String decodeBase64String(String str) throws IOException {
-		BASE64Decoder encoder = new BASE64Decoder();
-		return new String(encoder.decodeBuffer(str));
+		byte[] b = Base64.decodeBase64(str);
+		return String.valueOf(b);
 	}
 
 	private static String encode(String str, String method) {

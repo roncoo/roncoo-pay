@@ -26,8 +26,6 @@ import org.springframework.ui.Model;
 
 /**
  * controller基类
- * 龙果学院：www.roncoo.com
- * @author zenghao
  */ 
 public abstract class BaseController {
 
