@@ -10,7 +10,7 @@
 
     <groupId>com.roncoo.pay</groupId>
     <artifactId>roncoo-pay-web-gateway</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>roncoo-pay-web-gateway</name>
     <description>支付网关web</description>

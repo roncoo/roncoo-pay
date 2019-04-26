@@ -9,7 +9,7 @@
 
 	<groupId>com.roncoo.pay</groupId>
 	<artifactId>roncoo-pay-web-boss</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>roncoo-pay-web-boss</name>
 	<description>运营boss后台</description>

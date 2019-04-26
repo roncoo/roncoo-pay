@@ -10,7 +10,7 @@
 
 	<groupId>com.roncoo.pay</groupId>
 	<artifactId>roncoo-pay-web-sample-shop</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>roncoo-pay-web-sample-shop</name>
 	<description>模拟工程</description>
