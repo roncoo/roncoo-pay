@@ -55,6 +55,9 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+
+
 	</dependencies>
 
 	<build>
@@ -88,6 +91,13 @@
 			<resource>
 				<directory>src/main/webapp</directory>
 				<targetPath>META-INF/resources</targetPath>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+				<targetPath>BOOT-INF/classes/resources</targetPath>
 				<includes>
 					<include>**/*.*</include>
 				</includes>
