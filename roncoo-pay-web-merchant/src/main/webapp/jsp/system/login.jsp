@@ -5,7 +5,7 @@
 <head>
   <%@include file="../../common/taglib.jsp"%>
   <%@include file="../../common/lte.jsp"%>
-  <title>龙果支付</title>
+  <title>支付</title>
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />

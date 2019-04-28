@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=7"/>
-    <title>龙果支付后台首页</title>
+    <title>支付后台首页</title>
 </head>
 <body scroll="no">
 <div id="layout">
@@ -80,7 +80,7 @@
                 <div class="page unitBox">
                     <div class="accountInfo">
                         <p>
-                            <span>龙果支付后台</span>
+                            <span>支付后台</span>
                         </p>
                         <p>
                             平台架构、业务流程请登录龙果学院看视频教程 :<a href="http://www.roncoo.com" target="_blank">http://www.roncoo.com</a>

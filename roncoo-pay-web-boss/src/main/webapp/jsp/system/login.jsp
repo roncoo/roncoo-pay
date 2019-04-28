@@ -4,7 +4,7 @@
 <jsp:include page="${baseURL }/common/taglib/taglib.jsp" />
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>龙果支付后台</title>
+<title>支付后台</title>
 <script src="${baseURL }/dwz/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="${baseURL }/dwz/themes/css/login.css" />
 <script type="text/javascript" language="javascript" src="${baseURL }/common/js/login/login.js"></script>
@@ -88,7 +88,7 @@
 		</div>
 		<div id="login_footer">
 			<span id="login_footer_text"></span>
-			<a href="http://www.roncoo.net" target="_blank">龙果支付</a>
+			<a href="http://www.roncoo.net" target="_blank">支付</a>
 		</div>
 	</div>
 

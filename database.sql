@@ -547,7 +547,7 @@ create table rp_trade_payment_order
    unique key ak_key_2 (merchant_order_no, merchant_no)
 );
 
-alter table rp_trade_payment_order comment 'roncoo pay 龙果支付 支付订单表';
+alter table rp_trade_payment_order comment 'roncoo pay  支付订单表';
 
 create table rp_trade_payment_record
 (

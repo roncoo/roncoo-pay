@@ -42,7 +42,7 @@
             <div class="lg_txt">| 收银台</div>
         </div>
         <div class="fr tip_panel">
-            <div class="txt">欢迎使用龙果支付付款</div>
+            <div class="txt">欢迎使用付款</div>
             <a href="">常见问题</a>
         </div>
     </div>

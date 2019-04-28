@@ -9,7 +9,7 @@
 %>
 <html>
 <head>
-    <title>龙果支付</title>
+    <title>支付</title>
     <script type="text/javascript" src="${path}js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="${path}js/jquery.qrcode.min.js"></script>
     <link href="${path}/pay_files/pay.css" rel="stylesheet" type="text/css">
@@ -82,7 +82,7 @@
             <div class="lg_txt">| 收银台</div>
         </div>
         <div class="fr tip_panel">
-            <div class="txt">欢迎使用龙果支付付款</div>
+            <div class="txt">欢迎使用付款</div>
             <a href="">常见问题</a>
         </div>
     </div>

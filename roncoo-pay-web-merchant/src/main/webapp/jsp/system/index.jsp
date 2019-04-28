@@ -5,7 +5,7 @@
 <head>
   <%@include file="../../common/taglib.jsp"%>
   <%@include file="../../common/lte.jsp"%>
-  <title>龙果支付-商户后台</title>
+  <title>支付-商户后台</title>
     <style>
     .modal {
 display:none;;
