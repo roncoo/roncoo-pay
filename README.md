@@ -109,9 +109,7 @@ roncoo-pay //龙果支付
 
 ---------
 
-在线支付演示：http://demo.pay.roncoo.com
-
-后台运营管理：http://demo.pay.roncoo.com/boss
+在线演示（后台管理）：http://demo.pay.roncoo.com/boss
 
 系统操作说明：https://blog.roncoo.com/article/124375
 
