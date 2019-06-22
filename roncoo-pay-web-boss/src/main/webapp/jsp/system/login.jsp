@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>龙果支付后台</title>
+<script src="${baseURL }/dwz/js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="${baseURL }/dwz/themes/css/login.css" />
 <script type="text/javascript" language="javascript" src="${baseURL }/common/js/login/login.js"></script>
 </head>
@@ -14,7 +15,7 @@
 		<div id="login_header">
 			<h1 class="login_logo">
 				<a href="http://demo.dwzjs.com">
-					<img src="${baseURL }/dwz/themes/default/images/login_logo.png" />
+					<img src="${baseURL }/dwz/themes/default/images/login_logo1.png" />
 				</a>
 			</h1>
 			<div class="login_headerContent">
@@ -61,7 +62,7 @@
 								<li class="input_code">
 									<input id="code" name="captchaCode" size="6" />
 								</li>
-								
+
 								<li>
 									<span> <img class="rcCaptcha-btn rcCaptcha-img" src="${baseURL}/rcCaptcha.jpg" alt="点击更换验证码" title="点击更换验证码" width="65" height="24" />
 									</span>
@@ -86,13 +87,15 @@
 			</div>
 		</div>
 		<div id="login_footer">
-			Copyright &copy; 2015-2016
-			<a href="http://www.roncoo.com" target="_blank">龙果学院</a>
+			<span id="login_footer_text"></span>
+			<a href="http://www.roncoo.net" target="_blank">龙果支付</a>
 		</div>
 	</div>
 
 	<script>
 		$(function() {
+			$("#login_footer_text").text("Copyright © 2015-"+new Date().getFullYear());
+
 			$(".rcCaptcha-btn").click(
 					function() {
 						$(".rcCaptcha-img").attr(
@@ -100,7 +103,7 @@
 								'${baseURL}/rcCaptcha.jsp?'
 										+ new Date().getTime());
 					});
-		});
+		})
 	</script>
 </body>
 </html>

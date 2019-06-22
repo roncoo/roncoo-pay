@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.account.entity;
 
+import com.roncoo.pay.common.core.entity.BaseEntity;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
-
-import com.roncoo.pay.common.core.entity.BaseEntity;
 
 /**
  * 账户信息

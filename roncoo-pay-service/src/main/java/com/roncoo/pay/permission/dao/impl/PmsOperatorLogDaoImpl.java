@@ -15,10 +15,9 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.permission.dao.PmsOperatorLogDao;
 import com.roncoo.pay.permission.entity.PmsOperatorLog;
+import org.springframework.stereotype.Repository;
 
 /**
  * 权限操作员dao实现

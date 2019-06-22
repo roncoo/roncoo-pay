@@ -23,7 +23,7 @@ import com.roncoo.pay.trade.entity.RpTradePaymentOrder;
  * @author  Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
-public interface RpTradePaymentOrderDao  extends BaseDao<RpTradePaymentOrder>{
+public interface RpTradePaymentOrderDao  extends BaseDao<RpTradePaymentOrder> {
 
     /**
      * 根据商户编号及商户订单号获取支付订单信息

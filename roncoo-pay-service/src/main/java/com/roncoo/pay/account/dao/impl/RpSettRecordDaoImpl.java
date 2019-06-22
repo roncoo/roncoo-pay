@@ -15,11 +15,10 @@
  */
 package com.roncoo.pay.account.dao.impl;
 
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.account.dao.RpSettRecordDao;
 import com.roncoo.pay.account.entity.RpSettRecord;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
+import org.springframework.stereotype.Repository;
 
 /**
  *  结算记录dao实现类
@@ -27,6 +26,6 @@ import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
  * @author：zenghao
  */
 @Repository
-public class RpSettRecordDaoImpl  extends BaseDaoImpl<RpSettRecord> implements RpSettRecordDao{
+public class RpSettRecordDaoImpl  extends BaseDaoImpl<RpSettRecord> implements RpSettRecordDao {
 
 }

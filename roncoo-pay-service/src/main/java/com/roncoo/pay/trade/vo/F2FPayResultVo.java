@@ -1,7 +1,5 @@
 package com.roncoo.pay.trade.vo;
 
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
-
 /**
  * <b>功能说明:
  * </b>

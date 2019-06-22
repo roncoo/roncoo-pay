@@ -34,10 +34,9 @@ import java.net.URL;
 import java.util.*;
 
 /**
- * <b>功能说明:微信支付工具类
- * </b>
- * @author  Peter
- * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
+ * <b>功能说明:微信支付工具类 </b>
+ *
+ * @author Peter <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 public class WeiXinPayUtils {
 
@@ -45,6 +44,7 @@ public class WeiXinPayUtils {
 
     /**
      * 发送xml数据,获取返回结果
+     *
      * @param requestUrl
      * @param requestMethod
      * @param xmlStr
@@ -87,6 +87,7 @@ public class WeiXinPayUtils {
             for (Element e : elementList) {
                 map.put(e.getName(), e.getText());
             }
+            LOG.info("微信查询返回结果:"+map.toString());
             inputStreamReader.close();
             inputStream.close();
             inputStream = null;
@@ -102,14 +103,15 @@ public class WeiXinPayUtils {
     }
 
     /**
-     *  生成预支付XML
+     * 生成预支付XML
+     *
      * @param weiXinPrePay
      * @param partnerKey
      * @return
      */
-    public static String getPrePayXml(WeiXinPrePay weiXinPrePay, String partnerKey){
+    public static String getPrePayXml(WeiXinPrePay weiXinPrePay, String partnerKey) {
 
-        getPrePaySign(weiXinPrePay, partnerKey);//生成预支付请求签名
+        getPrePaySign(weiXinPrePay, partnerKey);// 生成预支付请求签名
 
         StringBuilder sb = new StringBuilder();
         sb.append("<xml><appid>").append(weiXinPrePay.getAppid()).append("</appid>");
@@ -118,9 +120,9 @@ public class WeiXinPayUtils {
         sb.append("<mch_id>").append(weiXinPrePay.getMchId()).append("</mch_id>");
         sb.append("<nonce_str>").append(weiXinPrePay.getNonceStr()).append("</nonce_str>");
         sb.append("<notify_url>").append(weiXinPrePay.getNotifyUrl()).append("</notify_url>");
-        if (WeiXinTradeTypeEnum.NATIVE.name().equals(weiXinPrePay.getTradeType())){
+        if (WeiXinTradeTypeEnum.NATIVE.name().equals(weiXinPrePay.getTradeType())) {
             sb.append("<product_id>").append(weiXinPrePay.getProductId()).append("</product_id>");
-        }else if (WeiXinTradeTypeEnum.JSAPI.name().equals(weiXinPrePay.getTradeType())){
+        } else if (WeiXinTradeTypeEnum.JSAPI.name().equals(weiXinPrePay.getTradeType())) {
             sb.append("<openid>").append(weiXinPrePay.getOpenid()).append("</openid>");
         }
         sb.append("<out_trade_no>").append(weiXinPrePay.getOutTradeNo()).append("</out_trade_no>");
@@ -137,15 +139,17 @@ public class WeiXinPayUtils {
 
     /**
      * 微信拼接签名参数
-     * @param appid 公众账号ID
-     * @param mch_id    商户号
-     * @param device_info   设备号
-     * @param trade_type    交易类型
-     * @param prePay    预支付返回Map
-     * @param partnerKey    签名EY
+     *
+     * @param appid       公众账号ID
+     * @param mch_id      商户号
+     * @param device_info 设备号
+     * @param trade_type  交易类型
+     * @param prePay      预支付返回Map
+     * @param partnerKey  签名EY
      * @return
      */
-    public static String geWeiXintPrePaySign(String appid , String mch_id , String device_info , String trade_type , Map<String, Object> prePay , String partnerKey){
+    public static String geWeiXintPrePaySign(String appid, String mch_id, String device_info, String trade_type,
+                                             Map<String, Object> prePay, String partnerKey) {
         Map<String, Object> preParams = new HashMap<String, Object>();
         if (!StringUtil.isEmpty(prePay.get("return_code"))) {
             preParams.put("return_code", prePay.get("return_code"));
@@ -190,24 +194,24 @@ public class WeiXinPayUtils {
         return preSign;
     }
 
-
-
-    public static boolean notifySign(Map<String, String> result , String sign , String  partnerKey) {
+    public static boolean notifySign(Map<String, String> result, String sign, String partnerKey) {
         String argNotifySign = getStringByStringMap(result) + "&key=" + partnerKey;
         String notifySign = MD5Util.encode(argNotifySign).toUpperCase();
-        if (notifySign.equals(sign)){
+        if (notifySign.equals(sign)) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
+
     /**
      * 获取预支付请求签名
+     *
      * @param weiXinPrePay
      * @param partnerKey
      * @return
      */
-    private static void getPrePaySign(WeiXinPrePay weiXinPrePay,String partnerKey){
+    private static void getPrePaySign(WeiXinPrePay weiXinPrePay, String partnerKey) {
 
         Map<String, Object> prePayMap = new HashMap<String, Object>();
         prePayMap.put("appid", weiXinPrePay.getAppid());// 公众账号ID
@@ -222,9 +226,9 @@ public class WeiXinPayUtils {
         prePayMap.put("time_expire", weiXinPrePay.getTimeExpire()); // 截止时间
         prePayMap.put("notify_url", weiXinPrePay.getNotifyUrl()); // 接收财付通通知的URL
         prePayMap.put("trade_type", weiXinPrePay.getTradeType().name()); // 交易类型
-        if (WeiXinTradeTypeEnum.NATIVE.name().equals(weiXinPrePay.getTradeType())){
-            prePayMap.put("product_id", weiXinPrePay.getProductId()); //商品ID
-        }else if (WeiXinTradeTypeEnum.JSAPI.name().equals(weiXinPrePay.getTradeType())){
+        if (WeiXinTradeTypeEnum.NATIVE.name().equals(weiXinPrePay.getTradeType())) {
+            prePayMap.put("product_id", weiXinPrePay.getProductId()); // 商品ID
+        } else if (WeiXinTradeTypeEnum.JSAPI.name().equals(weiXinPrePay.getTradeType())) {
             prePayMap.put("openid", weiXinPrePay.getOpenid()); // openid
         }
 
@@ -233,9 +237,9 @@ public class WeiXinPayUtils {
         weiXinPrePay.setSign(preSign);
     }
 
-
     /**
      * 根据Map获取排序拼接后的字符串
+     *
      * @param map
      * @return
      */
@@ -259,7 +263,6 @@ public class WeiXinPayUtils {
         return sb.toString();
     }
 
-
     /**
      * 解析微信发来的请求（XML）
      *
@@ -270,7 +273,7 @@ public class WeiXinPayUtils {
     @SuppressWarnings("unchecked")
     public static Map<String, String> parseXml(InputStream inputStream) throws Exception {
 
-        if (inputStream == null){
+        if (inputStream == null) {
             return null;
         }
 
@@ -279,13 +282,43 @@ public class WeiXinPayUtils {
         Document document = reader.read(inputStream);
         Element root = document.getRootElement();// 得到xml根元素
         List<Element> elementList = root.elements();// 得到根元素的所有子节点
-        for (Element e : elementList) {        // 遍历所有子节点
+        for (Element e : elementList) { // 遍历所有子节点
             map.put(e.getName(), e.getText());
         }
 
-        inputStream.close();        // 释放资源
+        inputStream.close(); // 释放资源
         inputStream = null;
 
         return map;
+    }
+
+    /**
+     * 订单查询
+     *
+     * @param outTradeNo
+     * @return
+     */
+    public static Map<String, Object> orderQuery(String outTradeNo, String appId, String MchId, String partnerKey) {
+        Random random = new Random();
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("appid", appId);
+        paramMap.put("mch_id", MchId);
+        String nonce_str = "";
+        for (int i = 0; i < 31; i++) {
+            nonce_str += random.nextInt(10);
+        }
+        paramMap.put("nonce_str", nonce_str);
+        paramMap.put("out_trade_no", outTradeNo);
+        String signStr = getStringByMap(paramMap) + "&key=" + partnerKey;
+        paramMap.put("sign", MD5Util.encode(signStr).toUpperCase());
+        Set<String> ks = paramMap.keySet();
+        StringBuilder sb = new StringBuilder("<xml>");
+        for (String key : ks) {
+            sb.append("<" + key + ">" + paramMap.get(key) + "</" + key + ">");
+        }
+        sb.append("</xml>");
+        Map<String, Object> resultMap = httpXmlRequest("https://api.mch.weixin.qq.com/pay/orderquery", "POST",
+                sb.toString());
+        return resultMap;
     }
 }

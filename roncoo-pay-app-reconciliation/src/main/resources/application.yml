@@ -1,0 +1,13 @@
+server:
+  port: 8088
+  servlet:
+    session:
+      timeout: 30
+spring:
+  application:
+    name: roncoo-pay-app-reconciliation
+logging:
+  config: classpath:logback.xml
+mybatis:
+  mapper-locations: classpath*:mybatis/mapper/**/*.xml
+

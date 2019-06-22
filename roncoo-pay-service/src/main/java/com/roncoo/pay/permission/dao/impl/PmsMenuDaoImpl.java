@@ -15,14 +15,13 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
+import com.roncoo.pay.permission.dao.PmsMenuDao;
+import com.roncoo.pay.permission.entity.PmsMenu;
+import org.springframework.stereotype.Repository;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
-import org.springframework.stereotype.Repository;
-
-import com.roncoo.pay.permission.dao.PmsMenuDao;
-import com.roncoo.pay.permission.entity.PmsMenu;
 
 /**
  * 权限菜单
@@ -38,7 +37,7 @@ public class PmsMenuDaoImpl extends PermissionBaseDaoImpl<PmsMenu> implements Pm
 	@Override
 	public List listByRoleIds(String roleIdsStr) {
 		List<String> roldIds = Arrays.asList(roleIdsStr.split(","));
-		return super.getSqlSession().selectList(getStatement("listByRoleIds"), roldIds);
+		return super.getSessionTemplate().selectList(getStatement("listByRoleIds"), roldIds);
 	}
 
 	/**
@@ -51,7 +50,7 @@ public class PmsMenuDaoImpl extends PermissionBaseDaoImpl<PmsMenu> implements Pm
 	@SuppressWarnings("rawtypes")
 	@Override
 	public List listByParent(Long parentId) {
-		return super.getSqlSession().selectList(getStatement("listByParent"), parentId);
+		return super.getSessionTemplate().selectList(getStatement("listByParent"), parentId);
 	}
 
 	/**
@@ -63,7 +62,7 @@ public class PmsMenuDaoImpl extends PermissionBaseDaoImpl<PmsMenu> implements Pm
 	 */
 	@Override
 	public List<PmsMenu> listByParentId(Long parentId) {
-		return super.getSqlSession().selectList(getStatement("listByParentId"), parentId);
+		return super.getSessionTemplate().selectList(getStatement("listByParentId"), parentId);
 	}
 
 	/***
@@ -76,7 +75,7 @@ public class PmsMenuDaoImpl extends PermissionBaseDaoImpl<PmsMenu> implements Pm
 	 * @return
 	 */
 	public List<PmsMenu> getMenuByNameAndIsLeaf(Map<String, Object> map) {
-		return super.getSqlSession().selectList(getStatement("listBy"), map);
+		return super.getSessionTemplate().selectList(getStatement("listBy"), map);
 	}
 
 }

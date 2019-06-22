@@ -1,0 +1,170 @@
+
+.payTestHeader{
+  height: 80px;
+  width: 960px;
+  margin:0 auto;
+}
+.payTestHeader .logo_panel{
+  padding:10px;
+  float: left;
+}
+.payTestHeader .lg_txt{
+  font-size: 18px;
+  color: #55585c;
+  margin:17px 0 0 12px;
+  float: left;
+}
+.payTestHeader .tip_panel{
+  margin:15px;
+}
+.payTestHeader .tip_panel .txt{
+  display: inline-block;
+  color: #9f9f9f;
+  font-size: 12px;
+  padding-right: 10px;
+  border-right:1px solid #ddd;
+  margin-right: 10px;
+}
+.payTestHeader .tip_panel a{
+  color: #1DB2FF;
+}
+.cashier_desk{
+    width: 960px;
+    height: 420px;
+    margin:0 auto 30px;
+    border:1px solid #ccc;
+}
+.cashier_desk .head{
+    height: 120px;
+    background-color: #dbdcdd;
+}
+.cashier_desk .head .order_info{
+    padding: 12px;
+    font-size: 16px;
+    color: #999;
+    float: left;
+}
+
+.cashier_desk .head .order_info li{
+    padding:5px 0;
+}
+
+.cashier_desk .head .order_info .lb{
+    color: #333;
+}
+
+.cashier_desk .head .price{
+    color: #ee7b00;
+    font-size: 36px;
+    padding:36px;
+}
+.pay_ment{
+    height: auto;
+}
+.bd .payment{
+  padding: 50px 0;
+  overflow: hidden;
+  text-align: center;
+}
+.bd .payment li{
+  margin-left: 50px;
+  display: inline-block;
+}
+.bd .payment li:first-child{
+  margin: 0;
+}
+
+.pay_btn{
+  text-align: center;
+  margin-top: 45px;
+}
+.pay_btn input,.pay_btn a{
+  width: 160px;
+  display: inline-block;
+  height: 35px;
+  line-height: 35px;
+  background: #009ddc;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.pay_btn input:hover,.pay_btn a:hover{
+  background: #e10000;
+}
+.x-main {
+    padding-bottom: 20px;
+}
+.weixin {
+    background: #fff;
+    width: 550px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    padding: 15px 50px;
+}
+.x-left img {
+    margin: 25px 0 0 115px;
+}
+.x-right {
+    width: 401px;
+    margin: 3px;
+    margin-left: 0;
+    display: inline;
+    float: right;
+    height: 310px;
+    font-family: Microsoft YaHei;
+    text-align: center;
+}
+.x-right h4 {
+    font-weight: normal;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    font: 18px Arial, Helvetica, sans-serif;
+    color: #333;
+}
+.x-right .tip {
+    font-size: 14px;
+    line-height: 30px;
+    color: #80343e;
+    font-weight: 500;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+.x-right .tipa {
+    color: #cacaca;
+    margin-top: 10px;
+}
+.x-right .er img {
+    width: 190px;
+    height: 190px;
+}
+.pro {
+    width: 600px;
+    padding: 25px;
+    margin: 0 auto 10px;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.pro p {
+    font-size: 16px;
+    line-height: 30px;
+    color: #2c2c2c;
+    font-weight: 500;
+}
+.pro span {
+    color: #80343e;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+

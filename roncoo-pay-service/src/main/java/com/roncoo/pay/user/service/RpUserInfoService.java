@@ -15,11 +15,11 @@
  */
 package com.roncoo.pay.user.service;
 
-import java.util.List;
-
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.user.entity.RpUserInfo;
+
+import java.util.List;
 
 /**
  * 用户信息service接口
@@ -60,9 +60,13 @@ public interface RpUserInfoService{
      * 
      * @param userName
      *            用户名
+     * @param mobile
+     *            手机号
+     * @param password
+     *            密码
      * @return
      */
-    void registerOffline(String userName) ;
+    void registerOffline(String userName, String mobile, String password) ;
 
 	/**
 	 * 根据商户编号获取商户信息
@@ -70,6 +74,13 @@ public interface RpUserInfoService{
 	 * @return
 	 */
 	RpUserInfo getDataByMerchentNo(String merchantNo);
+	
+	/**
+	 * 根据手机号获取商户信息
+	 * @param mobile
+	 * @return
+	 */
+	RpUserInfo getDataByMobile(String mobile);
 	
 	/**
 	 * 获取所有用户

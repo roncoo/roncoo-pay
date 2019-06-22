@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.roncoo.pay.common</groupId>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.2.RELEASE</version>
+		<relativePath/>
+	</parent>
+
+	<groupId>com.roncoo.pay</groupId>
 	<artifactId>roncoo-pay</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>roncoo-pay</name>
-	<url>http://maven.apache.org</url>
+	<description>龙果开源支付</description>
 
 	<organization>
 		<name>Roncoo</name>
 		<url>http://www.roncoo.com</url>
 	</organization>
 
+	<!--项目模块-->
 	<modules>
-		<!-- core 是支付系统核心基础包 -->
-		<module>roncoo-pay-common-core</module>
-		<!-- 运营boss后台 -->
-		<module>roncoo-pay-web-boss</module>
-		<!-- 对账流程app,发起对账核心业务 -->
-		<module>roncoo-pay-app-reconciliation</module>
-		<!-- 平台通知消息的处理 -->
+		<!--平台通知消息的处理-->
 		<module>roncoo-pay-app-notify</module>
-		<!-- 结算定时处理app，发起定时跑批处理，统计结算数据 -->
+		<!--商户订单通知-->
+		<module>roncoo-pay-app-order-polling</module>
+		<!--对账流程app,发起对账核心业务-->
+		<module>roncoo-pay-app-reconciliation</module>
+		<!--结算定时处理app，发起定时跑批处理，统计结算数据-->
 		<module>roncoo-pay-app-settlement</module>
-		<!-- 支付网关web -->
-		<module>roncoo-pay-web-gateway</module>
-		<!-- 支付系统核心业务 -->
+		<!--core 是支付系统核心基础包-->
+		<module>roncoo-pay-common-core</module>
+		<!--支付系统核心业务-->
 		<module>roncoo-pay-service</module>
+		<!--运营boss后台-->
+		<module>roncoo-pay-web-boss</module>
+		<!--支付网关web-->
+		<module>roncoo-pay-web-gateway</module>
+		<!--商户后台-->
+			<module>roncoo-pay-web-merchant</module>
+		<!--模拟工程-->
+		<module>roncoo-pay-web-sample-shop</module>
 	</modules>
 
 	<!-- 配置maven地址 -->
@@ -46,387 +61,125 @@
 		</snapshotRepository>
 	</distributionManagement>
 
+	<!--版本维护-->
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<mybatis-spring-boot-starter.version>2.0.0</mybatis-spring-boot-starter.version>
+		<fastjson.version>1.2.56</fastjson.version>
+		<druid.version>1.1.13</druid.version>
+		<alipay-sdk-java.version>3.4.49.ALL</alipay-sdk-java.version>
+		<!--<alipay-trade-sdk.version>1.0</alipay-trade-sdk.version>-->
 
-		<!-- libs -->
-		<junit.version>4.11</junit.version>
-		<spring.version>3.2.4.RELEASE</spring.version>
-		<mybatis-spring.version>1.3.0</mybatis-spring.version>
-		<mybatis.version>3.4.0</mybatis.version>
-		<slf4j_version>1.7.21</slf4j_version>
-		<log4j_version>1.2.17</log4j_version>
-		<cglib.version>3.2.2</cglib.version>
-		<aspectjrt.version>1.5.4</aspectjrt.version>
-		<aspectjweaver.version>1.8.9</aspectjweaver.version>
-		<mysql.version>5.1.30</mysql.version>
-		<dbcp.version>1.4</dbcp.version>
-		<jstl.version>1.2</jstl.version>
-		<druid.version>1.0.19</druid.version>
-		<fastjson.version>1.2.11</fastjson.version>
-		<javaee-api.version>7.0</javaee-api.version>
+		<org.apache.shiro.version>1.4.0</org.apache.shiro.version>
+
+		<slf4j-api.version>1.8.0-beta2</slf4j-api.version>
+		<slf4j-log4j12.version>1.8.0-beta2</slf4j-log4j12.version>
+		<log4j.version>1.2.17</log4j.version>
+
 		<commons-lang.version>2.6</commons-lang.version>
-		<commons-io.version>2.5</commons-io.version>
+		<commons-httpclient.version>3.1</commons-httpclient.version>
+		<dom4j.version>1.6.1</dom4j.version>
 		<jdom.version>2.0.2</jdom.version>
-		<activeMQ.version>5.11.4</activeMQ.version>
-		<javassist.version>3.12.1.GA</javassist.version>
-		<transaction.version>1.1</transaction.version>
-		
+		<javax.json-api.version>1.1.4</javax.json-api.version>
+		<commons-io.version>2.6</commons-io.version>
+		<httpclient.version>4.5.7</httpclient.version>
+		<java.version>1.8</java.version>
 	</properties>
 
+	<!--版本管理-->
 	<dependencyManagement>
 		<dependencies>
+			<!--项目模块-->
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-				<!-- 表示test的时候引入，发布的时候不会加载此�? -->
-				<scope>test</scope>
+				<groupId>com.roncoo.pay.common</groupId>
+				<artifactId>roncoo-pay-common-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.roncoo.pay.service</groupId>
+				<artifactId>roncoo-pay-service</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 
-			<!-- Spring libs Begin -->
+			<!--spring boot-->
 			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis-spring-boot-starter.version}</version>
 			</dependency>
 
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aspects</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-expression</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-instrument</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-instrument-tomcat</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jms</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-orm</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-oxm</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${spring.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc-portlet</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-
-			<!-- Spring libs end -->
-
-			<!-- Spring aop libs Begin -->
-			<dependency>
-				<groupId>aspectj</groupId>
-				<artifactId>aspectjrt</artifactId>
-				<version>${aspectjrt.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjweaver</artifactId>
-				<version>${aspectjweaver.version}</version>
-			</dependency>
-
-			<!-- Spring aop libs End -->
-
-			<!-- MyBatis libs Begin -->
-			<dependency>
-				<groupId>org.mybatis</groupId>
-				<artifactId>mybatis</artifactId>
-				<version>${mybatis.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.mybatis</groupId>
-				<artifactId>mybatis-spring</artifactId>
-				<version>${mybatis-spring.version}</version>
-			</dependency>
-			<!-- MyBatis libs End -->
-
-			<!-- Log libs Begin -->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>${slf4j_version}</version>
-			</dependency>
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>${log4j_version}</version>
-			</dependency>
-			
-			<dependency>
-				<groupId>javassist</groupId>
-				<artifactId>javassist</artifactId>
-				<version>${javassist.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>javax.transaction</groupId>
-				<artifactId>jta</artifactId>
-				<version>${transaction.version}</version>
-			</dependency>
-
-			<!-- Log libs End -->
-
-			<!-- Mysql libs Begin -->
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>${mysql.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>commons-dbcp</groupId>
-				<artifactId>commons-dbcp</artifactId>
-				<version>${dbcp.version}</version>
-			</dependency>
-
-			<!-- Mysql libs End -->
-
-			<!-- Other Common libs Begin -->
-			<dependency>
-				<groupId>javax</groupId>
-				<artifactId>javaee-api</artifactId>
-				<version>${javaee-api.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>cglib</groupId>
-				<artifactId>cglib</artifactId>
-				<version>${cglib.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>jstl</groupId>
-				<artifactId>jstl</artifactId>
-				<version>${jstl.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>druid</artifactId>
-				<version>${druid.version}</version>
-			</dependency>
-
+			<!--Alibaba-->
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
 				<version>${fastjson.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.alipay.sdk</groupId>
+				<artifactId>alipay-sdk-java</artifactId>
+				<version>${alipay-sdk-java.version}</version>
+			</dependency>
 
+			<!-- shiro -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${org.apache.shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-web</artifactId>
+				<version>${org.apache.shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${org.apache.shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>${org.apache.shiro.version}</version>
+			</dependency>
+
+			<!--第三方jar-->
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
 				<version>${commons-lang.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>commons-httpclient</groupId>
+				<artifactId>commons-httpclient</artifactId>
+				<version>${commons-httpclient.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jdom</groupId>
+				<artifactId>jdom</artifactId>
+				<version>${jdom.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.json</groupId>
+				<artifactId>javax.json-api</artifactId>
+				<version>${javax.json-api.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
 				<version>${commons-io.version}</version>
 			</dependency>
 
-			<!-- http://mvnrepository.com/artifact/commons-codec/commons-codec -->
-			<dependency>
-				<groupId>commons-codec</groupId>
-				<artifactId>commons-codec</artifactId>
-				<version>1.10</version>
-			</dependency>
-
-			<!-- https://mvnrepository.com/artifact/commons-configuration/commons-configuration -->
-			<dependency>
-				<groupId>commons-configuration</groupId>
-				<artifactId>commons-configuration</artifactId>
-				<version>1.10</version>
-			</dependency>
-
-			<!-- https://mvnrepository.com/artifact/com.google.zxing/core -->
-			<dependency>
-				<groupId>com.google.zxing</groupId>
-				<artifactId>core</artifactId>
-				<version>2.1</version>
-			</dependency>
-
-			<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-			<dependency>
-				<groupId>com.google.code.gson</groupId>
-				<artifactId>gson</artifactId>
-				<version>2.3.1</version>
-			</dependency>
-
-
-			<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
-			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-core</artifactId>
-				<version>1.3</version>
-			</dependency>
-
-			<dependency>
-				<groupId>alipay</groupId>
-				<artifactId>alipay-trade-sdk</artifactId>
-				<version>1.0</version>
-			</dependency>
-
-			<dependency>
-				<groupId>alipay</groupId>
-				<artifactId>alipay-sdk-java20151021120052</artifactId>
-				<version>1.0</version>
-			</dependency>
-
-			<dependency>
-				<groupId>jaxen</groupId>
-				<artifactId>jaxen</artifactId>
-				<version>1.1.6</version>
-			</dependency>
-
-			<dependency>
-				<groupId>javax.validation</groupId>
-				<artifactId>validation-api</artifactId>
-				<version>1.0.0.GA</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>4.2.0.Final</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.apache.activemq</groupId>
-				<artifactId>activemq-all</artifactId>
-				<version>${activeMQ.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.apache.activemq</groupId>
-				<artifactId>activemq-pool</artifactId>
-				<version>${activeMQ.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.jdom</groupId>
-				<artifactId>jdom</artifactId>
-				<version>${jdom.version}</version>
-			</dependency>
-			<!-- Other Common libs End -->
 		</dependencies>
 	</dependencyManagement>
-
-	<!-- 打包插件 -->
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.7</version>
-				<configuration>
-					<uniqueVersion>false</uniqueVersion>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.8</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.2</version>
-				<configuration>
-					<failOnError>true</failOnError>
-					<verbose>true</verbose>
-					<fork>true</fork>
-					<compilerArgument>-nowarn</compilerArgument>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.1.2</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 	<!-- developer -->
 	<developers>

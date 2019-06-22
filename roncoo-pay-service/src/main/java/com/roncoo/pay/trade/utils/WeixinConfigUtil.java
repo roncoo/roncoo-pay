@@ -15,11 +15,11 @@
  */
 package com.roncoo.pay.trade.utils;
 
-import java.io.IOException;
-import java.util.Properties;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * <b>功能说明:微信属性文件工具类
@@ -61,4 +61,22 @@ public class WeixinConfigUtil {
     public static String readConfig(String key) {
         return (String) properties.get(key);
     }
+
+    //app_id
+    public static final String appId = (String) properties.get("appId");
+
+    //商户号
+    public static final String mch_id = (String) properties.get("mch_id");
+
+    //商户秘钥
+    public static final String partnerKey = (String) properties.get("partnerKey");
+
+    //小程序支付
+    public static final String xAuthUrl = (String) properties.get("x_auth_url");
+    public static final String xGrantType = (String) properties.get("x_grant_type");
+    public static final String xAppId = (String) properties.get("x_appId");
+    public static final String xPartnerKey = (String) properties.get("x_partnerKey");
+    public static final String xPayKey = (String) properties.get("x_payKey");
+    public static final String xMchId = (String) properties.get("x_mch_id");
+    public static final String x_notify_url = (String) properties.get("x_notify_url");
 }

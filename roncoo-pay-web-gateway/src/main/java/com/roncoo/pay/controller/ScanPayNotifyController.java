@@ -18,23 +18,10 @@ package com.roncoo.pay.controller;
 /**
  * <b>功能说明:后台通知结果控制类
  * </b>
- * @author  Peter
+ *
+ * @author Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
-
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.utils.StringUtil;
@@ -42,6 +29,18 @@ import com.roncoo.pay.trade.service.RpTradePaymentManagerService;
 import com.roncoo.pay.trade.utils.WeiXinPayUtils;
 import com.roncoo.pay.trade.utils.alipay.util.AliPayUtil;
 import com.roncoo.pay.trade.vo.OrderPayResultVo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/scanPayNotify")
@@ -51,20 +50,20 @@ public class ScanPayNotifyController {
     private RpTradePaymentManagerService rpTradePaymentManagerService;
 
     @RequestMapping("/notify/{payWayCode}")
-    public void notify(@PathVariable("payWayCode") String  payWayCode , HttpServletRequest httpServletRequest , HttpServletResponse httpServletResponse) throws Exception {
+    public void notify(@PathVariable("payWayCode") String payWayCode, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
 
-        Map<String , String> notifyMap = new HashMap<String , String >();
-        if (PayWayEnum.WEIXIN.name().equals(payWayCode)){
+        Map<String, String> notifyMap = new HashMap<String, String>();
+        if (PayWayEnum.WEIXIN.name().equals(payWayCode) || "WEIXIN_PROGRAM".equals(payWayCode)) {
             InputStream inputStream = httpServletRequest.getInputStream();// 从request中取得输入流
             notifyMap = WeiXinPayUtils.parseXml(inputStream);
-        }else if (PayWayEnum.ALIPAY.name().equals(payWayCode)){
+        } else if (PayWayEnum.ALIPAY.name().equals(payWayCode)) {
             Map<String, String[]> requestParams = httpServletRequest.getParameterMap();
             notifyMap = AliPayUtil.parseNotifyMsg(requestParams);
         }
 
-        String completeWeiXinScanPay = rpTradePaymentManagerService.completeScanPay(payWayCode ,notifyMap);
-        if (!StringUtil.isEmpty(completeWeiXinScanPay)){
-            if (PayWayEnum.WEIXIN.name().equals(payWayCode)){
+        String completeWeiXinScanPay = rpTradePaymentManagerService.completeScanPay(payWayCode, notifyMap);
+        if (!StringUtil.isEmpty(completeWeiXinScanPay)) {
+            if (PayWayEnum.WEIXIN.name().equals(payWayCode)) {
                 httpServletResponse.setContentType("text/xml");
             }
             httpServletResponse.getWriter().print(completeWeiXinScanPay);
@@ -72,11 +71,11 @@ public class ScanPayNotifyController {
     }
 
     @RequestMapping("/result/{payWayCode}")
-    public String result(@PathVariable("payWayCode") String payWayCode, HttpServletRequest httpServletRequest , Model model) throws Exception {
+    public String result(@PathVariable("payWayCode") String payWayCode, HttpServletRequest httpServletRequest, Model model) throws Exception {
 
-        Map<String,String> resultMap = new HashMap<String,String>();
+        Map<String, String> resultMap = new HashMap<String, String>();
         Map requestParams = httpServletRequest.getParameterMap();
-        for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
+        for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext(); ) {
             String name = (String) iter.next();
             String[] values = (String[]) requestParams.get(name);
             String valueStr = "";
@@ -91,7 +90,7 @@ public class ScanPayNotifyController {
         }
 
         OrderPayResultVo scanPayByResult = rpTradePaymentManagerService.completeScanPayByResult(payWayCode, resultMap);
-        model.addAttribute("scanPayByResult",scanPayByResult);
+        model.addAttribute("scanPayByResult", scanPayByResult);
 
         return "PayResult";
     }

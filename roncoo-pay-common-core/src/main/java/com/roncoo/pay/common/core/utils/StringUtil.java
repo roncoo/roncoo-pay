@@ -15,16 +15,12 @@
  */
 package com.roncoo.pay.common.core.utils;
 
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.UnsupportedEncodingException;
+import java.util.*;
 
 /**
  * String字符串工具类.
@@ -191,6 +187,20 @@ public final class StringUtil {
             list.add(param);
         }
         return list;
+    }
+
+    /**
+     * 判断对象是否为空
+     *
+     * @param obj
+     * @return
+     */
+    public static boolean isNotNull(Object obj) {
+        if (obj != null && obj.toString() != null && !"".equals(obj.toString().trim())) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

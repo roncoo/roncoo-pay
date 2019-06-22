@@ -15,12 +15,11 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.permission.dao.PmsOperatorDao;
 import com.roncoo.pay.permission.entity.PmsOperator;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 权限操作员dao实现
@@ -41,12 +40,12 @@ public class PmsOperatorDaoImpl extends PermissionBaseDaoImpl<PmsOperator> imple
 	 */
 
 	public PmsOperator findByLoginName(String loginName) {
-		return super.getSqlSession().selectOne(getStatement("findByLoginName"), loginName);
+		return super.getSessionTemplate().selectOne(getStatement("findByLoginName"), loginName);
 	}
 
 	@Override
 	public List<PmsOperator> listByRoleId(Long roleId) {
-		return super.getSqlSession().selectList(getStatement("listByRoleId"), roleId);
+		return super.getSessionTemplate().selectList(getStatement("listByRoleId"), roleId);
 	}
 
 }

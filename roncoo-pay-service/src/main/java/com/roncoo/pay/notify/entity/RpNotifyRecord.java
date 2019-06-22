@@ -15,7 +15,7 @@ import java.util.Date;
  */
 public class RpNotifyRecord  extends BaseEntity {
 
-    private static final long serialVersionUID = -6104194914044220447L;
+    
 
 //    private Long notifyId;
 //

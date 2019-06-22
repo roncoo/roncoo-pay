@@ -3,7 +3,6 @@ package com.roncoo.pay.notify.dao.impl;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import com.roncoo.pay.notify.dao.RpNotifyRecordDao;
 import com.roncoo.pay.notify.entity.RpNotifyRecord;
-
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

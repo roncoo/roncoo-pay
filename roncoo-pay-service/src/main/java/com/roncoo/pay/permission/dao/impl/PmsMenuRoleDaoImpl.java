@@ -15,12 +15,11 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
-import java.util.List;
-
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.permission.dao.PmsMenuRoleDao;
 import com.roncoo.pay.permission.entity.PmsMenuRole;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 菜单角色
@@ -34,7 +33,7 @@ public class PmsMenuRoleDaoImpl extends PermissionBaseDaoImpl<PmsMenuRole> imple
 
 	@Override
 	public void deleteByRoleId(Long roleId) {
-		super.getSqlSession().delete(getStatement("deleteByRoleId"), roleId);
+		super.getSessionTemplate().delete(getStatement("deleteByRoleId"), roleId);
 	}
 
 	/**
@@ -46,6 +45,6 @@ public class PmsMenuRoleDaoImpl extends PermissionBaseDaoImpl<PmsMenuRole> imple
 	 */
 	@Override
 	public List<PmsMenuRole> listByRoleId(Long roleId) {
-		return super.getSqlSession().selectList(getStatement("listByRoleId"), roleId);
+		return super.getSessionTemplate().selectList(getStatement("listByRoleId"), roleId);
 	}
 }

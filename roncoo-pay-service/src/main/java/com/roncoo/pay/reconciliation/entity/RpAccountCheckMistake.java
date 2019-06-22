@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.reconciliation.entity;
 
+import com.roncoo.pay.common.core.entity.BaseEntity;
+
 import java.math.BigDecimal;
 import java.util.Date;
-
-import com.roncoo.pay.common.core.entity.BaseEntity;
 
 /**
  * 对账差错表.

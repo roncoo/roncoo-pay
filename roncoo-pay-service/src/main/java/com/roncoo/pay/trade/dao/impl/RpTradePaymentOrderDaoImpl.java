@@ -18,7 +18,6 @@ package com.roncoo.pay.trade.dao.impl;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import com.roncoo.pay.trade.dao.RpTradePaymentOrderDao;
 import com.roncoo.pay.trade.entity.RpTradePaymentOrder;
-
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;

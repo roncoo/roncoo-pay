@@ -15,13 +15,14 @@
  */
 package com.roncoo.pay.controller.login;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import com.roncoo.pay.common.core.dwz.DWZ;
+import com.roncoo.pay.common.core.dwz.DwzAjax;
+import com.roncoo.pay.common.core.utils.StringUtil;
+import com.roncoo.pay.controller.common.BaseController;
+import com.roncoo.pay.permission.entity.PmsOperator;
+import com.roncoo.pay.permission.exception.PermissionException;
+import com.roncoo.pay.permission.service.PmsMenuService;
+import com.roncoo.pay.permission.service.PmsOperatorRoleService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -33,14 +34,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.roncoo.pay.common.core.dwz.DWZ;
-import com.roncoo.pay.common.core.dwz.DwzAjax;
-import com.roncoo.pay.common.core.utils.StringUtil;
-import com.roncoo.pay.controller.common.BaseController;
-import com.roncoo.pay.permission.entity.PmsOperator;
-import com.roncoo.pay.permission.exception.PermissionException;
-import com.roncoo.pay.permission.service.PmsMenuService;
-import com.roncoo.pay.permission.service.PmsOperatorRoleService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 龙果学院：www.roncoo.com

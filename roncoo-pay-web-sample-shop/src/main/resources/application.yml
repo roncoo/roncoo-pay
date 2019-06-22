@@ -1,0 +1,14 @@
+server:
+  port: 8083
+  servlet:
+    session:
+      timeout: 30m
+spring:
+  application:
+    name: roncoo-pay-web-sample-shop
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+logging:
+  config: classpath:logback.xml

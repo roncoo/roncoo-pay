@@ -15,11 +15,10 @@
  */
 package com.roncoo.pay.user.dao.impl;
 
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import com.roncoo.pay.user.dao.RpUserPayInfoDao;
 import com.roncoo.pay.user.entity.RpUserPayInfo;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,7 +29,7 @@ import java.util.Map;
  * @author：zenghao
  */
 @Repository
-public class RpUserPayInfoDaoImpl  extends BaseDaoImpl<RpUserPayInfo> implements RpUserPayInfoDao{
+public class RpUserPayInfoDaoImpl  extends BaseDaoImpl<RpUserPayInfo> implements RpUserPayInfoDao {
     /**
      * 通过商户编号获取商户第三方支付信息
      *

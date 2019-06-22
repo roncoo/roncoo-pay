@@ -15,16 +15,14 @@
  */
 package com.roncoo.pay.permission.shiro.realm;
 
-import java.util.Set;
-
+import com.roncoo.pay.common.core.enums.PublicStatusEnum;
+import com.roncoo.pay.permission.entity.PmsOperator;
+import com.roncoo.pay.permission.service.PmsOperatorRoleService;
+import com.roncoo.pay.permission.service.PmsOperatorService;
+import com.roncoo.pay.permission.service.PmsRolePermissionService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.LockedAccountException;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
-import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -34,11 +32,7 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.roncoo.pay.common.core.enums.PublicStatusEnum;
-import com.roncoo.pay.permission.entity.PmsOperator;
-import com.roncoo.pay.permission.service.PmsOperatorRoleService;
-import com.roncoo.pay.permission.service.PmsOperatorService;
-import com.roncoo.pay.permission.service.PmsRolePermissionService;
+import java.util.Set;
 
 /**
  * 自定义realm .

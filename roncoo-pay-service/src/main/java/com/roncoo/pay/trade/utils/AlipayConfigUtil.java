@@ -15,11 +15,11 @@
  */
 package com.roncoo.pay.trade.utils;
 
-import java.io.IOException;
-import java.util.Properties;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * <b>功能说明:支付宝属性文件加载工具.

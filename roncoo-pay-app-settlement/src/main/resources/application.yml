@@ -1,0 +1,14 @@
+server:
+  port: 8089
+  servlet:
+    session:
+      timeout: 30
+spring:
+  application:
+    name: roncoo-pay-app-settlement
+logging:
+  config: classpath:logback.xml
+mybatis:
+  mapper-locations: classpath*:mybatis/mapper/**/*.xml
+
+

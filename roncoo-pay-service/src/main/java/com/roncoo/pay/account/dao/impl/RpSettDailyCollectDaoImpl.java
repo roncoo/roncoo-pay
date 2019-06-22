@@ -15,11 +15,10 @@
  */
 package com.roncoo.pay.account.dao.impl;
 
-import org.springframework.stereotype.Repository;
-
 import com.roncoo.pay.account.dao.RpSettDailyCollectDao;
 import com.roncoo.pay.account.entity.RpSettDailyCollect;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
+import org.springframework.stereotype.Repository;
 
 /**
  *  每日待结算汇总dao实现类
@@ -27,6 +26,6 @@ import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
  * @author：zenghao
  */
 @Repository
-public class RpSettDailyCollectDaoImpl  extends BaseDaoImpl<RpSettDailyCollect> implements RpSettDailyCollectDao{
+public class RpSettDailyCollectDaoImpl  extends BaseDaoImpl<RpSettDailyCollect> implements RpSettDailyCollectDao {
 
 }

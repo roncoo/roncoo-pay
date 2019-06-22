@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.roncoo.pay.trade.dao.impl.RpMicroSubmitRecordDaoImpl">
+    <resultMap id="baseResultMap" type="com.roncoo.pay.trade.entity.RpMicroSubmitRecord">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="version" property="version" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="creater" property="creater" jdbcType="VARCHAR"/>
+        <result column="edit_time" property="editTime" jdbcType="TIMESTAMP"/>
+        <result column="editor" property="editor" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="business_code" property="businessCode" jdbcType="VARCHAR"/>
+        <result column="sub_mch_id" property="subMchId" jdbcType="VARCHAR"/>
+        <result column="id_card_copy" property="idCardCopy" jdbcType="VARCHAR"/>
+        <result column="id_card_national" property="idCardNational" jdbcType="VARCHAR"/>
+        <result column="id_card_name" property="idCardName" jdbcType="DECIMAL"/>
+        <result column="id_card_number" property="idCardNumber" jdbcType="VARCHAR"/>
+        <result column="id_card_valid_time" property="idCardValidTime" jdbcType="VARCHAR"/>
+        <result column="account_bank" property="accountBank" jdbcType="VARCHAR"/>
+        <result column="bank_address_code" property="bankAddressCode" jdbcType="VARCHAR"/>
+        <result column="account_number" property="accountNumber" jdbcType="VARCHAR"/>
+        <result column="store_name" property="storeName" jdbcType="VARCHAR"/>
+        <result column="store_address_code" property="storeAddressCode" jdbcType="VARCHAR"/>
+        <result column="store_street" property="storeStreet" jdbcType="VARCHAR"/>
+        <result column="store_entrance_pic" property="storeEntrancePic" jdbcType="VARCHAR"/>
+        <result column="indoor_pic" property="indoorPic" jdbcType="VARCHAR"/>
+        <result column="merchant_shortname" property="merchantShortname" jdbcType="VARCHAR"/>
+        <result column="service_phone" property="servicePhone" jdbcType="VARCHAR"/>
+        <result column="product_desc" property="productDesc" jdbcType="VARCHAR"/>
+        <result column="rate" property="rate" jdbcType="VARCHAR"/>
+        <result column="contact_phone" property="contactPhone" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--表名称-->
+    <sql id="table_name">
+        rp_micro_submit_record
+    </sql>
+
+    <!--表列名-->
+    <sql id="base_column_list">
+        id, version, create_time, creater, edit_time, editor, status, business_code, sub_mch_id, id_card_copy,
+        id_card_national, id_card_name, id_card_number, id_card_valid_time, account_bank,
+        bank_address_code, account_number, store_name, store_address_code, store_street,
+        store_entrance_pic, indoor_pic, merchant_shortname, service_phone, product_desc, rate, contact_phone
+    </sql>
+
+    <!-- 根据搜索条件获取数据 -->
+    <sql id="condition_sql">
+        <if test="idCardName != null and idCardName != ''">and id_card_name like CONCAT('%',CONCAT(#{idCardName,jdbcType=VARCHAR},'%'))</if>
+        <if test="storeName != null and storeName != ''">and store_name like CONCAT('%',CONCAT(#{storeName,jdbcType=VARCHAR},'%'))</if>
+        <if test="businessCode != null and businessCode != ''">and business_code = #{businessCode,jdbcType=VARCHAR}</if>
+    </sql>
+
+    <!--根据主键查询-->
+    <select id="selectByPrimaryKey" resultMap="baseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="base_column_list"/>
+        from
+        <include refid="table_name"/>
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+
+    <!--根据条件查询-->
+    <select id="listBy" parameterType="java.util.Map" resultMap="baseResultMap">
+        select
+        <include refid="base_column_list"/>
+        from
+        <include refid="table_name"/>
+        <where>
+            <include refid="condition_sql"/>
+        </where>
+        order by create_time desc
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="listPage" parameterType="java.util.Map" resultMap="baseResultMap">
+        select
+        <include refid="base_column_list"/>
+        from
+        <include refid="table_name"/>
+        <where>
+            <include refid="condition_sql"/>
+        </where>
+        order by create_time desc limit #{pageFirst}, #{pageSize}
+    </select>
+
+    <!-- 分页查询时要用到的总数统计 -->
+    <select id="listPageCount" parameterType="java.util.Map" resultType="java.lang.Long">
+        select count(1) from
+        <include refid="table_name"/>
+        <where>
+            <include refid="condition_sql"/>
+        </where>
+    </select>
+
+    <!--保存-->
+    <insert id="insert" parameterType="com.roncoo.pay.trade.entity.RpMicroSubmitRecord">
+        insert into
+        <include refid="table_name"/>
+        <trim prefix="(" suffix=")">
+            <include refid="base_column_list"/>
+        </trim>
+        <trim prefix="values (" suffix=")">
+            #{id,jdbcType=VARCHAR},
+            #{version,jdbcType=INTEGER},
+            #{createTime,jdbcType=TIMESTAMP},
+            #{creater,jdbcType=VARCHAR},
+            #{editTime, jdbcType=TIMESTAMP},
+            #{editor,jdbcType=VARCHAR},
+            #{status,jdbcType=VARCHAR},
+            #{businessCode,jdbcType=VARCHAR},
+            #{subMchId,jdbcType=VARCHAR},
+            #{idCardCopy,jdbcType=VARCHAR},
+            #{idCardNational,jdbcType=VARCHAR},
+            #{idCardName,jdbcType=VARCHAR},
+            #{idCardNumber,jdbcType=VARCHAR},
+            #{idCardValidTime,jdbcType=VARCHAR},
+            #{accountBank,jdbcType=VARCHAR},
+            #{bankAddressCode,jdbcType=VARCHAR},
+            #{accountNumber,jdbcType=VARCHAR},
+            #{storeName,jdbcType=VARCHAR},
+            #{storeAddressCode,jdbcType=VARCHAR},
+            #{storeStreet,jdbcType=VARCHAR},
+            #{storeEntrancePic,jdbcType=VARCHAR},
+            #{indoorPic,jdbcType=VARCHAR},
+            #{merchantShortname,jdbcType=VARCHAR},
+            #{servicePhone,jdbcType=VARCHAR},
+            #{productDesc,jdbcType=VARCHAR},
+            #{rate,jdbcType=VARCHAR},
+            #{contactPhone,jdbcType=VARCHAR}
+        </trim>
+    </insert>
+
+    <!-- 删 -->
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete from
+        <include refid="table_name"/>
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!-- 改 -->
+    <update id="updateByPrimaryKey" parameterType="com.roncoo.pay.trade.entity.RpMicroSubmitRecord">
+        update
+        <include refid="table_name"/>
+        set
+        version = #{version,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        creater = #{creater,jdbcType=VARCHAR},
+        edit_time = #{editTime, jdbcType=TIMESTAMP},
+        editor = #{editor,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        business_code = #{businessCode,jdbcType=VARCHAR},
+        sub_mch_id = #{subMchId,jdbcType=VARCHAR},
+        id_card_copy = #{idCardCopy,jdbcType=VARCHAR},
+        id_card_national = #{idCardNational,jdbcType=VARCHAR},
+        id_card_name = #{idCardName,jdbcType=VARCHAR},
+        id_card_number = #{idCardNumber,jdbcType=VARCHAR},
+        id_card_valid_time = #{idCardValidTime,jdbcType=VARCHAR},
+        account_bank = #{accountBank,jdbcType=VARCHAR},
+        bank_address_code = #{bankAddressCode,jdbcType=VARCHAR},
+        account_number = #{accountNumber,jdbcType=VARCHAR},
+        store_name = #{storeName,jdbcType=VARCHAR},
+        store_address_code = #{storeAddressCode,jdbcType=VARCHAR},
+        store_street = #{storeStreet,jdbcType=VARCHAR},
+        store_entrance_pic = #{storeEntrancePic,jdbcType=VARCHAR},
+        indoor_pic = #{indoorPic,jdbcType=VARCHAR},
+        merchant_shortname = #{merchantShortname,jdbcType=VARCHAR},
+        service_phone = #{servicePhone,jdbcType=VARCHAR},
+        product_desc = #{productDesc,jdbcType=VARCHAR},
+        rate = #{rate,jdbcType=VARCHAR},
+        contact_phone = #{contactPhone,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+</mapper>

@@ -20,7 +20,7 @@
 				<div>
 					<div id="treeDiv" layoutH="100" style="float:left; display:block;overflow:auto; width:489px; border:solid 1px #CCC; line-height:21px; background:#fff">
 					    <fieldset style="width:99%">
-							<legend>全选<input type="checkbox"  name="selectAll" id="selectAll" ></legend>
+							<legend>全选<input type="checkbox"  name="selectAll" id="selectAll" <c:if test="${fn:length(permissionList) == fn:length(fn:split(permissionIds, ','))}">checked="checked"</c:if> ></legend>
 							<c:forEach items="${permissionList}" var="v">
 								<label>
 									<input type="checkbox" class="selectPer" name="selectPer" id="perId${v.id }" value="${v.id }">${v.permissionName }
@@ -87,7 +87,7 @@ $(document).ready(function() {
 	
 	$("#selectAll").click(function(){
 		if($("#selectAll").is(':checked')){
-			$("input[name='selectPer']").attr("checked","checked"); 
+			$("input[name='selectPer']").prop("checked","checked");
 		}else{
 			$("input[name='selectPer']").removeAttr("checked");
 		}

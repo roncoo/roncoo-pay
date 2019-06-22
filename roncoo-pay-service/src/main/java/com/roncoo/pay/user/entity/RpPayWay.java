@@ -15,9 +15,9 @@
  */
 package com.roncoo.pay.user.entity;
 
-import java.io.Serializable;
-
 import com.roncoo.pay.common.core.entity.BaseEntity;
+
+import java.io.Serializable;
 
 /**
  * 支付方式实体类

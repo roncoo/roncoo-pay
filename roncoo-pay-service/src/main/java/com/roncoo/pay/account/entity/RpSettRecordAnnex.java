@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.account.entity;
 
-import java.io.Serializable;
-
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.enums.PublicEnum;
+
+import java.io.Serializable;
 
 /**
  * 结算附件表

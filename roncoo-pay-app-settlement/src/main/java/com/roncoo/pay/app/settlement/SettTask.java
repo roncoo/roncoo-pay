@@ -15,37 +15,32 @@
  */
 package com.roncoo.pay.app.settlement;
 
+import com.roncoo.pay.app.settlement.scheduled.SettScheduled;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.roncoo.pay.app.settlement.scheduled.SettScheduled;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 /**
  * 结算定时任务.(分商户统计账户历史进行汇总)
  * 龙果学院：www.roncoo.com
  * @author zenghao
  */
+@Component
 public class SettTask {
 	
 	private static final Log LOG = LogFactory.getLog(SettTask.class);
 	
 	private static final long MILLIS = 1000L;
 	
-	private SettTask(){
-		
-	}
-	
+	@Autowired
+	private SettScheduled settScheduled;
 
-	public static void main(String[] args) {
+	@Scheduled(cron = "0 0 11 * * ?")
+	public void runTask() {
 
 		try {
-
-			@SuppressWarnings("resource")
-			final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(new String[] { "spring-context.xml" });
-			context.start();
-			LOG.debug("结算定时任务开始执行");
-			SettScheduled settScheduled = (SettScheduled) context.getBean("settScheduled");
 
 			LOG.debug("执行(每日待结算数据汇总)任务开始");
 			settScheduled.launchDailySettCollect();
@@ -57,7 +52,6 @@ public class SettTask {
 			settScheduled.launchAutoSett();
 			LOG.debug("执行(定期自动结算)任务结束");
 
-			context.stop();
 		} catch (Exception e) {
 			LOG.error("SettTask execute error:", e);
 		} finally {
