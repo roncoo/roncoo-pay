@@ -55,26 +55,7 @@ public class AuthController extends BaseController {
     @RequestMapping(value = "/initAuth")
     public String initPay(@Valid AuthParamVo paramVo, BindingResult bindingResult, HttpServletRequest request, ModelMap modelMap) {
 
-        //参数校验
-        if (bindingResult.hasErrors()) {
-            String errMsg = getErrorMsg(bindingResult);
-            logger.info("用户鉴权--请求参数异常：[{}]", errMsg);
-            throw new TradeBizException(TradeBizException.TRADE_PARAM_ERROR, errMsg);
-        }
-
-        RpUserPayConfig userPayConfig = userPayConfigService.getByPayKey(paramVo.getPayKey());
-        if (userPayConfig == null) {
-            throw new UserBizException(UserBizException.USER_PAY_CONFIG_ERRPR, "用户支付配置有误");
-        }
-        //ip校验
-        cnpPayService.checkIp(userPayConfig, request);
-
-        //验签
-        Map<String, Object> paramMap = JSONObject.parseObject(JSON.toJSONString(paramVo));
-        paramMap.remove("sign");
-        if (!MerchantApiUtil.isRightSign(paramMap, userPayConfig.getPaySecret(), paramVo.getSign())) {
-            throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, "订单签名异常");
-        }
+        RpUserPayConfig userPayConfig = cnpPayService.checkParamAndGetUserPayConfig(paramVo,  bindingResult, request);
 
         String productName = "鉴权产品";
         String orderIp = null;
@@ -96,7 +77,7 @@ public class AuthController extends BaseController {
         payGateWayPageShowVo.setOrderAmount(resultVo.getOrderAmount());
         payGateWayPageShowVo.setPayKey(resultVo.getPayKey());
         payGateWayPageShowVo.setProductName(resultVo.getProductName());
-        payGateWayPageShowVo.setPayWayEnumMap(resultVo.getPayWayEnumMap());
+        payGateWayPageShowVo.setPayTypeEnumMap(resultVo.getPayTypeEnumMap());
         modelMap.addAttribute("payGateWayPageShowVo", payGateWayPageShowVo);//支付网关展示数据
         return "gateway";
     }

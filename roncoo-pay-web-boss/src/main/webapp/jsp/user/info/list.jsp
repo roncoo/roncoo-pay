@@ -44,6 +44,7 @@
 				<th width="5%">序号</th>
 				<th width="15%">用户编号</th>
 				<th width="10%">用户名称</th>
+				<th width="10%">手机号</th>
 				<th width="10%">账户编号</th>
 				<th width="10%">状态</th>
 				<th width="15%">创建时间</th>
@@ -55,6 +56,7 @@
 					<td>${s.index + 1}</td>
 					<td>${item.userNo}</td>
 					<td>${item.userName}</td>
+					<td>${item.mobile}</td>
 					<td>${item.accountNo}</td>
 					<td>${item.statusDesc}</td>
 					<td><fmt:formatDate value="${item.createTime}"

@@ -1,5 +1,6 @@
 package com.roncoo.pay.trade.vo;
 
+import com.roncoo.pay.common.core.enums.PayTypeEnum;
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.trade.enums.TradeStatusEnum;
 
@@ -43,7 +44,7 @@ public class AuthInitResultVo implements Serializable {
     /**
      * 支付方式列表
      */
-    private Map<String, PayWayEnum> payWayEnumMap;
+    private Map<String, PayTypeEnum> payTypeEnumMap;
 
     /**
      * 订单状态
@@ -103,14 +104,6 @@ public class AuthInitResultVo implements Serializable {
         this.payKey = payKey;
     }
 
-    public Map<String, PayWayEnum> getPayWayEnumMap() {
-        return payWayEnumMap;
-    }
-
-    public void setPayWayEnumMap(Map<String, PayWayEnum> payWayEnumMap) {
-        this.payWayEnumMap = payWayEnumMap;
-    }
-
     public TradeStatusEnum getTradeStatus() {
         return tradeStatus;
     }
@@ -125,5 +118,13 @@ public class AuthInitResultVo implements Serializable {
 
     public void setAuth(boolean auth) {
         isAuth = auth;
+    }
+
+    public Map<String, PayTypeEnum> getPayTypeEnumMap() {
+        return payTypeEnumMap;
+    }
+
+    public void setPayTypeEnumMap(Map<String, PayTypeEnum> payTypeEnumMap) {
+        this.payTypeEnumMap = payTypeEnumMap;
     }
 }
