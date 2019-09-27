@@ -18,8 +18,9 @@ package com.roncoo.pay.reconciliation.fileDown.impl;
 import com.roncoo.pay.reconciliation.fileDown.service.FileDown;
 import com.roncoo.pay.reconciliation.fileDown.service.ReconciliationFactory;
 import com.roncoo.pay.reconciliation.utils.ReconciliationConfigUtil;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -33,9 +34,9 @@ import java.util.Date;
  * @author：shenjialong
  */
 @Service("reconciliationFactory")
-public class ReconciliationFactoryImpl implements ReconciliationFactory, BeanFactoryAware {
+public class ReconciliationFactoryImpl implements ReconciliationFactory, ApplicationContextAware {
 
-	private BeanFactory beanFactory;
+	private static ApplicationContext applicationContext;
 
 	/**
 	 * 去Spring容器中根据beanName获取对象（也可以直接根据名字创建实例，可以参考后面流程中的parser）
@@ -44,11 +45,7 @@ public class ReconciliationFactoryImpl implements ReconciliationFactory, BeanFac
 	 * @return
 	 */
 	public Object getService(String payInterface) {
-		return beanFactory.getBean(payInterface);
-	}
-
-	public void setBeanFactory(BeanFactory beanFactory) {
-		this.beanFactory = beanFactory;
+		return applicationContext.getBean(payInterface);
 	}
 
 	/**
@@ -68,4 +65,8 @@ public class ReconciliationFactoryImpl implements ReconciliationFactory, BeanFac
 		return fileDown.fileDown(billDate, dir);
 	}
 
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		this.applicationContext = applicationContext;
+	}
 }

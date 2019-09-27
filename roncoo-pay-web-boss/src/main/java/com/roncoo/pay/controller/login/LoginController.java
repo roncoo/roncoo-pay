@@ -1,12 +1,12 @@
 /*
  * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -42,7 +42,7 @@ import java.util.Map;
 
 /**
  * 龙果学院：www.roncoo.com
- * 
+ *
  * @author：Along
  */
 @Controller
@@ -57,7 +57,7 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 函数功能说明 ： 进入后台登陆页面.
-	 * 
+	 *
 	 * @参数： @return
 	 * @return String
 	 * @throws
@@ -82,7 +82,7 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 函数功能说明 ： 登陆后台管理系统. 修改者名字： 修改日期： 修改内容：
-	 * 
+	 *
 	 * @参数： @param request
 	 * @参数： @param model
 	 * @参数： @return
@@ -106,7 +106,7 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 函数功能说明 ：进入退出系统确认页面. 修改者名字： 修改日期： 修改内容：
-	 * 
+	 *
 	 * @参数： @return
 	 * @return String
 	 * @throws
@@ -118,7 +118,7 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 函数功能说明 ： 退出系统. 修改者名字： 修改日期： 修改内容：
-	 * 
+	 *
 	 * @参数： @return
 	 * @return String
 	 * @throws
@@ -143,7 +143,7 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 获取用户的菜单权限
-	 * 
+	 *
 	 * @param pmsOperator
 	 * @return
 	 * @throws PermissionException
@@ -162,7 +162,7 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 根据操作员拥有的角色ID,构建管理后台的树形权限功能菜单
-	 * 
+	 *
 	 * @param roleIds
 	 * @return
 	 * @throws PermissionException
@@ -187,7 +187,7 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 构建管理后台的树形权限功能菜单
-	 * 
+	 *
 	 * @param pId
 	 * @param treeBuf
 	 * @param menuList
@@ -244,7 +244,7 @@ public class LoginController extends BaseController {
 
 	/**
 	 * 根据(pId)获取(menuList)中的所有子菜单集合.
-	 * 
+	 *
 	 * @param pId
 	 *            父菜单ID.
 	 * @param menuList

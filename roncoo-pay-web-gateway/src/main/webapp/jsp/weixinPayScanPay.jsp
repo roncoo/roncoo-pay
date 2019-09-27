@@ -41,6 +41,7 @@
                 dataType: "json",
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8",
                 data: {},
+                async:false,
                 url: queryUrl,
                 //请求成功完成后要执行的方法
                 success: function (result) {
@@ -48,20 +49,22 @@
                         times = 0;
                         $("#weixinDiv").css("display", "none");//隐藏
                         $("#sucDiv").css("display", "block");//显示
+                        debugger;
                         $("#returnMerchnatA").attr("href", result.returnUrl);
-                        jump(5, result.returnUrl);
+                        checkOrder();
+                        jump(5, $("#returnMerchnatA").attr("href"));
                     }
                 },
                 error: function (data) {
                     console.error("系统异常！" + data);
                 }
             });
-
         }
 
         function jump(count, surl) {
             window.setTimeout(function () {
                 count--;
+                $("#tiaoSpan").text(count);
                 if (count > 0) {
                     $('#tiaoSpan').attr('innerHTML', count);
                     jump(count, surl);
@@ -69,6 +72,23 @@
                     location.href = surl;
                 }
             }, 1000);
+        }
+
+        function checkOrder() {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                data: {},
+                async:false,
+                url: "${path}auth/orderQuery?payKey=${payKey}&orderNo=${orderNo}",
+                //请求成功完成后要执行的方法
+                success: function (result) {
+                    if ("YES" == result.status) {
+                        $("#returnMerchnatA").attr("href", result.returnUrl);
+                    }
+                }
+            });
         }
 
     </script>
@@ -94,14 +114,17 @@
 <div id="box" class="">
     <!-- 扫码 -->
     <div class="x-main">
-        <div class="pro"><span>${productName}</span><span>应付金额 <b>￥<fmt:parseNumber type="number" pattern="#,#00.0#">${orderPrice}</fmt:parseNumber></b></span></div>
+        <div class="pro"><span>${productName}</span><span>应付金额 <b>￥<fmt:parseNumber type="number"
+                                                                                    pattern="#,#00.0#">${orderPrice}</fmt:parseNumber></b></span>
+        </div>
         <div class="weixin" id="weixinDiv">
             <div class="x-left"><img src="${path}pay_files/weixin.jpg" alt="微信导航图"></div>
             <div class="x-right" style="height: 410px;">
                 <div class="saoma_panel">
                     <h4>使用微信扫一扫即可付款</h4>
                     <p class="tip">提示:支付成功前请勿手动关闭页面</p>
-                    <div class="er" id="code" oid="4835a85a4e01402aa17f8a73c356f80d" style="height: 250px;width: 250px"></div>
+                    <div class="er" id="code" oid="4835a85a4e01402aa17f8a73c356f80d"
+                         style="height: 250px;width: 250px"></div>
                     <p class="tipa">二维码两小时内有效，请计算扫码支付</p>
                 </div>
             </div>
@@ -130,7 +153,8 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#footer").text("Copyright © 2015-" + new Date().getFullYear() + " 广州市领课网络科技有限公司版权所有");
+
+        $("#footer").text("Copyright © 2015-"+new Date().getFullYear()+" 广州市领课网络科技有限公司版权所有");
 
         var str = $("#codeUrl").val();
         $("#code").qrcode({

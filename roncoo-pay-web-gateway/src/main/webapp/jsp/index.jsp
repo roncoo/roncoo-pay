@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<title>支付网关</title>
+<head>
+    <title>支付网关</title>
+</head>
 <body>
 <center>
-    <h2>支付网关</h2>
+    <h1>支付网关</h1>
 </center>
 </body>
 </html>

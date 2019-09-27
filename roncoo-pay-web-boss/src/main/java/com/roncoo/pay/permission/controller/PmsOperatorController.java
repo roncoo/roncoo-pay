@@ -284,6 +284,7 @@ public class PmsOperatorController extends BaseController {
 	 * 
 	 * @return
 	 * */
+	@RequiresPermissions("pms:operator:delete")
 	@RequestMapping("/delete")
 	public String deleteOperatorStatus(HttpServletRequest req, Long id, Model model, DwzAjax dwz) {
 		pmsOperatorService.deleteOperatorById(id);

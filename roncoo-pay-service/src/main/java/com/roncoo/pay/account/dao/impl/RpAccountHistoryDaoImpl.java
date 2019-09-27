@@ -15,8 +15,8 @@
  */
 package com.roncoo.pay.account.dao.impl;
 
-import com.roncoo.pay.account.dao.RpAccountHistoryDao;
 import com.roncoo.pay.account.entity.RpAccountHistory;
+import com.roncoo.pay.account.dao.RpAccountHistoryDao;
 import com.roncoo.pay.account.vo.DailyCollectAccountHistoryVo;
 import com.roncoo.pay.common.core.dao.impl.BaseDaoImpl;
 import org.springframework.stereotype.Repository;

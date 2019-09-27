@@ -73,7 +73,7 @@ public class ALIPAYParser implements ParserInterface {
 		try {
 			document = reader.read(file);
 			// 使用dom4j的Xpath找到AccountQueryAccountLogVO节点
-			List projects = document.selectNodes("alipay/response/account_page_query_result/account_log_list/AccountQueryAccountLogVO");
+			List projects = document.getRootElement().element("response").element("account_page_query_result").element("account_log_list").elements();;
 
 			Iterator it = projects.iterator();
 			// 业务类型为在线支付的账户历史

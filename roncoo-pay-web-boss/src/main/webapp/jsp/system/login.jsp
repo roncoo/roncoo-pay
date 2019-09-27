@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<jsp:include page="${baseURL }/common/taglib/taglib.jsp" />
+<jsp:include page="${baseURL }/common/taglib/taglib.jsp"/>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>龙果支付后台</title>
@@ -66,15 +66,20 @@
 								<li>
 									<span> <img class="rcCaptcha-btn rcCaptcha-img" src="${baseURL}/rcCaptcha.jpg" alt="点击更换验证码" title="点击更换验证码" width="65" height="24" />
 									</span>
-								</li>
-							</ul>
-						</div>
-					</c:if>
-					<div class="login_bar">
-						<input class="sub" type="submit" value=" " />
-					</div>
-				</form>
+                            </li>
+                        </ul>
+                    </div>
+                </c:if>
+                <div class="login_bar">
+                    <input class="sub" type="submit" value=" "/>
+                </div>
+            </form>
 
+            <div>
+                <br/> <br/> <font color="red">请先到<a href="http://www.roncoo.com?fromSource=roncoo-pay" target="_blank">龙果学院</a>注册,
+                然后使用注册账户登录!
+            </font>
+            </div>
 
 			</div>
 			<div class="login_banner">
@@ -100,7 +105,7 @@
 					function() {
 						$(".rcCaptcha-img").attr(
 								"src",
-								'${baseURL}/rcCaptcha.jsp?'
+								'${baseURL}/rcCaptcha.jpg?'
 										+ new Date().getTime());
 					});
 		})

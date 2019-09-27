@@ -1,7 +1,7 @@
 package com.roncoo.pay.trade.utils.alipay.util;
 
-import com.roncoo.pay.trade.utils.alipay.config.AlipayConfigUtil;
 import com.roncoo.pay.trade.utils.alipay.sign.MD5;
+import com.roncoo.pay.trade.utils.alipay.config.AlipayConfigUtil;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;

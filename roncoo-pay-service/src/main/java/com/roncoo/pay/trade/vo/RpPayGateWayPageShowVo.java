@@ -15,6 +15,7 @@
  */
 package com.roncoo.pay.trade.vo;
 
+import com.roncoo.pay.common.core.enums.PayTypeEnum;
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 
 import java.math.BigDecimal;
@@ -44,7 +45,7 @@ public class RpPayGateWayPageShowVo {
     private String payKey;
 
     /** 支付方式列表 **/
-    private Map<String , PayWayEnum> payWayEnumMap;
+    private Map<String , PayTypeEnum> payTypeEnumMap;
 
     public BigDecimal getOrderAmount() {
         return orderAmount;
@@ -70,14 +71,6 @@ public class RpPayGateWayPageShowVo {
         this.merchantName = merchantName;
     }
 
-    public Map<String, PayWayEnum> getPayWayEnumMap() {
-        return payWayEnumMap;
-    }
-
-    public void setPayWayEnumMap(Map<String, PayWayEnum> payWayEnumMap) {
-        this.payWayEnumMap = payWayEnumMap;
-    }
-
     public String getMerchantOrderNo() {
         return merchantOrderNo;
     }
@@ -92,5 +85,13 @@ public class RpPayGateWayPageShowVo {
 
     public void setPayKey(String payKey) {
         this.payKey = payKey;
+    }
+
+    public Map<String, PayTypeEnum> getPayTypeEnumMap() {
+        return payTypeEnumMap;
+    }
+
+    public void setPayTypeEnumMap(Map<String, PayTypeEnum> payTypeEnumMap) {
+        this.payTypeEnumMap = payTypeEnumMap;
     }
 }

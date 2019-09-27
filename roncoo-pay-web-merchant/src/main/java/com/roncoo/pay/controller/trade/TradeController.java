@@ -22,6 +22,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.roncoo.pay.controller.common.BaseController;
+import com.roncoo.pay.controller.common.ConstantClass;
+import com.roncoo.pay.controller.common.JSONParam;
+import com.roncoo.pay.trade.enums.TradeStatusEnum;
+import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,12 +38,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSON;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
-import com.roncoo.pay.controller.common.BaseController;
-import com.roncoo.pay.controller.common.ConstantClass;
-import com.roncoo.pay.controller.common.JSONParam;
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
 import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
-import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
 import com.roncoo.pay.user.entity.RpUserInfo;
 
 /**
@@ -61,7 +61,7 @@ public class TradeController extends BaseController {
     
     @RequestMapping(value = "/ajaxPaymentList", method ={RequestMethod.POST,RequestMethod.GET})     
     @ResponseBody
-    public String ajaxPaymentList(HttpServletRequest request,@RequestBody JSONParam[] params) throws IllegalAccessException, InvocationTargetException {  
+    public String ajaxPaymentList(HttpServletRequest request,@RequestBody JSONParam[] params) throws IllegalAccessException, InvocationTargetException {
         //convertToMap定义于父类，将参数数组中的所有元素加入一个HashMap     
         HashMap<String, String> paramMap = convertToMap(params);     
         String sEcho = paramMap.get("sEcho");     

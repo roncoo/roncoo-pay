@@ -33,7 +33,7 @@
                 <form action="${path}roncooPay/scanPay" method="post">
                     <input type="hidden" name="productName" value="微信支付产品测试"/><br/>
                     <input type="hidden" name="orderPrice" value="0.1"/><br/>
-                    <input type="hidden" name="payWayCode" value="WEIXIN">
+                    <input type="hidden" name="payType" value="SCANPAY">
                     <input type="hidden" name="remark" value="微信支付备注信息"/>
                     <p class="pay_btn">
                         <input type="submit" value="0.1元支付体验"/>
@@ -44,10 +44,22 @@
                 <form action="${path}roncooPay/scanPay" method="post">
                     <input type="hidden" name="productName" value="支付宝支付产品测试"/><br/>
                     <input type="hidden" name="orderPrice" value="0.1"/><br/>
-                    <input type="hidden" name="payWayCode" value="ALIPAY">
+                    <input type="hidden" name="payType" value="DIRECT_PAY">
                     <input type="hidden" name="remark" value="支付宝支付备注信息"/>
                     <p class="pay_btn">
                         <input type="submit" value="0.1元支付体验"/>
+                    </p>
+                </form>
+            </li>
+            <li style="margin-left: 20px;"><img src="${path}images/hbfq.png" alt="支付宝花呗分期支付"/>
+                <form action="${path}roncooPay/scanPay" method="post">
+                    <input type="hidden" name="productName" value="支付宝支付产品测试"/><br/>
+                    <input type="hidden" name="orderPrice" value="0.1"/><br/>
+                    <input type="hidden" name="payType" value="HUA_BEI_FEN_QI_PAY">
+                    <input type="hidden" name="numberOfStages" value="3">
+                    <input type="hidden" name="remark" value="支付宝支付备注信息"/>
+                    <p class="pay_btn">
+                        <input type="submit" value="0.1元支付花呗分期体验"/>
                     </p>
                 </form>
             </li>
@@ -56,13 +68,31 @@
                 <form action="${path}roncooPay/scanPay" method="post">
                     <input type="hidden" name="productName" value="网关支付产品测试"/><br/>
                     <input type="hidden" name="orderPrice" value="0.1"/><br/>
-                    <input type="hidden" name="payWayCode" value="">
+                    <input type="hidden" name="payType" value="">
                     <input type="hidden" name="remark" value="网关支付备注信息"/>
                     <p class="pay_btn">
                         <input type="submit" value="0.1元支付体验"/>
                     </p>
                 </form>
             </li>
+            <%--<li style="float: left;margin-left: 60px;margin-top: 20px;">
+                <img src="${path}images/jianquan.png" alt="鉴权支付"/>
+                <a href="${path}auth/init">
+                    <p class="pay_btn">
+                        <input type="button" value="0.5元鉴权体验"/>
+                    </p>
+                </a>
+            </li>
+
+            <li style="float: left;margin-left: 60px;margin-top: 20px;">
+                <img width="344px;" src="${path}images/wx_xiaochengxu.jpg" alt="微信小程序"/>
+                <p style="font-size: 20px; margin-top: 15px;font-weight: bold">
+                    小程序演示
+                </p>
+            </li>--%>
+
+        </ul>
+        <ul class="payment">
             <li style="margin-left: 20px;">
                 <img src="${path}images/beisao.png" alt="条码支付"/>
                 <form action="${path}roncooPay/toF2FPay" method="post">
