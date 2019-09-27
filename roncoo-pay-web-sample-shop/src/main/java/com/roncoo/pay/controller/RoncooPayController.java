@@ -54,6 +54,9 @@ public class RoncooPayController extends BaseController {
         String payType = getString_UrlDecode_UTF8("payType"); // 支付方式编码 支付宝: ALIPAY  微信:WEIXIN
         paramMap.put("payType", payType);
 
+        String numberOfStages = getString_UrlDecode_UTF8("numberOfStages"); // 分期笔数
+        paramMap.put("numberOfStages", numberOfStages);
+
         String orderNo = String.valueOf(System.currentTimeMillis());    // 订单编号
         paramMap.put("orderNo", orderNo);
 

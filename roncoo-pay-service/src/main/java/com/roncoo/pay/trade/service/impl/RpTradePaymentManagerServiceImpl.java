@@ -156,7 +156,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
             }
         }
 
-        return getScanPayResultVo(rpTradePaymentOrder, payWay);
+        return getScanPayResultVo(rpTradePaymentOrder, payWay , scanPayRequestBo.getNumberOfStages());
     }
 
     /**
@@ -466,11 +466,12 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
      *
      * @param payKey
      * @param orderNo
-     * @param payWayCode
+     * @param payType
+     * @param numberOfStages
      * @return
      */
     @Override
-    public ScanPayResultVo toNonDirectScanPay(String payKey, String orderNo, String payType) {
+    public ScanPayResultVo toNonDirectScanPay(String payKey, String orderNo, String payType , Integer numberOfStages) {
 
         RpUserPayConfig rpUserPayConfig = rpUserPayConfigService.getByPayKey(payKey);
         if (rpUserPayConfig == null) {
@@ -505,7 +506,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
             throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, "订单已支付成功,无需重复支付");
         }
 
-        return getScanPayResultVo(rpTradePaymentOrder, payWay);
+        return getScanPayResultVo(rpTradePaymentOrder, payWay ,numberOfStages);
 
     }
 
@@ -516,7 +517,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
      * @param payWay              商户支付配置
      * @return
      */
-    private ScanPayResultVo getScanPayResultVo(RpTradePaymentOrder rpTradePaymentOrder, RpPayWay payWay) {
+    private ScanPayResultVo getScanPayResultVo(RpTradePaymentOrder rpTradePaymentOrder, RpPayWay payWay ,Integer numberOfStages) {
 
         ScanPayResultVo scanPayResultVo = new ScanPayResultVo();
         String payWayCode = payWay.getPayWayCode();// 支付方式
@@ -605,9 +606,8 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
                         + "\"total_amount\":\""+ rpTradePaymentOrder.getOrderAmount() +"\","
                         + "\"subject\":\""+ rpTradePaymentOrder.getProductName() +"\","
                         + "\"body\":\""+ rpTradePaymentOrder.getProductName() +"\","
-                        + "\"extend_params\":{\"hb_fq_num\":\""+3+"\",\"hb_fq_seller_percent\":\""+100+"\"},"
+                        + "\"extend_params\":{\"hb_fq_num\":\""+numberOfStages+"\",\"hb_fq_seller_percent\":\""+0+"\"},"
                         + "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
-
             }
 
             try {
@@ -787,7 +787,14 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
 
         String trade_status = resultMap.get("trade_status");
         // 计算得出通知验证结果
-        boolean verify_result = AlipayNotify.verify(resultMap);
+        boolean verify_result = false;
+
+        try {
+            verify_result = AlipaySignature.rsaCheckV1(resultMap, AlipayConfigUtil.ali_public_key, "UTF-8", "RSA2");
+        } catch (AlipayApiException e) {
+            LOG.error("签名异常：" , e);
+        }
+
         if (verify_result) {// 验证成功
             if (trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")) {
                 String resultUrl = getMerchantNotifyUrl(rpTradePaymentRecord, rpTradePaymentOrder, rpTradePaymentRecord.getReturnUrl(), TradeStatusEnum.SUCCESS);

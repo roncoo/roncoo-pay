@@ -133,7 +133,7 @@ public class ScanPayController extends BaseController {
     @RequestMapping("/toPay/{orderNo}/{payType}/{payKey}")
     public String toPay(@PathVariable("payKey") String payKey, @PathVariable("orderNo") String orderNo, @PathVariable("payType") String payType, Model model) {
 
-        ScanPayResultVo scanPayResultVo = rpTradePaymentManagerService.toNonDirectScanPay(payKey, orderNo, payType);
+        ScanPayResultVo scanPayResultVo = rpTradePaymentManagerService.toNonDirectScanPay(payKey, orderNo, payType , 3);
 
         model.addAttribute("codeUrl", scanPayResultVo.getCodeUrl());//支付二维码
 

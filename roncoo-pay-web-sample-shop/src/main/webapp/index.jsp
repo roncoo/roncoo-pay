@@ -56,6 +56,7 @@
                     <input type="hidden" name="productName" value="支付宝支付产品测试"/><br/>
                     <input type="hidden" name="orderPrice" value="0.1"/><br/>
                     <input type="hidden" name="payType" value="HUA_BEI_FEN_QI_PAY">
+                    <input type="hidden" name="numberOfStages" value="3">
                     <input type="hidden" name="remark" value="支付宝支付备注信息"/>
                     <p class="pay_btn">
                         <input type="submit" value="0.1元支付花呗分期体验"/>

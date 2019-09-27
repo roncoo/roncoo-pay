@@ -86,9 +86,10 @@ public interface RpTradePaymentManagerService {
      * @param payKey
      * @param orderNo
      * @param payType
+     * @param numberOfStages
      * @return
      */
-    public ScanPayResultVo toNonDirectScanPay(String payKey, String orderNo, String payType);
+    public ScanPayResultVo toNonDirectScanPay(String payKey, String orderNo, String payType ,Integer numberOfStages);
 
     /**
      * 处理交易记录

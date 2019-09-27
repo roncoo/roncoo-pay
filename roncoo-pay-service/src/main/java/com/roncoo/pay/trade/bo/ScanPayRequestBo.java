@@ -66,11 +66,6 @@ public class ScanPayRequestBo implements Serializable {
      */
     private Integer numberOfStages;//分期笔数
 
-    /**
-     * 商家承担手续费比例比例
-     */
-    private Integer sellerPercent;//商家承担比例
-
     public String getPayKey() {
         return payKey;
     }
@@ -183,14 +178,6 @@ public class ScanPayRequestBo implements Serializable {
         this.numberOfStages = numberOfStages;
     }
 
-    public Integer getSellerPercent() {
-        return sellerPercent;
-    }
-
-    public void setSellerPercent(Integer sellerPercent) {
-        this.sellerPercent = sellerPercent;
-    }
-
     @Override
     public String toString() {
         return "ScanPayRequestBo{" +
@@ -208,7 +195,6 @@ public class ScanPayRequestBo implements Serializable {
                 ", remark='" + remark + '\'' +
                 ", payType='" + payType + '\'' +
                 ", numberOfStages=" + numberOfStages +
-                ", sellerPercent=" + sellerPercent +
                 '}';
     }
 }
