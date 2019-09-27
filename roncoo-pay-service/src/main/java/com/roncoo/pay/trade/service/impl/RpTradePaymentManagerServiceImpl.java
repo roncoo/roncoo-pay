@@ -53,7 +53,6 @@ import com.roncoo.pay.trade.utils.WeiXinPayUtils;
 import com.roncoo.pay.trade.utils.WeixinConfigUtil;
 import com.roncoo.pay.trade.utils.alipay.AliPayUtil;
 import com.roncoo.pay.trade.utils.alipay.config.AlipayConfigUtil;
-import com.roncoo.pay.trade.utils.alipay.util.AlipayNotify;
 import com.roncoo.pay.trade.utils.auth.AuthUtil;
 import com.roncoo.pay.trade.utils.weixin.WeiXinPayUtil;
 import com.roncoo.pay.trade.vo.*;
@@ -785,7 +784,6 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
 
         RpTradePaymentOrder rpTradePaymentOrder = rpTradePaymentOrderDao.selectByMerchantNoAndMerchantOrderNo(rpTradePaymentRecord.getMerchantNo(), rpTradePaymentRecord.getMerchantOrderNo());
 
-        String trade_status = resultMap.get("trade_status");
         // 计算得出通知验证结果
         boolean verify_result = false;
 
@@ -796,15 +794,13 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         }
 
         if (verify_result) {// 验证成功
-            if (trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")) {
-                String resultUrl = getMerchantNotifyUrl(rpTradePaymentRecord, rpTradePaymentOrder, rpTradePaymentRecord.getReturnUrl(), TradeStatusEnum.getEnum(rpTradePaymentOrder.getStatus()));
+
+            TradeStatusEnum tradeStatusEnum = TradeStatusEnum.getEnum(rpTradePaymentOrder.getStatus());
+
+                String resultUrl = getMerchantNotifyUrl(rpTradePaymentRecord, rpTradePaymentOrder, rpTradePaymentRecord.getReturnUrl(), tradeStatusEnum);
                 orderPayResultVo.setReturnUrl(resultUrl);
-                orderPayResultVo.setStatus(TradeStatusEnum.SUCCESS.name());
-            } else {
-                String resultUrl = getMerchantNotifyUrl(rpTradePaymentRecord, rpTradePaymentOrder, rpTradePaymentRecord.getReturnUrl(), TradeStatusEnum.getEnum(rpTradePaymentOrder.getStatus()));
-                orderPayResultVo.setReturnUrl(resultUrl);
-                orderPayResultVo.setStatus(TradeStatusEnum.FAILED.name());
-            }
+                orderPayResultVo.setStatus(tradeStatusEnum.name());
+
         } else {
             throw new TradeBizException(TradeBizException.TRADE_ALIPAY_ERROR, "支付宝签名异常");
         }

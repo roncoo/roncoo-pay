@@ -54,7 +54,7 @@
         <div class="pro"><span>${scanPayByResult.productName}</span><span>应付金额 <b>￥<fmt:parseNumber type="number" pattern="#,#00.0#">${scanPayByResult.orderPrice}</fmt:parseNumber></b></span></div>
     </div>
     <div class="suc_panel_result">
-        <div class="hd">支付成功</div>
+        <div class="hd">支付结果：${scanPayByResult.status}</div>
         <div class="txt"><span id="tiaoSpan">5</span>s后将为你<a href="${scanPayByResult.returnUrl}">返回商家</a></div>
         <input type="hidden" id="codeUrl" value="${scanPayByResult.returnUrl}">
     </div>
