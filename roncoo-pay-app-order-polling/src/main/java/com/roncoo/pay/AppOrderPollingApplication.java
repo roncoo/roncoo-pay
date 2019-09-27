@@ -5,8 +5,9 @@ import com.roncoo.pay.app.polling.core.PollingTask;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.annotation.PostConstruct;
@@ -29,7 +30,8 @@ public class AppOrderPollingApplication {
     public static PollingPersist cachePollingPersist;
 
     public static void main(String[] args) {
-        SpringApplication.run(AppOrderPollingApplication.class, args);
+//        SpringApplication.run(AppOrderPollingApplication.class, args);
+        new SpringApplicationBuilder().sources(AppOrderPollingApplication.class).web(WebApplicationType.NONE).run(args);
     }
 
     @PostConstruct

@@ -51,8 +51,11 @@ public class RoncooPayController extends BaseController {
 
         String orderPriceStr = getString_UrlDecode_UTF8("orderPrice"); // 订单金额 , 单位:元
         paramMap.put("orderPrice", orderPriceStr);
-        String payWayCode = getString_UrlDecode_UTF8("payWayCode"); // 支付方式编码 支付宝: ALIPAY  微信:WEIXIN
-        paramMap.put("payWayCode", payWayCode);
+        String payType = getString_UrlDecode_UTF8("payType"); // 支付方式编码 支付宝: ALIPAY  微信:WEIXIN
+        paramMap.put("payType", payType);
+
+        String numberOfStages = getString_UrlDecode_UTF8("numberOfStages"); // 分期笔数
+        paramMap.put("numberOfStages", numberOfStages);
 
         String orderNo = String.valueOf(System.currentTimeMillis());    // 订单编号
         paramMap.put("orderNo", orderNo);
@@ -80,18 +83,6 @@ public class RoncooPayController extends BaseController {
         paramMap.put("notifyUrl", notifyUrl);
         String remark = getString_UrlDecode_UTF8("remark"); // 支付备注
         paramMap.put("remark", remark);
-
-        ////////////扩展字段,选填,原值返回///////////
-        String field1 = "扩展字段1"; // 扩展字段1
-        paramMap.put("field1", field1);
-        String field2 = "扩展字段2"; // 扩展字段2
-        paramMap.put("field2", field2);
-        String field3 = "扩展字段3"; // 扩展字段3
-        paramMap.put("field3", field3);
-        String field4 = "扩展字段4"; // 扩展字段4
-        paramMap.put("field4", field4);
-        String field5 = "扩展字段5"; // 扩展字段5
-        paramMap.put("field5", field5);
 
         /////签名及生成请求API的方法///
         String sign = MerchantApiUtil.getSign(paramMap, PayConfigUtil.readConfig("paySecret"));

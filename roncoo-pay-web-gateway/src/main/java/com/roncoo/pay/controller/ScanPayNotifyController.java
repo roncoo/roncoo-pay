@@ -25,10 +25,15 @@ package com.roncoo.pay.controller;
 
 import com.roncoo.pay.common.core.enums.PayWayEnum;
 import com.roncoo.pay.common.core.utils.StringUtil;
+import com.roncoo.pay.trade.dao.RpUserBankAuthDao;
+import com.roncoo.pay.trade.vo.OrderPayResultVo;
+import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
+import com.roncoo.pay.trade.entity.RpUserBankAuth;
+import com.roncoo.pay.trade.exception.TradeBizException;
 import com.roncoo.pay.trade.service.RpTradePaymentManagerService;
+import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
 import com.roncoo.pay.trade.utils.WeiXinPayUtils;
 import com.roncoo.pay.trade.utils.alipay.util.AliPayUtil;
-import com.roncoo.pay.trade.vo.OrderPayResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +53,10 @@ public class ScanPayNotifyController {
 
     @Autowired
     private RpTradePaymentManagerService rpTradePaymentManagerService;
+    @Autowired
+    private RpTradePaymentQueryService tradePaymentQueryService;
+    @Autowired
+    private RpUserBankAuthDao userBankAuthDao;
 
     @RequestMapping("/notify/{payWayCode}")
     public void notify(@PathVariable("payWayCode") String payWayCode, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
@@ -90,8 +99,18 @@ public class ScanPayNotifyController {
         }
 
         OrderPayResultVo scanPayByResult = rpTradePaymentManagerService.completeScanPayByResult(payWayCode, resultMap);
-        model.addAttribute("scanPayByResult", scanPayByResult);
+        String bankOrderNo = resultMap.get("out_trade_no");
+        // 根据银行订单号获取支付信息
+        RpTradePaymentRecord rpTradePaymentRecord = tradePaymentQueryService.getRecordByBankOrderNo(bankOrderNo);
+        if (rpTradePaymentRecord == null) {
+            throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, ",非法订单,订单不存在");
+        }
+        RpUserBankAuth userBankAuth = userBankAuthDao.findByMerchantNoAndPayOrderNo(rpTradePaymentRecord.getMerchantNo(), rpTradePaymentRecord.getMerchantOrderNo());
+        if (userBankAuth != null) {
+            return "redirect:/auth/doAuth/" + userBankAuth.getMerchantNo() + "/" + userBankAuth.getPayOrderNo();
+        }
 
+        model.addAttribute("scanPayByResult", scanPayByResult);
         return "PayResult";
     }
 

@@ -21,6 +21,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.roncoo.pay.controller.common.BaseController;
+import com.roncoo.pay.controller.common.ConstantClass;
+import com.roncoo.pay.controller.common.JSONParam;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,9 +40,6 @@ import com.roncoo.pay.account.service.RpSettQueryService;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.common.core.utils.StringUtil;
-import com.roncoo.pay.controller.common.BaseController;
-import com.roncoo.pay.controller.common.ConstantClass;
-import com.roncoo.pay.controller.common.JSONParam;
 import com.roncoo.pay.user.entity.RpUserInfo;
 
 /**

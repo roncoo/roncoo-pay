@@ -16,6 +16,8 @@
 package com.roncoo.pay.utils;
 
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -27,6 +29,7 @@ import java.util.*;
  */
 public class MerchantApiUtil {
 
+    private static final Logger LOG = LoggerFactory.getLogger(MerchantApiUtil.class);
 
     /**
      * 获取参数签名
@@ -45,9 +48,11 @@ public class MerchantApiUtil {
         }
         stringBuffer.delete(stringBuffer.length() - 1, stringBuffer.length());
 
+        LOG.info("签名原文：{}" , stringBuffer.toString());
+
         String argPreSign = stringBuffer.append("&paySecret=").append(paySecret).toString();
         String signStr = MD5Util.encode(argPreSign).toUpperCase();
-
+        LOG.info("签名结果:{}" , signStr);
         return signStr;
     }
 

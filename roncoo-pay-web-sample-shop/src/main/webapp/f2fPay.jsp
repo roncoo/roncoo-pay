@@ -36,7 +36,7 @@
                     <input type="text" size="30" name="authCode" style="line-height: 25px;">
                     <input type="hidden" name="productName" value="支付宝支付产品测试"/>
                     <input type="hidden" name="orderPrice" value="0.1"/>
-                    <input type="hidden" name="payWayCode" value="ALIPAY">
+                    <input type="hidden" name="payType" value="F2F_PAY">
                     <input type="hidden" name="remark" value="支付宝支付备注信息"/>
                     <p class="pay_btn">
                         <input type="submit" value="0.1元支付体验"/>
@@ -51,7 +51,7 @@
                     <input type="text" size="30" name="authCode" style="line-height: 25px;">
                     <input type="hidden" name="productName" value="微信支付产品测试"/>
                     <input type="hidden" name="orderPrice" value="0.1"/>
-                    <input type="hidden" name="payWayCode" value="WEIXIN">
+                    <input type="hidden" name="payType" value="MICRO_PAY">
                     <input type="hidden" name="remark" value="微信支付备注信息"/>
                     <p class="pay_btn">
                         <input type="submit" value="0.1元支付体验"/>
@@ -86,6 +86,6 @@
 </html>
 <script>
     $(function () {
-        $("#footer").text("Copyright © 2015-" + new Date().getFullYear() + " 广州市领课网络科技有限公司版权所有")
+        $("#footer").text("Copyright © 2015-" + new Date().getFullYear() + " 广州市领课网络科技有限公司版权所有");
     })
 </script>

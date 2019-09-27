@@ -10,8 +10,9 @@ import com.roncoo.pay.notify.service.RpNotifyService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.annotation.PostConstruct;
@@ -29,33 +30,34 @@ public class AppNotifyApplication {
     public static DelayQueue<NotifyTask> tasks = new DelayQueue<NotifyTask>();
 
     @Autowired
-    private ThreadPoolTaskExecutor cacheThreadPool;
+    private ThreadPoolTaskExecutor threadPool;
     @Autowired
-    public RpNotifyService cacheRpNotifyService;
+    public RpNotifyService rpNotifyService;
     @Autowired
-    private NotifyQueue cacheNotifyQueue;
+    private NotifyQueue notifyQueue;
     @Autowired
-    public NotifyPersist cacheNotifyPersist;
+    public NotifyPersist notifyPersist;
 
 
-    private static ThreadPoolTaskExecutor threadPool;
+    private static ThreadPoolTaskExecutor cacheThreadPool;
 
-    public static RpNotifyService rpNotifyService;
+    public static RpNotifyService cacheRpNotifyService;
 
-    private static NotifyQueue notifyQueue;
+    private static NotifyQueue cacheNotifyQueue;
 
-    public static NotifyPersist notifyPersist;
+    public static NotifyPersist cacheNotifyPersist;
 
     public static void main(String[] args) {
-        SpringApplication.run(AppNotifyApplication.class, args);
+//        SpringApplication.run(AppNotifyApplication.class, args);
+        new SpringApplicationBuilder().sources(AppNotifyApplication.class).web(WebApplicationType.NONE).run(args);
     }
 
     @PostConstruct
     public void init() {
-        threadPool = cacheThreadPool;
-        rpNotifyService = cacheRpNotifyService;
-        notifyQueue = cacheNotifyQueue;
-        notifyPersist = cacheNotifyPersist;
+        cacheThreadPool = threadPool;
+        cacheRpNotifyService = rpNotifyService;
+        cacheNotifyQueue = notifyQueue;
+        cacheNotifyPersist = notifyPersist;
 
         startInitFromDB();
         startThread();
@@ -64,18 +66,18 @@ public class AppNotifyApplication {
     private static void startThread() {
         LOG.info("startThread");
 
-        threadPool.execute(new Runnable() {
+        cacheThreadPool.execute(new Runnable() {
             public void run() {
                 try {
                     while (true) {
                         Thread.sleep(50);//50毫秒执行一次
                         // 如果当前活动线程等于最大线程，那么不执行
-                        if (threadPool.getActiveCount() < threadPool.getMaxPoolSize()) {
+                        if (cacheThreadPool.getActiveCount() < cacheThreadPool.getMaxPoolSize()) {
                             final NotifyTask task = tasks.poll();
                             if (task != null) {
-                                threadPool.execute(new Runnable() {
+                                cacheThreadPool.execute(new Runnable() {
                                     public void run() {
-                                        LOG.info(threadPool.getActiveCount() + "---------");
+                                        LOG.info(cacheThreadPool.getActiveCount() + "---------");
                                         tasks.remove(task);
                                         task.run();
                                     }
@@ -110,19 +112,19 @@ public class AppNotifyApplication {
         paramMap.put("statusList", status);
         paramMap.put("notifyTimeList", notifyTime);
 
-        PageBean<RpNotifyRecord> pager = rpNotifyService.queryNotifyRecordListPage(pageParam, paramMap);
+        PageBean<RpNotifyRecord> pager = cacheRpNotifyService.queryNotifyRecordListPage(pageParam, paramMap);
         int totalSize = (pager.getNumPerPage() - 1) / numPerPage + 1;//总页数
         while (pageNum <= totalSize) {
             List<RpNotifyRecord> list = pager.getRecordList();
             for (int i = 0; i < list.size(); i++) {
                 RpNotifyRecord notifyRecord = list.get(i);
                 notifyRecord.setLastNotifyTime(new Date());
-                notifyQueue.addElementToList(notifyRecord);
+                cacheNotifyQueue.addElementToList(notifyRecord);
             }
             pageNum++;
             LOG.info(String.format("调用通知服务.rpNotifyService.queryNotifyRecordListPage(%s, %s, %s)", pageNum, numPerPage, paramMap));
             pageParam = new PageParam(pageNum, numPerPage);
-            pager = rpNotifyService.queryNotifyRecordListPage(pageParam, paramMap);
+            pager = cacheRpNotifyService.queryNotifyRecordListPage(pageParam, paramMap);
         }
     }
 

@@ -6,6 +6,9 @@
         <input type="hidden" name="callbackType" value="closeCurrent">
         <input type="hidden" name="forwardUrl" value="">
         <div class="tabsContent pageFormContent" layoutH="58">
+            <span style="color: red">*演示环境不能添加,仅供参考</span>
+            <br>
+            <br>
             <div>
                 <fieldset>
                     <legend>店铺信息</legend>
@@ -184,13 +187,13 @@
         </div>
         <div class="formBar">
             <ul>
-                <li>
+                <%--<li>
                     <div class="buttonActive">
                         <div class="buttonContent">
                             <button type="submit" id="submitBtn">提交</button>
                         </div>
                     </div>
-                </li>
+                </li>--%>
                 <li>
                     <div class="button">
                         <div class="buttonContent">

@@ -56,7 +56,7 @@ public class MicroSubmitRecordController {
      * @param model
      * @return
      */
-    @RequiresPermissions("trade:micro:submit:record:add")
+//    @RequiresPermissions("trade:micro:submit:record:add")
     @RequestMapping(value = "/addUI", method = RequestMethod.GET)
     public String addUI(Model model) {
         model.addAttribute("wxCityNoList", WxCityNo.getList());
@@ -117,7 +117,7 @@ public class MicroSubmitRecordController {
         return storeEntrancePicMap;
     }
 
-    @RequiresPermissions("trade:micro:submit:record:query")
+//    @RequiresPermissions("trade:micro:submit:record:query")
     @RequestMapping(value = "/query/{businessCode}")
     public String checkNotify(ModelMap model, @PathVariable(name = "businessCode") String businessCode) {
         Map<String, Object> returnMap = rpMicroSubmitRecordService.microQuery(businessCode);

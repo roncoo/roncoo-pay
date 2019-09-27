@@ -15,7 +15,7 @@
  */
 package com.roncoo.pay.trade.vo;
 
-import com.roncoo.pay.common.core.enums.PublicEnum;
+import com.roncoo.pay.trade.enums.TradeStatusEnum;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -29,7 +29,7 @@ import java.math.BigDecimal;
 public class OrderPayResultVo implements Serializable {
 
     /** 状态 **/
-    private String status = PublicEnum.NO.name();
+    private String status = TradeStatusEnum.WAITING_PAYMENT.name();
 
     /** 金额 **/
     private BigDecimal orderPrice;
