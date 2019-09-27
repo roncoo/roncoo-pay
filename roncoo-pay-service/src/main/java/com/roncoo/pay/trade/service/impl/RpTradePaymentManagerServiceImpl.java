@@ -797,11 +797,11 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
 
         if (verify_result) {// 验证成功
             if (trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")) {
-                String resultUrl = getMerchantNotifyUrl(rpTradePaymentRecord, rpTradePaymentOrder, rpTradePaymentRecord.getReturnUrl(), TradeStatusEnum.SUCCESS);
+                String resultUrl = getMerchantNotifyUrl(rpTradePaymentRecord, rpTradePaymentOrder, rpTradePaymentRecord.getReturnUrl(), TradeStatusEnum.getEnum(rpTradePaymentOrder.getStatus()));
                 orderPayResultVo.setReturnUrl(resultUrl);
                 orderPayResultVo.setStatus(TradeStatusEnum.SUCCESS.name());
             } else {
-                String resultUrl = getMerchantNotifyUrl(rpTradePaymentRecord, rpTradePaymentOrder, rpTradePaymentRecord.getReturnUrl(), TradeStatusEnum.FAILED);
+                String resultUrl = getMerchantNotifyUrl(rpTradePaymentRecord, rpTradePaymentOrder, rpTradePaymentRecord.getReturnUrl(), TradeStatusEnum.getEnum(rpTradePaymentOrder.getStatus()));
                 orderPayResultVo.setReturnUrl(resultUrl);
                 orderPayResultVo.setStatus(TradeStatusEnum.FAILED.name());
             }
