@@ -626,7 +626,7 @@ public class RpTradePaymentManagerServiceImpl implements RpTradePaymentManagerSe
         } else {
             throw new TradeBizException(TradeBizException.TRADE_PAY_WAY_ERROR, "错误的支付方式");
         }
-//TODO 本地调试，注释掉，生产需放开        rpNotifyService.orderSend(rpTradePaymentRecord.getBankOrderNo());
+        rpNotifyService.orderSend(rpTradePaymentRecord.getBankOrderNo());
         return scanPayResultVo;
     }
 
