@@ -18,12 +18,12 @@
 	</properties>
 
 	<dependencies>
-        
+
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpmime</artifactId>
         </dependency>
-        
+
 		<dependency>
 			<groupId>com.roncoo.pay.common</groupId>
 			<artifactId>roncoo-pay-common-core</artifactId>
@@ -71,6 +71,10 @@
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus</artifactId>
 		</dependency>
 
 	</dependencies>
