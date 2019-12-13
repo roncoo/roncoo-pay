@@ -107,6 +107,12 @@
 				<version>${mybatis-spring-boot-starter.version}</version>
 			</dependency>
 
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>mybatis-plus</artifactId>
+				<version>2.1.0</version>
+			</dependency>
+
 			<!--Alibaba-->
 			<dependency>
 				<groupId>com.alibaba</groupId>
