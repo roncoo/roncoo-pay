@@ -69,7 +69,7 @@
 		<alipay-sdk-java.version>3.4.49.ALL</alipay-sdk-java.version>
 		<!--<alipay-trade-sdk.version>1.0</alipay-trade-sdk.version>-->
 
-		<org.apache.shiro.version>1.4.0</org.apache.shiro.version>
+		<org.apache.shiro.version>1.4.2</org.apache.shiro.version>
 
 		<slf4j-api.version>1.8.0-beta2</slf4j-api.version>
 		<slf4j-log4j12.version>1.8.0-beta2</slf4j-log4j12.version>
