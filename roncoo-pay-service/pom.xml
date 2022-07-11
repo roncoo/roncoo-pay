@@ -65,12 +65,12 @@
 			<artifactId>commons-httpclient</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>dom4j</groupId>
+			<groupId>org.dom4j</groupId>
 			<artifactId>dom4j</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.jdom</groupId>
-			<artifactId>jdom</artifactId>
+			<artifactId>jdom2</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.baomidou</groupId>

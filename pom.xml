@@ -47,29 +47,15 @@
 		<module>roncoo-pay-web-sample-shop</module>
 	</modules>
 
-	<!-- 配置maven地址 -->
-	<distributionManagement>
-		<repository>
-			<id>nexus-releases</id>
-			<name>Nexus Release Repository</name>
-			<url>http://192.168.1.221:8081/nexus/content/repositories/releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<name>Nexus Snapshot Repository</name>
-			<url>http://192.168.1.221:8081/nexus/content/repositories/snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
-
 	<!--版本维护-->
 	<properties>
 		<mybatis-spring-boot-starter.version>2.0.0</mybatis-spring-boot-starter.version>
-		<fastjson.version>1.2.56</fastjson.version>
+		<fastjson.version>2.0.8</fastjson.version>
 		<druid.version>1.1.13</druid.version>
 		<alipay-sdk-java.version>3.4.49.ALL</alipay-sdk-java.version>
 		<!--<alipay-trade-sdk.version>1.0</alipay-trade-sdk.version>-->
 
-		<org.apache.shiro.version>1.4.0</org.apache.shiro.version>
+		<org.apache.shiro.version>1.9.1</org.apache.shiro.version>
 
 		<slf4j-api.version>1.8.0-beta2</slf4j-api.version>
 		<slf4j-log4j12.version>1.8.0-beta2</slf4j-log4j12.version>
@@ -77,10 +63,10 @@
 
 		<commons-lang.version>2.6</commons-lang.version>
 		<commons-httpclient.version>3.1</commons-httpclient.version>
-		<dom4j.version>1.6.1</dom4j.version>
-		<jdom.version>2.0.2</jdom.version>
+		<dom4j.version>2.1.3</dom4j.version>
+		<jdom.version>2.0.6</jdom.version>
 		<javax.json-api.version>1.1.4</javax.json-api.version>
-		<commons-io.version>2.6</commons-io.version>
+		<commons-io.version>2.7</commons-io.version>
 		<httpclient.version>4.5.7</httpclient.version>
 		<java.version>1.8</java.version>
 	</properties>
@@ -164,13 +150,13 @@
 				<version>${commons-httpclient.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>dom4j</groupId>
+				<groupId>org.dom4j</groupId>
 				<artifactId>dom4j</artifactId>
 				<version>${dom4j.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jdom</groupId>
-				<artifactId>jdom</artifactId>
+				<artifactId>jdom2</artifactId>
 				<version>${jdom.version}</version>
 			</dependency>
 			<dependency>
