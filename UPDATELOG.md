@@ -1,5 +1,9 @@
 ###### v1.1.0-2022-07-07
 1.升级系统依赖包，优化有依赖包引起的漏洞
+org.apache.shiro:shiro-core、shiro-web、shiro-spring、shiro-ehcache
+org.dom4j:dom4j
+org.jdom:jdom2
+com.alibaba:fastjson
 
 ###### v1.0.2-2017.04.26
 1. 增加支付宝、微信查询接口
