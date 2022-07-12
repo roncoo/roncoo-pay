@@ -15,17 +15,16 @@
  */
 package com.roncoo.pay.user.service.impl;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.user.dao.RpUserPayInfoDao;
 import com.roncoo.pay.user.entity.RpUserPayInfo;
 import com.roncoo.pay.user.service.RpUserPayInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 用户第三方支付信息service实现类
@@ -33,7 +32,7 @@ import com.roncoo.pay.user.service.RpUserPayInfoService;
  * @author：zenghao
  */
 @Service("rpUserPayInfoService")
-public class RpUserPayInfoServiceImpl implements RpUserPayInfoService{
+public class RpUserPayInfoServiceImpl implements RpUserPayInfoService {
 
 	@Autowired
 	private RpUserPayInfoDao rpUserPayInfoDao;

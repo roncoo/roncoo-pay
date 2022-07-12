@@ -16,6 +16,11 @@
 package com.roncoo.pay.trade.entity;
 
 import com.roncoo.pay.common.core.entity.BaseEntity;
+import com.roncoo.pay.common.core.enums.PayTypeEnum;
+import com.roncoo.pay.common.core.enums.PayWayEnum;
+import com.roncoo.pay.common.core.utils.DateUtils;
+import com.roncoo.pay.trade.enums.TradeStatusEnum;
+import com.roncoo.pay.trade.enums.TrxTypeEnum;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -525,6 +530,22 @@ public class RpTradePaymentRecord extends BaseEntity implements Serializable {
 
     public void setBankReturnMsg(String bankReturnMsg) {
         this.bankReturnMsg = bankReturnMsg;
+    }
+    
+    public String getTrxTypeDesc() {
+    	return TrxTypeEnum.getEnum(this.getTrxType()).getDesc();
+    }
+    
+    public String getPayWayNameDesc() {
+    	return PayWayEnum.getEnum(this.getPayWayCode()).getDesc()+"-"+ PayTypeEnum.getEnum(this.getPayTypeCode()).getDesc();
+    }
+    
+    public String getStatusDesc() {
+    	return TradeStatusEnum.getEnum(this.getStatus()).getDesc();
+    }
+    
+    public String getCreateTimeDesc() {
+    	return DateUtils.formatDate(this.getCreateTime(), "yyyy-MM-dd HH:mm");
     }
 
     @Override

@@ -58,7 +58,10 @@ public class PageParam implements Serializable {
      * @param pageNum
      * @param numPerPage
      */
-    public PageParam(int pageNum , int numPerPage){}
+    public PageParam(int pageNum , int numPerPage){
+    	this.pageNum = pageNum;
+    	this.numPerPage = numPerPage;
+    }
 
     /** 当前页数 */
     public int getPageNum() {

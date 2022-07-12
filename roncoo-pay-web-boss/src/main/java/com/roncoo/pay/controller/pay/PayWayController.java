@@ -15,21 +15,6 @@
  */
 package com.roncoo.pay.controller.pay;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.roncoo.pay.common.core.dwz.DWZ;
 import com.roncoo.pay.common.core.dwz.DwzAjax;
 import com.roncoo.pay.common.core.enums.PayTypeEnum;
@@ -44,6 +29,16 @@ import com.roncoo.pay.user.entity.RpPayWay;
 import com.roncoo.pay.user.exception.PayBizException;
 import com.roncoo.pay.user.service.RpPayProductService;
 import com.roncoo.pay.user.service.RpPayWayService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.*;
 
 /**
  * 支付方式管理
@@ -67,7 +62,7 @@ public class PayWayController {
 	 * @return String
 	 * @throws
 	 */
-	@RequestMapping(value = "/list", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/list", method ={RequestMethod.POST, RequestMethod.GET})
 	public String list(RpPayWay rpPayWay, PageParam pageParam, Model model) {
 		// payProductCode 每次添加或编辑后 会变成以“,”分隔的重复数据
 		if(!StringUtil.isEmpty(rpPayWay.getPayProductCode())&&rpPayWay.getPayProductCode().contains(",")){
@@ -108,7 +103,7 @@ public class PayWayController {
 	 */
 	@RequiresPermissions("pay:way:add")
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String add(Model model, RpPayWay rpPayWay,DwzAjax dwz) {
+	public String add(Model model, RpPayWay rpPayWay, DwzAjax dwz) {
 		rpPayWayService.createPayWay(rpPayWay.getPayProductCode(), rpPayWay.getPayWayCode(), rpPayWay.getPayTypeCode(), rpPayWay.getPayRate());
 		dwz.setStatusCode(DWZ.SUCCESS);
 		dwz.setMessage(DWZ.SUCCESS_MSG);
@@ -125,7 +120,7 @@ public class PayWayController {
 	 */
 	@RequiresPermissions("pay:way:edit")
 	@RequestMapping(value = "/editUI", method = RequestMethod.GET)
-	public String editUI(Model model,@RequestParam("id") String id) {
+	public String editUI(Model model, @RequestParam("id") String id) {
 		RpPayWay rpPayWay = rpPayWayService.getDataById(id);
 		model.addAttribute("PayWayEnums", PayWayEnum.toList());
 		model.addAttribute("PayTypeEnums", PayTypeEnum.toList());
@@ -142,7 +137,7 @@ public class PayWayController {
 	 */
 	@RequiresPermissions("pay:way:edit")
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
-	public String edit(Model model, RpPayWay rpPayWay,DwzAjax dwz) {
+	public String edit(Model model, RpPayWay rpPayWay, DwzAjax dwz) {
 		RpPayWay rpPayWayOld = rpPayWayService.getDataById(rpPayWay.getId());
 		rpPayWayOld.setEditTime(new Date());
 		rpPayWayOld.setPayRate(rpPayWay.getPayRate());
@@ -165,7 +160,7 @@ public class PayWayController {
 	 * @throws
 	 */
 	@RequiresPermissions("pay:way:delete")
-	@RequestMapping(value = "/delete", method ={RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/delete", method ={RequestMethod.POST, RequestMethod.GET})
 	public String delete(Model model, DwzAjax dwz, @RequestParam("id") String id) {
 		RpPayWay rpPayWay = rpPayWayService.getDataById(id);
 		RpPayProduct rpPayProduct = rpPayProductService.getByProductCode(rpPayWay.getPayProductCode(), null);

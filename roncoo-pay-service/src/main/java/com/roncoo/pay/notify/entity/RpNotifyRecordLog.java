@@ -12,11 +12,6 @@ import java.util.Date;
  * @版本:V1.0
  */
 public class RpNotifyRecordLog extends BaseEntity {
-    /**
-     *
-     */
-    private static final long serialVersionUID = 459406550725396000L;
-
     /** 通知记录ID **/
     private String notifyId;
 

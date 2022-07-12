@@ -1,12 +1,12 @@
 /*
  * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,8 +15,8 @@
  */
 package com.roncoo.pay.permission.shiro.credentials;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
+import com.roncoo.pay.permission.entity.PmsOperator;
+import com.roncoo.pay.permission.service.PmsOperatorService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -28,14 +28,13 @@ import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.roncoo.pay.permission.entity.PmsOperator;
-import com.roncoo.pay.permission.service.PmsOperatorService;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 自定义的市容凭证匹配器
  *
  * 龙果学院：www.roncoo.com
- * 
+ *
  * @author：shenjialong
  */
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
@@ -70,7 +69,6 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
 		if (matches) {
 			// clear retry count
 			passwordRetryCache.remove(username);
-
 			// 根据登录名查询操作员
 			PmsOperator operator = pmsOperatorService.findOperatorByLoginName(username);
 			Subject subject = SecurityUtils.getSubject();

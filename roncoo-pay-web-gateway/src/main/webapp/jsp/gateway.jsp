@@ -41,15 +41,18 @@
     <div class="bd">
         <ul class="sele_pay_type">
             <span class="lb">请选择支付方式：</span>
-            <c:forEach items="${payGateWayPageShowVo.payWayEnumMap}" var="payWay" >
+            <c:forEach items="${payGateWayPageShowVo.payTypeEnumMap}" var="payType" >
                 <li>
                     <label>
-                        <a href="${path}scanPay/toPay/${payGateWayPageShowVo.merchantOrderNo}/${payWay.key}/${payGateWayPageShowVo.payKey}" style="font-size: 30px">
-                            <c:if test="${payWay.key == 'WEIXIN'}">
-                                <img src="${path}images/logo2.png" alt="${payWay.value.desc}" />
+                        <a href="${path}scanPay/toPay/${payGateWayPageShowVo.merchantOrderNo}/${payType.key}/${payGateWayPageShowVo.payKey}" style="font-size: 30px">
+                            <c:if test="${payType.key == 'SCANPAY'}">
+                                <img src="${path}images/logo2.png" alt="${payType.value.desc}" />
                             </c:if>
-                            <c:if test="${payWay.key == 'ALIPAY'}">
-                                <img src="${path}images/logo.png" alt="${payWay.value.desc}" />
+                            <c:if test="${payType.key == 'DIRECT_PAY'}">
+                                <img src="${path}images/logo.png" alt="${payType.value.desc}" />
+                            </c:if>
+                            <c:if test="${payType.key == 'HUA_BEI_FEN_QI_PAY'}">
+                                <img src="${path}images/logo_hbfq.png" alt="${payType.value.desc}" />
                             </c:if>
                         </a>
                     </label>
@@ -69,9 +72,13 @@
         <ul class="con-content">
         </ul>
     </div>
-    <div class="copyright">Copyright © 2015-2016 广州市领课网络科技有限公司版权所有</div>
+    <div class="copyright" id="footer">Copyright © 2015-2019 广州市领课网络科技有限公司版权所有</div>
     <p class="yue"><a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备16009964号</a></p>
 </div>
-
 </body>
 </html>
+<script>
+    $(function () {
+        $("#footer").text("Copyright © 2015-"+new Date().getFullYear()+" 广州市领课网络科技有限公司版权所有")
+    })
+</script>

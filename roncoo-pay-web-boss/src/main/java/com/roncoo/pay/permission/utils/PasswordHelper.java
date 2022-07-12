@@ -15,12 +15,11 @@
  */
 package com.roncoo.pay.permission.utils;
 
+import com.roncoo.pay.permission.entity.PmsOperator;
 import org.apache.shiro.crypto.RandomNumberGenerator;
 import org.apache.shiro.crypto.SecureRandomNumberGenerator;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
-
-import com.roncoo.pay.permission.entity.PmsOperator;
 
 /**
  * 生成密码工具类
@@ -59,6 +58,10 @@ public class PasswordHelper {
 	public static String getPwd(String loginPwd, String salt) {
 		String newPassword = new SimpleHash(algorithmName, loginPwd, ByteSource.Util.bytes(salt), hashIterations).toHex();
 		return newPassword;
+	}
+
+	public static void main(String[] args) {
+		System.out.println(getPwd("roncoo.123","admin_roncoo8d78869f470951332959580424d4bf4f"));
 	}
 
 }

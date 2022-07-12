@@ -18,12 +18,15 @@ package com.roncoo.pay.trade.dao;
 import com.roncoo.pay.common.core.dao.BaseDao;
 import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * <b>功能说明:商户支付记录,dao层接口</b>
  * @author  Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
-public interface RpTradePaymentRecordDao extends BaseDao<RpTradePaymentRecord>{
+public interface RpTradePaymentRecordDao extends BaseDao<RpTradePaymentRecord> {
 
     /**
      * 根据银行订单号获取支付信息
@@ -38,7 +41,7 @@ public interface RpTradePaymentRecordDao extends BaseDao<RpTradePaymentRecord>{
      * @param merchantOrderNo
      * @return
      */
-    RpTradePaymentRecord getSuccessRecordByMerchantNoAndMerchantOrderNo(String merchantNo , String merchantOrderNo);
+    RpTradePaymentRecord getSuccessRecordByMerchantNoAndMerchantOrderNo(String merchantNo, String merchantOrderNo);
 
     /**
 	 * 根据支付流水号查询支付记录
@@ -47,5 +50,9 @@ public interface RpTradePaymentRecordDao extends BaseDao<RpTradePaymentRecord>{
 	 * @return
 	 */
 	RpTradePaymentRecord getByTrxNo(String trxNo);
+
+	List<Map<String, String>> getPaymentReport(String merchantNo);
+
+	List<Map<String, String>> getPayWayReport(String merchantNo);
 
 }

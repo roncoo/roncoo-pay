@@ -18,30 +18,34 @@ package com.roncoo.pay.controller;
 /**
  * <b>功能说明:后台通知结果控制类
  * </b>
- * @author  Peter
+ *
+ * @author Peter
  * <a href="http://www.roncoo.com">龙果学院(www.roncoo.com)</a>
  */
 
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.roncoo.pay.common.core.enums.PayWayEnum;
+import com.roncoo.pay.common.core.utils.StringUtil;
+import com.roncoo.pay.trade.dao.RpUserBankAuthDao;
+import com.roncoo.pay.trade.vo.OrderPayResultVo;
+import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
+import com.roncoo.pay.trade.entity.RpUserBankAuth;
+import com.roncoo.pay.trade.exception.TradeBizException;
+import com.roncoo.pay.trade.service.RpTradePaymentManagerService;
+import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
+import com.roncoo.pay.trade.utils.WeiXinPayUtils;
+import com.roncoo.pay.trade.utils.alipay.util.AliPayUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.roncoo.pay.common.core.enums.PayWayEnum;
-import com.roncoo.pay.common.core.utils.StringUtil;
-import com.roncoo.pay.trade.service.RpTradePaymentManagerService;
-import com.roncoo.pay.trade.utils.WeiXinPayUtils;
-import com.roncoo.pay.trade.utils.alipay.util.AliPayUtil;
-import com.roncoo.pay.trade.vo.OrderPayResultVo;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/scanPayNotify")
@@ -49,22 +53,26 @@ public class ScanPayNotifyController {
 
     @Autowired
     private RpTradePaymentManagerService rpTradePaymentManagerService;
+    @Autowired
+    private RpTradePaymentQueryService tradePaymentQueryService;
+    @Autowired
+    private RpUserBankAuthDao userBankAuthDao;
 
     @RequestMapping("/notify/{payWayCode}")
-    public void notify(@PathVariable("payWayCode") String  payWayCode , HttpServletRequest httpServletRequest , HttpServletResponse httpServletResponse) throws Exception {
+    public void notify(@PathVariable("payWayCode") String payWayCode, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
 
-        Map<String , String> notifyMap = new HashMap<String , String >();
-        if (PayWayEnum.WEIXIN.name().equals(payWayCode)){
+        Map<String, String> notifyMap = new HashMap<String, String>();
+        if (PayWayEnum.WEIXIN.name().equals(payWayCode) || "WEIXIN_PROGRAM".equals(payWayCode)) {
             InputStream inputStream = httpServletRequest.getInputStream();// 从request中取得输入流
             notifyMap = WeiXinPayUtils.parseXml(inputStream);
-        }else if (PayWayEnum.ALIPAY.name().equals(payWayCode)){
+        } else if (PayWayEnum.ALIPAY.name().equals(payWayCode)) {
             Map<String, String[]> requestParams = httpServletRequest.getParameterMap();
             notifyMap = AliPayUtil.parseNotifyMsg(requestParams);
         }
 
-        String completeWeiXinScanPay = rpTradePaymentManagerService.completeScanPay(payWayCode ,notifyMap);
-        if (!StringUtil.isEmpty(completeWeiXinScanPay)){
-            if (PayWayEnum.WEIXIN.name().equals(payWayCode)){
+        String completeWeiXinScanPay = rpTradePaymentManagerService.completeScanPay(payWayCode, notifyMap);
+        if (!StringUtil.isEmpty(completeWeiXinScanPay)) {
+            if (PayWayEnum.WEIXIN.name().equals(payWayCode)) {
                 httpServletResponse.setContentType("text/xml");
             }
             httpServletResponse.getWriter().print(completeWeiXinScanPay);
@@ -72,11 +80,11 @@ public class ScanPayNotifyController {
     }
 
     @RequestMapping("/result/{payWayCode}")
-    public String result(@PathVariable("payWayCode") String payWayCode, HttpServletRequest httpServletRequest , Model model) throws Exception {
+    public String result(@PathVariable("payWayCode") String payWayCode, HttpServletRequest httpServletRequest, Model model) throws Exception {
 
-        Map<String,String> resultMap = new HashMap<String,String>();
+        Map<String, String> resultMap = new HashMap<String, String>();
         Map requestParams = httpServletRequest.getParameterMap();
-        for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
+        for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext(); ) {
             String name = (String) iter.next();
             String[] values = (String[]) requestParams.get(name);
             String valueStr = "";
@@ -91,8 +99,18 @@ public class ScanPayNotifyController {
         }
 
         OrderPayResultVo scanPayByResult = rpTradePaymentManagerService.completeScanPayByResult(payWayCode, resultMap);
-        model.addAttribute("scanPayByResult",scanPayByResult);
+        String bankOrderNo = resultMap.get("out_trade_no");
+        // 根据银行订单号获取支付信息
+        RpTradePaymentRecord rpTradePaymentRecord = tradePaymentQueryService.getRecordByBankOrderNo(bankOrderNo);
+        if (rpTradePaymentRecord == null) {
+            throw new TradeBizException(TradeBizException.TRADE_ORDER_ERROR, ",非法订单,订单不存在");
+        }
+        RpUserBankAuth userBankAuth = userBankAuthDao.findByMerchantNoAndPayOrderNo(rpTradePaymentRecord.getMerchantNo(), rpTradePaymentRecord.getMerchantOrderNo());
+        if (userBankAuth != null) {
+            return "redirect:/auth/doAuth/" + userBankAuth.getMerchantNo() + "/" + userBankAuth.getPayOrderNo();
+        }
 
+        model.addAttribute("scanPayByResult", scanPayByResult);
         return "PayResult";
     }
 

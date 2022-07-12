@@ -1,0 +1,17 @@
+server:
+  port: 8091
+  servlet:
+    session:
+      timeout: 30M
+    context-path: /boss
+spring:
+  application:
+    name: roncoo-pay-web-boss
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*/*.xml
+logging:
+  config: classpath:logback.xml

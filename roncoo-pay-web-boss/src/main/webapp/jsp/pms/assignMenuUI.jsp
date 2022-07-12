@@ -20,7 +20,7 @@
 				<div>
 					<div id="treeDiv" layoutH="100" style="float:left; display:block;overflow:auto; width:489px; border:solid 1px #CCC; line-height:21px; background:#fff">
 					    <fieldset style="width:99%">
-							<legend>全选<input type="checkbox"  name="selectAll" id="selectAll" ></legend>
+							<legend>全选<input type="checkbox"  name="selectAll" id="selectAll" <c:if test="${fn:length(menuList) == fn:length(fn:split(menuIds, ','))}">checked="checked"</c:if>></legend>
 							<c:forEach items="${menuList}" var="item"> 
 							     <label>
 									<input type="checkbox" class="selectMenu" name="selectMenu" id="menuId${item.id }" value="${item.id }">${item.name }
@@ -87,7 +87,7 @@ $(document).ready(function() {
 	
 	$("#selectAll").click(function(){
 		if($("#selectAll").is(':checked')){
-			$("input[name='selectMenu']").attr("checked","checked"); 
+			$("input[name='selectMenu']").prop("checked","checked");
 		}else{
 			$("input[name='selectMenu']").removeAttr("checked");
 		}

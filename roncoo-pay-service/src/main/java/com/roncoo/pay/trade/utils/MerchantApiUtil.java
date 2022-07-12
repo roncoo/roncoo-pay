@@ -15,11 +15,13 @@
  */
 package com.roncoo.pay.trade.utils;
 
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
-
-import org.apache.commons.lang.StringUtils;
 
 /**
  * <b>功能说明:商户API工具类
@@ -29,7 +31,7 @@ import org.apache.commons.lang.StringUtils;
  */
 public class MerchantApiUtil {
 
-
+    private static final Logger LOG = LoggerFactory.getLogger(MerchantApiUtil.class);
     /**
      * 获取参数签名
      * @param paramMap  签名参数
@@ -38,6 +40,11 @@ public class MerchantApiUtil {
      */
     public static String  getSign (Map<String , Object> paramMap , String paySecret){
         SortedMap<String, Object> smap = new TreeMap<String, Object>(paramMap);
+
+        if (smap.get("sign") != null) {
+            smap.remove("sign");
+        }
+
         StringBuffer stringBuffer = new StringBuffer();
         for (Map.Entry<String, Object> m : smap.entrySet()) {
             Object value = m.getValue();
@@ -47,9 +54,11 @@ public class MerchantApiUtil {
         }
         stringBuffer.delete(stringBuffer.length() - 1, stringBuffer.length());
 
+        LOG.info("签名原文：{}" , stringBuffer.toString());
+
         String argPreSign = stringBuffer.append("&paySecret=").append(paySecret).toString();
         String signStr = MD5Util.encode(argPreSign).toUpperCase();
-
+        LOG.info("签名结果:{}" , signStr);
         return signStr;
     }
 

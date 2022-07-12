@@ -15,30 +15,29 @@
  */
 package com.roncoo.pay.trade.service.impl;
 
+import com.roncoo.pay.common.core.enums.PublicEnum;
+import com.roncoo.pay.common.core.page.PageBean;
+import com.roncoo.pay.common.core.page.PageParam;
+import com.roncoo.pay.common.core.utils.DateUtils;
+import com.roncoo.pay.trade.dao.RpTradePaymentOrderDao;
+import com.roncoo.pay.trade.dao.RpTradePaymentRecordDao;
+import com.roncoo.pay.trade.enums.TradeStatusEnum;
+import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
+import com.roncoo.pay.trade.utils.MerchantApiUtil;
+import com.roncoo.pay.trade.vo.OrderPayResultVo;
+import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
+import com.roncoo.pay.user.entity.RpUserPayConfig;
+import com.roncoo.pay.user.exception.UserBizException;
+import com.roncoo.pay.user.service.RpUserPayConfigService;
+import com.roncoo.pay.trade.entity.RpTradePaymentOrder;
+import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.roncoo.pay.common.core.utils.DateUtils;
-import com.roncoo.pay.trade.utils.MerchantApiUtil;
-import com.roncoo.pay.trade.vo.PaymentOrderQueryParam;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.roncoo.pay.common.core.enums.PublicEnum;
-import com.roncoo.pay.common.core.page.PageBean;
-import com.roncoo.pay.common.core.page.PageParam;
-import com.roncoo.pay.trade.dao.RpTradePaymentOrderDao;
-import com.roncoo.pay.trade.dao.RpTradePaymentRecordDao;
-import com.roncoo.pay.trade.entity.RpTradePaymentOrder;
-import com.roncoo.pay.trade.entity.RpTradePaymentRecord;
-import com.roncoo.pay.trade.enums.TradeStatusEnum;
-import com.roncoo.pay.trade.service.RpTradePaymentQueryService;
-import com.roncoo.pay.trade.vo.OrderPayResultVo;
-import com.roncoo.pay.user.entity.RpUserPayConfig;
-import com.roncoo.pay.user.exception.UserBizException;
-import com.roncoo.pay.user.service.RpUserPayConfigService;
 
 /**
  * <b>功能说明:交易模块查询类实现</b>
@@ -59,7 +58,7 @@ public class RpTradePaymentQueryServiceImpl implements RpTradePaymentQueryServic
 
 	/**
 	 * 根据参数查询交易记录List
-	 * 
+	 *
 	 * @param paramMap
 	 * @return
 	 */
@@ -102,7 +101,7 @@ public class RpTradePaymentQueryServiceImpl implements RpTradePaymentQueryServic
 	}
 
 
-	private String getMerchantNotifyUrl(RpTradePaymentRecord rpTradePaymentRecord ,RpTradePaymentOrder rpTradePaymentOrder ,String sourceUrl , TradeStatusEnum tradeStatusEnum){
+	private String getMerchantNotifyUrl(RpTradePaymentRecord rpTradePaymentRecord , RpTradePaymentOrder rpTradePaymentOrder , String sourceUrl , TradeStatusEnum tradeStatusEnum){
 
 		RpUserPayConfig rpUserPayConfig = rpUserPayConfigService.getByUserNo(rpTradePaymentRecord.getMerchantNo());
 		if (rpUserPayConfig == null){
@@ -151,17 +150,17 @@ public class RpTradePaymentQueryServiceImpl implements RpTradePaymentQueryServic
 
 	/**
 	 * 根据银行订单号查询支付记录
-	 * 
+	 *
 	 * @param bankOrderNo
 	 * @return
 	 */
 	public RpTradePaymentRecord getRecordByBankOrderNo(String bankOrderNo) {
 		return rpTradePaymentRecordDao.getByBankOrderNo(bankOrderNo);
 	}
-	
+
 	/**
 	 * 根据支付流水号查询支付记录
-	 * 
+	 *
 	 * @param trxNo
 	 * @return
 	 */
@@ -230,5 +229,25 @@ public class RpTradePaymentQueryServiceImpl implements RpTradePaymentQueryServic
 		}
 
 		return rpTradePaymentRecordDao.listPage(pageParam,paramMap);
+	}
+
+	/**
+	 * 获取交易流水报表
+	 *
+	 * @param merchantNo
+	 * @return
+	 */
+	public List<Map<String, String>> getPaymentReport(String merchantNo){
+		return rpTradePaymentRecordDao.getPaymentReport(merchantNo);
+	}
+
+	/**
+	 * 获取交易方式报表
+	 *
+	 * @param merchantNo
+	 * @return
+	 */
+	public List<Map<String, String>> getPayWayReport(String merchantNo){
+		return rpTradePaymentRecordDao.getPayWayReport(merchantNo);
 	}
 }

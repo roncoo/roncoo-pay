@@ -1,12 +1,12 @@
 /*
  * Copyright 2015-2102 RonCoo(http://www.roncoo.com) Group.
- *  
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *  
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- *  
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,29 +15,27 @@
  */
 package com.roncoo.pay.common.core.dao.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.roncoo.pay.common.core.dao.BaseDao;
 import com.roncoo.pay.common.core.entity.BaseEntity;
 import com.roncoo.pay.common.core.exception.BizException;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 据访问层基础支撑类.
+ *
  * @company：广州领课网络科技有限公司（龙果学院 www.roncoo.com）.
  */
-public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSupport implements BaseDao<T> {
+public abstract class BaseDaoImpl<T extends BaseEntity> implements BaseDao<T> {
 
     protected static final Log LOG = LogFactory.getLog(BaseDaoImpl.class);
 
@@ -56,7 +54,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
     public static final String SQL_LIST_BY = "listBy";
     public static final String SQL_LIST_PAGE_COUNT = "listPageCount";
     public static final String SQL_COUNT_BY_PAGE_PARAM = "countByPageParam"; // 根据当前分页参数进行统计
-    
+
 
     /**
      * 注入SqlSessionTemplate实例(要求Spring中进行SqlSessionTemplate的配置).
@@ -71,10 +69,6 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 
     public void setSessionTemplate(SqlSessionTemplate sessionTemplate) {
         this.sessionTemplate = sessionTemplate;
-    }
-
-    public SqlSession getSqlSession() {
-        return super.getSqlSession();
     }
 
     /**
@@ -161,7 +155,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 
     /**
      * 根据条件查询 getBy: selectOne <br/>
-     * 
+     *
      * @param paramMap
      * @return
      */
@@ -171,7 +165,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
         }
         return sessionTemplate.selectOne(getStatement(SQL_LIST_BY), paramMap);
     }
-    
+
     /**
      * 根据条件查询列表数据.
      */
@@ -270,11 +264,11 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 
     /**
      * 函数功能说明 ： 获取Mapper命名空间. 修改者名字： Along 修改日期： 2016-1-8 修改内容：
-     * 
+     *
+     * @throws
      * @参数：@param sqlId
      * @参数：@return
      * @return：String
-     * @throws
      */
     public String getStatement(String sqlId) {
         String name = this.getClass().getName();

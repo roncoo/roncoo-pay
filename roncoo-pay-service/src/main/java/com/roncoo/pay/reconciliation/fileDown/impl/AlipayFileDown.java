@@ -15,17 +15,6 @@
  */
 package com.roncoo.pay.reconciliation.fileDown.impl;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.roncoo.pay.common.core.utils.DateUtils;
 import com.roncoo.pay.reconciliation.fileDown.service.FileDown;
 import com.roncoo.pay.reconciliation.utils.alipay.AlipaySubmit;
@@ -34,6 +23,17 @@ import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpRequest;
 import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResponse;
 import com.roncoo.pay.reconciliation.utils.alipay.httpClient.HttpResultType;
 import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.stereotype.Component;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 支付宝账单下载.
@@ -42,6 +42,7 @@ import com.roncoo.pay.trade.utils.AlipayConfigUtil;
  * 
  * @author：shenjialong
  */
+@Component("ALIPAY")
 public class AlipayFileDown implements FileDown {
 	private static final Log LOG = LogFactory.getLog(AlipayFileDown.class);
 	SimpleDateFormat timestampSDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

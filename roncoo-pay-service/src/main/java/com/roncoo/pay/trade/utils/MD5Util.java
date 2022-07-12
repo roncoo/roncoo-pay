@@ -15,10 +15,10 @@
  */
 package com.roncoo.pay.trade.utils;
 
-import java.security.MessageDigest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.security.MessageDigest;
 
 /**
  * <b>功能说明:MD5签名工具类

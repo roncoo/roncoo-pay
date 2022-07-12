@@ -235,4 +235,21 @@
 			<include refid="condition_sql" />
 		</where>
 	</select>
+	
+	<select id="getPaymentReport" parameterType="java.util.Map" resultType="java.util.Map">
+		select  count(trx_no) as recordCount,date_format(create_time,'%Y-%m') as createTime 
+		from rp_trade_payment_record
+		<where>
+			<include refid="condition_sql" />
+		</where>
+		GROUP BY MONTH(create_time) ORDER BY MONTH(create_time) DESC limit 6
+	</select>
+	
+	<select id="getPayWayReport" parameterType="java.util.Map" resultType="java.util.Map">
+		select  pay_way_name,count(trx_no)  from rp_trade_payment_record
+		<where>
+			<include refid="condition_sql" />
+		</where>
+GROUP BY pay_way_name 
+	</select>
 </mapper>

@@ -16,6 +16,18 @@
 								<input type="text" name="userName" size="25" maxlength="128" />
 							</dd>
 					</dl>
+					<dl>
+							<dt>手机号：</dt>
+							<dd>
+								<input type="text" name="mobile" size="25" maxlength="128" />
+							</dd>
+					</dl>
+					<dl>
+							<dt>登录密码：</dt>
+							<dd>
+								<input type="password" name="password" size="25" maxlength="128" />
+							</dd>
+					</dl>
 				</fieldset>
 			</div>
 		</div>

@@ -1,0 +1,17 @@
+server:
+  port: 8092
+  servlet:
+    session:
+      timeout: 30m
+    context-path: /roncoo-pay-web-gateway
+spring:
+  application:
+    name: roncoo-pay-web-gateway
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*/*.xml
+logging:
+  config: classpath:logback.xml

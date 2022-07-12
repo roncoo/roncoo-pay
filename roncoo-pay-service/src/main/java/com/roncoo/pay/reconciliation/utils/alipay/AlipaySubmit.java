@@ -1,19 +1,18 @@
 package com.roncoo.pay.reconciliation.utils.alipay;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+import com.roncoo.pay.trade.utils.AlipayConfigUtil;
 import org.apache.commons.httpclient.NameValuePair;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
-import com.roncoo.pay.trade.utils.AlipayConfigUtil;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /* *
  *类名：AlipaySubmit

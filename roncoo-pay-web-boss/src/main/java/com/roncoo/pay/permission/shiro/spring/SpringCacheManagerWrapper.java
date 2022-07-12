@@ -15,20 +15,14 @@
  */
 package com.roncoo.pay.permission.shiro.spring;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import net.sf.ehcache.Ehcache;
-
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.util.CollectionUtils;
 import org.springframework.cache.support.SimpleValueWrapper;
+
+import java.util.*;
 
 /**
  * 包装Spring cache抽象.

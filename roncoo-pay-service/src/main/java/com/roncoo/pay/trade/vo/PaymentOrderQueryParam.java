@@ -16,7 +16,6 @@
 package com.roncoo.pay.trade.vo;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * <b>功能说明:支付订单查询条件实体

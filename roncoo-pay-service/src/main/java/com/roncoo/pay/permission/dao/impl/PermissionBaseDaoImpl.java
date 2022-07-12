@@ -15,23 +15,20 @@
  */
 package com.roncoo.pay.permission.dao.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.roncoo.pay.common.core.exception.BizException;
 import com.roncoo.pay.common.core.page.PageBean;
 import com.roncoo.pay.common.core.page.PageParam;
 import com.roncoo.pay.permission.dao.PermissionBaseDao;
 import com.roncoo.pay.permission.entity.PermissionBaseEntity;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 数据访问层基础支撑类.
@@ -40,7 +37,7 @@ import com.roncoo.pay.permission.entity.PermissionBaseEntity;
  * 
  * @author：shenjialong
  */
-public abstract class PermissionBaseDaoImpl<T extends PermissionBaseEntity> extends SqlSessionDaoSupport implements PermissionBaseDao<T> {
+public abstract class PermissionBaseDaoImpl<T extends PermissionBaseEntity> implements PermissionBaseDao<T> {
 
 	protected static final Log LOG = LogFactory.getLog(PermissionBaseDaoImpl.class);
 
@@ -73,10 +70,6 @@ public abstract class PermissionBaseDaoImpl<T extends PermissionBaseEntity> exte
 
 	public void setSessionTemplate(SqlSessionTemplate sessionTemplate) {
 		this.sessionTemplate = sessionTemplate;
-	}
-
-	public SqlSession getSqlSession() {
-		return super.getSqlSession();
 	}
 
 	/**

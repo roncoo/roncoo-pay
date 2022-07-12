@@ -15,10 +15,9 @@
  */
 package com.roncoo.pay.user.exception;
 
+import com.roncoo.pay.common.core.exception.BizException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import com.roncoo.pay.common.core.exception.BizException;
 
 /**
  * 用户业务异常类
@@ -27,7 +26,12 @@ import com.roncoo.pay.common.core.exception.BizException;
  */
 public class UserBizException extends BizException {
 
-    /** 用户不存在 **/
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6402548375645868682L;
+
+	/** 用户不存在 **/
     public static final int USER_IS_NULL = 101;
 
     /** 用户支付配置有误 **/

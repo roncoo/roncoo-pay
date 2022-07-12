@@ -15,14 +15,6 @@
  */
 package com.roncoo.pay.account.service.impl;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.roncoo.pay.account.dao.RpSettDailyCollectDao;
 import com.roncoo.pay.account.dao.RpSettRecordDao;
 import com.roncoo.pay.account.entity.RpAccount;
@@ -48,6 +40,13 @@ import com.roncoo.pay.user.enums.BankAccountTypeEnum;
 import com.roncoo.pay.user.exception.UserBizException;
 import com.roncoo.pay.user.service.RpUserBankAccountService;
 import com.roncoo.pay.user.service.RpUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * 结算核心业务处理实现类
@@ -153,7 +152,7 @@ public class RpSettHandleServiceImpl implements RpSettHandleService {
 	 */
 
 	@Transactional(rollbackFor = Exception.class)
-	private void launchSett(String userNo, String userName, String accountNo, BigDecimal settAmount, RpUserBankAccount bankAccount,String settType) {
+	private void launchSett(String userNo, String userName, String accountNo, BigDecimal settAmount, RpUserBankAccount bankAccount, String settType) {
 		
 		// 所行查询账户
 		RpSettRecord settRecord = new RpSettRecord();
